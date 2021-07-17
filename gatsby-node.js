@@ -3,20 +3,18 @@ exports.createPages = async function ({ actions, graphql }) {
   const { data } = await graphql(`
     {
       allMdx {
-        edges {
-          node {
-            id
-            frontmatter {
-              title
-              permalink
-              date(formatString: "MMMM D, YYYY")
+        nodes {
+          parent {
+            ... on File {
+              name
             }
-            parent {
-              ... on File {
-                name
-              }
-            }
-            body
+          }
+          id
+          body
+          frontmatter {
+            date(formatString: "MMMM D, YYYY")
+            permalink
+            title
           }
         }
       }
@@ -24,7 +22,7 @@ exports.createPages = async function ({ actions, graphql }) {
   `);
 
   // read all posts
-  data.allMdx.edges.forEach(({ node }) => {
+  data.allMdx.nodes.forEach(node => {
     const pathName = node.frontmatter.permalink ?? `/${node.parent.name}` ?? null;
     const body = node.body;
 
