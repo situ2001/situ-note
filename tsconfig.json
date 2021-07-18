@@ -5,7 +5,7 @@
     "target": "ESNext",
     "lib": ["DOM", "ES2017"],
     "jsx": "react",
-    "strict": true,
+    "strict": false,
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
