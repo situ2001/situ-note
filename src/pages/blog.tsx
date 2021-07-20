@@ -2,6 +2,7 @@ import * as React from 'react';
 import { graphql, Link } from 'gatsby';
 import Layout from '../components/Layout';
 import Container from '../components/Container';
+import BlogCard from '../components/BlogCard';
 
 type Props = {
   location: Location;
@@ -14,17 +15,19 @@ const Blog = (props: Props) => {
   return (
     <Layout location={location}>
       <Container>
-        {
-          data.allMdx.nodes.map(node => {
-            let link: string = node.frontmatter.permalink ?? `/${node.parent.name}` ?? null;
-            link = `/blog${link}`;
-            return (
-              <article key={node.id}>
-                <Link to={link}>{node.frontmatter.title}</Link>
-              </article>
-            );
-          })
-        }
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          {
+            data.allMdx.nodes.map(node => {
+              let link: string = node.frontmatter.permalink ?? `/${node.parent.name}` ?? null;
+              link = `/blog${link}`;
+              const title = node.frontmatter.title;
+              const date = node.frontmatter.date;
+              return (
+                <BlogCard title={title} link={link} date={date} />
+              );
+            })
+          }
+        </div>
       </Container>
     </Layout>
   );
