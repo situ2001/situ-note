@@ -1,17 +1,13 @@
 import React from 'react';
 import { MDXProvider } from '@mdx-js/react';
+import * as styles from './src/styles/mdx.module.css';
 
 // import prism theme
 require('prism-themes/themes/prism-vs.css');
 
 const MyImg = (props) => (
   <img 
-    style={{
-      display: 'block',
-      marginLeft: 'auto',
-      marginRight: 'auto',
-      width: '80%'
-    }}
+    className={styles.myImg}
     alt=""
     {...props}
   />
