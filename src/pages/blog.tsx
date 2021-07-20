@@ -37,7 +37,7 @@ export default Blog;
 
 export const query = graphql`
   {
-    allMdx {
+    allMdx(sort: {fields: frontmatter___date, order: DESC}) {
       nodes {
         parent {
           ... on File {
