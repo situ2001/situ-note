@@ -1,6 +1,6 @@
 import * as React from "react";
-import Container from '../components/Container';
 import Layout from '../components/Layout';
+import Container from '../components/Container';
 
 type Props = {
   location: Location;
