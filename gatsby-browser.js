@@ -1,6 +1,9 @@
 import React from 'react';
 import { MDXProvider } from '@mdx-js/react';
 
+// import prism theme
+require('prism-themes/themes/prism-vs.css');
+
 const MyImg = (props) => (
   <img 
     style={{
