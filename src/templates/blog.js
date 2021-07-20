@@ -13,8 +13,16 @@ const MyImg = (props) => (
   />
 );
 
+const MyCode = (props) => (
+  <code
+    style={{ whiteSpace: 'pre-wrap' }}
+    {...props}
+  />
+);
+
 const components = {
   img: MyImg,
+  code: MyCode,
 };
 
 export default function Component({ pageContext, location }) {
