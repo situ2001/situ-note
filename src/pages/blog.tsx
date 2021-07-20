@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { graphql, Link } from 'gatsby';
 import Layout from '../components/Layout';
+import Container from '../components/Container';
 
 type Props = {
   location: Location;
@@ -12,17 +13,19 @@ const Blog = (props: Props) => {
 
   return (
     <Layout location={location}>
-      {
-        data.allMdx.nodes.map(node => {
-          let link: string = node.frontmatter.permalink ?? `/${node.parent.name}` ?? null;
-          link = `/blog${link}`;
-          return (
-            <article key={node.id}>
-              <Link to={link}>{node.frontmatter.title}</Link>
-            </article>
-          );
-        })
-      }
+      <Container>
+        {
+          data.allMdx.nodes.map(node => {
+            let link: string = node.frontmatter.permalink ?? `/${node.parent.name}` ?? null;
+            link = `/blog${link}`;
+            return (
+              <article key={node.id}>
+                <Link to={link}>{node.frontmatter.title}</Link>
+              </article>
+            );
+          })
+        }
+      </Container>
     </Layout>
   );
 }

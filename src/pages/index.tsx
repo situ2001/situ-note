@@ -1,5 +1,6 @@
 import * as React from "react";
 import Layout from '../components/Layout';
+import Container from '../components/Container';
 
 type Props = {
   location: Location;
@@ -10,8 +11,10 @@ const Index = (props: Props) => {
 
   return (
     <Layout location={location}>
-      <p>Welcome to my blog!</p>
-      <p>Still under intense development.</p>
+      <Container>
+        <p>Welcome to my blog!</p>
+        <p>Still under intense development.</p>
+      </Container>
     </Layout>
   );
 };

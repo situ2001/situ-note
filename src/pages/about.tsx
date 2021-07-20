@@ -1,6 +1,6 @@
 import * as React from "react";
+import Container from '../components/Container';
 import Layout from '../components/Layout';
-import * as styles from '../styles/about.module.css'
 
 type Props = {
   location: Location;
@@ -11,10 +11,12 @@ const About = (props: Props) => {
 
   return (
     <Layout location={location}>
-      <div className={styles.container}>
-        <p>This page intentionally leaves blank</p>
-        <p>此页面有意留空</p>
-      </div>
+      <Container>
+          <article>
+            <p>This page intentionally leaves blank</p>
+            <p>此页面有意留空</p>
+          </article>
+      </Container>
     </Layout>
   );
 };
