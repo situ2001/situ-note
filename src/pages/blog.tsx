@@ -23,7 +23,7 @@ const Blog = (props: Props) => {
               const title = node.frontmatter.title;
               const date = node.frontmatter.date;
               return (
-                <BlogCard title={title} link={link} date={date} />
+                <BlogCard title={title} link={link} date={date} key={node.id} />
               );
             })
           }
