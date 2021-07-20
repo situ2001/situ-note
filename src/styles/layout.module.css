@@ -8,34 +8,10 @@ body {
 .container {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
-.header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 90%;
-  align-self: center;
-  justify-content: space-between;
-}
-
-.site-title {
-  font-size: x-large;
-  text-decoration: none;
-  color: black;
-}
-
-.nav-link-list {
-  display: flex;
-  list-style: none;
-  padding: 0;
-}
-
-.nav-link-item {
-  margin: 16px;
-}
-
-.hidden-block {
-  visibility: hidden;
-
+.main {
+  padding-top: 16px;
+  padding-bottom: 16px;
 }

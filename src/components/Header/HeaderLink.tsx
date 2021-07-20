@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import * as styles from '../styles/layoutHeader.module.css';
+import * as styles from './style.module.css';
 
 type Props = {
   isActivate: boolean;

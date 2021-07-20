@@ -1,9 +1,0 @@
-.link {
-  text-decoration: none;
-  color: black;
-  transition: background-color 0.5s;
-}
-
-.link:hover {
-  background-color: pink;
-}

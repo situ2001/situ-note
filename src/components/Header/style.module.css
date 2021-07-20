@@ -1,0 +1,34 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 90%;
+  align-self: center;
+  justify-content: space-between;
+}
+
+.site-title {
+  font-size: x-large;
+  text-decoration: none;
+  color: black;
+}
+
+.nav-link-list {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+.nav-link-item {
+  margin: 16px;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+  transition: background-color 0.5s;
+}
+
+.link:hover {
+  background-color: pink;
+}
