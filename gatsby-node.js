@@ -16,6 +16,7 @@ exports.createPages = async function ({ actions, graphql }) {
             permalink
             title
           }
+          mdxAST
         }
       }
     }
@@ -27,6 +28,7 @@ exports.createPages = async function ({ actions, graphql }) {
     const body = node.body;
     const title = node.frontmatter.title;
     const date = node.frontmatter.date;
+    const mdxAST = node.mdxAST;
 
     if (pathName) {
       actions.createPage({
@@ -37,6 +39,7 @@ exports.createPages = async function ({ actions, graphql }) {
           body: body,
           title: title,
           date: date,
+          mdxAST: mdxAST,
         },
       });
     }
