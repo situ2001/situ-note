@@ -21,8 +21,9 @@
 }
 
 .sidebar {
-  flex: 1;
-
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
 }
 
 @media screen and (max-width: 740px) {
@@ -32,5 +33,7 @@
 }
 
 .content {
-  flex: 5;
+  flex-grow: 5;
+  flex-shrink: 5;
+  flex-basis: 0;
 }
