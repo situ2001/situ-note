@@ -5,6 +5,12 @@
   width: 75%;
 }
 
+.my-blockquote {
+  border-left: 4px solid #ddd;
+  padding: 0 15px;
+  margin: 0;
+}
+
 .post-box {
   display: flex;
 }

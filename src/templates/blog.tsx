@@ -28,11 +28,16 @@ const MyH4 = (props) => (
   </h4>
 );
 
+const MyBlockquote = (props) => (
+  <blockquote className={styles.myBlockquote} {...props} />
+)
+
 const components = {
   img: MyImg,
   h2: MyH2,
   h3: MyH3,
   h4: MyH4,
+  blockquote: MyBlockquote,
 };
 
 // type for Heading
