@@ -4,3 +4,33 @@
   margin-right: auto;
   width: 75%;
 }
+
+.post-box {
+  display: flex;
+}
+
+.list-anchor {
+  color: black;
+  text-decoration: none;
+  transition: color;
+  transition-duration: 0.2s;
+}
+
+.list-anchor:hover {
+  color: pink;
+}
+
+.sidebar {
+  flex: 1;
+
+}
+
+@media screen and (max-width: 740px) {
+  .sidebar {
+    display: none;
+  }
+}
+
+.content {
+  flex: 5;
+}
