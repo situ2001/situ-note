@@ -7,36 +7,23 @@ import * as styles from '../styles/mdx.module.css';
 
 // customized MDX components
 const MyImg = (props) => (
-  <img 
-    className={styles.myImg}
-    alt=""
-    {...props}
-  />
+  <img className={styles.myImg} alt="" {...props} />
 );
 
 const MyH2 = (props) => (
-  <h2
-    id={props.children}
-    {...props}
-  >
+  <h2 id={props.children} {...props}>
     {props.children}
   </h2>
 );
 
 const MyH3 = (props) => (
-  <h3
-    id={props.children}
-    {...props}
-  >
+  <h3 id={props.children} {...props}>
     {props.children}
   </h3>
 );
 
 const MyH4 = (props) => (
-  <h4
-    id={props.children}
-    {...props}
-  >
+  <h4 id={props.children} {...props}>
     {props.children}
   </h4>
 );
