@@ -33,7 +33,7 @@ exports.createPages = async function ({ actions, graphql }) {
     if (pathName) {
       actions.createPage({
         path: `/blog${pathName}`,
-        component: require.resolve(`${__dirname}/src/templates/blog.js`),
+        component: require.resolve(`${__dirname}/src/templates/blog.tsx`),
         context: {
           slug: pathName,
           body: body,

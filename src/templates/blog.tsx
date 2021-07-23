@@ -48,8 +48,15 @@ const components = {
   h4: MyH4,
 };
 
-// get formatted headings for headingList
-const getFormattedHeadings = (headings) => {
+// type for Heading
+type HeadingResult = {
+  depth: number,
+  value: string,
+  children: HeadingResult[],
+};
+
+// a function that perform HeadingRaw => HeadingResult
+const getFormattedHeadings = (headings): HeadingResult[] => {
   const o = [];
   for (const heading of headings) {
     heading.children = [];
@@ -63,7 +70,12 @@ const getFormattedHeadings = (headings) => {
   return o;
 };
 
-const createHeadingList = (listItems) => {
+/**
+ * Recursive function for creating a list of headings
+ * @param listItems 
+ * @returns JSX.Element
+ */
+const createHeadingList = (listItems: HeadingResult[]) => {
   if (listItems === null) {
     return;
   }
@@ -82,7 +94,14 @@ const createHeadingList = (listItems) => {
   )
 };
 
-const SideBar = ({ headings }) => {
+type SideBarProps = {
+  headings: HeadingResult[]
+};
+
+// SideBar component
+const SideBar = (props: SideBarProps) => {
+  const { headings } = props;
+
   return (
     <div className={styles.sidebar}>
       {createHeadingList(headings)}
@@ -91,6 +110,7 @@ const SideBar = ({ headings }) => {
 };
 
 export default function Component({ pageContext, location }) {
+  // both of their types are string
   const { mdxAST, title, date, body } = pageContext;
   
   const headings = mdxAST.children.filter(node => node.type === 'heading');
