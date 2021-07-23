@@ -36,4 +36,5 @@
   flex-grow: 5;
   flex-shrink: 5;
   flex-basis: 0;
+  width: 0;
 }
