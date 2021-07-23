@@ -49,6 +49,12 @@ const components = {
 };
 
 // type for Heading
+type HeadingRaw = {
+  value: string,
+  depth: number,
+  children?: HeadingRaw[],
+};
+
 type HeadingResult = {
   depth: number,
   value: string,
@@ -56,14 +62,18 @@ type HeadingResult = {
 };
 
 // a function that perform HeadingRaw => HeadingResult
-const getFormattedHeadings = (headings): HeadingResult[] => {
-  const o = [];
+const getFormattedHeadings = (headings: HeadingRaw[]): HeadingResult[] => {
+  const o = Array<HeadingResult>();
   for (const heading of headings) {
+    if (heading.depth === 1) {
+      continue;
+    }
+
     heading.children = [];
     if (heading.depth === 2) {
-      o.push(heading);
+      o.push(heading as HeadingResult);
     } else {
-      o[o.length - 1].children.push(heading);
+      o[o.length - 1].children.push(heading as HeadingResult);
     }
   }
 
@@ -114,8 +124,8 @@ export default function Component({ pageContext, location }) {
   const { mdxAST, title, date, body } = pageContext;
   
   const headings = mdxAST.children.filter(node => node.type === 'heading');
-  const headingsRes = headings.map(heading => ({ depth: heading.depth, value: heading.children[0].value }));
-  const headingList = getFormattedHeadings(headingsRes);
+  const headingsRaw: HeadingRaw[] = headings.map(heading => ({ depth: heading.depth, value: heading.children[0].value }));
+  const headingList = getFormattedHeadings(headingsRaw);
 
   return (
     <Layout location={location}>
