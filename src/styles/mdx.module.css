@@ -38,3 +38,8 @@
   flex-basis: 0;
   width: 0;
 }
+
+/* rules for code that is not the child of pre */
+:not(pre) > code[class*="language-"] {
+  white-space: pre-wrap;
+}

@@ -14,13 +14,6 @@ const MyImg = (props) => (
   />
 );
 
-const MyCode = (props) => (
-  <code
-    style={{ whiteSpace: 'pre-wrap' }}
-    {...props}
-  />
-);
-
 const MyH2 = (props) => (
   <h2
     id={props.children}
@@ -50,7 +43,6 @@ const MyH4 = (props) => (
 
 const components = {
   img: MyImg,
-  code: MyCode,
   h2: MyH2,
   h3: MyH3,
   h4: MyH4,
