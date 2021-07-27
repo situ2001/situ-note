@@ -2,12 +2,11 @@
 export type HeadingRaw = {
   value: string,
   depth: number,
-  children?: HeadingRaw[],
 };
 
 export type HeadingResult = {
-  depth: number,
   value: string,
+  depth: number,
   children: HeadingResult[],
 };
 
@@ -19,7 +18,7 @@ export const getFormattedHeadings = (headings: HeadingRaw[]): HeadingResult[] =>
       continue;
     }
 
-    heading.children = [];
+    heading['children'] = [];
     if (heading.depth === 2) {
       o.push(heading as HeadingResult);
     } else {
