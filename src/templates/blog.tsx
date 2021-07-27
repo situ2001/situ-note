@@ -1,6 +1,8 @@
 import React from 'react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import { MDXProvider } from "@mdx-js/react"
+import { MDXProvider } from "@mdx-js/react";
+import type { HeadingResult, HeadingRaw } from '../utils/blog';
+import { getFormattedHeadings } from '../utils/blog';
 import Layout from '../components/Layout';
 import Container from '../components/Container';
 import * as styles from '../styles/mdx.module.css';
@@ -30,7 +32,7 @@ const MyH4 = (props) => (
 
 const MyBlockquote = (props) => (
   <blockquote className={styles.myBlockquote} {...props} />
-)
+);
 
 const components = {
   img: MyImg,
@@ -38,38 +40,6 @@ const components = {
   h3: MyH3,
   h4: MyH4,
   blockquote: MyBlockquote,
-};
-
-// type for Heading
-type HeadingRaw = {
-  value: string,
-  depth: number,
-  children?: HeadingRaw[],
-};
-
-type HeadingResult = {
-  depth: number,
-  value: string,
-  children: HeadingResult[],
-};
-
-// a function that perform HeadingRaw => HeadingResult
-const getFormattedHeadings = (headings: HeadingRaw[]): HeadingResult[] => {
-  const o = Array<HeadingResult>();
-  for (const heading of headings) {
-    if (heading.depth === 1) {
-      continue;
-    }
-
-    heading.children = [];
-    if (heading.depth === 2) {
-      o.push(heading as HeadingResult);
-    } else {
-      o[o.length - 1].children.push(heading as HeadingResult);
-    }
-  }
-
-  return o;
 };
 
 /**
@@ -93,20 +63,21 @@ const createHeadingList = (listItems: HeadingResult[]) => {
         ))
       }
     </ol>
-  )
+  );
 };
 
 type SideBarProps = {
-  headings: HeadingResult[]
+  headings: HeadingRaw[],
 };
 
 // SideBar component
 const SideBar = (props: SideBarProps) => {
   const { headings } = props;
-
+  const headingsResult = getFormattedHeadings(headings);
+  
   return (
     <div className={styles.sidebar}>
-      {createHeadingList(headings)}
+      {createHeadingList(headingsResult)}
     </div>
   )
 };
@@ -115,9 +86,9 @@ export default function Component({ pageContext, location }) {
   // both of their types are string
   const { mdxAST, title, date, body } = pageContext;
   
-  const headings = mdxAST.children.filter(node => node.type === 'heading');
-  const headingsRaw: HeadingRaw[] = headings.map(heading => ({ depth: heading.depth, value: heading.children[0].value }));
-  const headingList = getFormattedHeadings(headingsRaw);
+  const headingsFromMdxAST: HeadingRaw[] = mdxAST
+    .children.filter(node => node.type === 'heading')
+    .map(heading => ({ depth: heading.depth, value: heading.children[0].value }));
 
   return (
     <Layout location={location}>
@@ -131,7 +102,7 @@ export default function Component({ pageContext, location }) {
               <MDXRenderer>{body}</MDXRenderer>
             </MDXProvider>
           </div>
-          <SideBar headings={headingList} />
+          <SideBar headings={headingsFromMdxAST} />
         </div>
       </Container>
     </Layout>
