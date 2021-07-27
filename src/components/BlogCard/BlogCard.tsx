@@ -13,6 +13,7 @@ const BlogCard = (props: Props) => {
     <div className={styles.container}>
       <Link to={props.link} className={styles.title}>{props.title}</Link>
       <p>Posted: {props.date}</p>
+      <Link to={props.link} className={styles.btn}>Read</Link>
     </div>
   );
 };

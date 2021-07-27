@@ -7,7 +7,22 @@
 }
 
 .title {
-  font-size: 1.5em;
+  font-size: 1.75rem;
   text-decoration: none;
   color: black;
+}
+
+.btn {
+  color: black;
+  background-color: white;
+  text-decoration: none;
+  border: 2px solid black;
+  border-radius: 2px;
+  padding: 0 20px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.btn:hover {
+  background-color: black;
+  color: white;
 }
