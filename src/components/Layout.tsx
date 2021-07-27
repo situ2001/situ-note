@@ -6,7 +6,7 @@ import Footer from './Footer';
 type Props = {
   location: Location;
   children: JSX.Element[] | JSX.Element;
-  title?: string;
+  title?: string; // TODO
 };
 
 const Layout = (props: Props) => {
@@ -24,6 +24,6 @@ const Layout = (props: Props) => {
       </div>
     </main>
   );
-}
+};
 
 export default Layout;
