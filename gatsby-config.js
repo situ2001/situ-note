@@ -1,13 +1,13 @@
 module.exports = {
   siteMetadata: {
-    title: "Situ Note",
-    author: "situ2001",
+    title: 'Situ Note',
+    author: 'situ2001',
   },
   plugins: [
     {
-      resolve: `gatsby-plugin-mdx`,
+      resolve: 'gatsby-plugin-mdx',
       options: {
-        extensions: [`.mdx`, `.md`],
+        extensions: ['.mdx', '.md'],
         gatsbyRemarkPlugins: [
           {
             resolve: 'gatsby-remark-prismjs',
@@ -23,9 +23,9 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `blogs`,
+        name: 'blogs',
         path: `${__dirname}/contents`,
       },
     },

@@ -23,12 +23,10 @@ exports.createPages = async function ({ actions, graphql }) {
   `);
 
   // read all posts
-  data.allMdx.nodes.forEach(node => {
+  data.allMdx.nodes.forEach((node) => {
     const pathName = node.frontmatter.permalink ?? `/${node.parent.name}` ?? null;
-    const body = node.body;
-    const title = node.frontmatter.title;
-    const date = node.frontmatter.date;
-    const mdxAST = node.mdxAST;
+    const { body, mdxAST } = node;
+    const { title, date } = node.frontmatter;
 
     if (pathName) {
       actions.createPage({
@@ -36,10 +34,10 @@ exports.createPages = async function ({ actions, graphql }) {
         component: require.resolve(`${__dirname}/src/templates/blog.tsx`),
         context: {
           slug: pathName,
-          body: body,
-          title: title,
-          date: date,
-          mdxAST: mdxAST,
+          body,
+          title,
+          date,
+          mdxAST,
         },
       });
     }
