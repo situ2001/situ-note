@@ -16,6 +16,10 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
+  globals: {
+    // https://stackoverflow.com/questions/64170868/why-eslint-consider-jsx-or-some-react-types-undefined-since-upgrade-typescript
+    JSX: true,
+  },
   plugins: [
     'react',
     '@typescript-eslint',
