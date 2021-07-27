@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 import Layout from '../components/Layout';
 import Container from '../components/Container';
 
@@ -12,10 +12,10 @@ const About = (props: Props) => {
   return (
     <Layout location={location}>
       <Container>
-          <article>
-            <p>This page intentionally leaves blank</p>
-            <p>此页面有意留空</p>
-          </article>
+        <article>
+          <p>This page intentionally leaves blank</p>
+          <p>此页面有意留空</p>
+        </article>
       </Container>
     </Layout>
   );

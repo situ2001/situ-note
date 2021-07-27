@@ -17,11 +17,11 @@ const Blog = (props: Props) => {
       <Container>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           {
-            data.allMdx.nodes.map(node => {
+            data.allMdx.nodes.map((node) => {
               let link: string = node.frontmatter.permalink ?? `/${node.parent.name}` ?? null;
               link = `/blog${link}`;
-              const title = node.frontmatter.title;
-              const date = node.frontmatter.date;
+              const { title } = node.frontmatter;
+              const { date } = node.frontmatter;
               return (
                 <BlogCard title={title} link={link} date={date} key={node.id} />
               );
@@ -31,7 +31,7 @@ const Blog = (props: Props) => {
       </Container>
     </Layout>
   );
-}
+};
 
 export default Blog;
 
