@@ -23,10 +23,11 @@ module.exports = {
   rules: {
     'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
     'import/extensions': 'off',
-    // note you must disable the base rule as it can report incorrect errors
+    // https://stackoverflow.com/questions/63818415/react-was-used-before-it-was-defined/64342418
     'no-use-before-define': 'off',
   },
   settings: {
+    // https://stackoverflow.com/questions/55198502/using-eslint-with-typescript-unable-to-resolve-path-to-module
     'import/resolver': {
       node: {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
