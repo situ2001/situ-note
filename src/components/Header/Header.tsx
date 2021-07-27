@@ -11,8 +11,8 @@ const Header = (props: Props) => {
   const { location } = props;
 
   const listItems = [
-    ["BLOG", "/blog"],
-    ["ABOUT", "/about"],
+    ['BLOG', '/blog'],
+    ['ABOUT', '/about'],
   ];
 
   return (
@@ -32,9 +32,9 @@ const Header = (props: Props) => {
             ))
           }
         </ul>
-      </nav> 
+      </nav>
     </div>
   );
-}
+};
 
 export default Header;

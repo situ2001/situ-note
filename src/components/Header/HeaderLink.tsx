@@ -9,10 +9,11 @@ type Props = {
 };
 
 const HeaderLink = (props: Props) => {
+  const { to, title, isActivate } = props;
   return (
-    <Link to={props.to} className={styles.link} style={props.isActivate ? {backgroundColor: 'pink'} : {}}>
-      {props.title}
-      {props.isActivate && <span style={{ backgroundColor: "pink" }}></span>}
+    <Link to={to} className={styles.link} style={isActivate ? { backgroundColor: 'pink' } : {}}>
+      {title}
+      {isActivate && <span style={{ backgroundColor: 'pink' }} />}
     </Link>
   );
 };

@@ -8,14 +8,15 @@ type Props = {
   link: string;
 };
 
-const BlogCard = (props: Props) => {
-  return (
-    <div className={styles.container}>
-      <Link to={props.link} className={styles.title}>{props.title}</Link>
-      <p>Posted: {props.date}</p>
-      <Link to={props.link} className={styles.btn}>Read</Link>
-    </div>
-  );
-};
+const BlogCard = ({ title, date, link }: Props) => (
+  <div className={styles.container}>
+    <Link to={link} className={styles.title}>{title}</Link>
+    <p>
+      Posted:
+      {date}
+    </p>
+    <Link to={link} className={styles.btn}>Read</Link>
+  </div>
+);
 
 export default BlogCard;
