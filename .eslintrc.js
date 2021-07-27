@@ -29,6 +29,8 @@ module.exports = {
     'import/extensions': 'off',
     // https://stackoverflow.com/questions/63818415/react-was-used-before-it-was-defined/64342418
     'no-use-before-define': 'off',
+    // https://stackoverflow.com/questions/58167467/disable-in-eslint-react-jsx-props-no-spreading-error-in-reactjs
+    'react/jsx-props-no-spreading': 'off',
   },
   settings: {
     // https://stackoverflow.com/questions/55198502/using-eslint-with-typescript-unable-to-resolve-path-to-module
