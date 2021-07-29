@@ -146,15 +146,15 @@ export default function Component({ data, pageContext, location }: ComponentProp
             <MDXProvider components={components}>
               <MDXRenderer>{body}</MDXRenderer>
             </MDXProvider>
+            <Pagination
+              prevText={prev.title}
+              prevTo={prev.to}
+              nextText={next.title}
+              nextTo={next.to}
+            />
           </div>
           <SideBar headings={headings} />
         </div>
-        <Pagination
-          prevText={prev.title}
-          prevTo={prev.to}
-          nextText={next.title}
-          nextTo={next.to}
-        />
       </Container>
     </Layout>
   );
