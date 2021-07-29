@@ -47,7 +47,13 @@ export default function Component({ data, pageContext, location }: Props) {
               );
             })
           }
-          <Pagination totalPage={totalPage} currentPage={currentPage} />
+          <Pagination
+            prevTo={currentPage === 2 ? '/blog' : `/blog/page/${currentPage - 1}`}
+            prevText={currentPage !== 1 ? '< Prev' : null}
+            nextTo={currentPage !== totalPage ? `/blog/page/${currentPage + 1}` : null}
+            nextText={currentPage !== totalPage ? 'Next >' : null}
+            currentText={`Page ${currentPage}`}
+          />
         </div>
       </Container>
     </Layout>

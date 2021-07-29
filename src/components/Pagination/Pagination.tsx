@@ -3,36 +3,35 @@ import * as React from 'react';
 import * as styles from './style.module.css';
 
 type Props = {
-  totalPage: number,
-  currentPage: number,
+  prevText: string,
+  prevTo: string,
+  nextText: string,
+  nextTo: string,
+  currentText?: string,
 }
 
 const Pagination = ({
-  totalPage, currentPage,
+  prevText, prevTo, nextText, nextTo, currentText,
 }: Props) => (
   <nav className={styles.container}>
     <div>
-      {(currentPage !== 1) && (
-      <Link className={styles.link} to={currentPage === 2 ? '/blog' : `/blog/page/${currentPage - 1}`}>
-        {'< '}
-        Prev
+      <Link className={styles.link} to={prevTo}>
+        {prevText}
       </Link>
-      )}
     </div>
     <div>
-      Page
-      {' '}
-      {currentPage}
+      {currentText}
     </div>
     <div>
-      {(totalPage !== currentPage) && (
-      <Link className={styles.link} to={`/blog/page/${currentPage + 1}`}>
-        {'> '}
-        Next
+      <Link className={styles.link} to={nextTo}>
+        {nextText}
       </Link>
-      )}
     </div>
   </nav>
 );
+
+Pagination.defaultProps = {
+  currentText: '',
+};
 
 export default Pagination;
