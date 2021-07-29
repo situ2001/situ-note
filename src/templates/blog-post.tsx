@@ -10,7 +10,10 @@ import * as styles from '../styles/mdx.module.css';
 
 // customized MDX components
 const MyImg = (props) => (
-  <img className={styles.myImg} alt="" {...props} />
+  <>
+    <img className={styles.myImg} alt="" {...props} />
+    {props.alt && <p className={styles.imgCaption}>{props.alt}</p>}
+  </>
 );
 
 type MyHeadingComponentProps = {
