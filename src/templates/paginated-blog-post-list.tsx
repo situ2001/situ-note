@@ -27,12 +27,12 @@ type Props = {
     limit: number,
     skip: number,
   },
+  location: Location,
 };
 
-export default function Component({ data, pageContext }: Props) {
+export default function Component({ data, pageContext, location }: Props) {
   const { totalPage, currentPage } = pageContext;
   return (
-    // eslint-disable-next-line no-restricted-globals
     <Layout location={location}>
       <Container>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
