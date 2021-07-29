@@ -1,6 +1,7 @@
 import React from 'react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
+import { graphql } from 'gatsby';
 import type { HeadingResult, HeadingRaw } from '../utils/blog';
 import { getFormattedHeadings } from '../utils/blog';
 import Layout from '../components/Layout';
@@ -100,18 +101,19 @@ type ComponentProps = {
   pageContext: {
     title: string,
     date: string,
-    body: string,
-    slug: string,
-    mdxAST: any,
   },
   location: Location,
+  data: {
+    mdx: {
+      mdxAST: any,
+      body: string,
+    }
+  }
 };
 
-export default function Component({ pageContext, location }: ComponentProps) {
-  // both of their types are string
-  const {
-    mdxAST, title, date, body,
-  } = pageContext;
+export default function Component({ data, pageContext, location }: ComponentProps) {
+  const { title, date } = pageContext;
+  const { mdxAST, body } = data.mdx;
 
   const headingsFromMdxAST: HeadingRaw[] = mdxAST
     .children.filter((node) => node.type === 'heading')
@@ -138,3 +140,12 @@ export default function Component({ pageContext, location }: ComponentProps) {
     </Layout>
   );
 }
+
+export const query = graphql`
+  query BlogPostByID($id: String) {
+    mdx(id: {eq: $id}) {
+      body
+      mdxAST
+    }
+  }
+`;
