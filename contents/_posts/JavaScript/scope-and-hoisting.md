@@ -3,7 +3,7 @@ title: JavaScript之作用域与变量提升
 comments: true
 date: 2021-04-11 21:30:00
 tags:
-permalink: /contents/d5c78114ba70/
+permalink: contents/d5c78114ba70/
 categories: JavaScript
 ---
 

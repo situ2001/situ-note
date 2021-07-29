@@ -1,8 +1,8 @@
 ---
-title: 搭建个人博客(仅为调试用途)
+title: 搭建个人博客
 date: 2020-10-03 17:18:19
 tags:
-permalink: /contents/43abca4995a8/
+permalink: contents/43abca4995a8/
 categories: 教程
 ---
 

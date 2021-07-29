@@ -3,7 +3,7 @@ title: 模拟实现 Function.prototype
 comments: true
 date: 2021-05-31 17:15:00
 tags:
-permalink: /contents/9a9ccee65baf/
+permalink: contents/9a9ccee65baf/
 categories: JavaScript
 ---
 
