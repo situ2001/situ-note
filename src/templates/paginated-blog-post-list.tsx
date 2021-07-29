@@ -38,7 +38,7 @@ export default function Component({ data, pageContext }: Props) {
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           {
             data.allMdx.nodes.map((node) => {
-              let link: string = `/${node.frontmatter.permalink}` ?? `/${node.parent.name}` ?? null;
+              let link: string = `/${node.frontmatter.permalink ?? node.parent.name ?? null}`;
               link = `/blog${link}`;
               const { title } = node.frontmatter;
               const { date } = node.frontmatter;
