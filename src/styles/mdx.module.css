@@ -38,6 +38,13 @@
 }
 
 .sidebar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  height: max-content;
+}
+
+.sidebar {
   flex-grow: 1;
   flex-shrink: 1;
   flex-basis: 0;
