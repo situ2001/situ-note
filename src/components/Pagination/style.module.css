@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 32px;
+}
+
+.link {
+  color: black;
+  text-decoration: none;
+}
