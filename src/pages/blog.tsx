@@ -5,8 +5,22 @@ import Container from '../components/Container';
 import BlogCard from '../components/BlogCard';
 
 type Props = {
-  location: Location;
-  data: any; // TODO
+  location: Location,
+  data: {
+    allMdx: {
+      nodes: {
+        parent: {
+          name: string,
+        },
+        id: string,
+        frontmatter: {
+          date: string,
+          permalink: string,
+          title: string,
+        },
+      }[],
+    },
+  },
 };
 
 const Blog = (props: Props) => {
@@ -45,7 +59,6 @@ export const query = graphql`
           }
         }
         id
-        body
         frontmatter {
           date(formatString: "MMMM D, YYYY")
           permalink
