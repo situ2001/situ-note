@@ -7,6 +7,7 @@ import { getFormattedHeadings } from '../utils/blog';
 import Layout from '../components/Layout';
 import Container from '../components/Container';
 import * as styles from '../styles/mdx.module.css';
+import Pagination from '../components/Pagination';
 
 // customized MDX components
 const MyImg = (props) => (
@@ -104,6 +105,14 @@ type ComponentProps = {
   pageContext: {
     title: string,
     date: string,
+    prev: {
+      to: string,
+      title: string,
+    },
+    next: {
+      to: string,
+      title: string,
+    },
   },
   location: Location,
   data: {
@@ -115,7 +124,9 @@ type ComponentProps = {
 };
 
 export default function Component({ data, pageContext, location }: ComponentProps) {
-  const { title, date } = pageContext;
+  const {
+    title, date, prev, next,
+  } = pageContext;
   const { mdxAST, body } = data.mdx;
 
   const headingsFromMdxAST: HeadingRaw[] = mdxAST
@@ -139,6 +150,12 @@ export default function Component({ data, pageContext, location }: ComponentProp
           </div>
           <SideBar headings={headingsFromMdxAST} />
         </div>
+        <Pagination
+          prevText={prev.title}
+          prevTo={prev.to}
+          nextText={next.title}
+          nextTo={next.to}
+        />
       </Container>
     </Layout>
   );

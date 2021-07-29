@@ -5,7 +5,7 @@ exports.createPages = async ({ actions, graphql }) => {
   // query (typeof data === 'object')
   const { data } = await graphql(`
     {
-      allMdx {
+      allMdx(sort: {order: DESC, fields: frontmatter___date}) {
         nodes {
           parent {
             ... on File {
@@ -24,16 +24,33 @@ exports.createPages = async ({ actions, graphql }) => {
   `);
 
   // read all blog posts
-  data.allMdx.nodes.forEach((node) => {
-    const pathName = `/${node.frontmatter.permalink ?? node.parent.name ?? null}`;
+  const postCount = data.allMdx.nodes.length;
+  data.allMdx.nodes.forEach((node, i) => {
+    const pathName = `/blog/${node.frontmatter.permalink ?? node.parent.name ?? null}`;
     const { id } = node;
     const { title, date } = node.frontmatter;
 
+    const prev = {};
+    if (i > 0) {
+      const prevNode = data.allMdx.nodes[i - 1];
+      prev.title = `Prev: ${prevNode.frontmatter.title}`;
+      prev.to = `/blog/${prevNode.frontmatter.permalink ?? prevNode.parent.name ?? null}`;
+    }
+
+    const next = {};
+    if (i < postCount - 1) {
+      const nextNode = data.allMdx.nodes[i + 1];
+      next.title = `Next: ${nextNode.frontmatter.title}`;
+      next.to = `/blog/${nextNode.frontmatter.permalink ?? nextNode.parent.name ?? null}`;
+    }
+
     if (pathName) {
       actions.createPage({
-        path: `/blog${pathName}`,
+        path: pathName,
         component: blogPost,
         context: {
+          prev,
+          next,
           title,
           date,
           id,
@@ -44,7 +61,6 @@ exports.createPages = async ({ actions, graphql }) => {
 
   // create paginated list for blog posts
   const maxPostsPerPage = 10;
-  const postCount = data.allMdx.nodes.length;
   const pageCount = Math.ceil(postCount / maxPostsPerPage);
   Array(pageCount).fill(undefined).forEach((_, i) => {
     actions.createPage({
