@@ -1,4 +1,6 @@
-exports.createPages = async function ({ actions, graphql }) {
+exports.createPages = async ({ actions, graphql }) => {
+  const blogPost = require.resolve(`${__dirname}/src/templates/blog.tsx`);
+
   // query (typeof data === 'object')
   const { data } = await graphql(`
     {
@@ -20,7 +22,7 @@ exports.createPages = async function ({ actions, graphql }) {
     }
   `);
 
-  // read all posts
+  // read all blog posts
   data.allMdx.nodes.forEach((node) => {
     const pathName = node.frontmatter.permalink ?? `/${node.parent.name}` ?? null;
     const { id } = node;
@@ -29,7 +31,7 @@ exports.createPages = async function ({ actions, graphql }) {
     if (pathName) {
       actions.createPage({
         path: `/blog${pathName}`,
-        component: require.resolve(`${__dirname}/src/templates/blog.tsx`),
+        component: blogPost,
         context: {
           title,
           date,
