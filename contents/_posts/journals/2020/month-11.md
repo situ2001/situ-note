@@ -104,7 +104,7 @@ categories: 月记
 
 ## 庚子四六与四七
 
-<blockquote class="blockquote-center">资源不是你想有，想有就能有<br />实际是要冲才会有</blockquote>
+> 资源是要冲才会有
 
 最近有点忙，所以切换成双周一记了。
 
@@ -186,7 +186,7 @@ categories: 月记
 
 ## 庚子十八 | 再见十一月
 
-<blockquote class="blockquote-center">抓住十一月的尾巴</blockquote>
+> 抓住十一月的尾巴
 
 ~~尾巴挺短，就像这篇周记一样呢~~
 

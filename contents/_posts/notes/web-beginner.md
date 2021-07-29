@@ -273,7 +273,7 @@ div img {
 
 既然是**相对**定位，大家也都学过初中物理，知道这么一个道理
 
-<blockquote class="blockquote-center">运动是绝对的<br />而静止是<b>相对</b>的</blockquote>
+> 运动是绝对的而静止是相对的
 
 那么这里肯定也会出现参照物的说法！
 

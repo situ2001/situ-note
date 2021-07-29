@@ -98,9 +98,7 @@ categories: 月记
 
 有句话说得好
 
-<blockquote class="blockquote-center">
-三四月做的事情，六七月自然会有答案。
-</blockquote>
+> 三四月做的事情，六七月自然会有答案
 
 这个月就不立下什么奇奇怪怪的flag了吧。
 

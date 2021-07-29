@@ -6,9 +6,7 @@ permalink: contents/monthly_notes/2021-04/
 categories: 月记
 ---
 
-<blockquote class="blockquote-center">
-稳定才是异常
-</blockquote>
+> 稳定才是异常
 
 <!-- more -->
 
@@ -22,10 +20,9 @@ categories: 月记
 
 那么这个月，我究竟过得怎么样呢？
 
-<blockquote class="blockquote-center">
-流水线的工作日
-自由奔放的周日
-</blockquote>
+> 流水线的工作日
+>
+> 自由奔放的周日
 
 总之是稳定得异常，感觉每天都满满的课表和实验室被安排好了，但感觉，从中得到的东西有些不是自己想要的。同时输入多样不同类型的东西，是个人都会感到不适吧(大佬除外?)，得学会取舍
 

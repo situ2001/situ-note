@@ -12,7 +12,7 @@ categories: 月记
 
 ## 庚子四九 | 由一次维修想到的
 
-<blockquote class="blockquote-center">世界并没有你想象的这么单纯</blockquote>
+> 世界并没有你想象的这么单纯
 
 最近我的Elitebook风扇炸了，具体情况是在中低转速的时候，会出现咔咔响的声音，很是扰人~~（这本本除了散热模块很垃圾，CPU常年100度徘徊之外都很不错的，相信它可以像MI6那样坚挺~~
 
@@ -61,7 +61,8 @@ categories: 月记
 
 ## 庚子五十与五一 | 二十不惑 那十九呢
 
-<blockquote class="blockquote-center">纸上得来终觉浅，绝知此事要躬行。<br />——陆游</blockquote>
+> 纸上得来终觉浅，绝知此事要躬行。
+> ——陆游
 
 ~~感觉下面的内容都跟这句诗有关呢~~
 
@@ -127,7 +128,7 @@ categories: 月记
 
 ## 庚子五二五三 | 再见2020
 
-<blockquote class="blockquote-center"><b>希望2021会是个好年</b></blockquote>
+> 希望2021会是个好年
 
 时光飞逝，转眼间，2020年已经到头了。
 在2020年初，碰上了新冠疫情，还好有强大的祖国，使我们挺过无数难关。

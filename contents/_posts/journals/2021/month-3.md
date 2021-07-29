@@ -6,7 +6,7 @@ permalink: contents/monthly_notes/2021-03/
 categories: 月记
 ---
 
-<blockquote class="blockquote-center">人心不足蛇吞象，世事无常鼠戏猫</blockquote>
+> 人心不足蛇吞象，世事无常鼠戏猫
 
 <!-- more -->
 

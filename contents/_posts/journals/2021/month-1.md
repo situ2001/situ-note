@@ -20,7 +20,7 @@ categories: 月记
 
 这次事情，让我懂的了。
 
-<blockquote class="blockquote-center">需求是学习的驱动力</blockquote>
+> 需求是学习的驱动力
 
 然后一月剩下的几天就是在家里度过了，四个月没回家了，还是有一丝怀念之感的。不过既然都放假了，当然是在家休息几天。
 
