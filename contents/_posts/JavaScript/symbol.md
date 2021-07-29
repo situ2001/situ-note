@@ -11,9 +11,7 @@ categories: JavaScript
 
 <!-- more -->
 
-<blockquote class="blockquote-center">
-Symbol is a primitive type for unique identifiers.
-</blockquote>
+> Symbol is a primitive type for unique identifiers.
 
 期末复习周快到了，我还是想记录一下之前所了解的JS primitive -- symbol。
 
