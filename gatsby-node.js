@@ -1,5 +1,6 @@
 exports.createPages = async ({ actions, graphql }) => {
-  const blogPost = require.resolve(`${__dirname}/src/templates/blog.tsx`);
+  const blogPost = require.resolve(`${__dirname}/src/templates/blog-post.tsx`);
+  const postList = require.resolve(`${__dirname}/src/templates/paginated-blog-post-list.tsx`);
 
   // query (typeof data === 'object')
   const { data } = await graphql(`
