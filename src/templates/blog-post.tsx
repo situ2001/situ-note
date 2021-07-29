@@ -117,7 +117,10 @@ type ComponentProps = {
   location: Location,
   data: {
     mdx: {
-      mdxAST: any,
+      headings: {
+        value: string,
+        depth: number,
+      }[],
       body: string,
     }
   }
@@ -127,11 +130,7 @@ export default function Component({ data, pageContext, location }: ComponentProp
   const {
     title, date, prev, next,
   } = pageContext;
-  const { mdxAST, body } = data.mdx;
-
-  const headingsFromMdxAST: HeadingRaw[] = mdxAST
-    .children.filter((node) => node.type === 'heading')
-    .map((heading) => ({ depth: heading.depth, value: heading.children[0].value }));
+  const { headings, body } = data.mdx;
 
   return (
     <Layout location={location}>
@@ -148,7 +147,7 @@ export default function Component({ data, pageContext, location }: ComponentProp
               <MDXRenderer>{body}</MDXRenderer>
             </MDXProvider>
           </div>
-          <SideBar headings={headingsFromMdxAST} />
+          <SideBar headings={headings} />
         </div>
         <Pagination
           prevText={prev.title}
@@ -165,7 +164,10 @@ export const query = graphql`
   query BlogPostByID($id: String) {
     mdx(id: {eq: $id}) {
       body
-      mdxAST
+      headings {
+        depth
+        value
+      }
     }
   }
 `;
