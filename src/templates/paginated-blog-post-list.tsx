@@ -14,6 +14,7 @@ type Props = {
           date: string,
           title: string,
           permalink: string,
+          description?: string
         },
         parent: {
           name: string,
@@ -40,10 +41,15 @@ export default function Component({ data, pageContext, location }: Props) {
             data.allMdx.nodes.map((node) => {
               let link: string = `/${node.frontmatter.permalink ?? node.parent.name ?? null}`;
               link = `/blog${link}`;
-              const { title } = node.frontmatter;
-              const { date } = node.frontmatter;
+              const { title, date, description } = node.frontmatter;
               return (
-                <BlogCard title={title} link={link} date={date} key={node.id} />
+                <BlogCard
+                  title={title}
+                  link={link}
+                  date={date}
+                  description={description}
+                  key={node.id}
+                />
               );
             })
           }
@@ -69,6 +75,7 @@ export const query = graphql`
           date(formatString: "MMMM D, YYYY")
           title
           permalink
+          description
         }
         parent {
           ... on File {

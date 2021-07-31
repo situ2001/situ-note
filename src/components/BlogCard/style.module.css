@@ -1,9 +1,28 @@
 .container {
   width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   margin-bottom: 16px;
+}
+
+@media screen and (max-width: 740px) {
+  .container {
+    flex-direction: column;
+  }
+  .left-card {
+    width: 100%;
+  }
+}
+
+.left-card {
+  flex-grow: 1;
+  word-wrap: break-word;
+}
+
+.right-card {
+  flex-grow: 0;
 }
 
 .title {
