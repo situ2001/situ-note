@@ -68,7 +68,7 @@ export default function Component({ data, pageContext, location }: Props) {
 
 export const query = graphql`
   query PaginatedBlogPostList($limit: Int, $skip: Int) {
-    allMdx(skip: $skip, limit: $limit, sort: {order: DESC, fields: frontmatter___date}) {
+    allMdx(skip: $skip, limit: $limit, sort: {order: DESC, fields: frontmatter___date}, filter: {frontmatter: {draft: {ne: true}}}) {
       nodes {
         id
         frontmatter {

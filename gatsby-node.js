@@ -5,7 +5,7 @@ exports.createPages = async ({ actions, graphql }) => {
   // query (typeof data === 'object')
   const { data } = await graphql(`
     {
-      allMdx(sort: {order: DESC, fields: frontmatter___date}) {
+      allMdx(sort: {order: DESC, fields: frontmatter___date}, filter: {frontmatter: {draft: {ne: true}}}) {
         nodes {
           parent {
             ... on File {
