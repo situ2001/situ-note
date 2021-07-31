@@ -2,6 +2,7 @@ module.exports = {
   siteMetadata: {
     title: 'Situ Note',
     author: 'situ2001',
+    dateFormat: 'YYYY-MM-DD',
   },
   plugins: [
     {

@@ -2,6 +2,16 @@ exports.createPages = async ({ actions, graphql }) => {
   const blogPost = require.resolve(`${__dirname}/src/templates/blog-post.tsx`);
   const postList = require.resolve(`${__dirname}/src/templates/paginated-blog-post-list.tsx`);
 
+  const { data: { site: { siteMetadata: { dateFormat } } } } = await graphql(`
+    {
+      site {
+        siteMetadata {
+          dateFormat
+        }
+      }
+    }
+  `);
+
   // query (typeof data === 'object')
   const { data } = await graphql(`
     {
@@ -14,7 +24,7 @@ exports.createPages = async ({ actions, graphql }) => {
           }
           id
           frontmatter {
-            date(formatString: "YYYY-MM-DD")
+            date(formatString: "${dateFormat}")
             permalink
             title
           }
@@ -71,6 +81,7 @@ exports.createPages = async ({ actions, graphql }) => {
         currentPage: i + 1,
         limit: maxPostsPerPage,
         skip: maxPostsPerPage * i,
+        dateFormat,
       },
     });
   });

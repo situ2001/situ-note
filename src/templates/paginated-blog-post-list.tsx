@@ -67,12 +67,12 @@ export default function Component({ data, pageContext, location }: Props) {
 }
 
 export const query = graphql`
-  query PaginatedBlogPostList($limit: Int, $skip: Int) {
+  query PaginatedBlogPostList($limit: Int, $skip: Int, $dateFormat: String) {
     allMdx(skip: $skip, limit: $limit, sort: {order: DESC, fields: frontmatter___date}, filter: {frontmatter: {draft: {ne: true}}}) {
       nodes {
         id
         frontmatter {
-          date(formatString: "YYYY-MM-DD")
+          date(formatString: $dateFormat)
           title
           permalink
           description
