@@ -97,7 +97,7 @@ C:.
 
 这个jar里面还有一个`MANIFAST.MF`，打开一开，发现里面标明了Main-Class
 
-``` inf
+```
 Manifest-Version: 1.0
 Main-Class: Client
 ```
