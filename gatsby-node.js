@@ -14,7 +14,7 @@ exports.createPages = async ({ actions, graphql }) => {
           }
           id
           frontmatter {
-            date(formatString: "MMMM D, YYYY")
+            date(formatString: "YYYY-MM-DD")
             permalink
             title
           }

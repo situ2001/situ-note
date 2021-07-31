@@ -16,7 +16,7 @@ const BlogCard = ({
     <div className={styles.leftCard}>
       <Link to={link} className={styles.title}>{title}</Link>
       <p>
-        Posted:
+        {'Posted: '}
         {date}
       </p>
       <p>{description || 'Author is so lazy that he left nothing here.'}</p>

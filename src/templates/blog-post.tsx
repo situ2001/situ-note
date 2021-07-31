@@ -139,7 +139,7 @@ export default function Component({ data, pageContext, location }: ComponentProp
           <div className={styles.content}>
             <h1>{title}</h1>
             <p>
-              Posted:
+              {'Posted: '}
               {date}
             </p>
             <hr />
