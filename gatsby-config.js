@@ -5,6 +5,7 @@ module.exports = {
     dateFormat: 'YYYY-MM-DD',
   },
   plugins: [
+    'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
@@ -18,6 +19,17 @@ module.exports = {
                 tsx: 'tsx',
               },
               aliases: {},
+            },
+          },
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              // It's important to specify the maxWidth (in pixels) of
+              // the content container as this plugin uses this as the
+              // base for generating different widths of each image.
+              maxWidth: 1080,
+              showCaptions: true,
+              wrapperStyle: () => 'text-align: center; font-weight: bold;',
             },
           },
         ],
