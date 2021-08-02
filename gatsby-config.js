@@ -32,6 +32,14 @@ module.exports = {
               wrapperStyle: () => 'text-align: center; font-weight: bold;',
             },
           },
+          {
+            resolve: 'gatsby-remark-copy-linked-files',
+            options: {
+              destinationDir: 'static',
+              ignoreFileExtensions: ['png', 'jpg', 'jpeg', 'bmp', 'tiff'],
+            },
+          },
+
         ],
       },
     },
