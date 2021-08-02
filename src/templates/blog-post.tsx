@@ -13,7 +13,7 @@ import Pagination from '../components/Pagination';
 const MyImg = (props) => (
   <>
     <img className={styles.myImg} alt="" {...props} />
-    {props.alt && <p className={styles.imgCaption}>{props.alt}</p>}
+    {props.src && (props.src.indexOf(0) === '/') && props.alt && <p className={styles.imgCaption}>{props.alt}</p>}
   </>
 );
 
