@@ -13,7 +13,7 @@ const About = (props: Props) => {
     <Layout location={location}>
       <Container>
         <article>
-          <p>This page intentionally leaves blank</p>
+          <p>This page is intentionally left blank</p>
           <p>此页面有意留空</p>
         </article>
       </Container>

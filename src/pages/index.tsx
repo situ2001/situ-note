@@ -12,7 +12,7 @@ const Index = (props: Props) => {
   return (
     <Layout location={location}>
       <Container>
-        <p>Welcome to my blog!</p>
+        <p>Welcome to my site!</p>
         <p>Still under intense development.</p>
         <p>
           So if you are looking for my other posts, just
