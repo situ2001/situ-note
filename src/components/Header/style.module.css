@@ -22,14 +22,3 @@
 .nav-link-item {
   margin: 16px;
 }
-
-.link {
-  text-decoration: none;
-  color: black;
-  transition: background-color 0.5s;
-  font-size: 2em;
-}
-
-.link:hover {
-  background-color: pink;
-}

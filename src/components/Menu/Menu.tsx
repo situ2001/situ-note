@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Dispatch, SetStateAction } from 'react';
-import HeaderLink from '../Header/HeaderLink';
+import MenuItem from './MenuItem';
 import * as styles from './style.module.css';
 
 type Props = {
@@ -27,7 +27,7 @@ const Menu = (props: Props) => {
               {
                 menuItems.map(([title, link]) => (
                   <li className={styles.navLinkItem} key={title}>
-                    <HeaderLink
+                    <MenuItem
                       title={title}
                       to={link}
                       isActivate={location.pathname.includes(link)}

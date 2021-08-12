@@ -8,7 +8,7 @@ type Props = {
   to: string;
 };
 
-const HeaderLink = (props: Props) => {
+const MenuItem = (props: Props) => {
   const { to, title, isActivate } = props;
   return (
     <Link to={to} className={styles.link} style={isActivate ? { backgroundColor: 'pink' } : {}}>
@@ -18,4 +18,4 @@ const HeaderLink = (props: Props) => {
   );
 };
 
-export default HeaderLink;
+export default MenuItem;
