@@ -19,6 +19,15 @@
   padding: 0;
 }
 
-.nav-link-item {
-  margin: 16px;
+.btn-menu {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-menu div {
+  width: 24px;
+  height: 2.4px;
+  background-color: black;
+  margin: 6px;
 }

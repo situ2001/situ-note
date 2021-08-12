@@ -8,7 +8,17 @@
 }
 
 .btn-close {
+  width: 64px;
+  height: 64x;
+  background: transparent;
+  border: none;
   position: fixed;
+  right: 16px;
+  top: 16px;
+}
+
+.btn-close svg {
+  cursor: pointer;
 }
 
 .nav {

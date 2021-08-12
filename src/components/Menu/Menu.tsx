@@ -21,7 +21,11 @@ const Menu = (props: Props) => {
     <>
       {open && (
         <div className={styles.container}>
-          <button className={styles.btnClose} type="button" onClick={() => setOpen(false)}>CLOSE</button>
+          <button className={styles.btnClose} type="button" onClick={() => setOpen(false)}>
+            <svg viewBox="0 0 40 40">
+              <path stroke="black" d="M 10,10 L 30,30 M 30,10 L 10,30" />
+            </svg>
+          </button>
           <div className={styles.nav}>
             <ul style={{ listStyle: 'none' }}>
               {

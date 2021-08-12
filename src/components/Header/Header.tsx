@@ -19,8 +19,10 @@ const Header = (props: Props) => {
       <nav>
         <ul className={styles.navLinkList}>
           <li className={styles.navLinkItem} key={114514}>
-            <button type="button" onClick={() => setOpen(true)}>
-              MENU
+            <button className={styles.btnMenu} type="button" onClick={() => setOpen(true)}>
+              <div />
+              <div />
+              <div />
             </button>
           </li>
         </ul>
