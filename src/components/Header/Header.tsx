@@ -1,19 +1,13 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import { Link } from 'gatsby';
-import HeaderLink from './HeaderLink';
 import * as styles from './style.module.css';
 
 type Props = {
-  location: Location;
+  setOpen: Dispatch<SetStateAction<boolean>>,
 };
 
 const Header = (props: Props) => {
-  const { location } = props;
-
-  const listItems = [
-    ['BLOG', '/blog'],
-    ['ABOUT', '/about'],
-  ];
+  const { setOpen } = props;
 
   return (
     <div className={styles.header}>
@@ -24,13 +18,13 @@ const Header = (props: Props) => {
       </p>
       <nav>
         <ul className={styles.navLinkList}>
-          {
-            listItems.map(([title, link]) => (
-              <li className={styles.navLinkItem} key={title}>
-                <HeaderLink title={title} to={link} isActivate={location.pathname.includes(link)} />
-              </li>
-            ))
-          }
+          <li>
+            <button className={styles.btnMenu} type="button" onClick={() => setOpen(true)}>
+              <div />
+              <div />
+              <div />
+            </button>
+          </li>
         </ul>
       </nav>
     </div>

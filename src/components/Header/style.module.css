@@ -19,16 +19,15 @@
   padding: 0;
 }
 
-.nav-link-item {
-  margin: 16px;
+.btn-menu {
+  background: transparent;
+  border: none;
+  cursor: pointer;
 }
 
-.link {
-  text-decoration: none;
-  color: black;
-  transition: background-color 0.5s;
-}
-
-.link:hover {
-  background-color: pink;
+.btn-menu div {
+  width: 24px;
+  height: 2.4px;
+  background-color: black;
+  margin: 6px;
 }
