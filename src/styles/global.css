@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Noto Serif SC', serif;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
