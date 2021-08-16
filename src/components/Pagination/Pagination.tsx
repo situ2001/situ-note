@@ -1,6 +1,6 @@
 import { Link } from 'gatsby';
 import * as React from 'react';
-import * as styles from './style.module.css';
+import styled from 'styled-components';
 
 type Props = {
   prevText: string,
@@ -10,24 +10,36 @@ type Props = {
   currentText?: string,
 }
 
+const Container = styled.nav`
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 24px 32px;
+`;
+
+const StyledLink = styled(Link)`
+  color: black;
+  text-decoration: none;
+`;
+
 const Pagination = ({
   prevText, prevTo, nextText, nextTo, currentText,
 }: Props) => (
-  <nav className={styles.container}>
+  <Container>
     <div>
-      <Link className={styles.link} to={prevTo}>
+      <StyledLink to={prevTo}>
         {prevText}
-      </Link>
+      </StyledLink>
     </div>
     <div>
       {currentText}
     </div>
     <div>
-      <Link className={styles.link} to={nextTo}>
+      <StyledLink to={nextTo}>
         {nextText}
-      </Link>
+      </StyledLink>
     </div>
-  </nav>
+  </Container>
 );
 
 Pagination.defaultProps = {

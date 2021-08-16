@@ -1,8 +1,16 @@
 import * as React from 'react';
-import * as styles from './style.module.css';
+import styled from 'styled-components';
 
-const Footer = () => (
-  <footer className={styles.footer}>
+const Footer = styled.footer`
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  padding-top: 16px;
+  padding-bottom: 16px;
+`;
+
+const MyFooter = () => (
+  <Footer>
     Made with ❤ by&nbsp;
     <a
       href="https://www.github.com/situ2001"
@@ -10,7 +18,7 @@ const Footer = () => (
     >
       situ2001
     </a>
-  </footer>
+  </Footer>
 );
 
-export default Footer;
+export default MyFooter;
