@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as styles from '../styles/layout.module.css';
+import styled from 'styled-components';
 import Header from './Header';
 import Footer from './Footer';
 import Menu from './Menu';
@@ -10,6 +10,17 @@ type Props = {
   title?: string; // TODO
 };
 
+const Content = styled.div`
+  padding-top: 16px;
+  padding-bottom: 16px;
+`;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+`;
+
 const Layout = (props: Props) => {
   const { children, location } = props;
 
@@ -18,14 +29,14 @@ const Layout = (props: Props) => {
   return (
     <main>
       <title>Situ Note</title>
-      <div className={styles.container}>
+      <Container>
         <Header setOpen={setOpen} />
-        <div className={styles.main}>
+        <Content>
           {children}
-        </div>
+        </Content>
         <Menu open={open} setOpen={setOpen} location={location} />
         <Footer />
-      </div>
+      </Container>
     </main>
   );
 };
