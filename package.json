@@ -17,9 +17,11 @@
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
+    "babel-plugin-styled-components": "^1.13.2",
     "gatsby": "^3.9.1",
     "gatsby-plugin-mdx": "^2.9.0",
     "gatsby-plugin-sharp": "^3.10.2",
+    "gatsby-plugin-styled-components": "^4.11.0",
     "gatsby-remark-copy-linked-files": "^4.7.0",
     "gatsby-remark-images": "^5.7.0",
     "gatsby-remark-prismjs": "^5.6.0",
@@ -28,9 +30,11 @@
     "prism-themes": "^1.8.0",
     "prismjs": "^1.24.1",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "styled-components": "^5.3.0"
   },
   "devDependencies": {
+    "@types/styled-components": "^5.1.12",
     "@typescript-eslint/eslint-plugin": "^4.28.5",
     "@typescript-eslint/parser": "^4.28.5",
     "babel-eslint": "10.0.0",
