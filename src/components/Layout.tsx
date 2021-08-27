@@ -31,9 +31,7 @@ const Layout = (props: Props) => {
       <title>Situ Note</title>
       <Container>
         <Header setOpen={setOpen} />
-        <Content>
-          {children}
-        </Content>
+        <Content>{children}</Content>
         <Menu open={open} setOpen={setOpen} location={location} />
         <Footer />
       </Container>

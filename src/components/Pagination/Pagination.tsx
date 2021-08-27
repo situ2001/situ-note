@@ -3,12 +3,12 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 type Props = {
-  prevText: string,
-  prevTo: string,
-  nextText: string,
-  nextTo: string,
-  currentText?: string,
-}
+  prevText: string;
+  prevTo: string;
+  nextText: string;
+  nextTo: string;
+  currentText?: string;
+};
 
 const Container = styled.nav`
   display: flex;
@@ -23,21 +23,19 @@ const StyledLink = styled(Link)`
 `;
 
 const Pagination = ({
-  prevText, prevTo, nextText, nextTo, currentText,
+  prevText,
+  prevTo,
+  nextText,
+  nextTo,
+  currentText,
 }: Props) => (
   <Container>
     <div>
-      <StyledLink to={prevTo}>
-        {prevText}
-      </StyledLink>
+      <StyledLink to={prevTo}>{prevText}</StyledLink>
     </div>
+    <div>{currentText}</div>
     <div>
-      {currentText}
-    </div>
-    <div>
-      <StyledLink to={nextTo}>
-        {nextText}
-      </StyledLink>
+      <StyledLink to={nextTo}>{nextText}</StyledLink>
     </div>
   </Container>
 );

@@ -2,8 +2,8 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 type Props = {
-  children: JSX.Element | JSX.Element[],
-}
+  children: JSX.Element | JSX.Element[];
+};
 
 const Container = styled.div`
   margin-left: auto;
@@ -19,10 +19,6 @@ const Container = styled.div`
   }
 `;
 
-const MyContainer = ({ children }: Props) => (
-  <Container>
-    {children}
-  </Container>
-);
+const MyContainer = ({ children }: Props) => <Container>{children}</Container>;
 
 export default MyContainer;

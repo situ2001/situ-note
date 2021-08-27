@@ -9,26 +9,26 @@ type Props = {
   data: {
     allMdx: {
       nodes: {
-        id: string,
+        id: string;
         frontmatter: {
-          date: string,
-          title: string,
-          permalink: string,
-          description?: string
-        },
+          date: string;
+          title: string;
+          permalink: string;
+          description?: string;
+        };
         parent: {
-          name: string,
-        },
-      }[],
-    }
-  },
+          name: string;
+        };
+      }[];
+    };
+  };
   pageContext: {
-    totalPage: number,
-    currentPage: number,
-    limit: number,
-    skip: number,
-  },
-  location: Location,
+    totalPage: number;
+    currentPage: number;
+    limit: number;
+    skip: number;
+  };
+  location: Location;
 };
 
 export default function Component({ data, pageContext, location }: Props) {
@@ -37,26 +37,30 @@ export default function Component({ data, pageContext, location }: Props) {
     <Layout location={location}>
       <Container>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
-          {
-            data.allMdx.nodes.map((node) => {
-              let link: string = `/${node.frontmatter.permalink ?? node.parent.name ?? null}`;
-              link = `/blog${link}`;
-              const { title, date, description } = node.frontmatter;
-              return (
-                <BlogCard
-                  title={title}
-                  link={link}
-                  date={date}
-                  description={description}
-                  key={node.id}
-                />
-              );
-            })
-          }
+          {data.allMdx.nodes.map((node) => {
+            let link: string = `/${
+              node.frontmatter.permalink ?? node.parent.name ?? null
+            }`;
+            link = `/blog${link}`;
+            const { title, date, description } = node.frontmatter;
+            return (
+              <BlogCard
+                title={title}
+                link={link}
+                date={date}
+                description={description}
+                key={node.id}
+              />
+            );
+          })}
           <Pagination
-            prevTo={currentPage === 2 ? '/blog' : `/blog/page/${currentPage - 1}`}
+            prevTo={
+              currentPage === 2 ? '/blog' : `/blog/page/${currentPage - 1}`
+            }
             prevText={currentPage !== 1 ? '< Prev' : null}
-            nextTo={currentPage !== totalPage ? `/blog/page/${currentPage + 1}` : null}
+            nextTo={
+              currentPage !== totalPage ? `/blog/page/${currentPage + 1}` : null
+            }
             nextText={currentPage !== totalPage ? 'Next >' : null}
             currentText={`Page ${currentPage}`}
           />
@@ -68,7 +72,12 @@ export default function Component({ data, pageContext, location }: Props) {
 
 export const query = graphql`
   query PaginatedBlogPostList($limit: Int, $skip: Int, $dateFormat: String) {
-    allMdx(skip: $skip, limit: $limit, sort: {order: DESC, fields: frontmatter___date}, filter: {frontmatter: {draft: {ne: true}}}) {
+    allMdx(
+      skip: $skip
+      limit: $limit
+      sort: { order: DESC, fields: frontmatter___date }
+      filter: { frontmatter: { draft: { ne: true } } }
+    ) {
       nodes {
         id
         frontmatter {

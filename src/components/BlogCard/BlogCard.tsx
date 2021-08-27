@@ -55,9 +55,7 @@ const ReadBtn = styled(Link)`
   }
 `;
 
-const BlogCard = ({
-  title, date, link, description,
-}: Props) => (
+const BlogCard = ({ title, date, link, description }: Props) => (
   <Container>
     <Left>
       <Title to={link}>{title}</Title>

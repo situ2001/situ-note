@@ -11,7 +11,11 @@ type Props = {
 const MenuItem = (props: Props) => {
   const { to, title, isActivate } = props;
   return (
-    <Link to={to} className={styles.link} style={isActivate ? { backgroundColor: 'pink' } : {}}>
+    <Link
+      to={to}
+      className={styles.link}
+      style={isActivate ? { backgroundColor: 'pink' } : {}}
+    >
       {title}
       {isActivate && <span style={{ backgroundColor: 'pink' }} />}
     </Link>

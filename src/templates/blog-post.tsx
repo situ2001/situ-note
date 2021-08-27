@@ -13,12 +13,14 @@ import Pagination from '../components/Pagination';
 const MyImg = (props) => (
   <>
     <img className={styles.myImg} alt="" {...props} />
-    {props.src && (props.src.indexOf(0) === '/') && props.alt && <p className={styles.imgCaption}>{props.alt}</p>}
+    {props.src && props.src.indexOf(0) === '/' && props.alt && (
+      <p className={styles.imgCaption}>{props.alt}</p>
+    )}
   </>
 );
 
 type MyHeadingComponentProps = {
-  children: JSX.Element[] | JSX.Element,
+  children: JSX.Element[] | JSX.Element;
 };
 
 const MyH2 = (props: MyHeadingComponentProps) => {
@@ -73,20 +75,20 @@ const createHeadingList = (listItems: HeadingResult[]) => {
   // eslint-disable-next-line consistent-return
   return (
     <ol>
-      {
-        listItems.map((item) => (
-          <li key={`${item.value}${item.depth}`}>
-            <a className={styles.listAnchor} href={`#${item.value}`}>{item.value}</a>
-            {createHeadingList(item.children)}
-          </li>
-        ))
-      }
+      {listItems.map((item) => (
+        <li key={`${item.value}${item.depth}`}>
+          <a className={styles.listAnchor} href={`#${item.value}`}>
+            {item.value}
+          </a>
+          {createHeadingList(item.children)}
+        </li>
+      ))}
     </ol>
   );
 };
 
 type SideBarProps = {
-  headings: HeadingRaw[],
+  headings: HeadingRaw[];
 };
 
 // SideBar component
@@ -95,41 +97,41 @@ const SideBar = (props: SideBarProps) => {
   const headingsResult = getFormattedHeadings(headings);
 
   return (
-    <div className={styles.sidebar}>
-      {createHeadingList(headingsResult)}
-    </div>
+    <div className={styles.sidebar}>{createHeadingList(headingsResult)}</div>
   );
 };
 
 type ComponentProps = {
   pageContext: {
-    title: string,
-    date: string,
+    title: string;
+    date: string;
     prev: {
-      to: string,
-      title: string,
-    },
+      to: string;
+      title: string;
+    };
     next: {
-      to: string,
-      title: string,
-    },
-  },
-  location: Location,
+      to: string;
+      title: string;
+    };
+  };
+  location: Location;
   data: {
     mdx: {
       headings: {
-        value: string,
-        depth: number,
-      }[],
-      body: string,
-    }
-  }
+        value: string;
+        depth: number;
+      }[];
+      body: string;
+    };
+  };
 };
 
-export default function Component({ data, pageContext, location }: ComponentProps) {
-  const {
-    title, date, prev, next,
-  } = pageContext;
+export default function Component({
+  data,
+  pageContext,
+  location,
+}: ComponentProps) {
+  const { title, date, prev, next } = pageContext;
   const { headings, body } = data.mdx;
 
   return (
@@ -162,7 +164,7 @@ export default function Component({ data, pageContext, location }: ComponentProp
 
 export const query = graphql`
   query BlogPostByID($id: String) {
-    mdx(id: {eq: $id}) {
+    mdx(id: { eq: $id }) {
       body
       headings {
         depth

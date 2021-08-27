@@ -30,27 +30,22 @@ const NotFoundPage = () => (
     <title>Not found</title>
     <h1 style={headingStyles}>Page not found</h1>
     <p style={paragraphStyles}>
-      Sorry
-      {' '}
+      Sorry{' '}
       <span role="img" aria-label="Pensive emoji">
         😔
-      </span>
-      {' '}
+      </span>{' '}
       we couldn’t find what you were looking for.
       <br />
       {process.env.NODE_ENV === 'development' ? (
         <>
           <br />
-          Try creating a page in
-          {' '}
-          <code style={codeStyles}>src/pages/</code>
+          Try creating a page in <code style={codeStyles}>src/pages/</code>
           .
           <br />
         </>
       ) : null}
       <br />
-      <Link to="/">Go home</Link>
-      .
+      <Link to="/">Go home</Link>.
     </p>
   </main>
 );

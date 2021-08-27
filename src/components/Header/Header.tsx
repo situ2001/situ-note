@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import styled from 'styled-components';
 
 type Props = {
-  setOpen: Dispatch<SetStateAction<boolean>>,
+  setOpen: Dispatch<SetStateAction<boolean>>;
 };
 
 const Header = styled.div`
@@ -46,9 +46,7 @@ const MyHeader = (props: Props) => {
   return (
     <Header>
       <p>
-        <SiteTitle to="/">
-          Situ Note
-        </SiteTitle>
+        <SiteTitle to="/">Situ Note</SiteTitle>
       </p>
       <nav>
         <NavList>
