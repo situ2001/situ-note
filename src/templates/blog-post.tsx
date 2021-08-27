@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
@@ -92,6 +94,8 @@ type SideBarProps = {
 };
 
 // SideBar component
+// TODO Make it into a component
+// eslint-disable-next-line no-unused-vars
 const SideBar = (props: SideBarProps) => {
   const { headings } = props;
   const headingsResult = getFormattedHeadings(headings);
@@ -126,13 +130,14 @@ type ComponentProps = {
   };
 };
 
+// TODO fully used styled component
 export default function Component({
   data,
   pageContext,
   location,
 }: ComponentProps) {
   const { title, date, prev, next } = pageContext;
-  const { headings, body } = data.mdx;
+  const { body } = data.mdx;
 
   return (
     <Layout location={location}>
@@ -148,15 +153,15 @@ export default function Component({
             <MDXProvider components={components}>
               <MDXRenderer>{body}</MDXRenderer>
             </MDXProvider>
-            <Pagination
-              prevText={prev.title}
-              prevTo={prev.to}
-              nextText={next.title}
-              nextTo={next.to}
-            />
           </div>
-          <SideBar headings={headings} />
+          {/* <SideBar headings={headings} /> */}
         </div>
+        <Pagination
+          prevText={prev.title}
+          prevTo={prev.to}
+          nextText={next.title}
+          nextTo={next.to}
+        />
       </Container>
     </Layout>
   );

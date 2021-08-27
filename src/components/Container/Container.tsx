@@ -12,7 +12,7 @@ const Container = styled.div`
   padding-right: 20px;
   @media screen and (min-width: 1340px) {
     display: block;
-    max-width: 1260px;
+    /* max-width: 1260px; */
   }
   @media screen and (min-width: 740px) {
     width: 90%;
