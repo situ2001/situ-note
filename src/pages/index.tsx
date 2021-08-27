@@ -14,10 +14,6 @@ const Index = (props: Props) => {
       <Container>
         <p>Welcome to my site!</p>
         <p>Still under intense development.</p>
-        <p>
-          So if you are looking for my other posts, just{' '}
-          <a href="https://old.situ2001.com">click here</a> to visit.
-        </p>
       </Container>
     </Layout>
   );
