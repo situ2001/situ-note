@@ -91,7 +91,7 @@ export default function Component({
     <Layout location={location}>
       <Container>
         <div className={styles.postBox}>
-          <div className="max-w-full w-full">
+          <div className="max-w-screen-md w-full">
             <h1 className="text-3xl font-extrabold mb-5">{title}</h1>
             <p>
               {'Posted: '}
