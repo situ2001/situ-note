@@ -9,36 +9,6 @@ type Props = {
   description: string | null;
 };
 
-const Container = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  margin-bottom: 16px;
-  @media screen and (max-width: 740px) {
-    flex-direction: column;
-  }
-`;
-
-const Left = styled.div`
-  flex-grow: 1;
-  word-wrap: break-word;
-  @media screen and (max-width: 740px) {
-    width: 100%;
-  }
-`;
-
-const Right = styled.div`
-  flex-grow: 0;
-`;
-
-const Title = styled(Link)`
-  font-size: 1.75rem;
-  text-decoration: none;
-  color: black;
-`;
-
 const ReadBtn = styled(Link)`
   & {
     color: black;
@@ -56,19 +26,20 @@ const ReadBtn = styled(Link)`
 `;
 
 const BlogCard = ({ title, date, link, description }: Props) => (
-  <Container>
-    <Left>
-      <Title to={link}>{title}</Title>
-      <p>
-        {'Posted: '}
-        {date}
-      </p>
+  <div className="shadow p-4 rounded w-full flex flex-col md:flex-row flex-wrap items-center mb-4">
+    <div className="flex-grow break-words">
+      <Link className="text-3xl block text-center md:text-left mb-1" to={link}>
+        {title}
+      </Link>
+      <p className="text-center md:text-left mb-4">{date}</p>
       <p>{description || 'Author is so lazy that he left nothing here.'}</p>
-    </Left>
-    <Right>
-      <ReadBtn to={link}>{'>> Read'}</ReadBtn>
-    </Right>
-  </Container>
+    </div>
+    <div className="flex-grow-0">
+      <ReadBtn className="hidden md:block rounded-full" to={link}>
+        {'>> Read'}
+      </ReadBtn>
+    </div>
+  </div>
 );
 
 export default BlogCard;
