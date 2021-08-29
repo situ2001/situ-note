@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
+import styled from 'styled-components';
 
 type MyHeadingComponentProps = {
   children: JSX.Element[] | JSX.Element;
@@ -56,4 +57,12 @@ const UnorderedList = (props: MyHeadingComponentProps) => {
   return <ul className="list-decimal list-inside my-4">{children}</ul>;
 };
 
-export { H2, H3, H4, Text, OrderedList, UnorderedList };
+const StyledBlockquote = styled.div`
+  border-left: 4px solid #ddd;
+  padding: 0 16px;
+  margin: 0;
+`;
+
+const Blockquote = (props: any) => <StyledBlockquote {...props} />;
+
+export { H2, H3, H4, Text, OrderedList, UnorderedList, Blockquote };

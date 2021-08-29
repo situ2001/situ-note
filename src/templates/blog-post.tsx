@@ -17,17 +17,14 @@ import {
   Text,
   OrderedList,
   UnorderedList,
+  Blockquote,
 } from '../components/MDXComponents';
-
-const MyBlockquote = (props) => (
-  <blockquote className={styles.myBlockquote} {...props} />
-);
 
 const components = {
   h2: H2,
   h3: H3,
   h4: H4,
-  blockquote: MyBlockquote,
+  blockquote: Blockquote,
   p: Text,
   ol: OrderedList,
   ul: UnorderedList,
