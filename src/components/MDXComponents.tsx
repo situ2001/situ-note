@@ -65,4 +65,14 @@ const StyledBlockquote = styled.div`
 
 const Blockquote = (props: any) => <StyledBlockquote {...props} />;
 
-export { H2, H3, H4, Text, OrderedList, UnorderedList, Blockquote };
+const components = {
+  h2: H2,
+  h3: H3,
+  h4: H4,
+  blockquote: Blockquote,
+  p: Text,
+  ol: OrderedList,
+  ul: UnorderedList,
+};
+
+export default components;

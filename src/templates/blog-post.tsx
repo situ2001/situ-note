@@ -10,25 +10,7 @@ import Layout from '../components/Layout';
 import Container from '../components/Container';
 import * as styles from '../styles/posts.module.css';
 import Pagination from '../components/Pagination';
-import {
-  H2,
-  H3,
-  H4,
-  Text,
-  OrderedList,
-  UnorderedList,
-  Blockquote,
-} from '../components/MDXComponents';
-
-const components = {
-  h2: H2,
-  h3: H3,
-  h4: H4,
-  blockquote: Blockquote,
-  p: Text,
-  ol: OrderedList,
-  ul: UnorderedList,
-};
+import components from '../components/MDXComponents';
 
 /**
  * Recursive function for creating a list of headings
