@@ -19,22 +19,11 @@ import {
   UnorderedList,
 } from '../components/MDXComponents';
 
-// customized MDX components
-const MyImg = (props) => (
-  <>
-    <img className={styles.myImg} alt="" {...props} />
-    {props.src && props.src.indexOf(0) === '/' && props.alt && (
-      <p className={styles.imgCaption}>{props.alt}</p>
-    )}
-  </>
-);
-
 const MyBlockquote = (props) => (
   <blockquote className={styles.myBlockquote} {...props} />
 );
 
 const components = {
-  img: MyImg,
   h2: H2,
   h3: H3,
   h4: H4,
