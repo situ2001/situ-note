@@ -8,8 +8,16 @@ import type { HeadingResult, HeadingRaw } from '../utils/blog';
 import { getFormattedHeadings } from '../utils/blog';
 import Layout from '../components/Layout';
 import Container from '../components/Container';
-import * as styles from '../styles/mdx.module.css';
+import * as styles from '../styles/posts.module.css';
 import Pagination from '../components/Pagination';
+import {
+  H2,
+  H3,
+  H4,
+  Text,
+  OrderedList,
+  UnorderedList,
+} from '../components/MDXComponents';
 
 // customized MDX components
 const MyImg = (props) => (
@@ -21,47 +29,19 @@ const MyImg = (props) => (
   </>
 );
 
-type MyHeadingComponentProps = {
-  children: JSX.Element[] | JSX.Element;
-};
-
-const MyH2 = (props: MyHeadingComponentProps) => {
-  const { children } = props;
-  return (
-    <h2 id={children.toString()} {...props}>
-      {children}
-    </h2>
-  );
-};
-
-const MyH3 = (props: MyHeadingComponentProps) => {
-  const { children } = props;
-  return (
-    <h3 id={children.toString()} {...props}>
-      {children}
-    </h3>
-  );
-};
-
-const MyH4 = (props: MyHeadingComponentProps) => {
-  const { children } = props;
-  return (
-    <h4 id={children.toString()} {...props}>
-      {children}
-    </h4>
-  );
-};
-
 const MyBlockquote = (props) => (
   <blockquote className={styles.myBlockquote} {...props} />
 );
 
 const components = {
   img: MyImg,
-  h2: MyH2,
-  h3: MyH3,
-  h4: MyH4,
+  h2: H2,
+  h3: H3,
+  h4: H4,
   blockquote: MyBlockquote,
+  p: Text,
+  ol: OrderedList,
+  ul: UnorderedList,
 };
 
 /**
@@ -143,8 +123,8 @@ export default function Component({
     <Layout location={location}>
       <Container>
         <div className={styles.postBox}>
-          <div className={styles.content}>
-            <h1>{title}</h1>
+          <div className="max-w-screen-md w-screen px-4">
+            <h1 className="text-3xl font-bold mb-5">{title}</h1>
             <p>
               {'Posted: '}
               {date}
