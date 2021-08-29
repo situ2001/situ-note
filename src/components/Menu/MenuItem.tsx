@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import * as styles from './style.module.css';
 
 type Props = {
   isActivate: boolean;
@@ -13,8 +12,9 @@ const MenuItem = (props: Props) => {
   return (
     <Link
       to={to}
-      className={styles.link}
-      style={isActivate ? { backgroundColor: 'pink' } : {}}
+      className={`hover:bg-pink-200 text-black transition-colors duration-300 text-4xl ${
+        isActivate ? 'bg-pink-200' : ''
+      }`}
     >
       {title}
       {isActivate && <span style={{ backgroundColor: 'pink' }} />}
