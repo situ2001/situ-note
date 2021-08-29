@@ -9,7 +9,11 @@ type MyHeadingComponentProps = {
 const H2 = (props: MyHeadingComponentProps) => {
   const { children } = props;
   return (
-    <h2 id={children.toString()} className="text-2xl mt-8" {...props}>
+    <h2
+      id={children.toString()}
+      className="text-2xl mt-8 font-semibold"
+      {...props}
+    >
       {children}
     </h2>
   );
@@ -18,7 +22,11 @@ const H2 = (props: MyHeadingComponentProps) => {
 const H3 = (props: MyHeadingComponentProps) => {
   const { children } = props;
   return (
-    <h3 id={children.toString()} className="text-lg mt-8" {...props}>
+    <h3
+      id={children.toString()}
+      className="text-lg mt-8 font-medium"
+      {...props}
+    >
       {children}
     </h3>
   );

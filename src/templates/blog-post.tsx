@@ -124,7 +124,7 @@ export default function Component({
       <Container>
         <div className={styles.postBox}>
           <div className="max-w-screen-md w-screen px-4">
-            <h1 className="text-3xl font-bold mb-5">{title}</h1>
+            <h1 className="text-3xl font-extrabold mb-5">{title}</h1>
             <p>
               {'Posted: '}
               {date}
