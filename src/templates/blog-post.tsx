@@ -123,7 +123,7 @@ export default function Component({
     <Layout location={location}>
       <Container>
         <div className={styles.postBox}>
-          <div className="max-w-screen-md w-screen px-4">
+          <div className="max-w-screen-md w-screen px-2">
             <h1 className="text-3xl font-extrabold mb-5">{title}</h1>
             <p>
               {'Posted: '}
