@@ -38,7 +38,7 @@ export default function Component({ data, pageContext, location }: Props) {
     <Layout location={location}>
       <Container>
         <div className="flex">
-          <div className="flex flex-col items-center w-full md:w-9/12">
+          <div className="flex flex-col items-center w-full md:w-9/12 transition-all delay-100">
             {data.allMdx.nodes.map((node) => {
               let link: string = `/${
                 node.frontmatter.permalink ?? node.parent.name ?? null
