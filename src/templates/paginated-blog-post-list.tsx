@@ -4,6 +4,7 @@ import Layout from '../components/Layout';
 import Container from '../components/Container';
 import BlogCard from '../components/BlogCard';
 import Pagination from '../components/Pagination';
+import BlogSidebar from '../components/BlogSidebar';
 
 type Props = {
   data: {
@@ -36,34 +37,41 @@ export default function Component({ data, pageContext, location }: Props) {
   return (
     <Layout location={location}>
       <Container>
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
-          {data.allMdx.nodes.map((node) => {
-            let link: string = `/${
-              node.frontmatter.permalink ?? node.parent.name ?? null
-            }`;
-            link = `/blog${link}`;
-            const { title, date, description } = node.frontmatter;
-            return (
-              <BlogCard
-                title={title}
-                link={link}
-                date={date}
-                description={description}
-                key={node.id}
+        <div className="flex">
+          <div className="flex flex-col items-center w-full md:w-9/12">
+            {data.allMdx.nodes.map((node) => {
+              let link: string = `/${
+                node.frontmatter.permalink ?? node.parent.name ?? null
+              }`;
+              link = `/blog${link}`;
+              const { title, date, description } = node.frontmatter;
+              return (
+                <BlogCard
+                  title={title}
+                  link={link}
+                  date={date}
+                  description={description}
+                  key={node.id}
+                />
+              );
+            })}
+            <div className="w-11/12 md:hidden">
+              <Pagination
+                prevTo={
+                  currentPage === 2 ? '/blog' : `/blog/page/${currentPage - 1}`
+                }
+                prevText={currentPage !== 1 ? '<' : null}
+                nextTo={
+                  currentPage !== totalPage
+                    ? `/blog/page/${currentPage + 1}`
+                    : null
+                }
+                nextText={currentPage !== totalPage ? '>' : null}
+                currentText={`${currentPage} / ${totalPage}`}
               />
-            );
-          })}
-          <Pagination
-            prevTo={
-              currentPage === 2 ? '/blog' : `/blog/page/${currentPage - 1}`
-            }
-            prevText={currentPage !== 1 ? '< Prev' : null}
-            nextTo={
-              currentPage !== totalPage ? `/blog/page/${currentPage + 1}` : null
-            }
-            nextText={currentPage !== totalPage ? 'Next >' : null}
-            currentText={`Page ${currentPage}`}
-          />
+            </div>
+          </div>
+          <BlogSidebar currentPage={currentPage} totalPage={totalPage} />
         </div>
       </Container>
     </Layout>

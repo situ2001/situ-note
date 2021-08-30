@@ -19,7 +19,7 @@ const Menu = (props: Props) => {
   return (
     <>
       {open && (
-        <div className="fixed w-full h-full z-10 overflow-x-hidden bg-white opacity-95">
+        <div className="fixed w-full h-full z-20 overflow-x-hidden bg-white opacity-95">
           <button
             className="bg-transparent w-12 right-4 top-4 fixed"
             type="button"

@@ -44,7 +44,7 @@ const MyHeader = (props: Props) => {
   const { setOpen } = props;
 
   return (
-    <Header className="my-4">
+    <Header className="my-4 z-10">
       <p>
         <SiteTitle to="/">Situ Note</SiteTitle>
       </p>
