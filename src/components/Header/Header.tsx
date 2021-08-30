@@ -10,7 +10,7 @@ const Header = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 90%;
+  /* width: 90%; */
   align-self: center;
   justify-content: space-between;
 `;
@@ -44,7 +44,7 @@ const MyHeader = (props: Props) => {
   const { setOpen } = props;
 
   return (
-    <Header className="my-4 z-10">
+    <Header className="my-4 z-10 w-full px-4 md:px-8">
       <p>
         <SiteTitle to="/">Situ Note</SiteTitle>
       </p>

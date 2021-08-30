@@ -8,17 +8,12 @@ type Props = {
 const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
-  padding-left: 20px;
-  padding-right: 20px;
-  @media screen and (min-width: 1340px) {
-    display: block;
-    /* max-width: 1260px; */
-  }
-  @media screen and (min-width: 740px) {
-    width: 90%;
-  }
+  /* padding-left: 20px;
+  padding-right: 20px; */
 `;
 
-const MyContainer = ({ children }: Props) => <Container>{children}</Container>;
+const MyContainer = ({ children }: Props) => (
+  <Container className="px-4 md:px-8">{children}</Container>
+);
 
 export default MyContainer;
