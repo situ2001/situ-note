@@ -44,4 +44,5 @@
 /* rules for code that is not the child of pre */
 :not(pre) > code[class*='language-'] {
   white-space: pre-wrap;
+  overflow-wrap: break-word;
 }
