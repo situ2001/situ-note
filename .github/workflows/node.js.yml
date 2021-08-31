@@ -29,8 +29,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm install -g yarn
-    - run: yarn
-    - run: yarn build
+    # - run: yarn
+    # - run: yarn build
     # 使用云开发 Github Action 部署
     - name: Deploy static to Tencent CloudBase
       id: deployStatic

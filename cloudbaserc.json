@@ -1,19 +1,21 @@
 {
-    "envId": "{{env.ENV_ID}}",
-    "version": "2.0",
-    "$schema": "https://framework-1258016615.tcloudbaseapp.com/schema/latest.json",
-    "functionRoot": "./functions",
-    "functions": [],
-    "region": "ap-guangzhou",
-    "framework": {
-        "name": "situ-note",
-        "plugins": {
-            "gatsby": {
-                "use": "@cloudbase/framework-plugin-website",
-                "inputs": {
-                    "outputPath": "./public"
-                }
-            }
+  "envId": "{{env.ENV_ID}}",
+  "version": "2.0",
+  "$schema": "https://framework-1258016615.tcloudbaseapp.com/schema/latest.json",
+  "functionRoot": "./functions",
+  "functions": [],
+  "region": "ap-guangzhou",
+  "framework": {
+    "name": "situ-note",
+    "plugins": {
+      "gatsby": {
+        "use": "@cloudbase/framework-plugin-website",
+        "inputs": {
+          "installCommand": "yarn",
+          "buildCommand": "yarn build",
+          "outputPath": "./public"
         }
+      }
     }
+  }
 }
