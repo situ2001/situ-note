@@ -55,7 +55,7 @@ const OrderedList = (props: MyHeadingComponentProps) => {
 
 const UnorderedList = (props: MyHeadingComponentProps) => {
   const { children } = props;
-  return <ul className="list-decimal list-inside my-4">{children}</ul>;
+  return <ul className="list-disc list-inside my-4">{children}</ul>;
 };
 
 const StyledBlockquote = styled.div`
