@@ -1,7 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap');
+/* imported in gatsby-browser.js */
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap'); */
 
 body {
   margin: 0;
