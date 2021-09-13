@@ -1,3 +1,5 @@
+const remarkMath = require('remark-math');
+
 module.exports = {
   siteMetadata: {
     title: 'Situ Note',
@@ -39,7 +41,15 @@ module.exports = {
               ignoreFileExtensions: ['png', 'jpg', 'jpeg', 'bmp', 'tiff'],
             },
           },
+          {
+            resolve: 'gatsby-remark-katex',
+            options: {
+              // Add any KaTeX options from https://github.com/KaTeX/KaTeX/blob/master/docs/options.md here
+              strict: 'ignore',
+            },
+          },
         ],
+        remarkPlugins: [remarkMath],
       },
     },
     {

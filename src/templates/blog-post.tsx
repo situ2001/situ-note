@@ -12,6 +12,9 @@ import * as styles from '../styles/posts.module.css';
 import Pagination from '../components/Pagination';
 import components from '../components/MDXComponents';
 
+// stylesheet for gatsby-remark-katex
+// import 'katex/dist/katex.min.css';
+
 /**
  * Recursive function for creating a list of headings
  * @param listItems
