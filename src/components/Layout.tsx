@@ -13,6 +13,7 @@ type Props = {
 const Content = styled.div`
   padding-top: 16px;
   padding-bottom: 16px;
+  flex-grow: 1;
 `;
 
 const Container = styled.div`
