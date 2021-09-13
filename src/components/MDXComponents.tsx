@@ -66,6 +66,12 @@ const StyledBlockquote = styled.div`
 
 const Blockquote = (props: any) => <StyledBlockquote {...props} />;
 
+const Anchor = (props: any) => (
+  <a {...props} className="break-all underline">
+    {props.children}
+  </a>
+);
+
 // const Img = (props: any) => {
 //   console.log(props);
 //   return (
@@ -113,6 +119,7 @@ const components = {
   p: Text,
   ol: OrderedList,
   ul: UnorderedList,
+  a: Anchor,
   // img: Img,
   // img: MyImg,
 };
