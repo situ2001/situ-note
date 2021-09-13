@@ -8,3 +8,8 @@ body {
   margin: 0;
   font-family: 'Noto Serif SC', serif;
 }
+
+/* make individual display equations scrollable horizontally */
+.katex-display {
+  overflow: auto hidden;
+}
