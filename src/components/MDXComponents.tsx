@@ -26,7 +26,7 @@ const H3 = (props: MyHeadingComponentProps) => {
   return (
     <h3
       id={children.toString()}
-      className="text-lg mt-8 font-medium"
+      className="text-lg mt-6 font-medium"
       {...props}
     >
       {children}
