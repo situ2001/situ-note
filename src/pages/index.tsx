@@ -6,7 +6,7 @@ import { Link } from 'gatsby';
 const Index = () => {
   // TODO: Personal Card
   return (
-    <div className="container flex min-h-screen p-8 justify-center md:items-center">
+    <div className="container flex min-h-screen p-8 justify-center md:items-center mx-auto">
       <div className="w-full h-full md:shadow-lg md:rounded-2xl md:max-w-screen-sm">
         {/* Card starts */}
         <div className="max-w-md mx-auto w-full flex flex-col justify-center md:p-8">
