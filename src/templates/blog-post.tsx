@@ -9,7 +9,7 @@ import { getFormattedHeadings } from '../utils/blog';
 import Layout from '../components/Layout';
 import Container from '../components/Container';
 import * as styles from '../styles/posts.module.css';
-import Pagination from '../components/Pagination';
+import Pagination from '../components/blog/pagination';
 import components from '../components/MDXComponents';
 
 // stylesheet for gatsby-remark-katex

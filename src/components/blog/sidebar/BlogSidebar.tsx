@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Pagination from './Pagination';
+import Pagination from '../pagination';
 
 const BlogSidebar = ({ currentPage, totalPage }: any) => {
   return (

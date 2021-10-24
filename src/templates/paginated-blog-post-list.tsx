@@ -2,9 +2,9 @@ import * as React from 'react';
 import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import Container from '../components/Container';
-import BlogCard from '../components/BlogCard';
-import Pagination from '../components/Pagination';
-import BlogSidebar from '../components/BlogSidebar';
+import BlogCard from '../components/blog/card';
+import Pagination from '../components/blog/pagination';
+import BlogSidebar from '../components/blog/sidebar';
 
 type Props = {
   data: {
