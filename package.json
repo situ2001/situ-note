@@ -11,13 +11,22 @@
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
     "@mui/material": "^5.2.5",
+    "fs-extra": "^10.0.0",
+    "glob": "^7.2.0",
+    "gray-matter": "^4.0.3",
     "next": "12.0.7",
+    "next-mdx-remote": "^3.0.8",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "safe-json-stringify": "^1.2.0",
+    "sharp": "^0.29.3"
   },
   "devDependencies": {
+    "@types/fs-extra": "^9.0.13",
+    "@types/glob": "^7.2.0",
     "@types/node": "16.11.12",
     "@types/react": "17.0.37",
+    "@types/safe-json-stringify": "^1.1.2",
     "autoprefixer": "^10.4.0",
     "eslint": "8.4.1",
     "eslint-config-next": "12.0.7",
