@@ -1,9 +1,10 @@
-import React from "react";
-import { MDXRemote } from "next-mdx-remote";
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import { getAllPosts, getPostBySlug } from "../../lib/api";
 import { Typography } from "@mui/material";
 import Image from "next/image";
+import { GetStaticPaths, GetStaticProps } from "next";
+import type { Props } from "../../types/BlogPost";
 
 const Img = (mapImageNameToSize: any, path: any) => {
   return function MyImg({ src, alt }: { src: string; alt: string }) {
@@ -38,7 +39,7 @@ export default function Post({
   frontMatter,
   path,
   mapImageNameToSize,
-}: any) {
+}: Props) {
   // console.log(mapImageNameToSize);
 
   const components = {
@@ -58,7 +59,9 @@ export default function Post({
   );
 }
 
-export async function getStaticProps({ params }: any) {
+export const getStaticProps: GetStaticProps<Props> = async ({
+  params,
+}: any) => {
   const post = getPostBySlug(params.slug);
 
   const mdxSource = await serialize(post.content, { scope: post.data });
@@ -71,9 +74,9 @@ export async function getStaticProps({ params }: any) {
       mapImageNameToSize: post.mapImageNameToSize,
     },
   };
-}
+};
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const slugs = getAllPosts();
 
   return {
@@ -84,4 +87,4 @@ export async function getStaticPaths() {
     })),
     fallback: false,
   };
-}
+};

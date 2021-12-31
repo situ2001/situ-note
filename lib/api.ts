@@ -5,6 +5,7 @@ import glob from "glob";
 import safeJsonStringify from "safe-json-stringify";
 import fse from "fs-extra";
 import sizeOf from "image-size";
+import type { ImageNameDimensions } from "../types/BlogPost";
 
 const postDir = join(process.cwd(), "contents", "blog-posts", "_posts");
 const publicDir = join(process.cwd(), "public", "post-assets");
@@ -31,12 +32,7 @@ export function getPostBySlug(slug: string, fields = []) {
 
   // key: ./img.ext
   // value: height & width
-  const mapImageNameToSize: {
-    [key: string]: {
-      height: number | undefined;
-      width: number | undefined;
-    };
-  } = {};
+  const mapImageNameToSize: ImageNameDimensions = {};
 
   const imgsAbsolutePath = fs
     .readdirSync(dirname(fullPath))
