@@ -9,7 +9,7 @@ export default function Post({
   source,
   frontMatter,
   path,
-  mapImageNameToSize,
+  mapImageNameToDimensions,
 }: Props) {
   return (
     <div>
@@ -19,7 +19,7 @@ export default function Post({
       <PostBody
         source={source}
         path={path}
-        mapImageNameToSize={mapImageNameToSize}
+        mapImageNameToDimensions={mapImageNameToDimensions}
       />
     </div>
   );
@@ -38,7 +38,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({
       source: mdxSource,
       frontMatter: post.data,
       path: post.path,
-      mapImageNameToSize: post.mapImageNameToSize,
+      mapImageNameToDimensions: post.mapImageNameToSize,
     },
   };
 };

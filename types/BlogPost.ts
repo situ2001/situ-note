@@ -18,5 +18,11 @@ export type Props = {
   source: MDXRemoteSerializeResult<Record<string, unknown>>;
   frontMatter: FrontMatter;
   path: string;
-  mapImageNameToSize: ImageNameDimensions;
+  mapImageNameToDimensions: ImageNameDimensions;
+};
+
+export type BlogPostProps = {
+  source: MDXRemoteSerializeResult<Record<string, unknown>>;
+  path: string;
+  mapImageNameToDimensions: ImageNameDimensions;
 };
