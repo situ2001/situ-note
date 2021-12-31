@@ -4,6 +4,7 @@ import matter from "gray-matter";
 import glob from "glob";
 import safeJsonStringify from "safe-json-stringify";
 import fse from "fs-extra";
+import sizeOf from "image-size";
 
 const postDir = join(process.cwd(), "contents", "blog-posts", "_posts");
 const publicDir = join(process.cwd(), "public", "post-assets");
@@ -28,6 +29,26 @@ export function getPostBySlug(slug: string, fields = []) {
   const targetPath =
     "/" + relative(process.cwd(), dirname(fullPath)).replace(/\\/g, "/") + "/";
 
+  // key: ./img.ext
+  // value: height & width
+  const mapImageNameToSize: {
+    [key: string]: {
+      height: number | undefined;
+      width: number | undefined;
+    };
+  } = {};
+
+  const imgsAbsolutePath = fs
+    .readdirSync(dirname(fullPath))
+    .filter((f) => /\.(jpe?g|png|gif)$/gi.test(f))
+    .map((f) => join(dirname(fullPath), f));
+  imgsAbsolutePath.forEach((img) => {
+    const name = basename(img);
+    const dimensions = sizeOf(img);
+    const { height, width } = dimensions;
+    mapImageNameToSize[name] = { height, width };
+  });
+
   // copy dir to /public if not existed
   try {
     // TODO: copy only images
@@ -41,6 +62,7 @@ export function getPostBySlug(slug: string, fields = []) {
     slug: slug,
     path: `/post-assets${targetPath}`,
     data: JSON.parse(safeJsonStringify(data)),
+    mapImageNameToSize: mapImageNameToSize,
   };
 
   return items;
