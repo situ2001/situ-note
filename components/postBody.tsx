@@ -32,8 +32,22 @@ const Img = (mapImageNameToDimensions: ImageNameDimensions, path: string) => {
 };
 
 const components: Record<string, ReactNode> = {
-  // h2: (props: any) => <h2 {...props} className="text-3xl" />,
+  h2: (props: any) => <h2 className="text-2xl mt-8 font-semibold" {...props} />,
+  h3: (props: any) => <h3 className="text-lg mt-6 font-medium" {...props} />,
   p: (props: any) => <p className="my-4" {...props} />,
+  a: (props: any) => <a className="break-all underline" {...props} />,
+  ol: (props:any) => <ol className="list-decimal list-inside my-4" {...props} />,
+  ul: (props: any) => <ul className="list-disc list-inside my-4" {...props} />,
+  blockquote: (props: any) => (
+    <blockquote
+      style={{
+        borderLeft: "4px solid #ddd",
+        padding: "0 16px",
+        margin: 0,
+      }}
+      {...props}
+    />
+  ),
   img: undefined,
 };
 
