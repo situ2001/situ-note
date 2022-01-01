@@ -9,10 +9,12 @@ import rehypeDocument from "rehype-document";
 import rehypeHighlight from "rehype-highlight";
 import groovy from "highlight.js/lib/languages/groovy";
 import powershell from "highlight.js/lib/languages/powershell";
+import remarkGfm from "remark-gfm";
 
 export function processor(components: Record<string, ReactNode>) {
   return unified()
     .use(remarkParse)
+    .use(remarkGfm)
     .use(remarkRehype)
     .use(rehypeHighlight, { languages: { groovy, powershell } })
     .use(remarkMath)
