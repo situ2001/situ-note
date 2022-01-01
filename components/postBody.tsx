@@ -2,6 +2,8 @@ import Image from "next/image";
 import { ReactNode } from "react";
 import { processor } from "../lib/markdownProcessor";
 import type { BlogPostProps, ImageNameDimensions } from "../types/BlogPost";
+import "katex/dist/katex.min.css";
+import "highlight.js/styles/github.css";
 
 const Img = (mapImageNameToDimensions: ImageNameDimensions, path: string) => {
   return function MyImg({ src, alt }: { src: string; alt: string }) {
