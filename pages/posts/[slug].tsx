@@ -1,24 +1,24 @@
-import { serialize } from "next-mdx-remote/serialize";
 import { getAllPosts, getPostBySlug } from "../../lib/api";
 import { Typography } from "@mui/material";
 import { GetStaticPaths, GetStaticProps } from "next";
+import remarkMath from "remark-math";
 import type { Props } from "../../types/BlogPost";
 import PostBody from "../../components/postBody";
 
 export default function Post({
-  source,
   frontMatter,
   path,
   mapImageNameToDimensions,
+  content,
 }: Props) {
   return (
     <div>
-      <Typography component="div" variant="h4">
+      <Typography component="div" variant="h3">
         {frontMatter.title}
       </Typography>
       <PostBody
-        source={source}
         path={path}
+        content={content}
         mapImageNameToDimensions={mapImageNameToDimensions}
       />
     </div>
@@ -30,12 +30,9 @@ export const getStaticProps: GetStaticProps<Props> = async ({
 }: any) => {
   const post = getPostBySlug(params.slug);
 
-  // TODO: add plugin (code block, ...)
-  const mdxSource = await serialize(post.content, { scope: post.data });
-
   return {
     props: {
-      source: mdxSource,
+      content: post.content,
       frontMatter: post.data,
       path: post.path,
       mapImageNameToDimensions: post.mapImageNameToSize,

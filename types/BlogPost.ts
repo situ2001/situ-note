@@ -1,5 +1,3 @@
-import type { MDXRemoteSerializeResult } from "next-mdx-remote";
-
 export type ImageNameDimensions = {
   [key: string]: {
     height: number | undefined;
@@ -15,14 +13,14 @@ export type FrontMatter = {
 };
 
 export type Props = {
-  source: MDXRemoteSerializeResult<Record<string, unknown>>;
+  content: string;
   frontMatter: FrontMatter;
   path: string;
   mapImageNameToDimensions: ImageNameDimensions;
 };
 
 export type BlogPostProps = {
-  source: MDXRemoteSerializeResult<Record<string, unknown>>;
+  content: string;
   path: string;
   mapImageNameToDimensions: ImageNameDimensions;
 };

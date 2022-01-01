@@ -1,13 +1,12 @@
-import { MDXRemote } from "next-mdx-remote";
 import Image from "next/image";
 import { ReactNode } from "react";
+import { processor } from "../lib/markdownProcessor";
 import type { BlogPostProps, ImageNameDimensions } from "../types/BlogPost";
 
 const Img = (mapImageNameToDimensions: ImageNameDimensions, path: string) => {
   return function MyImg({ src, alt }: { src: string; alt: string }) {
     src = src.slice(2);
     const { height, width } = mapImageNameToDimensions[src];
-    // TODO: https://kylepfromer.com/blog/nextjs-image-component-blog
     return (
       <div
         style={{
@@ -31,15 +30,19 @@ const Img = (mapImageNameToDimensions: ImageNameDimensions, path: string) => {
 };
 
 const components: Record<string, ReactNode> = {
+  // h2: (props: any) => <h2 {...props} className="text-3xl" />,
+  p: (props: any) => <p className="my-4" {...props} />,
   img: undefined,
 };
 
 export default function PostBody({
-  source,
   path,
   mapImageNameToDimensions,
+  content,
 }: BlogPostProps) {
   components.img = Img(mapImageNameToDimensions, path);
 
-  return <MDXRemote {...source} components={components} lazy />;
+  const contentProcessor = processor(components);
+
+  return <article>{contentProcessor.processSync(content).result}</article>;
 }
