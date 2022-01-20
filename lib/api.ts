@@ -27,7 +27,6 @@ export function getAllPostsStaticPath() {
 export function getPostList(itemsPerPage: number = 10) {}
 
 export function getPostBySlug(slug: string[], fields = []) {
-  console.log(slug);
   const fullPath = glob.sync(`${postDir}/**/${slug.join("/")}/*.md`)[0];
   const fileContent = fs.readFileSync(fullPath, "utf-8");
   const { data, content } = matter(fileContent);
