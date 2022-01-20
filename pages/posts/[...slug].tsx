@@ -1,9 +1,10 @@
-import { getAllPosts, getPostBySlug } from "../../lib/api";
-import { Typography } from "@mui/material";
+import { getAllPostsStaticPath, getPostBySlug } from "../../lib/api";
+import { Container, Typography } from "@mui/material";
 import { GetStaticPaths, GetStaticProps } from "next";
-import remarkMath from "remark-math";
 import type { Props } from "../../types/BlogPost";
 import PostBody from "../../components/postBody";
+import SiteBar from "../../components/SiteBar";
+import Layout from "../../components/Layout";
 
 export default function Post({
   frontMatter,
@@ -12,16 +13,18 @@ export default function Post({
   content,
 }: Props) {
   return (
-    <div>
-      <Typography component="div" variant="h3">
-        {frontMatter.title}
-      </Typography>
-      <PostBody
-        path={path}
-        content={content}
-        mapImageNameToDimensions={mapImageNameToDimensions}
-      />
-    </div>
+    <Layout>
+      <Container>
+        <Typography component="div" variant="h4">
+          {frontMatter.title}
+        </Typography>
+        <PostBody
+          path={path}
+          content={content}
+          mapImageNameToDimensions={mapImageNameToDimensions}
+        />
+      </Container>
+    </Layout>
   );
 }
 
@@ -41,12 +44,12 @@ export const getStaticProps: GetStaticProps<Props> = async ({
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const slugs = getAllPosts();
+  const slugs = getAllPostsStaticPath();
 
   return {
     paths: slugs.map((slug) => ({
       params: {
-        slug: slug,
+        slug: slug.split("/"),
       },
     })),
     fallback: false,

@@ -1,5 +1,5 @@
 import fs from "fs";
-import { join, basename, relative, dirname } from "path";
+import path, { join, basename, relative, dirname } from "path";
 import matter from "gray-matter";
 import glob from "glob";
 import safeJsonStringify from "safe-json-stringify";
@@ -12,18 +12,23 @@ const publicDir = join(process.cwd(), "public", "post-assets");
 
 export function getAllMarkdownFileNames() {
   const res = glob.sync(`${postDir}/**/*.md`);
-  res.map((f) => basename(f));
-  return res;
+  return res.map((f) =>
+    dirname(relative(postDir, f)).split(path.sep).join(path.posix.sep)
+  );
 }
 
-export function getAllPosts() {
+export function getAllPostsStaticPath() {
   const slugs = getAllMarkdownFileNames();
-  const res = slugs.map((slug) => basename(slug).replace(/\.md$/, ""));
+  const res = slugs.map((slug) => slug.replace(/\.md$/, ""));
   return res;
 }
 
-export function getPostBySlug(slug: string, fields = []) {
-  const fullPath = glob.sync(`${postDir}/**/${slug}.md`)[0];
+// TODO
+export function getPostList(itemsPerPage: number = 10) {}
+
+export function getPostBySlug(slug: string[], fields = []) {
+  console.log(slug);
+  const fullPath = glob.sync(`${postDir}/**/${slug.join("/")}/*.md`)[0];
   const fileContent = fs.readFileSync(fullPath, "utf-8");
   const { data, content } = matter(fileContent);
 
@@ -34,10 +39,13 @@ export function getPostBySlug(slug: string, fields = []) {
   // value: height & width
   const mapImageNameToSize: ImageNameDimensions = {};
 
+  // get absolute path of images
   const imgsAbsolutePath = fs
     .readdirSync(dirname(fullPath))
     .filter((f) => /\.(jpe?g|png|gif)$/gi.test(f))
     .map((f) => join(dirname(fullPath), f));
+
+  // add name => height & weight to object
   imgsAbsolutePath.forEach((img) => {
     const name = basename(img);
     const dimensions = sizeOf(img);
@@ -50,7 +58,7 @@ export function getPostBySlug(slug: string, fields = []) {
     // TODO: copy only images
     fse.copySync(dirname(fullPath), join(`${publicDir}`, targetPath));
   } catch (e) {
-    console.error(e);
+    // console.error(e);
   }
 
   const items = {
