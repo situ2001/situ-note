@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, Typography } from "@mui/material";
+import { AppBar, Toolbar, Typography, Box } from "@mui/material";
 import Link from "next/link";
 import React from "react";
 
@@ -17,9 +17,16 @@ const SiteBar = () => {
         }}
       >
         <Toolbar>
-          <Typography component="div" variant="h6">
-            <Link href="/">Situ Note</Link>
-          </Typography>
+          <Box sx={{ flexGrow: "1" }}>
+            <Typography component="div" variant="h6">
+              <Link href="/">Situ Note</Link>
+            </Typography>
+          </Box>
+          <Box>
+            <Typography component="div" variant="h6" sx={{ mr: 2 }}>
+              <Link href="/posts/page/1">BLOG</Link>
+            </Typography>
+          </Box>
         </Toolbar>
       </AppBar>
     </React.Fragment>

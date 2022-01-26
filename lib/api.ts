@@ -23,8 +23,39 @@ export function getAllPostsStaticPath() {
   return res;
 }
 
-// TODO
-export function getPostList(itemsPerPage: number = 10) {}
+// TODO get number of posts
+export function getNumberOfPosts() {
+  return glob.sync(`${postDir}/**/*.md`).length;
+}
+
+// TODO get infos of posts from begin to end
+export function getPostList(page: number = 1, itemsPerPage: number = 10) {
+  // const numberOfPosts = getNumberOfPosts();
+  const paths = glob.sync(`${postDir}/**/*.md`);
+  const infos: any[] = [];
+  paths.forEach((pathOfPost) => {
+    const fileContent = fs.readFileSync(pathOfPost, "utf-8");
+    const { data } = matter(fileContent);
+    let { title, date, categories, description } = data;
+
+    if (description === undefined) description = "";
+    if (categories === undefined) categories = "";
+
+    infos.push({
+      title,
+      date: safeJsonStringify(date).replace(/"/g, ""),
+      categories,
+      description,
+      link: `/posts/${dirname(relative(postDir, pathOfPost))
+        .split(path.sep)
+        .join(path.posix.sep)}`,
+    });
+  });
+  infos.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  const begin = (page - 1) * itemsPerPage;
+  const end = page * itemsPerPage;
+  return infos.slice(begin, end);
+}
 
 export function getPostBySlug(slug: string[], fields = []) {
   const fullPath = glob.sync(`${postDir}/**/${slug.join("/")}/*.md`)[0];
