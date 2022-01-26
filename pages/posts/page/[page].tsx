@@ -2,7 +2,6 @@ import { Box, Card, Container, Typography } from "@mui/material";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React from "react";
 import Layout from "../../../components/Layout";
 import { getNumberOfPosts, getPostList } from "../../../lib/api";
 
@@ -23,10 +22,10 @@ const PostInfoCard = (props: PostInfo) => {
   const d = dateObject.getDate();
 
   return (
-    <Card className="shadow hover:shadow-lg hover:scale-105 transition-transform delay-50 my-4 mx-2">
-      <Box className="m-2">
+    <Card sx={{ my: 2, mx: 1 }}>
+      <Box sx={{ m: 2 }}>
         <Link href={link} passHref>
-          <Typography className="cursor-pointer" variant="h5">
+          <Typography sx={{ cursor: "pointer" }} variant="h5">
             {title}
           </Typography>
         </Link>
@@ -47,7 +46,9 @@ const PaginationBar = (props: any) => {
   const hasNext = page !== totalPage;
 
   return (
-    <Box sx={{ display: "flex" }} className="justify-between mx-2 my-4">
+    <Box
+      sx={{ display: "flex", justifyContent: "space-between", mx: 1, my: 2 }}
+    >
       <Typography
         sx={
           hasPrev
