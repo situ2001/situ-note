@@ -1,13 +1,33 @@
-import { Box } from "@mui/material";
+import { Box, createTheme, ThemeProvider } from "@mui/material";
 import SiteBar from "./SiteBar";
 
-const Layout = (props: any) => {
+const theme = createTheme({
+  typography: {
+    fontFamily: [
+      "Roboto",
+      '"Noto Sans SC"',
+      "-apple-system",
+      "BlinkMacSystemFont",
+      '"Segoe UI"',
+      '"Helvetica Neue"',
+      "Arial",
+      "sans-serif",
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(","),
+  },
+});
+
+const Layout = (props: { children: React.ReactNode }) => {
   const { children } = props;
   return (
-    <Box>
-      <SiteBar />
-      {children}
-    </Box>
+    <ThemeProvider theme={theme}>
+      <Box>
+        <SiteBar />
+        {children}
+      </Box>
+    </ThemeProvider>
   );
 };
 
