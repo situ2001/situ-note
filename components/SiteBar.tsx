@@ -18,7 +18,7 @@ const SiteBar = () => {
       >
         <Toolbar>
           <Box sx={{ flexGrow: "1" }}>
-            <Typography component="div" variant="h6">
+            <Typography component="div" variant="h5" sx={{ ml: 2 }}>
               <Link href="/">Situ Note</Link>
             </Typography>
           </Box>
