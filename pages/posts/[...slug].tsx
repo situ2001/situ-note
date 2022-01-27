@@ -14,7 +14,6 @@ export default function Post({
   content,
 }: Props) {
   useDocumentTitle(frontMatter.title);
-  console.log(frontMatter);
 
   const dateObject = new Date(frontMatter.date);
   const y = dateObject.getFullYear();
