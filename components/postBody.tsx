@@ -4,20 +4,23 @@ import { processor } from "../lib/markdownProcessor";
 import type { BlogPostProps, ImageNameDimensions } from "../types/BlogPost";
 import "katex/dist/katex.min.css";
 import "highlight.js/styles/stackoverflow-light.css";
+import styled from "@emotion/styled";
+
+const ImageBox = styled.div`
+  display: flex;
+  justify-content: center;
+  position: relative;
+  @media (min-width: 600px) {
+    margin: 8px 20%;
+  }
+`;
 
 const Img = (mapImageNameToDimensions: ImageNameDimensions, path: string) => {
   return function MyImg({ src, alt }: { src: string; alt: string }) {
     src = src.slice(2);
     const { height, width } = mapImageNameToDimensions[src];
     return (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          margin: "8px 20%",
-          position: "relative",
-        }}
-      >
+      <ImageBox>
         <Image
           alt={alt}
           src={`${path}${src}`}
@@ -26,7 +29,7 @@ const Img = (mapImageNameToDimensions: ImageNameDimensions, path: string) => {
           objectFit="contain"
           loading="lazy"
         />
-      </div>
+      </ImageBox>
     );
   };
 };
