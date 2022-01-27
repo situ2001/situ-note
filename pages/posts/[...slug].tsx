@@ -1,5 +1,5 @@
 import { getAllPostsStaticPath, getPostBySlug } from "../../lib/api";
-import { Container, Typography } from "@mui/material";
+import { Container, Divider, Typography } from "@mui/material";
 import { GetStaticPaths, GetStaticProps } from "next";
 import type { Props } from "../../types/BlogPost";
 import PostBody from "../../components/postBody";
@@ -14,6 +14,12 @@ export default function Post({
   content,
 }: Props) {
   useDocumentTitle(frontMatter.title);
+  console.log(frontMatter);
+
+  const dateObject = new Date(frontMatter.date);
+  const y = dateObject.getFullYear();
+  const m = dateObject.getMonth() + 1;
+  const d = dateObject.getDate();
 
   return (
     <Layout>
@@ -21,6 +27,11 @@ export default function Post({
         <Typography component="div" variant="h4">
           {frontMatter.title}
         </Typography>
+        <Typography
+          component="div"
+          variant="h5"
+        >{`${y}年${m}月${d}日`}</Typography>
+        <Divider></Divider>
         <PostBody
           path={path}
           content={content}
