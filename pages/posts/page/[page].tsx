@@ -1,86 +1,9 @@
-import { Box, Card, Container, Typography } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import { GetStaticPaths, GetStaticProps } from "next";
-import Link from "next/link";
-import { useRouter } from "next/router";
 import Layout from "../../../components/Layout";
+import PaginationBar from "../../../components/PaginationBar";
+import PostInfoCard from "../../../components/PostInfoCard";
 import { getNumberOfPosts, getPostList } from "../../../lib/api";
-
-type PostInfo = {
-  title: string;
-  date: string;
-  description: string;
-  categories: string;
-  link: string;
-};
-// TODO: const PostInfoCard
-const PostInfoCard = (props: PostInfo) => {
-  const { title, date, description, categories, link } = props;
-
-  const dateObject = new Date(date);
-  const y = dateObject.getFullYear();
-  const m = dateObject.getMonth() + 1;
-  const d = dateObject.getDate();
-
-  return (
-    <Card sx={{ my: 2, mx: 1 }}>
-      <Box sx={{ m: 2 }}>
-        <Link href={link} passHref>
-          <Typography sx={{ cursor: "pointer" }} variant="h5">
-            {title}
-          </Typography>
-        </Link>
-        <Typography>{`${y}年${m}月${d}日`}</Typography>
-        <Typography>{description}</Typography>
-        <Typography>{categories}</Typography>
-      </Box>
-    </Card>
-  );
-};
-
-const PaginationBar = (props: any) => {
-  const { totalPage } = props;
-  const { query, push } = useRouter();
-  const page = Number(query.page);
-
-  const hasPrev = page !== 1;
-  const hasNext = page !== totalPage;
-
-  return (
-    <Box
-      sx={{ display: "flex", justifyContent: "space-between", mx: 1, my: 2 }}
-    >
-      <Typography
-        sx={
-          hasPrev
-            ? { cursor: "pointer" }
-            : { opacity: "0.6", pointerEvents: "none" }
-        }
-        onClick={() => {
-          if (hasPrev) {
-            push(`/posts/page/${page - 1}`);
-          }
-        }}
-      >
-        {"< Prev"}
-      </Typography>
-      <Typography>{`${page} / ${totalPage}`}</Typography>
-      <Typography
-        sx={
-          hasNext
-            ? { cursor: "pointer" }
-            : { opacity: "0.6", pointerEvents: "none" }
-        }
-        onClick={() => {
-          if (hasNext) {
-            push(`/posts/page/${page + 1}`);
-          }
-        }}
-      >
-        {"Next >"}
-      </Typography>
-    </Box>
-  );
-};
 
 type Props = {
   infos: any[];
