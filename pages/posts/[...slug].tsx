@@ -5,6 +5,7 @@ import type { Props } from "../../types/BlogPost";
 import PostBody from "../../components/postBody";
 import SiteBar from "../../components/SiteBar";
 import Layout from "../../components/Layout";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 export default function Post({
   frontMatter,
@@ -12,6 +13,8 @@ export default function Post({
   mapImageNameToDimensions,
   content,
 }: Props) {
+  useDocumentTitle(frontMatter.title);
+
   return (
     <Layout>
       <Container>

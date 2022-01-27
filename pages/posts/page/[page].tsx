@@ -3,6 +3,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import Layout from "../../../components/Layout";
 import PaginationBar from "../../../components/PaginationBar";
 import PostInfoCard from "../../../components/PostInfoCard";
+import useDocumentTitle from "../../../hooks/useDocumentTitle";
 import { getNumberOfPosts, getPostList } from "../../../lib/api";
 
 type Props = {
@@ -13,6 +14,8 @@ type Props = {
 export default function Posts(props: Props) {
   const { infos, totalPage } = props;
   // console.log(props);
+
+  useDocumentTitle("文章列表");
 
   return (
     <Layout>
