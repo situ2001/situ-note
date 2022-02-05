@@ -24,7 +24,7 @@ const SiteBar = () => {
           </Box>
           <Box>
             <Typography component="div" variant="h6" sx={{ mr: 2 }}>
-              <Link href="/posts/page/1">BLOG</Link>
+              <Link href="/posts/">BLOG</Link>
             </Typography>
           </Box>
         </Toolbar>

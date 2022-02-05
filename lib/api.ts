@@ -23,13 +23,7 @@ export function getAllPostsStaticPath() {
   return res;
 }
 
-// TODO get number of posts
-export function getNumberOfPosts() {
-  return glob.sync(`${postDir}/**/*.md`).length;
-}
-
-// TODO get infos of posts from begin to end
-export function getPostList(page: number = 1, itemsPerPage: number = 10) {
+export function getPostList() {
   // const numberOfPosts = getNumberOfPosts();
   const paths = glob.sync(`${postDir}/**/*.md`);
   const infos: any[] = [];
@@ -52,9 +46,7 @@ export function getPostList(page: number = 1, itemsPerPage: number = 10) {
     });
   });
   infos.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-  const begin = (page - 1) * itemsPerPage;
-  const end = page * itemsPerPage;
-  return infos.slice(begin, end);
+  return infos;
 }
 
 export function getPostBySlug(slug: string[], fields = []) {
