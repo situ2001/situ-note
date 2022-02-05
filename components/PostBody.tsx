@@ -11,9 +11,6 @@ const ImageBox = styled.div`
   display: flex;
   justify-content: center;
   position: relative;
-  @media (min-width: 600px) {
-    margin: 8px 20%;
-  }
 `;
 
 const Img = (mapImageNameToDimensions: ImageNameDimensions, path: string) => {
