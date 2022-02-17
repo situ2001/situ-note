@@ -34,7 +34,7 @@ export default function PostIndex(props: { postDetails: any[] }) {
 
   return (
     <Layout>
-      <Container>
+      <Container maxWidth="md">
         <Box>
           {postDetails
             .slice(
