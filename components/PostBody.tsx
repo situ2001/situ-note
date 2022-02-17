@@ -10,18 +10,21 @@ import { Divider, Typography } from "@mui/material";
 const ImageBox = styled.div`
   display: flex;
   justify-content: center;
-  position: relative;
+`;
+
+const StyledImage = styled(Image)`
+  border-radius: 10px;
 `;
 
 const Img = (mapImageNameToDimensions: ImageNameDimensions, path: string) => {
-  return function MyImg({ src, alt }: { src: string; alt: string }) {
-    src = src.slice(2);
-    const { height, width } = mapImageNameToDimensions[src];
+  return function MyImg({ src: filename, alt }: { src: string; alt: string }) {
+    filename = filename.slice(2);
+    const { height, width } = mapImageNameToDimensions[filename];
     return (
       <ImageBox>
-        <Image
+        <StyledImage
           alt={alt}
-          src={`${path}${src}`}
+          src={`${path}${filename}`}
           height={height}
           width={width}
           objectFit="contain"
