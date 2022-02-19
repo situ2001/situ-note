@@ -11,6 +11,8 @@ const Progress = styled(LinearProgress)`
   width: 100%;
 `;
 
+let timer: NodeJS.Timeout | null;
+
 const ProgressBar = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -19,7 +21,10 @@ const ProgressBar = () => {
     url: string,
     { shallow }: { shallow: boolean }
   ) => {
-    // console.log("Change start", url, shallow);
+    if (timer !== null) {
+      clearTimeout(timer);
+      timer = null;
+    }
     setLoading(true);
   };
 
@@ -28,8 +33,12 @@ const ProgressBar = () => {
     { shallow }: { shallow: boolean }
   ) => {
     if (!shallow) {
-      // console.log("Change complete", url, shallow);
-      setLoading(false);
+      timer = setTimeout(() => {
+        setLoading(false);
+        if (timer !== null) {
+          timer = null;
+        }
+      }, 200);
     }
   };
 
