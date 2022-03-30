@@ -2,7 +2,6 @@ import { Container, Pagination, Box, styled } from "@mui/material";
 import { GetStaticProps } from "next";
 import React, { useState } from "react";
 import Layout from "../../components/Layout";
-import { getPostList } from "../../lib/api";
 import PostInfoCard from "../../components/PostInfoCard";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
 
@@ -42,7 +41,7 @@ export default function PostIndex(props: { postDetails: any[] }) {
               currentPage * NUMBER_PER_PAGE
             )
             .map((info, i) => {
-              const { title, date, description, categories, link } = info;
+              const { title, date, description, categories, slug } = info;
               return (
                 <PostInfoCard
                   key={i}
@@ -50,7 +49,7 @@ export default function PostIndex(props: { postDetails: any[] }) {
                   date={date}
                   description={description}
                   categories={categories}
-                  link={link}
+                  link={`/posts/${slug}`}
                 ></PostInfoCard>
               );
             })}
@@ -67,7 +66,9 @@ export default function PostIndex(props: { postDetails: any[] }) {
 }
 
 export const getStaticProps: GetStaticProps<any> = async () => {
-  const postDetails = getPostList();
+  const postDetails: any[] = await (
+    await fetch(`https://${process.env.API_URL}/posts/list/infos`)
+  ).json();
 
   return {
     props: {
