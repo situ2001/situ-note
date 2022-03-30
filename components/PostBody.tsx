@@ -1,11 +1,14 @@
+/* eslint-disable @next/next/no-img-element */
 import Image from "next/image";
 import { ReactNode } from "react";
-import { processor } from "../lib/markdownProcessor";
+import { markdownProcessor } from "../lib/markdown-processor";
 import type { BlogPostProps, ImageNameDimensions } from "../types/BlogPost";
 import "katex/dist/katex.min.css";
 import "highlight.js/styles/stackoverflow-light.css";
 import styled from "@emotion/styled";
 import { Divider, Typography } from "@mui/material";
+import React from "react";
+import rehypeReact from "rehype-react";
 
 const ImageBox = styled.div`
   display: flex;
@@ -16,6 +19,7 @@ const StyledImage = styled(Image)`
   border-radius: 10px;
 `;
 
+// TODO
 const Img = (mapImageNameToDimensions: ImageNameDimensions, path: string) => {
   return function MyImg({ src: filename, alt }: { src: string; alt: string }) {
     filename = filename.slice(2);
@@ -55,17 +59,21 @@ const components: Record<string, ReactNode> = {
     />
   ),
   hr: (props: any) => <Divider {...props} />,
-  img: undefined,
+  img: (props: any) => {
+    // TODO use next/image
+    return (
+      <ImageBox>
+        <img style={{ borderRadius: "10px" }} src={props.src} alt={props.alt} />
+      </ImageBox>
+    );
+  },
 };
 
-export default function PostBody({
-  path,
-  mapImageNameToDimensions,
-  content,
-}: BlogPostProps) {
-  components.img = Img(mapImageNameToDimensions, path);
+const processor = markdownProcessor.use(rehypeReact, {
+  createElement: React.createElement,
+  components: components,
+});
 
-  const contentProcessor = processor(components);
-
-  return <article>{contentProcessor.processSync(content).result}</article>;
+export default function PostBody({ content }: BlogPostProps) {
+  return <article>{processor.processSync(content).result}</article>;
 }

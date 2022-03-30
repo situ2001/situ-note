@@ -1,4 +1,3 @@
-import { getAllPostsStaticPath, getPostBySlug } from "../../lib/api";
 import { Container, Divider } from "@mui/material";
 import { GetStaticPaths, GetStaticProps } from "next";
 import type { Props } from "../../types/BlogPost";
@@ -7,12 +6,7 @@ import Layout from "../../components/Layout";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
 import PostHeader from "../../components/PostHeader";
 
-export default function Post({
-  frontMatter,
-  path,
-  mapImageNameToDimensions,
-  content,
-}: Props) {
+export default function Post({ frontMatter, content }: Props) {
   useDocumentTitle(frontMatter.title);
 
   return (
@@ -20,11 +14,7 @@ export default function Post({
       <Container maxWidth="md">
         <PostHeader frontMatter={frontMatter} />
         <Divider sx={{ mb: 2 }}></Divider>
-        <PostBody
-          path={path}
-          content={content}
-          mapImageNameToDimensions={mapImageNameToDimensions}
-        />
+        <PostBody content={content} />
       </Container>
     </Layout>
   );
@@ -33,25 +23,30 @@ export default function Post({
 export const getStaticProps: GetStaticProps<Props> = async ({
   params,
 }: any) => {
-  const post = getPostBySlug(params.slug);
+  const post = await (
+    await fetch(`https://${process.env.API_URL}/posts/${params.slug}`)
+  ).json();
+
+  // console.log(post);
+  // console.log(params);
 
   return {
     props: {
       content: post.content,
-      frontMatter: post.data,
-      path: post.path,
-      mapImageNameToDimensions: post.mapImageNameToSize,
+      frontMatter: post.frontMatter,
     },
   };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const slugs = getAllPostsStaticPath();
+  const slugs: string[] = await (
+    await fetch(`https://${process.env.API_URL}/posts/list/names`)
+  ).json();
 
   return {
-    paths: slugs.map((slug) => ({
+    paths: slugs.map((slug: string) => ({
       params: {
-        slug: slug.split("/"),
+        slug,
       },
     })),
     fallback: false,

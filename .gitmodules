@@ -1,3 +1,0 @@
-[submodule "blog-posts"]
-	path = contents/blog-posts
-	url = https://github.com/situ2001/blog-posts.git

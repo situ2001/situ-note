@@ -15,12 +15,8 @@ export type FrontMatter = {
 export type Props = {
   content: string;
   frontMatter: FrontMatter;
-  path: string;
-  mapImageNameToDimensions: ImageNameDimensions;
 };
 
 export type BlogPostProps = {
   content: string;
-  path: string;
-  mapImageNameToDimensions: ImageNameDimensions;
 };
