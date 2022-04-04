@@ -5,6 +5,12 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      'sans': ['Noto Sans SC'],
+      'serif': ['Noto Serif SC'],
+      'mono': ['Noto Sans Mono'],
+      'body': ['Noto Sans SC'],
+    }
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 }

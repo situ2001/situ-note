@@ -1,33 +1,15 @@
-import { Box, createTheme, ThemeProvider } from "@mui/material";
-import SiteBar from "./SiteBar";
+import Footer from "./Footer";
+import Header from "./Header";
 
-const theme = createTheme({
-  typography: {
-    fontFamily: [
-      "Roboto",
-      '"Noto Sans SC"',
-      "-apple-system",
-      "BlinkMacSystemFont",
-      '"Segoe UI"',
-      '"Helvetica Neue"',
-      "Arial",
-      "sans-serif",
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(","),
-  },
-});
-
+// TODO 添加 Footer
 const Layout = (props: { children: React.ReactNode }) => {
   const { children } = props;
   return (
-    <ThemeProvider theme={theme}>
-      <Box>
-        <SiteBar />
-        {children}
-      </Box>
-    </ThemeProvider>
+    <div className="px-4 md:px-16 flex flex-col min-h-screen">
+      <Header />
+      <main className="flex-1">{children}</main>
+      <Footer />
+    </div>
   );
 };
 

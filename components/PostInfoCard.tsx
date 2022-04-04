@@ -1,4 +1,4 @@
-import { Box, Card, Typography } from "@mui/material";
+import moment from "moment";
 import Link from "next/link";
 
 type PostInfo = {
@@ -12,24 +12,33 @@ type PostInfo = {
 const PostInfoCard = (props: PostInfo) => {
   const { title, date, description, categories, link } = props;
 
+  // UTC (But in fact CST) => Real UTC
   const dateObject = new Date(date);
-  const y = dateObject.getFullYear();
-  const m = dateObject.getMonth() + 1;
-  const d = dateObject.getDate();
+  dateObject.setHours(dateObject.getHours() - 8);
+  const realTimeUTC = dateObject.getTime();
+  const currentMoment = moment(realTimeUTC);
 
+  // TODO 移动端适配 Box layout
   return (
-    <Card sx={{ my: 2, mx: 1 }}>
-      <Box sx={{ m: 2 }}>
+    <div className="card card-normal w-full bg-base-100 shadow-xl mb-8">
+      <div className="card-body">
         <Link href={link} passHref>
-          <Typography sx={{ cursor: "pointer" }} variant="h5">
-            {title}
-          </Typography>
+          <div className="card-title cursor-pointer">{title}</div>
         </Link>
-        <Typography>{`${y}年${m}月${d}日`}</Typography>
-        <Typography>{description}</Typography>
-        <Typography>{categories}</Typography>
-      </Box>
-    </Card>
+        <div>{description}</div>
+        <div className="card-actions justify-between">
+          <div>
+            <div>{currentMoment.format("ll")}</div>
+            <div className="badge">
+              <div>{categories}</div>
+            </div>
+          </div>
+          <Link href={link} passHref>
+            <button className="btn btn-primary">阅读</button>
+          </Link>
+        </div>
+      </div>
+    </div>
   );
 };
 
