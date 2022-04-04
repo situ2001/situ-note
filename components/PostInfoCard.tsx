@@ -1,4 +1,3 @@
-import moment from "moment";
 import Link from "next/link";
 
 type PostInfo = {
@@ -12,11 +11,10 @@ type PostInfo = {
 const PostInfoCard = (props: PostInfo) => {
   const { title, date, description, categories, link } = props;
 
-  // UTC (But in fact CST) => Real UTC
   const dateObject = new Date(date);
-  dateObject.setHours(dateObject.getHours() - 8);
-  const realTimeUTC = dateObject.toString();
-  const currentMoment = moment(realTimeUTC);
+  const y = dateObject.getFullYear();
+  const m = dateObject.getMonth() + 1;
+  const d = dateObject.getDate();
 
   // TODO 移动端适配 Box layout
   return (
@@ -28,7 +26,7 @@ const PostInfoCard = (props: PostInfo) => {
         <div>{description}</div>
         <div className="card-actions justify-between">
           <div>
-            <div>{currentMoment.format("ll")}</div>
+            <div>{`${y}年${m}月${d}日`}</div>
             <div className="badge">
               <div>{categories}</div>
             </div>
