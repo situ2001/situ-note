@@ -1,4 +1,3 @@
-import { Container, Divider } from "@mui/material";
 import { GetStaticPaths, GetStaticProps } from "next";
 import type { Props } from "../../types/BlogPost";
 import PostBody from "../../components/PostBody";
@@ -11,11 +10,14 @@ export default function Post({ frontMatter, content }: Props) {
 
   return (
     <Layout>
-      <Container maxWidth="md">
-        <PostHeader frontMatter={frontMatter} />
-        <Divider sx={{ mb: 2 }}></Divider>
-        <PostBody content={content} />
-      </Container>
+      <div className="flex justify-center">
+        <div className="w-full max-w-2xl">
+          <PostHeader frontMatter={frontMatter} />
+          <div className="divider">正文开始</div>
+          <PostBody content={content} />
+          <div className="divider">正文结束</div>
+        </div>
+      </div>
     </Layout>
   );
 }
@@ -26,9 +28,6 @@ export const getStaticProps: GetStaticProps<Props> = async ({
   const post = await (
     await fetch(`https://${process.env.API_URL}/posts/${params.slug}`)
   ).json();
-
-  // console.log(post);
-  // console.log(params);
 
   return {
     props: {

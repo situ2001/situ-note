@@ -1,4 +1,3 @@
-import { Typography } from "@mui/material";
 import React from "react";
 import type { FrontMatter } from "../types/BlogPost";
 
@@ -16,6 +15,7 @@ const dayString = [
   "星期日",
 ];
 
+// TODO refactor (use tailwind css)
 const PostHeader = ({ frontMatter }: Props) => {
   const dateObject = new Date(frontMatter.date);
   const y = dateObject.getFullYear();
@@ -25,17 +25,8 @@ const PostHeader = ({ frontMatter }: Props) => {
 
   return (
     <React.Fragment>
-      <Typography
-        component="div"
-        variant="h3"
-        sx={{
-          fontWeight: "800",
-          my: 2,
-        }}
-      >
-        {frontMatter.title}
-      </Typography>
-      <Typography component="div">{`${y}年${m}月${d}日 ${dayString[day]}`}</Typography>
+      <h1 className="text-4xl font-extrabold my-2 text-center">{frontMatter.title}</h1>
+      <p className="text-center">{`${y}年${m}月${d}日 ${dayString[day]}`}</p>
     </React.Fragment>
   );
 };

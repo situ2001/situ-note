@@ -1,48 +1,19 @@
 /* eslint-disable @next/next/no-img-element */
-import Image from "next/image";
 import { ReactNode } from "react";
 import { markdownProcessor } from "../lib/markdown-processor";
-import type { BlogPostProps, ImageNameDimensions } from "../types/BlogPost";
+import type { BlogPostProps } from "../types/BlogPost";
 import "katex/dist/katex.min.css";
-import "highlight.js/styles/stackoverflow-light.css";
-import styled from "@emotion/styled";
-import { Divider, Typography } from "@mui/material";
+import "highlight.js/styles/stackoverflow-light.css"; // TODO fix styles of <block>
 import React from "react";
 import rehypeReact from "rehype-react";
 
-const ImageBox = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
-const StyledImage = styled(Image)`
-  border-radius: 10px;
-`;
-
-// TODO
-const Img = (mapImageNameToDimensions: ImageNameDimensions, path: string) => {
-  return function MyImg({ src: filename, alt }: { src: string; alt: string }) {
-    filename = filename.slice(2);
-    const { height, width } = mapImageNameToDimensions[filename];
-    return (
-      <ImageBox>
-        <StyledImage
-          alt={alt}
-          src={`${path}${filename}`}
-          height={height}
-          width={width}
-          objectFit="contain"
-          loading="lazy"
-        />
-      </ImageBox>
-    );
-  };
-};
-
 const components: Record<string, ReactNode> = {
-  h2: (props: any) => <Typography variant="h4" sx={{ mt: 4 }} {...props} />,
-  h3: (props: any) => <Typography variant="h5" sx={{ mt: 3 }} {...props} />,
-  p: (props: any) => <Typography variant="body1" sx={{ my: 1.5 }} {...props} />,
+  h2: (props: any) => (
+    <h2 className="text-3xl font-semibold mt-8 mb-4" {...props} />
+  ),
+  h3: (props: any) => <h3 className="text-2xl mt-6 mb-4" {...props} />,
+  h4: (props: any) => <h4 className="text-xl mt-6 mb-4" {...props} />,
+  p: (props: any) => <p className="my-4" {...props} />,
   a: (props: any) => <a className="break-all underline" {...props} />,
   ol: (props: any) => (
     <ol className="list-decimal list-inside my-4" {...props} />
@@ -50,21 +21,16 @@ const components: Record<string, ReactNode> = {
   ul: (props: any) => <ul className="list-disc list-inside my-4" {...props} />,
   blockquote: (props: any) => (
     <blockquote
-      style={{
-        borderLeft: "4px solid #ddd",
-        padding: "0 16px",
-        margin: 0,
-      }}
+      className="px-4 border-zinc-200 border-l-4 border-solid"
       {...props}
     />
   ),
-  hr: (props: any) => <Divider {...props} />,
+  code: (props: any) => <code className="bg-zinc-100 rounded" {...props} />,
   img: (props: any) => {
-    // TODO use next/image
     return (
-      <ImageBox>
-        <img style={{ borderRadius: "10px" }} src={props.src} alt={props.alt} />
-      </ImageBox>
+      <div className="flex justify-center">
+        <img className="rounded-xl" src={props.src} alt={props.alt} />
+      </div>
     );
   },
 };
