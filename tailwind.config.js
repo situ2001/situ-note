@@ -8,7 +8,7 @@ module.exports = {
     fontFamily: {
       'sans': ['Noto Sans SC'],
       'serif': ['Noto Serif SC'],
-      'mono': ['Noto Sans Mono'],
+      'mono': ['Fira Code'],
       'body': ['Noto Sans SC'],
     }
   },

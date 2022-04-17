@@ -19,3 +19,7 @@ a {
 * {
   box-sizing: border-box;
 }
+
+code[class*="language"] {
+  @apply text-sm;
+}
