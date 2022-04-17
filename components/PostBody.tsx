@@ -13,7 +13,7 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css";
 
-const components: Record<string, ReactNode> = {
+const components: Record<string, any> = {
   h2: (props: any) => (
     <h2 className="text-3xl font-semibold mt-8 mb-4" {...props} />
   ),
