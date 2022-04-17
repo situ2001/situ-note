@@ -2,7 +2,7 @@
 import { ReactNode } from "react";
 import type { BlogPostProps } from "../types/BlogPost";
 import ReactMarkdown from "react-markdown";
-import SyntaxHighlighter from "react-syntax-highlighter";
+import { SyntaxHighlighter } from "../lib/custom-syntax-highlighter";
 import {
   atomOneDark,
   atomOneLight,
