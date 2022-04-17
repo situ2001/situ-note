@@ -12,11 +12,21 @@ import { IconList } from "../types/PersonalCard";
 
 const iconList: IconList = [
   {
-    element: <FiPenTool className="mr-2" size={20} />,
+    element: (
+      <FiPenTool
+        className="mr-2 hover:scale-150 transition delay-100 ease-in-out"
+        size={20}
+      />
+    ),
     href: "/page",
   },
   {
-    element: <FiGithub className="mr-2" size={20} />,
+    element: (
+      <FiGithub
+        className="mr-2 hover:scale-150 transition delay-100 ease-in-out"
+        size={20}
+      />
+    ),
     href: "https://github.com/situ2001",
   },
 ];
