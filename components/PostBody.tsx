@@ -1,11 +1,17 @@
 /* eslint-disable @next/next/no-img-element */
 import { ReactNode } from "react";
-import { markdownProcessor } from "../lib/markdown-processor";
 import type { BlogPostProps } from "../types/BlogPost";
+import ReactMarkdown from "react-markdown";
+import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
+import {
+  a11yLight,
+  a11yDark,
+} from "react-syntax-highlighter/dist/cjs/styles/hljs";
+import { CodeProps, OrderedListProps } from "react-markdown/lib/ast-to-react";
+import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css";
-import "highlight.js/styles/stackoverflow-light.css"; // TODO fix styles of <block>
-import React from "react";
-import rehypeReact from "rehype-react";
 
 const components: Record<string, ReactNode> = {
   h2: (props: any) => (
@@ -15,7 +21,7 @@ const components: Record<string, ReactNode> = {
   h4: (props: any) => <h4 className="text-xl mt-6 mb-4" {...props} />,
   p: (props: any) => <p className="my-4" {...props} />,
   a: (props: any) => <a className="break-all underline" {...props} />,
-  ol: (props: any) => (
+  ol: ({ ordered, ...props }: OrderedListProps) => (
     <ol className="list-decimal list-inside my-4" {...props} />
   ),
   ul: (props: any) => <ul className="list-disc list-inside my-4" {...props} />,
@@ -25,7 +31,23 @@ const components: Record<string, ReactNode> = {
       {...props}
     />
   ),
-  code: (props: any) => <code className="bg-zinc-100 rounded" {...props} />,
+  code({ node, inline, className, children, ...props }: CodeProps) {
+    const match = /language-(\w+)/.exec(className || "");
+    return !inline && match ? (
+      <SyntaxHighlighter
+        style={a11yLight}
+        language={match[1]}
+        PreTag="div"
+        {...props}
+      >
+        {String(children).replace(/\n$/, "")}
+      </SyntaxHighlighter>
+    ) : (
+      <code className={`${className ?? ""}bg-zinc-100 rounded`} {...props}>
+        {children}
+      </code>
+    );
+  },
   img: (props: any) => {
     return (
       <div className="flex justify-center">
@@ -35,11 +57,14 @@ const components: Record<string, ReactNode> = {
   },
 };
 
-const processor = markdownProcessor.use(rehypeReact, {
-  createElement: React.createElement,
-  components: components,
-});
-
 export default function PostBody({ content }: BlogPostProps) {
-  return <article>{processor.processSync(content).result}</article>;
+  return (
+    <ReactMarkdown
+      components={components}
+      remarkPlugins={[[remarkGfm, { singleTilde: false }], remarkMath]}
+      rehypePlugins={[rehypeKatex]}
+    >
+      {content}
+    </ReactMarkdown>
+  );
 }
