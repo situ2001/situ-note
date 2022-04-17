@@ -2,8 +2,11 @@
 import { ReactNode } from "react";
 import type { BlogPostProps } from "../types/BlogPost";
 import ReactMarkdown from "react-markdown";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vs } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
+import {
+  a11yLight,
+  a11yDark,
+} from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import { CodeProps, OrderedListProps } from "react-markdown/lib/ast-to-react";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
@@ -31,7 +34,12 @@ const components: Record<string, any> = {
   code({ node, inline, className, children, ...props }: CodeProps) {
     const match = /language-(\w+)/.exec(className || "");
     return !inline && match ? (
-      <SyntaxHighlighter style={vs} language={match[1]} PreTag="div" {...props}>
+      <SyntaxHighlighter
+        style={a11yLight}
+        language={match[1]}
+        PreTag="div"
+        {...props}
+      >
         {String(children).replace(/\n$/, "")}
       </SyntaxHighlighter>
     ) : (
