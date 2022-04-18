@@ -1,12 +1,17 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import type { Props } from "../../types/BlogPost";
-import PostBody from "../../components/PostBody";
 import Layout from "../../components/Layout";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
 import PostHeader from "../../components/PostHeader";
+import dynamic from "next/dynamic";
 
 export default function Post({ frontMatter, content }: Props) {
   useDocumentTitle(frontMatter.title);
+
+  // disable ssr to prevent pre-render
+  const PostBody = dynamic(() => import("../../components/PostBody"), {
+    ssr: false,
+  });
 
   return (
     <Layout>

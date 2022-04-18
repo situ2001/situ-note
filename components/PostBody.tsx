@@ -12,7 +12,6 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css";
 import { useDarkMode } from "../hooks/useDarkMode";
-import React, { useEffect, useLayoutEffect, useState } from "react";
 
 const components: Record<string, any> = {
   h2: (props: any) => (
@@ -42,49 +41,39 @@ const components: Record<string, any> = {
 };
 
 export default function PostBody({ content }: BlogPostProps) {
-  const { isDarkMode, enable, disable } = useDarkMode();
-
-  const [painted, setPainted] = useState(false);
-
-  useLayoutEffect(() => {
-    setPainted(true);
-  }, [setPainted]);
+  const { isDarkMode } = useDarkMode();
 
   return (
-    <React.Fragment>
-      <ReactMarkdown
-        components={{
-          ...components,
-          code({ node, inline, className, children, ...props }: CodeProps) {
-            const match = /language-(\w+)/.exec(className || "");
-            return !inline && match ? (
-              painted ? (
-                <SyntaxHighlighter
-                  style={isDarkMode ? atomOneDark : atomOneLight}
-                  language={match[1]}
-                  PreTag="div"
-                  {...props}
-                >
-                  {String(children).replace(/\n$/, "")}
-                </SyntaxHighlighter>
-              ) : null
-            ) : (
-              <code
-                className={`${
-                  className ?? ""
-                }bg-zinc-100 dark:bg-slate-700 rounded`}
-                {...props}
-              >
-                {children}
-              </code>
-            );
-          },
-        }}
-        remarkPlugins={[[remarkGfm, { singleTilde: false }], remarkMath]}
-        rehypePlugins={[rehypeKatex]}
-      >
-        {content}
-      </ReactMarkdown>
-    </React.Fragment>
+    <ReactMarkdown
+      components={{
+        ...components,
+        code({ node, inline, className, children, ...props }: CodeProps) {
+          const match = /language-(\w+)/.exec(className || "");
+          return !inline && match ? (
+            <SyntaxHighlighter
+              style={isDarkMode ? atomOneDark : atomOneLight}
+              language={match[1]}
+              PreTag="div"
+              {...props}
+            >
+              {String(children).replace(/\n$/, "")}
+            </SyntaxHighlighter>
+          ) : (
+            <code
+              className={`${
+                className ?? ""
+              }bg-zinc-100 dark:bg-slate-700 rounded`}
+              {...props}
+            >
+              {children}
+            </code>
+          );
+        },
+      }}
+      remarkPlugins={[[remarkGfm, { singleTilde: false }], remarkMath]}
+      rehypePlugins={[rehypeKatex]}
+    >
+      {content}
+    </ReactMarkdown>
   );
 }
