@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import { ReactNode } from "react";
 import type { BlogPostProps } from "../types/BlogPost";
 import ReactMarkdown from "react-markdown";
 import { SyntaxHighlighter } from "../lib/custom-syntax-highlighter";
@@ -12,6 +11,8 @@ import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css";
+import { useDarkMode } from "../hooks/useDarkMode";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 
 const components: Record<string, any> = {
   h2: (props: any) => (
@@ -27,27 +28,10 @@ const components: Record<string, any> = {
   ul: (props: any) => <ul className="list-disc list-inside my-4" {...props} />,
   blockquote: (props: any) => (
     <blockquote
-      className="px-4 border-zinc-200 border-l-4 border-solid"
+      className="px-4 border-zinc-200 dark:border-slate-500 border-l-4 border-solid"
       {...props}
     />
   ),
-  code({ node, inline, className, children, ...props }: CodeProps) {
-    const match = /language-(\w+)/.exec(className || "");
-    return !inline && match ? (
-      <SyntaxHighlighter
-        style={atomOneLight}
-        language={match[1]}
-        PreTag="div"
-        {...props}
-      >
-        {String(children).replace(/\n$/, "")}
-      </SyntaxHighlighter>
-    ) : (
-      <code className={`${className ?? ""}bg-zinc-100 rounded`} {...props}>
-        {children}
-      </code>
-    );
-  },
   img: (props: any) => {
     return (
       <div className="flex justify-center">
@@ -58,13 +42,49 @@ const components: Record<string, any> = {
 };
 
 export default function PostBody({ content }: BlogPostProps) {
+  const { isDarkMode, enable, disable } = useDarkMode();
+
+  const [painted, setPainted] = useState(false);
+
+  useLayoutEffect(() => {
+    setPainted(true);
+  }, [setPainted]);
+
   return (
-    <ReactMarkdown
-      components={components}
-      remarkPlugins={[[remarkGfm, { singleTilde: false }], remarkMath]}
-      rehypePlugins={[rehypeKatex]}
-    >
-      {content}
-    </ReactMarkdown>
+    <React.Fragment>
+      <ReactMarkdown
+        components={{
+          ...components,
+          code({ node, inline, className, children, ...props }: CodeProps) {
+            const match = /language-(\w+)/.exec(className || "");
+            return !inline && match ? (
+              painted ? (
+                <SyntaxHighlighter
+                  style={isDarkMode ? atomOneDark : atomOneLight}
+                  language={match[1]}
+                  PreTag="div"
+                  {...props}
+                >
+                  {String(children).replace(/\n$/, "")}
+                </SyntaxHighlighter>
+              ) : null
+            ) : (
+              <code
+                className={`${
+                  className ?? ""
+                }bg-zinc-100 dark:bg-slate-700 rounded`}
+                {...props}
+              >
+                {children}
+              </code>
+            );
+          },
+        }}
+        remarkPlugins={[[remarkGfm, { singleTilde: false }], remarkMath]}
+        rehypePlugins={[rehypeKatex]}
+      >
+        {content}
+      </ReactMarkdown>
+    </React.Fragment>
   );
 }

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import DarkMode from "./DarkMode";
 
 const Header = () => {
   return (
@@ -13,6 +14,7 @@ const Header = () => {
           <div>
             <Link href="/page/">Blog</Link>
           </div>
+          <DarkMode />
         </div>
       </div>
     </header>
