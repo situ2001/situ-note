@@ -16,12 +16,17 @@ const Greeting = ({
       <div className="flex flex-col justify-end flex-1">
         <p className="text-4xl font-extrabold w-full">Hi</p>
         <p className="text-2xl w-full">I am {name}</p>
-        <p className="mt-2 opacity-50 text-xs"> You may be interested in my...</p>
+        <p className="mt-2 opacity-50 text-xs">
+          You may be interested in my...
+        </p>
         <div className="mt-2 flex">
           {iconList.map((obj, i) => (
-            <Link key={i} href={obj.href}>
-              <a>{obj.element}</a>
-            </Link>
+            <>
+              <Link key={i} href={obj.href}>
+                {obj.element}
+              </Link>
+              <div className="mx-1"></div>
+            </>
           ))}
         </div>
       </div>

@@ -7,25 +7,22 @@ import {
   FiGitMerge,
   FiHelpCircle,
 } from "react-icons/fi";
-import { VscIssues } from "react-icons/vsc";
 import { IconList } from "../types/PersonalCard";
 
 const iconList: IconList = [
   {
     element: (
-      <FiPenTool
-        className="mr-2 hover:scale-150 transition delay-100 ease-in-out"
-        size={20}
-      />
+      <div className="tooltip tooltip-bottom" data-tip="Blog">
+        <FiPenTool className="cursor-pointer" size={20} />
+      </div>
     ),
     href: "/page",
   },
   {
     element: (
-      <FiGithub
-        className="mr-2 hover:scale-150 transition delay-100 ease-in-out"
-        size={20}
-      />
+      <div className="tooltip tooltip-bottom" data-tip="GitHub">
+        <FiGithub className="cursor-pointer" size={20} />
+      </div>
     ),
     href: "https://github.com/situ2001",
   },
