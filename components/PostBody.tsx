@@ -42,7 +42,7 @@ const components: Record<string, any> = {
 };
 
 export default function PostBody({ content }: BlogPostProps) {
-  const { isDarkMode, enable, disable } = useDarkMode();
+  const { currentTheme } = useDarkMode();
 
   const [painted, setPainted] = useState(false);
 
@@ -60,7 +60,7 @@ export default function PostBody({ content }: BlogPostProps) {
             return !inline && match ? (
               painted ? (
                 <SyntaxHighlighter
-                  style={isDarkMode ? atomOneDark : atomOneLight}
+                  style={currentTheme === "dark" ? atomOneDark : atomOneLight}
                   language={match[1]}
                   PreTag="div"
                   {...props}

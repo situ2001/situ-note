@@ -2,7 +2,7 @@ import { FiMoon, FiSun } from "react-icons/fi";
 import { useDarkMode } from "../hooks/useDarkMode";
 
 const DarkMode = () => {
-  const { isDarkMode, toggle } = useDarkMode();
+  const { currentTheme, setTheme } = useDarkMode();
 
   return (
     <div className="ml-2 flex justify-center items-center">
@@ -10,8 +10,10 @@ const DarkMode = () => {
         <input
           type="checkbox"
           onChange={() => {}}
-          onClick={toggle}
-          checked={isDarkMode}
+          onClick={(e: any) => {
+            setTheme(e.target.checked ? "dark" : "light");
+          }}
+          checked={currentTheme === "dark"}
         />
         <FiSun className="swap-off" />
         <FiMoon className="swap-on" />

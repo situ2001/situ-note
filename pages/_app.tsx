@@ -4,11 +4,14 @@ import "@fontsource/noto-sans-sc";
 import "@fontsource/fira-code";
 
 import type { AppProps } from "next/app";
-import { useDarkMode } from "../hooks/useDarkMode";
+import { ThemeProvider } from "next-themes";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const {} = useDarkMode();
-  return <Component {...pageProps} />;
+  return (
+    <ThemeProvider enableSystem={true} attribute="data-theme">
+      <Component {...pageProps} />
+    </ThemeProvider>
+  );
 }
 
 export default MyApp;

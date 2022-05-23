@@ -6,15 +6,15 @@ module.exports = {
   theme: {
     extend: {},
     fontFamily: {
-      'sans': ['Noto Sans SC'],
-      'serif': ['Noto Serif SC'],
-      'mono': ['Fira Code'],
-      'body': ['Noto Sans SC'],
-    }
+      sans: ["Noto Sans SC"],
+      serif: ["Noto Serif SC"],
+      mono: ["Fira Code"],
+      body: ["Noto Sans SC"],
+    },
   },
   plugins: [require("daisyui")],
   daisyui: {
     themes: ["light", "dark"],
   },
-  darkMode: 'class',
-}
+  darkMode: "class",
+};
