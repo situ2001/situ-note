@@ -4,9 +4,17 @@ import PostBody from "../../components/PostBody";
 import Layout from "../../components/Layout";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
 import PostHeader from "../../components/PostHeader";
+import { useRouter } from "next/router";
+import Loading from "../../components/Loading";
 
 export default function Post({ frontMatter, content }: Props) {
-  useDocumentTitle(frontMatter.title);
+  const { isFallback } = useRouter();
+
+  useDocumentTitle(frontMatter?.title ?? "Loading...");
+
+  if (isFallback) {
+    return <Loading />;
+  }
 
   return (
     <Layout>
@@ -25,15 +33,24 @@ export default function Post({ frontMatter, content }: Props) {
 export const getStaticProps: GetStaticProps<Props> = async ({
   params,
 }: any) => {
-  const post = await (
-    await fetch(`https://${process.env.API_URL}/posts/${params.slug}`)
-  ).json();
+  const postRequest = await fetch(
+    `https://${process.env.API_URL}/posts/${params.slug}`
+  );
+
+  if (!postRequest.ok) {
+    return {
+      notFound: true,
+    };
+  }
+
+  const post = await postRequest.json();
 
   return {
     props: {
       content: post.content,
       frontMatter: post.frontMatter,
     },
+    revalidate: 5,
   };
 };
 
@@ -48,6 +65,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
         slug,
       },
     })),
-    fallback: false,
+    fallback: true,
   };
 };

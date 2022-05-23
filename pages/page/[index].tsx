@@ -1,5 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from "next";
+import { useRouter } from "next/router";
 import Layout from "../../components/Layout";
+import Loading from "../../components/Loading";
 import Pagination from "../../components/Pagination";
 import PostInfoCard from "../../components/PostInfoCard";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
@@ -12,32 +14,39 @@ export default function PostIndex(props: {
 }) {
   const { postDetails, totalPage } = props;
 
+  const { isFallback } = useRouter();
+
   useDocumentTitle("文章列表");
 
-  return (
-    <Layout>
-      <div className="flex justify-center w-full">
-        <div className="flex flex-col justify-center items-center w-full max-w-2xl">
-          {postDetails.map((info, i) => {
-            const { title, date, description, categories, slug } = info;
-            return (
-              <PostInfoCard
-                key={i}
-                title={title}
-                date={date}
-                description={description}
-                categories={categories}
-                link={`/posts/${slug}`}
-              ></PostInfoCard>
-            );
-          })}
-          <div className="w-full">
-            <Pagination totalPage={totalPage} />
+  if (isFallback) {
+    // TODO skeleton
+    return <Loading />;
+  } else {
+    return (
+      <Layout>
+        <div className="flex justify-center w-full">
+          <div className="flex flex-col justify-center items-center w-full max-w-2xl">
+            {postDetails.map((info, i) => {
+              const { title, date, description, categories, slug } = info;
+              return (
+                <PostInfoCard
+                  key={i}
+                  title={title}
+                  date={date}
+                  description={description}
+                  categories={categories}
+                  link={`/posts/${slug}`}
+                ></PostInfoCard>
+              );
+            })}
+            <div className="w-full">
+              <Pagination totalPage={totalPage} />
+            </div>
           </div>
         </div>
-      </div>
-    </Layout>
-  );
+      </Layout>
+    );
+  }
 }
 
 export const getStaticProps: GetStaticProps<any> = async ({ params }) => {
@@ -55,11 +64,18 @@ export const getStaticProps: GetStaticProps<any> = async ({ params }) => {
     currentPage * NUMBER_PER_PAGE
   );
 
+  if (postDetails.length === 0) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
     props: {
       postDetails,
       totalPage,
     },
+    revalidate: 5,
   };
 };
 
@@ -81,6 +97,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
         index,
       },
     })),
-    fallback: false,
+    fallback: true,
   };
 };
