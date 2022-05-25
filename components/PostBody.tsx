@@ -72,7 +72,7 @@ export default function PostBody({ content }: BlogPostProps) {
               <code
                 className={`${
                   className ?? ""
-                }bg-zinc-100 dark:bg-slate-700 rounded`}
+                }bg-zinc-100 dark:bg-slate-700 rounded px-1`}
                 {...props}
               >
                 {children}
