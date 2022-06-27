@@ -51,7 +51,7 @@ export default function PostIndex(props: {
 
 export const getStaticProps: GetStaticProps<any> = async ({ params }) => {
   const json: any[] = await (
-    await fetch(`https://${process.env.API_URL}/posts/list/infos`)
+    await fetch(`${process.env.API_URL}/posts/list/infos`)
   ).json();
 
   const currentPage = Number(params?.index);
@@ -81,7 +81,7 @@ export const getStaticProps: GetStaticProps<any> = async ({ params }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const postDetails: any[] = await (
-    await fetch(`https://${process.env.API_URL}/posts/list/infos`)
+    await fetch(`${process.env.API_URL}/posts/list/infos`)
   ).json();
 
   const len = postDetails.length;

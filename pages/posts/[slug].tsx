@@ -34,7 +34,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({
   params,
 }: any) => {
   const postRequest = await fetch(
-    `https://${process.env.API_URL}/posts/${params.slug}`
+    `${process.env.API_URL}/posts/${params.slug}`
   );
 
   if (!postRequest.ok) {
@@ -56,7 +56,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const slugs: string[] = await (
-    await fetch(`https://${process.env.API_URL}/posts/list/names`)
+    await fetch(`${process.env.API_URL}/posts/list/names`)
   ).json();
 
   return {
