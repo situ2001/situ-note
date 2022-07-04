@@ -6,8 +6,6 @@ import Pagination from "../../components/Pagination";
 import PostInfoCard from "../../components/PostInfoCard";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
 
-const NUMBER_PER_PAGE = 10;
-
 export default function PostIndex(props: {
   postDetails: any[];
   totalPage: number;
@@ -27,7 +25,8 @@ export default function PostIndex(props: {
         <div className="flex justify-center w-full">
           <div className="flex flex-col justify-center items-center w-full max-w-2xl">
             {postDetails.map((info, i) => {
-              const { title, date, description, categories, slug } = info;
+              const { title, date, description, categories } = info.frontMatter;
+              const { slug } = info;
               return (
                 <PostInfoCard
                   key={i}
@@ -51,20 +50,15 @@ export default function PostIndex(props: {
 
 export const getStaticProps: GetStaticProps<any> = async ({ params }) => {
   const json: any[] = await (
-    await fetch(`${process.env.API_URL}/posts/list/infos`)
+    await fetch(`${process.env.API_URL}/posts/page/${params?.index}`)
   ).json();
 
-  const currentPage = Number(params?.index);
-  const len = json.length;
-  const totalPage = Math.ceil(len / NUMBER_PER_PAGE);
+  const totalPage: number = await (
+    await fetch(`${process.env.API_URL}/posts/length`)
+  ) // get page count
+    .json();
 
-  // TODO slice on server
-  const postDetails = json.slice(
-    (currentPage - 1) * NUMBER_PER_PAGE,
-    currentPage * NUMBER_PER_PAGE
-  );
-
-  if (postDetails.length === 0) {
+  if (json.length === 0) {
     return {
       notFound: true,
     };
@@ -72,7 +66,7 @@ export const getStaticProps: GetStaticProps<any> = async ({ params }) => {
 
   return {
     props: {
-      postDetails,
+      postDetails: json,
       totalPage,
     },
     revalidate: 5,
@@ -80,12 +74,10 @@ export const getStaticProps: GetStaticProps<any> = async ({ params }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const postDetails: any[] = await (
-    await fetch(`${process.env.API_URL}/posts/list/infos`)
-  ).json();
-
-  const len = postDetails.length;
-  const totalPage = Math.ceil(len / NUMBER_PER_PAGE);
+  const totalPage: number = await (
+    await fetch(`${process.env.API_URL}/posts/length`)
+  ) // get page count
+    .json();
 
   const paths = Array(totalPage)
     .fill(undefined)
