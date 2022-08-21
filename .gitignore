@@ -38,3 +38,6 @@ yarn-error.log*
 
 # assets
 public/post-assets
+
+# db
+/db
