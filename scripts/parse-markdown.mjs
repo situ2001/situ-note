@@ -31,7 +31,6 @@ export async function parseMarkdownPost() {
       .use(stringifyMarkdown);
 
     const result = await markdownProcessor.process(fs.readFileSync(filePath));
-    fs.writeFileSync("./test.md", result.toString(), "utf-8");
 
     // parse front matter
     const { content, data } = matter(result.toString("utf-8"));
