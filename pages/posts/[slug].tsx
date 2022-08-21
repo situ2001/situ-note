@@ -1,4 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from "next";
+import prisma from "../../lib/prisma";
 import type { Props } from "../../types/BlogPost";
 import PostBody from "../../components/PostBody";
 import Layout from "../../components/Layout";
@@ -7,10 +8,10 @@ import PostHeader from "../../components/PostHeader";
 import { useRouter } from "next/router";
 import Loading from "../../components/Loading";
 
-export default function Post({ frontMatter, content }: Props) {
+export default function Post({ data }: Props) {
   const { isFallback } = useRouter();
 
-  useDocumentTitle(frontMatter?.title ?? "Loading...");
+  useDocumentTitle(data?.title ?? "Loading...");
 
   if (isFallback) {
     return <Loading />;
@@ -20,9 +21,9 @@ export default function Post({ frontMatter, content }: Props) {
     <Layout>
       <div className="flex justify-center">
         <div className="w-full max-w-2xl">
-          <PostHeader frontMatter={frontMatter} />
+          <PostHeader frontMatter={data} />
           <div className="divider">正文开始</div>
-          <PostBody content={content} />
+          <PostBody content={data} />
           <div className="divider">正文结束</div>
         </div>
       </div>
@@ -33,31 +34,27 @@ export default function Post({ frontMatter, content }: Props) {
 export const getStaticProps: GetStaticProps<Props> = async ({
   params,
 }: any) => {
-  const postRequest = await fetch(
-    `${process.env.API_URL}/posts/${params.slug}`
-  );
+  const data = await prisma.post.findFirst({
+    where: { filename: params.slug },
+  });
 
-  if (!postRequest.ok) {
+  if (data === null) {
     return {
       notFound: true,
     };
   }
 
-  const post = await postRequest.json();
+  data.date = JSON.parse(JSON.stringify(data.date));
 
   return {
     props: {
-      content: post.content,
-      frontMatter: post.frontMatter,
+      data: data,
     },
-    revalidate: 5,
   };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const slugs: string[] = await (
-    await fetch(`${process.env.API_URL}/posts/slugs`)
-  ).json();
+  const slugs = (await prisma.post.findMany({})).map((post) => post.filename);
 
   return {
     paths: slugs.map((slug: string) => ({

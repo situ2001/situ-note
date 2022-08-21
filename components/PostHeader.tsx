@@ -1,9 +1,10 @@
+import { Post } from "@prisma/client";
 import moment from "moment";
 import React from "react";
 import type { FrontMatter } from "../types/BlogPost";
 
 type Props = {
-  frontMatter: FrontMatter;
+  frontMatter: Post;
 };
 
 // TODO refactor (use tailwind css)

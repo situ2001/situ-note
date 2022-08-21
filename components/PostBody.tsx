@@ -83,7 +83,7 @@ export default function PostBody({ content }: BlogPostProps) {
         remarkPlugins={[[remarkGfm, { singleTilde: false }], remarkMath]}
         rehypePlugins={[rehypeKatex]}
       >
-        {content}
+        {content.markdownContent}
       </ReactMarkdown>
     </React.Fragment>
   );
