@@ -1,3 +1,5 @@
+import { Post } from "@prisma/client";
+
 export type ImageNameDimensions = {
   [key: string]: {
     height: number | undefined;
@@ -13,10 +15,9 @@ export type FrontMatter = {
 };
 
 export type Props = {
-  content: string;
-  frontMatter: FrontMatter;
+  data: Post;
 };
 
 export type BlogPostProps = {
-  content: string;
+  content: Post;
 };

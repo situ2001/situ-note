@@ -1,0 +1,33 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "sqlite"
+    url      = env("DATABASE_URL")
+}
+
+model Post {
+    id              Int             @id @default(autoincrement())
+    title           String
+    date            DateTime
+    category        String          @default("默认")
+    description     String          @default("")
+    markdownContent String
+    comment         Boolean         @default(true)
+    // meta data
+    filename        String
+    // imageData       ImageMetaData[]
+}
+
+// model ImageMetaData {
+//     id     Int   @id @default(autoincrement())
+//     Post   Post? @relation(fields: [postId], references: [id])
+//     postId Int?
+//     // serve for NextJS Image component
+//     height Int
+//     width  Int
+// }

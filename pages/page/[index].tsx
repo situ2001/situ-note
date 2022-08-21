@@ -1,13 +1,15 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
+import prisma from "../../lib/prisma";
 import Layout from "../../components/Layout";
 import Loading from "../../components/Loading";
 import Pagination from "../../components/Pagination";
 import PostInfoCard from "../../components/PostInfoCard";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
+import { Post } from "@prisma/client";
 
 export default function PostIndex(props: {
-  postDetails: any[];
+  postDetails: Post[];
   totalPage: number;
 }) {
   const { postDetails, totalPage } = props;
@@ -25,16 +27,15 @@ export default function PostIndex(props: {
         <div className="flex justify-center w-full">
           <div className="flex flex-col justify-center items-center w-full max-w-2xl">
             {postDetails.map((info, i) => {
-              const { title, date, description, categories } = info.frontMatter;
-              const { slug } = info;
+              const { title, date, description, category, filename } = info;
               return (
                 <PostInfoCard
                   key={i}
                   title={title}
-                  date={date}
+                  date={date.toString()}
                   description={description}
-                  categories={categories}
-                  link={`/posts/${slug}`}
+                  categories={category}
+                  link={`/posts/${filename}`}
                 ></PostInfoCard>
               );
             })}
@@ -48,38 +49,46 @@ export default function PostIndex(props: {
   }
 }
 
+const NUMBER_PER_PAGE = 10;
+
 export const getStaticProps: GetStaticProps<any> = async ({ params }) => {
-  const json: any[] = await (
-    await fetch(`${process.env.API_URL}/posts/page/${params?.index}`)
-  ).json();
+  // sql jump
+  let data = await prisma.post.findMany({
+    orderBy: { date: "desc" },
+    skip: (Number(params!.index) - 1) * NUMBER_PER_PAGE,
+    take: NUMBER_PER_PAGE,
+    select: {
+      title: true,
+      category: true,
+      description: true,
+      date: true,
+      filename: true,
+    },
+  });
 
-  const totalPage: number = await (
-    await fetch(`${process.env.API_URL}/posts/length`)
-  ) // get page count
-    .json();
+  const len = await prisma.post.count({});
 
-  if (json.length === 0) {
+  if (data === null) {
     return {
       notFound: true,
     };
   }
 
+  data = data.map((d) => ({ ...d, date: JSON.parse(JSON.stringify(d.date)) }));
+
   return {
     props: {
-      postDetails: json,
-      totalPage,
+      postDetails: data,
+      totalPage: Math.ceil(len / NUMBER_PER_PAGE),
     },
-    revalidate: 5,
   };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const totalPage: number = await (
-    await fetch(`${process.env.API_URL}/posts/length`)
-  ) // get page count
-    .json();
+  const len = await prisma.post.count({});
+  console.log(len);
 
-  const paths = Array(totalPage)
+  const paths = Array(Math.ceil(len / NUMBER_PER_PAGE))
     .fill(undefined)
     .map((_, i) => String(i + 1));
 
