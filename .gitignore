@@ -41,3 +41,6 @@ public/post-assets
 
 # db
 /db
+
+# static file from posts
+/public/posts

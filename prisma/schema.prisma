@@ -20,14 +20,14 @@ model Post {
     comment         Boolean         @default(true)
     // meta data
     filename        String
-    imageData       ImageMetaData[]
+    // imageData       ImageMetaData[]
 }
 
-model ImageMetaData {
-    id     Int   @id @default(autoincrement())
-    Post   Post? @relation(fields: [postId], references: [id])
-    postId Int?
-    // serve for NextJS Image component
-    height Int
-    width  Int
-}
+// model ImageMetaData {
+//     id     Int   @id @default(autoincrement())
+//     Post   Post? @relation(fields: [postId], references: [id])
+//     postId Int?
+//     // serve for NextJS Image component
+//     height Int
+//     width  Int
+// }
