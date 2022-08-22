@@ -5,8 +5,8 @@ const DarkMode = () => {
   const { currentTheme, setTheme } = useDarkMode();
 
   return (
-    <div className="ml-2 flex justify-center items-center">
-      <label className="swap swap-rotate">
+    <div className="flex justify-center items-center">
+      <label className="swap swap-rotate btn btn-ghost">
         <input
           type="checkbox"
           onChange={() => {}}
@@ -15,8 +15,8 @@ const DarkMode = () => {
           }}
           checked={currentTheme === "dark"}
         />
-        <FiSun className="swap-off" />
-        <FiMoon className="swap-on" />
+        <FiSun className="swap-off" size={20} />
+        <FiMoon className="swap-on" size={20} />
       </label>
     </div>
   );

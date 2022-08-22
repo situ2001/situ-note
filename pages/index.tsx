@@ -10,7 +10,7 @@ const Home: NextPage = (props: any) => {
   const { githubStat } = props;
 
   return (
-    <Layout flex center hideHeader>
+    <Layout flex center>
       <PersonalCard githubStat={githubStat} />
     </Layout>
   );

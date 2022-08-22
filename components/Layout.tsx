@@ -13,7 +13,7 @@ const Layout = ({
   hideHeader?: boolean;
 }) => {
   return (
-    <div className="px-4 md:px-16 flex flex-col min-h-screen">
+    <div className="px-4 md:px-8 flex flex-col h-screen">
       {!hideHeader && <Header />}
       <main
         className={`flex-1 ${
