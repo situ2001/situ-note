@@ -26,9 +26,7 @@ export default function Post({ data }: Props) {
       <div className="flex justify-center">
         <div className="w-full max-w-3xl">
           <PostHeader frontMatter={data} />
-          <div className="divider">正文开始</div>
           <PostBody content={data} />
-          <div className="divider">正文结束</div>
         </div>
       </div>
     </Layout>
