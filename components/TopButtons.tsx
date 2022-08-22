@@ -34,7 +34,7 @@ const LinkedButton = ({
 const TopButtons = () => {
   const buttons: ILinkedButton[] = [
     {
-      href: "/page/",
+      href: "/page/1",
       icon: <FiPenTool size={20} />,
       text: "Blog",
       primary: true,
