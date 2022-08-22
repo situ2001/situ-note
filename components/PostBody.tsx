@@ -20,7 +20,7 @@ const components: Record<string, any> = {
   ),
   h3: (props: any) => <h3 className="text-2xl mt-6 mb-4" {...props} />,
   h4: (props: any) => <h4 className="text-xl mt-6 mb-4" {...props} />,
-  p: (props: any) => <p className="my-4" {...props} />,
+  p: (props: any) => <div className="my-4" {...props} />,
   a: (props: any) => <a className="break-all underline" {...props} />,
   ol: ({ ordered, ...props }: OrderedListProps) => (
     <ol className="list-decimal list-inside my-4" {...props} />
@@ -34,21 +34,17 @@ const components: Record<string, any> = {
   ),
   img: (props: any) => {
     return (
-      <div className="flex justify-center">
-        <img className="rounded-xl" src={props.src} alt={props.alt} />
-      </div>
+      <img
+        className="rounded-xl object-contain w-full"
+        src={props.src}
+        alt={props.alt}
+      />
     );
   },
 };
 
 export default function PostBody({ content }: BlogPostProps) {
   const { currentTheme } = useDarkMode();
-
-  const [painted, setPainted] = useState(false);
-
-  useEffect(() => {
-    setPainted(true);
-  }, []);
 
   return (
     <React.Fragment>
@@ -58,16 +54,14 @@ export default function PostBody({ content }: BlogPostProps) {
           code({ node, inline, className, children, ...props }: CodeProps) {
             const match = /language-(\w+)/.exec(className || "");
             return !inline && match ? (
-              painted ? (
-                <SyntaxHighlighter
-                  style={currentTheme === "dark" ? atomOneDark : atomOneLight}
-                  language={match[1]}
-                  PreTag="div"
-                  {...props}
-                >
-                  {String(children).replace(/\n$/, "")}
-                </SyntaxHighlighter>
-              ) : null
+              <SyntaxHighlighter
+                style={currentTheme === "dark" ? atomOneDark : atomOneLight}
+                language={match[1]}
+                PreTag="div"
+                {...props}
+              >
+                {String(children).replace(/\n$/, "")}
+              </SyntaxHighlighter>
             ) : (
               <code
                 className={`${
