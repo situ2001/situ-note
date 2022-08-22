@@ -9,6 +9,7 @@ import {
 } from "react-icons/fi";
 import { IconList } from "../types/PersonalCard";
 import Link from "next/link";
+import Image from "next/image";
 
 const column = {
   introduction: {
@@ -19,23 +20,25 @@ const column = {
   },
 };
 
-const name = "situ2001";
-const avatarLink = "https://avatars.githubusercontent.com/u/28241963";
-
 const PersonalCard = ({ githubStat }: any) => {
   const { stars, prs, issues, contributeTo } = githubStat;
 
+  const name = "situ2001";
+  const avatarLink = "https://avatars.githubusercontent.com/u/28241963";
+
   return (
-    <div className="flex flex-col w-full max-w-md my-8">
-      <div className="flex max-h-36 justify-between mb-8">
+    <div className="flex flex-col w-full my-8 max-w-md">
+      <div className="flex justify-between mb-8">
         <div className="flex flex-col justify-center flex-1">
-          <p className="text-5xl font-extrabold w-full">Hi</p>
-          <p className="text-3xl w-full">I am {name}</p>
+          <p className="text-5xl font-extrabold">Hi</p>
+          <p className="text-3xl">I am {name}</p>
         </div>
-        <div className="ml-4 flex-grow-0 max-w-full h-36">
-          <img
-            className="rounded-full object-cover h-full max-w-full"
+        <div className="ml-4 flex-grow-0 h-36 w-36 flex-shrink-0 relative">
+          <Image
+            className="rounded-full"
             src={avatarLink}
+            layout="fill"
+            objectFit="contain"
             alt="avatar"
           />
         </div>
