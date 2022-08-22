@@ -10,25 +10,6 @@ import {
 import { IconList } from "../types/PersonalCard";
 import Link from "next/link";
 
-const iconList: IconList = [
-  {
-    element: (
-      <div className="tooltip tooltip-bottom" data-tip="Blog">
-        <FiPenTool className="cursor-pointer" size={20} />
-      </div>
-    ),
-    href: "/page",
-  },
-  {
-    element: (
-      <div className="tooltip tooltip-bottom" data-tip="GitHub">
-        <FiGithub className="cursor-pointer" size={20} />
-      </div>
-    ),
-    href: "https://github.com/situ2001",
-  },
-];
-
 const column = {
   introduction: {
     text: [
@@ -47,22 +28,9 @@ const PersonalCard = ({ githubStat }: any) => {
   return (
     <div className="flex flex-col w-full max-w-md my-8">
       <div className="flex max-h-36 justify-between mb-8">
-        <div className="flex flex-col justify-end flex-1">
-          <p className="text-4xl font-extrabold w-full">Hi</p>
-          <p className="text-2xl w-full">I am {name}</p>
-          <p className="mt-2 opacity-50 text-xs">
-            You may be interested in my...
-          </p>
-          <div className="mt-2 flex">
-            {iconList.map((obj, i) => (
-              <>
-                <Link key={i} href={obj.href}>
-                  {obj.element}
-                </Link>
-                <div className="mx-1"></div>
-              </>
-            ))}
-          </div>
+        <div className="flex flex-col justify-center flex-1">
+          <p className="text-5xl font-extrabold w-full">Hi</p>
+          <p className="text-3xl w-full">I am {name}</p>
         </div>
         <div className="ml-4 flex-grow-0 max-w-full h-36">
           <img
