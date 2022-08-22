@@ -86,7 +86,6 @@ export const getStaticProps: GetStaticProps<any> = async ({ params }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const len = await prisma.post.count({});
-  console.log(len);
 
   const paths = Array(Math.ceil(len / NUMBER_PER_PAGE))
     .fill(undefined)
