@@ -46,7 +46,7 @@ export default function PostBody({ content }: BlogPostProps) {
 
   const [painted, setPainted] = useState(false);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     setPainted(true);
   }, [setPainted]);
 
