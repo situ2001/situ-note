@@ -48,7 +48,7 @@ export default function PostBody({ content }: BlogPostProps) {
 
   useEffect(() => {
     setPainted(true);
-  }, [setPainted]);
+  }, []);
 
   return (
     <React.Fragment>

@@ -1,12 +1,12 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import prisma from "../../lib/prisma";
 import type { Props } from "../../types/BlogPost";
-import PostBody from "../../components/PostBody";
 import Layout from "../../components/Layout";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
 import PostHeader from "../../components/PostHeader";
 import { useRouter } from "next/router";
 import Loading from "../../components/Loading";
+import dynamic from "next/dynamic";
 
 export default function Post({ data }: Props) {
   const { isFallback } = useRouter();
@@ -17,10 +17,14 @@ export default function Post({ data }: Props) {
     return <Loading />;
   }
 
+  const PostBody = dynamic(() => import("../../components/PostBody"), {
+    loading: () => <Loading />,
+  });
+
   return (
     <Layout>
       <div className="flex justify-center">
-        <div className="w-full max-w-2xl">
+        <div className="w-full max-w-3xl">
           <PostHeader frontMatter={data} />
           <div className="divider">正文开始</div>
           <PostBody content={data} />
