@@ -1,3 +1,5 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -6,10 +8,9 @@ module.exports = {
   theme: {
     extend: {},
     fontFamily: {
-      sans: ["Noto Sans SC"],
-      serif: ["Noto Serif SC"],
-      mono: ["Fira Code"],
-      body: ["Noto Sans SC"],
+      sans: ["Noto Sans SC", ...defaultTheme.fontFamily.sans],
+      serif: ["Noto Serif SC", ...defaultTheme.fontFamily.serif],
+      mono: ["Fira Code", ...defaultTheme.fontFamily.mono],
     },
   },
   plugins: [require("daisyui")],
