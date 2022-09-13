@@ -18,11 +18,12 @@ export default async function handler(
   }
 
   // check slug is in local db
-  const hasSlug = await prisma.post.findFirst({ where: { filename: slug } });
-  if (!hasSlug) {
-    res.status(400).json({ message: "Such slug is not found" });
-    return;
-  }
+  // TODO should be moved to remote db
+  // const hasSlug = await prisma.post.findFirst({ where: { filename: slug } });
+  // if (!hasSlug) {
+  //   res.status(400).json({ message: "Such slug is not found" });
+  //   return;
+  // }
 
   console.log(slug);
   if (req.method === "POST") {
