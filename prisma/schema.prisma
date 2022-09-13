@@ -18,8 +18,8 @@ model Post {
     description     String          @default("")
     markdownContent String
     comment         Boolean         @default(true)
-    // meta data
-    filename        String
+    // meta data 
+    filename        String // slug
     // imageData       ImageMetaData[]
 }
 
