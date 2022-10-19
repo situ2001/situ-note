@@ -33,8 +33,8 @@ export default function PostIndex(props: {
                   key={i}
                   title={title}
                   date={date.toString()}
-                  description={description}
-                  categories={category}
+                  description={description ?? ""}
+                  categories={category ?? ""}
                   link={`/posts/${filename}`}
                 ></PostInfoCard>
               );
