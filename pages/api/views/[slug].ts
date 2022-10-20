@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { getCount, increaseCounter } from "../../../lib/views";
+import { increaseVisitCounter } from "../../../lib/views";
 import prisma from "../../../lib/prisma";
 
 export interface ViewResponse {
@@ -17,24 +17,21 @@ export default async function handler(
     return;
   }
 
-  // check slug is in local db
-  // TODO should be moved to remote db
-  // const hasSlug = await prisma.post.findFirst({ where: { filename: slug } });
-  // if (!hasSlug) {
-  //   res.status(400).json({ message: "Such slug is not found" });
-  //   return;
-  // }
-
-  console.log(slug);
-  if (req.method === "POST") {
-    // increase
-    await increaseCounter(slug!);
+  if (req.method !== "POST") {
+    res.status(405).json({ message: "HTTP method now allowed" });
   }
-  // get counter
-  const count = await getCount(slug!);
-  if (count === undefined) {
+
+  try {
+    const slugCount = await prisma.post.count({ where: { filename: slug } });
+    // check slug is in local db
+    if (slugCount === 0) {
+      res.status(404).json({ message: "Slug not found" });
+      return;
+    }
+
+    const post = await increaseVisitCounter(slug!);
+    res.status(200).json({ message: "Success", count: post.visitCount });
+  } catch (e) {
     res.status(500).json({ message: "Internal server error" });
-  } else {
-    res.status(200).json({ message: "OK", count });
   }
 }

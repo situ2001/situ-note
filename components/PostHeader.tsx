@@ -1,15 +1,12 @@
 import { Post } from "@prisma/client";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
-import useSWR, { mutate } from "swr";
-import { getFetcher, postFetcher } from "../lib/fecther";
 import { ViewResponse } from "../pages/api/views/[slug]";
 
 type Props = {
   frontMatter: Post;
 };
 
-// TODO refactor (use tailwind css)
 const PostHeader = ({ frontMatter }: Props) => {
   // UTC (But in fact CST) => Real UTC
   const dateObject = new Date(frontMatter.date);
@@ -17,17 +14,19 @@ const PostHeader = ({ frontMatter }: Props) => {
   const realTimeUTC = dateObject.getTime();
   const currentMoment = moment(realTimeUTC);
 
-  const { data, mutate } = useSWR<ViewResponse>(
-    `/api/views/${frontMatter.filename}`,
-    getFetcher
-  );
+  const [visitCount, setVisitCount] = useState<number | undefined>(undefined);
 
   // increase view
   useEffect(() => {
     fetch(`/api/views/${frontMatter.filename}`, { method: "POST" }).then(
-      // () => mutate() // TODO mutate or not
+      async (res) => {
+        const json: ViewResponse = await res.json();
+        if (json.count) {
+          setVisitCount(json.count);
+        }
+      }
     );
-  }, [frontMatter.filename, mutate]);
+  }, [frontMatter.filename]);
 
   return (
     <React.Fragment>
@@ -35,7 +34,9 @@ const PostHeader = ({ frontMatter }: Props) => {
         {frontMatter.title}
       </h1>
       <p className="text-center">{currentMoment.format("ll dddd")}</p>
-      <p className="text-center">{data ? `${data.count} views` : 'Loading views'} </p>
+      <p className="text-center">
+        {visitCount ? `${visitCount} views` : "Loading views"}
+      </p>
     </React.Fragment>
   );
 };

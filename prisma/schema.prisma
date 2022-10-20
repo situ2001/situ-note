@@ -16,6 +16,7 @@ model Post {
     title           String
     date            DateTime
     markdownContent String   @map("markdown_content")
+    visitCount      Int      @default(0) @map("visit_count")
     category        String?
     description     String?
     comment         Boolean  @default(true)
