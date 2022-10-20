@@ -1,5 +1,5 @@
 import Footer from "./Footer";
-import Header from "./Header";
+import Navbar from "./NavBar";
 
 const Layout = ({
   children,
@@ -14,7 +14,7 @@ const Layout = ({
 }) => {
   return (
     <div className="px-4 md:px-8 flex flex-col h-screen">
-      {!hideHeader && <Header />}
+      {!hideHeader && <Navbar />}
       <main
         className={`flex-1 ${
           flex && `flex flex-col ${center && `items-center`}`

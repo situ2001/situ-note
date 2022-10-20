@@ -1,11 +1,9 @@
 import Link from "next/link";
-import { FiEdit3, FiGithub, FiHome, FiMenu, FiPenTool } from "react-icons/fi";
-import DarkMode from "./DarkMode";
 import TopButtons from "./TopButtons";
 
-const Header = () => {
+const NavBar = () => {
   return (
-    <header>
+    <nav>
       <div className="flex py-2 items-center">
         <Link href="/">
           <div className="btn btn-ghost items-center px-0">
@@ -17,8 +15,8 @@ const Header = () => {
           <TopButtons />
         </div>
       </div>
-    </header>
+    </nav>
   );
 };
 
-export default Header;
+export default NavBar;
