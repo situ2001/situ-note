@@ -3,7 +3,7 @@ import TopButtons from "./TopButtons";
 
 const NavBar = () => {
   return (
-    <nav>
+    <nav className="top-0 sticky backdrop-blur-xl z-50 px-4">
       <div className="flex py-2 items-center">
         <Link href="/">
           <div className="btn btn-ghost items-center px-0">
