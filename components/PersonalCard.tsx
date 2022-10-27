@@ -5,7 +5,7 @@ const PersonalCard = () => {
   const column = {
     introduction: {
       text: [
-        "👨‍🎓 Sophomore",
+        "👨‍🎓 Undergraduate @gzhu",
         "💪 Dream of becoming a front-end or full-stack engineer.",
       ],
     },
