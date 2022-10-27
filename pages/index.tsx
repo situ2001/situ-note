@@ -17,7 +17,7 @@ const Home: NextPage<Props> = (props: Props) => {
   const { recentPost } = props;
 
   return (
-    <Layout flex hideHeader hideFooter>
+    <Layout flex hideHeader>
       <PersonalCard />
       <RecentPosts recentPost={recentPost} />
     </Layout>
