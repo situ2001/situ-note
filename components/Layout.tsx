@@ -6,11 +6,13 @@ const Layout = ({
   flex = false,
   center = false,
   hideHeader = false,
+  hideFooter = false,
 }: {
   children: React.ReactNode;
   flex?: boolean;
   center?: boolean;
   hideHeader?: boolean;
+  hideFooter?: boolean;
 }) => {
   return (
     <div className="px-4 md:px-8 flex flex-col h-screen">
@@ -22,7 +24,7 @@ const Layout = ({
       >
         {children}
       </main>
-      <Footer />
+      {!hideFooter && <Footer />}
     </div>
   );
 };
