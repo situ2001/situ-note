@@ -1,3 +1,6 @@
+import Link from "next/link";
+import { FiGithub, FiPenTool } from "react-icons/fi";
+
 const PersonalCard = () => {
   const column = {
     introduction: {
@@ -16,15 +19,37 @@ const PersonalCard = () => {
           <p className="text-4xl font-bold">I am situ2001.</p>
         </div>
       </div>
-      <div>
-        <h1 className="font-bold text-xl mb-2">Intro</h1>
+      <div className="mb-4">
         {column.introduction.text.map((text) => (
           <p key={text} className="mb-2">
             {text}
           </p>
         ))}
       </div>
-      <div>Contract button placed here</div>
+      <div>
+        <Link href={"https://github.com/situ2001"}>
+          <button
+            className="btn btn-outline btn-sm gap-1 rounded mr-2"
+            onClick={() => {
+              console.log("Visit mt GitHub");
+            }}
+          >
+            <FiGithub />
+            GitHub
+          </button>
+        </Link>
+        <Link href={"/page/1"}>
+          <button
+            className="btn btn-outline btn-sm gap-1 rounded mr-2"
+            onClick={() => {
+              console.log("Visit my blog");
+            }}
+          >
+            <FiPenTool />
+            Blog
+          </button>
+        </Link>
+      </div>
     </div>
   );
 };
