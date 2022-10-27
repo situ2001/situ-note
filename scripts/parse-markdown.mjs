@@ -36,41 +36,31 @@ export async function parseMarkdownPost() {
     const { content, data } = matter(result.toString("utf-8"));
     // console.log(data);
     const baseName = path.basename(filePath, ".md");
-    const existed = await prisma.post.count({
+
+    const post = await prisma.post.upsert({
       where: {
         filename: baseName,
       },
+      update: {
+        title: data.title,
+        date: data.date,
+        category: data.categories,
+        description: data.description,
+        markdownContent: content,
+        comment: data.comments,
+      },
+      create: {
+        title: data.title,
+        date: data.date,
+        category: data.categories,
+        description: data.description,
+        markdownContent: content,
+        comment: data.comments,
+        filename: baseName,
+      },
     });
-    if (existed > 0) {
-      const post = await prisma.post.update({
-        where: {
-          filename: baseName,
-        },
-        data: {
-          title: data.title,
-          date: data.date,
-          category: data.categories,
-          description: data.description,
-          markdownContent: content,
-          comment: data.comments,
-        },
-      });
-      console.log("updated", baseName);
-    } else {
-      const post = await prisma.post.create({
-        data: {
-          title: data.title,
-          date: data.date,
-          category: data.categories,
-          description: data.description,
-          markdownContent: content,
-          comment: data.comments,
-          filename: baseName,
-        },
-      });
-      console.log("created", baseName);
-      // console.log(post);
-    }
+
+    console.log("updated", baseName);
 
     console.log("Done parsing post", path.basename(filePath));
   }
