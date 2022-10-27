@@ -1,34 +1,19 @@
-import Link from "next/link";
-import Image from "next/image";
-
-const column = {
-  introduction: {
-    text: [
-      "👨‍🎓 Sophomore",
-      "💪 Dream of becoming a front-end or full-stack engineer.",
-    ],
-  },
-};
-
-const PersonalCard = ({}: any) => {
-  const name = "situ2001";
-  const avatarLink = "https://avatars.githubusercontent.com/u/28241963";
+const PersonalCard = () => {
+  const column = {
+    introduction: {
+      text: [
+        "👨‍🎓 Sophomore",
+        "💪 Dream of becoming a front-end or full-stack engineer.",
+      ],
+    },
+  };
 
   return (
-    <div className="flex flex-col w-full my-8 max-w-md">
+    <div className="flex flex-col w-full mt-32 mb-8">
       <div className="flex justify-between mb-8">
         <div className="flex flex-col justify-center flex-1">
-          <p className="text-5xl font-extrabold">Hi</p>
-          <p className="text-3xl">I am {name}</p>
-        </div>
-        <div className="ml-4 flex-grow-0 h-36 w-36 flex-shrink-0 relative">
-          <Image
-            className="rounded-full"
-            src={avatarLink}
-            layout="fill"
-            objectFit="contain"
-            alt="avatar"
-          />
+          <p className="text-6xl mb-4 font-extrabold">Hi,</p>
+          <p className="text-4xl font-bold">I am situ2001.</p>
         </div>
       </div>
       <div>
@@ -39,6 +24,7 @@ const PersonalCard = ({}: any) => {
           </p>
         ))}
       </div>
+      <div>Contract button placed here</div>
     </div>
   );
 };

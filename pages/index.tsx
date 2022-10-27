@@ -8,7 +8,7 @@ const Home: NextPage = (props: any) => {
   useDocumentTitle("Home");
 
   return (
-    <Layout flex center>
+    <Layout flex hideHeader hideFooter>
       <PersonalCard />
     </Layout>
   );

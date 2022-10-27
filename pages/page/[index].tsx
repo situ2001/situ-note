@@ -24,26 +24,20 @@ export default function PostIndex(props: {
   } else {
     return (
       <Layout>
-        <div className="flex justify-center w-full">
-          <div className="flex flex-col justify-center items-center w-full max-w-2xl">
-            {postDetails.map((info, i) => {
-              const { title, date, description, category, filename } = info;
-              return (
-                <PostInfoCard
-                  key={i}
-                  title={title}
-                  date={date.toString()}
-                  description={description ?? ""}
-                  categories={category ?? ""}
-                  link={`/posts/${filename}`}
-                ></PostInfoCard>
-              );
-            })}
-            <div className="w-full">
-              <Pagination totalPage={totalPage} />
-            </div>
-          </div>
-        </div>
+        {postDetails.map((info, i) => {
+          const { title, date, description, category, filename } = info;
+          return (
+            <PostInfoCard
+              key={i}
+              title={title}
+              date={date.toString()}
+              description={description ?? ""}
+              categories={category ?? ""}
+              link={`/posts/${filename}`}
+            ></PostInfoCard>
+          );
+        })}
+        <Pagination totalPage={totalPage} />
       </Layout>
     );
   }

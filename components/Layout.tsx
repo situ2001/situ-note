@@ -15,7 +15,7 @@ const Layout = ({
   hideFooter?: boolean;
 }) => {
   return (
-    <div className="px-4 md:px-8 flex flex-col h-screen">
+    <div className="px-4 md:px-8 flex flex-col h-screen mx-auto max-w-3xl">
       {!hideHeader && <Navbar />}
       <main
         className={`flex-1 ${

@@ -23,12 +23,8 @@ export default function Post({ data }: Props) {
 
   return (
     <Layout>
-      <div className="flex justify-center">
-        <div className="w-full max-w-3xl">
-          <PostHeader frontMatter={data} />
-          <PostBody content={data} />
-        </div>
-      </div>
+      <PostHeader frontMatter={data} />
+      <PostBody content={data} />
     </Layout>
   );
 }
