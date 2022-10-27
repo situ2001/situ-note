@@ -44,3 +44,6 @@ public/post-assets
 
 # static file from posts
 /public/posts
+
+# env
+.env
