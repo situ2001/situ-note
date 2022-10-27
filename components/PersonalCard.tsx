@@ -12,7 +12,7 @@ const PersonalCard = () => {
   };
 
   return (
-    <div className="flex flex-col w-full mt-32 mb-8">
+    <div className="flex flex-col w-full mt-28 mb-8">
       <div className="flex justify-between mb-8">
         <div className="flex flex-col justify-center flex-1">
           <p className="text-6xl mb-4 font-extrabold">Hi,</p>
