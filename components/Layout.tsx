@@ -15,14 +15,14 @@ const Layout = ({
   hideFooter?: boolean;
 }) => {
   return (
-    <div className="flex flex-col h-screen mx-auto max-w-3xl">
+    <div className="flex flex-col h-screen">
       <main
         className={`flex-1 ${
           flex && `flex flex-col ${center && `items-center`}` // TODO use npm package `cls`
         }`}
       >
         {!hideHeader && <Navbar />}
-        <div className="px-4">{children}</div>
+        <div className="px-4 mx-auto w-full max-w-3xl">{children}</div>
       </main>
       {!hideFooter && <Footer />}
     </div>
