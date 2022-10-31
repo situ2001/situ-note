@@ -19,14 +19,14 @@ const LinkedButton = ({
 }: ILinkedButton) => (
   <React.Fragment>
     <Link href={href}>
-      <div className="btn btn-ghost">
+      <a className="btn btn-ghost">
         {icon}
-        <div
+        <a
           className={`ml-2 ${!showTextOnMobile ? "hidden md:block" : "block"}`}
         >
           {text}
-        </div>
-      </div>
+        </a>
+      </a>
     </Link>
   </React.Fragment>
 );

@@ -28,26 +28,16 @@ const PersonalCard = () => {
       </div>
       <div>
         <Link href={"https://github.com/situ2001"}>
-          <button
-            className="btn btn-outline btn-sm gap-1 rounded mr-2"
-            onClick={() => {
-              console.log("Visit mt GitHub");
-            }}
-          >
+          <a className="btn btn-outline btn-sm gap-1 rounded mr-2">
             <FiGithub />
             GitHub
-          </button>
+          </a>
         </Link>
         <Link href={"/page/1"}>
-          <button
-            className="btn btn-outline btn-sm gap-1 rounded mr-2"
-            onClick={() => {
-              console.log("Visit my blog");
-            }}
-          >
+          <a className="btn btn-outline btn-sm gap-1 rounded mr-2">
             <FiPenTool />
             Blog
-          </button>
+          </a>
         </Link>
       </div>
     </div>

@@ -22,8 +22,8 @@ const PostInfoCard = (props: PostInfo) => {
   return (
     <div className="card card-normal w-full bg-base-100 shadow-xl mb-8">
       <div className="card-body">
-        <Link href={link} passHref>
-          <div className="card-title cursor-pointer">{title}</div>
+        <Link href={link}>
+          <a className="card-title">{title}</a>
         </Link>
         <div>{description}</div>
         <div className="card-actions justify-between">
@@ -33,8 +33,8 @@ const PostInfoCard = (props: PostInfo) => {
               <div>{categories}</div>
             </div>
           </div>
-          <Link href={link} passHref>
-            <button className="btn btn-primary">阅读</button>
+          <Link href={link}>
+            <a className="btn btn-primary">阅读</a>
           </Link>
         </div>
       </div>

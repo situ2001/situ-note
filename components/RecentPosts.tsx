@@ -14,18 +14,18 @@ export default function RecentPosts(props: Props) {
       <div className="flex items-baseline">
         <div className="text-2xl">Recent Posts</div>
         <Link href={"/page/1"}>
-          <div className="ml-auto opacity-60 cursor-pointer">More...</div>
+          <a className="ml-auto opacity-60">More...</a>
         </Link>
       </div>
       {recentPost.map((post) => (
-        <Link key={post.id} href={`/posts/${post.filename}`}>
-          <div className="mt-4 cursor-pointer" key={post.id}>
-            <div>{post.title}</div>
-            <div className="opacity-60">
-              {moment(post.date).format("YYYY-MM-DD")}
-            </div>
+        <div className="mt-4" key={post.id}>
+          <Link key={post.id} href={`/posts/${post.filename}`}>
+            <a>{post.title}</a>
+          </Link>
+          <div className="opacity-60">
+            {moment(post.date).format("YYYY-MM-DD")}
           </div>
-        </Link>
+        </div>
       ))}
     </div>
   );
