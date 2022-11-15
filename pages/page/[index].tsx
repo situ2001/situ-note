@@ -7,6 +7,7 @@ import Pagination from "../../components/Pagination";
 import PostInfoCard from "../../components/PostInfoCard";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
 import { Post } from "@prisma/client";
+import { NUMBER_PER_PAGE } from "../../constants";
 
 export default function PostIndex(props: {
   postDetails: Post[];
@@ -43,7 +44,6 @@ export default function PostIndex(props: {
   }
 }
 
-const NUMBER_PER_PAGE = 10;
 
 export const getStaticProps: GetStaticProps<any> = async ({ params }) => {
   // sql jump
