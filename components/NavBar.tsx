@@ -7,7 +7,7 @@ const NavBar = () => {
       <div className="flex py-2 items-center max-w-3xl mx-auto">
         <Link href="/">
           <a className="btn btn-ghost items-center px-0">
-            <a className="text-xl normal-case">Situ Note</a>
+            <span className="text-xl normal-case">Situ Note</span>
           </a>
         </Link>
 
