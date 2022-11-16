@@ -8,6 +8,8 @@ import path from "path";
 import fs from "fs";
 import matter from "gray-matter";
 
+// TODO should move to GitHub Action for updating, it is a time-consuming task.
+
 import pkg from "glob";
 const { glob } = pkg;
 
@@ -18,6 +20,8 @@ const STATIC_ASSET_FOLDER = "posts";
 
 export async function parseMarkdownPost() {
   const fileList = await promisify(glob)(`${cloneTargetDir}/**/*.md`);
+
+  const upsertTasks = [];
 
   for (const postFile of fileList) {
     const filePath = postFile;
@@ -37,7 +41,7 @@ export async function parseMarkdownPost() {
     // console.log(data);
     const baseName = path.basename(filePath, ".md");
 
-    const post = await prisma.post.upsert({
+    const task = prisma.post.upsert({
       where: {
         filename: baseName,
       },
@@ -60,10 +64,14 @@ export async function parseMarkdownPost() {
       },
     });
 
-    console.log("updated", baseName);
+    upsertTasks.push(task);
 
     console.log("Done parsing post", path.basename(filePath));
   }
+
+  console.log("Start transaction");
+  await prisma.$transaction(upsertTasks);
+  console.log("End transaction");
 }
 
 function replaceImageUrl({ filePath }) {
