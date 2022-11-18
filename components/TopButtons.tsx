@@ -22,7 +22,7 @@ const LinkedButton = ({
       <a className="btn btn-ghost">
         {icon}
         <span
-          className={`ml-2 ${!showTextOnMobile ? "hidden md:block" : "block"}`}
+          className={`ml-2 ${!showTextOnMobile ? "hidden md:block" : "block"}`} // TODO should be refactored (using npm package cls)
         >
           {text}
         </span>
@@ -54,17 +54,14 @@ const TopButtons = () => {
         .map((button, i) => (
           <LinkedButton {...button} key={i} />
         ))}
-
-      <div className="hidden md:block">
-        {buttons
-          .filter((v) => !v.primary)
-          .map((button, i) => (
-            <LinkedButton {...button} key={i} />
-          ))}
-      </div>
-
+      {buttons
+        .filter((v) => !v.primary)
+        .map((button, i) => (
+          <div className="hidden md:block" key={i}>
+            <LinkedButton {...button} />
+          </div>
+        ))}
       <DarkMode />
-
       <div className="dropdown dropdown-end block md:hidden">
         <div tabIndex={0} className="btn btn-ghost ">
           <FiMenu size={20} />
