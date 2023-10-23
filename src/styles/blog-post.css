@@ -30,6 +30,11 @@ main > article table {
   @apply table-auto;
 }
 
+main > article a {
+  /* TODO make a small arrow to indicate jumping */
+  @apply break-all underline underline-offset-2 my-4;
+}
+
 main > article blockquote {
   border-left: 0.25rem solid #ddd;
   padding: 0 1rem;
