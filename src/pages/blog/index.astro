@@ -20,7 +20,7 @@ const posts = (await getCollection("blog")).sort(
           {
             posts.map((post) => (
               <li class="my-2">
-                <a href={`/blog/${post.slug}`}>
+                <a rel="prefetch" href={`/blog/${post.slug}`}>
                   <p class="underline underline-offset-4">{post.data.title}</p>
                 </a>
               </li>
