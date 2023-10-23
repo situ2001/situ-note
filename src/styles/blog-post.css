@@ -1,0 +1,19 @@
+main > article p {
+  @apply my-4;
+}
+
+main > h1 {
+  @apply text-3xl mb-1;
+}
+
+main > article h1 {
+  @apply text-3xl my-4;
+}
+
+main > article h2 {
+  @apply text-2xl my-4;
+}
+
+main > article h3 {
+  @apply text-xl my-4;
+}

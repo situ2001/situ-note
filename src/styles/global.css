@@ -1,0 +1,12 @@
+@import "lxgw-wenkai-webfont/style.css";
+@import "@fontsource/fira-code";
+
+body {
+  font-family: "LXGW WenKai", sans-serif;
+}
+
+/* Mono font */
+pre,
+code {
+  font-family: "Fira Code", monospace;
+}

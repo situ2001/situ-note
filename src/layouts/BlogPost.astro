@@ -1,0 +1,29 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+import BaseHead from "../components/BaseHead.astro";
+import FormattedDate from "../components/FormattedDate.astro";
+import Header from "../components/Header.astro";
+
+import "../styles/blog-post.css";
+
+type Props = CollectionEntry<"blog">["data"];
+const { title, description, date } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+  <body>
+    <Header />
+    <main class="p-4 md:w-180 md:m-auto">
+      <h1>{title}</h1>
+      <FormattedDate date={date} />
+      <hr />
+      <article>
+        <slot />
+      </article>
+    </main>
+  </body>
+</html>
