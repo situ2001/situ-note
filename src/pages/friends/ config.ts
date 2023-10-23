@@ -15,4 +15,8 @@ export const friends = [
     name: "RH-Xie",
     link: "https://rhxie.top",
   },
+  {
+    name: "7gugu",
+    link: "https://7gugu.com",
+  },
 ];
