@@ -7,5 +7,6 @@ body {
 /* Mono font */
 pre,
 code {
+  /* TODO use other font, such as fira code */
   font-family: "LXGW WenKai Mono", sans-serif;
 }
