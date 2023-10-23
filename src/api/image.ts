@@ -3,11 +3,8 @@ import { baseService } from "astro/assets";
 import sharpService from "astro/assets/services/sharp";
 
 const service: LocalImageService = {
-  validateOptions: baseService.validateOptions,
-  getURL: baseService.getURL,
-  parseURL: baseService.parseURL,
-  getSrcSet: baseService.getSrcSet,
-  transform: sharpService.transform,
+  ...baseService,
+  ...sharpService,
 
   getHTMLAttributes(options, imageConfig) {
     const ret = baseService.getHTMLAttributes?.(options, imageConfig);
