@@ -17,11 +17,13 @@ const { title, description, date } = Astro.props;
   </head>
   <body>
     <Header />
-    <main>
+    <main class="p-4 md:w-180 md:m-auto">
       <h1>{title}</h1>
       <FormattedDate date={date} />
       <hr />
-      <slot />
+      <article>
+        <slot />
+      </article>
     </main>
   </body>
 </html>

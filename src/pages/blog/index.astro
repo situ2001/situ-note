@@ -14,12 +14,12 @@ const posts = (await getCollection("blog")).sort(
   </head>
   <body>
     <Header />
-    <main>
+    <main class="p-4">
       <section>
         <ul>
           {
             posts.map((post) => (
-              <li>
+              <li class="my-2 list-disc">
                 <a href={`/blog/${post.slug}`}>
                   <p>{post.data.title}</p>
                 </a>
