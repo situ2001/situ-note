@@ -12,7 +12,7 @@ import { friends } from "./ config";
   </head>
   <body>
     <Header />
-    <main class="p-4 flex flex-col">
+    <main class="p-4 flex flex-col md:grid md:grid-cols-4 md:gap-8">
       {friends.map(({ name, link }) => <FriendCard name={name} link={link} />)}
     </main>
   </body>
