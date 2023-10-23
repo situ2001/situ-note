@@ -14,6 +14,9 @@ dependencies:
   astro:
     specifier: ^3.3.2
     version: 3.3.2
+  lxgw-wenkai-webfont:
+    specifier: ^1.7.0
+    version: 1.7.0
   sharp:
     specifier: ^0.32.6
     version: 0.32.6
@@ -2166,6 +2169,10 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       yallist: 4.0.0
+    dev: false
+
+  /lxgw-wenkai-webfont@1.7.0:
+    resolution: {integrity: sha512-kVJmT4xMAyOLhG6q0w63wJkVU7RP8UMQRGoAWj9tnpzL7sWFFYiEHBdUQyW9myqBQFa5SQfWfa2VLYF4IJBL5g==}
     dev: false
 
   /magic-string@0.30.5:
