@@ -1,6 +1,9 @@
 ---
 import BaseHead from "../../components/BaseHead.astro";
 import Header from "../../components/Header.astro";
+import FriendCard from "../../components/FriendCard.astro";
+
+import { friends } from "./ config";
 ---
 
 <html>
@@ -9,27 +12,8 @@ import Header from "../../components/Header.astro";
   </head>
   <body>
     <Header />
-    <main class="p-4">
-      <!-- TODO refactor it -->
-      <div class="my-2">
-        <a class="underline underline-offset-4" href="https://ursb.me">Airing</a
-        >
-      </div>
-      <div class="my-2">
-        <a class="underline underline-offset-4" href="https://www.eaimty.com"
-          >EAimTY</a
-        >
-      </div>
-      <div class="my-2">
-        <a class="underline underline-offset-4" href="https://blog.yuzi.dev"
-          >Yuzi</a
-        >
-      </div>
-      <div class="my-2">
-        <a class="underline underline-offset-4" href="https://rhxie.top"
-          >RH-Xie</a
-        >
-      </div>
+    <main class="p-4 flex flex-col">
+      {friends.map(({ name, link }) => <FriendCard name={name} link={link} />)}
     </main>
   </body>
 </html>
