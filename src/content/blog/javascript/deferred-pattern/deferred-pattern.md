@@ -10,7 +10,7 @@ description: 如何控制异步回调函数之间的同步呢
 
 之前在实现某一个功能的时候，需要控制这么一个顺序，某一个事件需要用到一个对象的方法来获取这个对象的数据。但是这个对象的数据并没有及时被初始化，而是在等待其他异步回调来帮它初始化。
 
-```text
+```
 1. waiting for some data of an created object(async, e.g waiting for network request)
 2. another event(async) need invoking method of this initialized object
 ```
@@ -56,7 +56,7 @@ setTimeout(() => {
 
 如果这样运行的话，会出现这样的结果
 
-```text
+```
 undefined
 Loaded
 ```
@@ -95,7 +95,7 @@ setTimeout(async () => {
 
 好像有一点道理喔，看起来也没有什么大问题。先运行一下，
 
-```text
+```
 undefined
 Loaded
 ```
@@ -132,7 +132,7 @@ setTimeout(async () => {
 
 此时输出便是
 
-```text
+```
 Loaded
 Loaded
 ```
@@ -189,7 +189,7 @@ setTimeout(async () => {
 
 输出如下
 
-```text
+```
 Loaded
 Loaded
 ```

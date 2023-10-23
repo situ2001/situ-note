@@ -27,7 +27,7 @@ description: 年轻人的第一次进京实习
 
 不过，thanos只是一个集成了webpack loader和plugin如weex-vue-loader，mpx-loader等，然后在其上开发出自己的一套 `Plugin` `Service` `Config` 机制、以及生命周期的项目。大致的工作原理如下
 
-```text
+```
 Vue2/3 Code(You write) -> Thanos(Load & Compile) -> H5 or Weex or MPX APP Code(Generated)
 ```
 

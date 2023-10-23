@@ -102,7 +102,7 @@ public final ReadOnlyDoubleProperty widthProperty() {
 
 这里出现了不同的两个类型，并且里面涉及到的方法又去到了其他的类，查了一下jfx的文档，发现了类之间的继承关系如下。
 
-``` text
+```
 Class ReadOnlyDoubleWrapper
 java.lang.Object
 javafx.beans.binding.NumberExpressionBase
@@ -178,7 +178,7 @@ private class ReadOnlyPropertyImpl extends ReadOnlyDoublePropertyBase {
 
 这个私有类的继承关系如下，为了更好看，我去IDEA上生成了关系图
 
-``` text
+```
 Class ReadOnlyDoublePropertyBase
 java.lang.Object
 javafx.beans.binding.NumberExpressionBase
@@ -542,7 +542,7 @@ class Customer implements Subscription {
 
 运行结果为
 
-``` text
+```
 A subscriber subscribes the product!
 A subscriber subscribes the product!
 Hi, Situ. The price of product is changed. New price is $1919810

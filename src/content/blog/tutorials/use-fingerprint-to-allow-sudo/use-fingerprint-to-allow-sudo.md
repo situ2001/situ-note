@@ -16,7 +16,7 @@ description: 指尖一放，轻松验证。可谓是懒人最爱的操作
 
 在最前面加上这一行，保存就行
 
-```text
+```
 auth       sufficient     pam_tid.so
 ```
 
