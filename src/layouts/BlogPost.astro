@@ -4,13 +4,12 @@ import type { CollectionEntry } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
 
 type Props = CollectionEntry<"blog">["data"];
-const { title } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
 <html lang="en">
   <head>
-    <BaseHead />
-    <title>{title}</title>
+    <BaseHead title={title} description={description} />
   </head>
   <body>
     <header>
