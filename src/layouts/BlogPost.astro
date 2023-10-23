@@ -3,6 +3,9 @@ import type { CollectionEntry } from "astro:content";
 
 import BaseHead from "../components/BaseHead.astro";
 import FormattedDate from "../components/FormattedDate.astro";
+import Header from "../components/Header.astro";
+
+import "../styles/blog-post.css";
 
 type Props = CollectionEntry<"blog">["data"];
 const { title, description, date } = Astro.props;
@@ -13,10 +16,12 @@ const { title, description, date } = Astro.props;
     <BaseHead title={title} description={description} />
   </head>
   <body>
-    <header>
+    <Header />
+    <main>
       <h1>{title}</h1>
       <FormattedDate date={date} />
-    </header>
-    <slot />
+      <hr />
+      <slot />
+    </main>
   </body>
 </html>

@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
 
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
@@ -12,9 +13,7 @@ const posts = (await getCollection("blog")).sort(
     <BaseHead title="Blogs" description="Blog list" />
   </head>
   <body>
-    <header>
-      <h1>Situ Note</h1>
-    </header>
+    <Header />
     <main>
       <section>
         <ul>
