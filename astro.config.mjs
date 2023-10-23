@@ -7,4 +7,9 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: "https://situ2001.com",
   integrations: [mdx(), sitemap()],
+  image: {
+    service: {
+      entrypoint: "src/api/image.ts",
+    },
+  },
 });
