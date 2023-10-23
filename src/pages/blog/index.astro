@@ -19,9 +19,9 @@ const posts = (await getCollection("blog")).sort(
         <ul>
           {
             posts.map((post) => (
-              <li class="my-2 list-disc">
+              <li class="my-2">
                 <a href={`/blog/${post.slug}`}>
-                  <p>{post.data.title}</p>
+                  <p class="underline underline-offset-4">{post.data.title}</p>
                 </a>
               </li>
             ))
