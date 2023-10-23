@@ -11,6 +11,9 @@ dependencies:
   '@astrojs/sitemap':
     specifier: ^3.0.2
     version: 3.0.2
+  '@fontsource/fira-code':
+    specifier: ^5.0.15
+    version: 5.0.15
   astro:
     specifier: ^3.3.2
     version: 3.3.2
@@ -740,6 +743,10 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
+
+  /@fontsource/fira-code@5.0.15:
+    resolution: {integrity: sha512-mcQQX2Pwlbt8NwBB+kCyldYy1eLY9hsLZ3EvWf2ciVTk1rmYZ734CU9v70qs7rTXrNLYKz8+Q9b7DLEgwsKW6A==}
+    dev: false
 
   /@jridgewell/gen-mapping@0.3.3:
     resolution: {integrity: sha512-HLhSWOLRi875zjjMG/r+Nv0oCW8umGb0BgEhyX3dDX3egwZtB8PqLnjz3yedt8R5StBrzcg4aBpnh8UA9D1BoQ==}
