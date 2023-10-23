@@ -3,10 +3,12 @@
 
 body {
   font-family: "LXGW WenKai", sans-serif;
+  @apply text-base;
 }
 
 /* Mono font */
 pre,
 code {
   font-family: "Fira Code", monospace;
+  @apply text-sm
 }

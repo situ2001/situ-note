@@ -19,9 +19,13 @@ main > article h3 {
 }
 
 main > article ol {
-  @apply list-decimal list-inside;
+  @apply list-decimal list-inside my-4;
 }
 
 main > article ul {
-  @apply list-disc list-inside;
+  @apply list-disc list-inside my-4;
+}
+
+main > article table {
+  @apply table-auto;
 }
