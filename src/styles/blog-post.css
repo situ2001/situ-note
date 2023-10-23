@@ -39,6 +39,4 @@ main > article blockquote {
   border-left: 0.25rem solid #ddd;
   padding: 0 1rem;
   margin: 0;
-
-  @apply italic;
 }
