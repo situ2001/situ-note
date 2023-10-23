@@ -1,5 +1,5 @@
 ---
-title: 从git仓库中移除无用的大文件
+title: 将无用的大文件从git仓库中删除
 comments: true
 date: 2022-04-04 13:45:00
 categories: git

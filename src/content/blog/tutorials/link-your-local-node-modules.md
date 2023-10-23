@@ -1,5 +1,5 @@
 ---
-title: npm link 的用法
+title: npm link 的用途
 comments: true
 date: 2022-10-02 19:49:00
 categories: 教程

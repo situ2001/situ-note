@@ -1,5 +1,5 @@
 ---
-title: macOS下使用指纹来允许sudo命令
+title: macOS 使用指纹允许 sudo
 comments: true
 date: 2022-09-17 17:30:00
 categories: 教程
