@@ -1,0 +1,16 @@
+/* TODO refactor */
+@keyframes fade-from-bottom {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.card-root {
+  animation: 500ms ease-in-out fade-from-bottom;
+}

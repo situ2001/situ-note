@@ -1,6 +1,10 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
+
+import { Card } from "../components/Card";
+import { LatestBlog } from "../components/LatestBlog";
+import { SelfIntro } from "../components/SelfIntro";
 ---
 
 <html>
@@ -9,9 +13,13 @@ import Header from "../components/Header.astro";
   </head>
   <body>
     <Header />
-    <main class="p-4">
-      <p>Welcome to my website.</p>
-      <p>正在使用 Astro.js 重构中</p>
+    <main class="p-4 md:w-180 md:mx-auto">
+      <Card client:load>
+        <SelfIntro client:load />
+      </Card>
+      <Card client:load>
+        <LatestBlog client:load />
+      </Card>
     </main>
   </body>
 </html>
