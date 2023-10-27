@@ -24,14 +24,14 @@ export const LatestBlog = () => {
       <hr class="my-1" />
       {/* <section class="overflow-scroll flex-1"> */}
       <ul
-        onPointerEnter={() => setIsPointerOverBlogList(true)}
-        onPointerLeave={() => setIsPointerOverBlogList(false)}
+        onPointerOver={() => setIsPointerOverBlogList(true)}
+        onPointerOut={() => setIsPointerOverBlogList(false)}
         class="flex flex-col justify-between flex-1"
       >
         {posts.map((post) => (
           <div
-            onPointerEnter={() => setHoveredElement(post)}
-            onPointerLeave={() => setHoveredElement(null)}
+            onPointerOver={() => setHoveredElement(post)}
+            onPointerOut={() => setHoveredElement(null)}
             class={`my-1 transition-all duration-150 hover:scale-105 origin-left`}
             style={{
               opacity:
