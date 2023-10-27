@@ -1,47 +1,38 @@
 ---
 import { getCollection } from "astro:content";
-import BaseHead from "../../components/BaseHead.astro";
-import Header from "../../components/Header.astro";
 import FormattedDate from "../../components/FormattedDate.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
 ---
 
-<html>
-  <head>
-    <BaseHead title="Blogs" description="Blog list" />
-  </head>
-  <body>
-    <Header />
-    <main class="p-4">
-      <section>
-        <ul>
-          {
-            // TODO add category
-            posts.map((post) => (
-              <li class="my-2 flex flex-col md:flex-row">
-                <div class="flex-1">
-                  <a rel="prefetch" href={`/blog/${post.slug}`}>
-                    <div class="underline underline-offset-4">
-                      {post.data.title}
-                    </div>
-                  </a>
+<BaseLayout title="Blogs" description="Blog list" fullWidth>
+  <section>
+    <ul>
+      {
+        // TODO add category
+        posts.map((post) => (
+          <li class="my-2 flex flex-col md:flex-row">
+            <div class="flex-1">
+              <a rel="prefetch" href={`/blog/${post.slug}`}>
+                <div class="underline underline-offset-4">
+                  {post.data.title}
                 </div>
-                <div class="flex flex-row">
-                  {post.data.categories.split(",").map((category) => (
-                    <div class="opacity-60 mr-2">{category}</div>
-                  ))}
-                  <p class="ml-auto md:ml-0">
-                    <FormattedDate date={post.data.date} />
-                  </p>
-                </div>
-              </li>
-            ))
-          }
-        </ul>
-      </section>
-    </main>
-  </body>
-</html>
+              </a>
+            </div>
+            <div class="flex flex-row">
+              {post.data.categories.split(",").map((category) => (
+                <div class="opacity-60 mr-2">{category}</div>
+              ))}
+              <p class="ml-auto md:ml-0">
+                <FormattedDate date={post.data.date} />
+              </p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</BaseLayout>

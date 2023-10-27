@@ -1,0 +1,23 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  fullWidth?: boolean;
+}
+const { title, description, fullWidth } = Astro.props;
+---
+
+<html>
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+  <body>
+    <Header />
+    <main class={"p-4 " + (fullWidth ? "" : "md:w-180 md:m-auto")}>
+      <slot />
+    </main>
+  </body>
+</html>
