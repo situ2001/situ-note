@@ -1,6 +1,6 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
+import BaseHtmlHead from "../components/BaseHtmlHead.astro";
+import TopNavigation from "../components/TopNavigation.astro";
 
 interface Props {
   title: string;
@@ -12,10 +12,10 @@ const { title, description, fullWidth } = Astro.props;
 
 <html>
   <head>
-    <BaseHead title={title} description={description} />
+    <BaseHtmlHead title={title} description={description} />
   </head>
   <body>
-    <Header />
+    <TopNavigation />
     <main class={"p-4 " + (fullWidth ? "" : "md:w-180 md:m-auto")}>
       <slot />
     </main>
