@@ -301,7 +301,6 @@ git push -d origin [branch-name]
 刚刚全都是在命令行下处理的，如果需要一个相关的GUI工具，可以尝试下面的
 
 - [Sourcetree](https://www.sourcetreeapp.com/)
-
 - vscode
 
 还有一个方法，学习这东西，可以到github上面浏览一下出名的repo的一些东西，比如说，它们的commit commet的写法风格是怎么样的，它们的分支是怎么样的......
