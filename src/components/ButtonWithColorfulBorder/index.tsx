@@ -1,15 +1,18 @@
-import { onCleanup, onMount } from "solid-js";
+import { onCleanup, onMount, type JSXElement } from "solid-js";
 import _ from "lodash";
-import styles from "../styles/link-button.module.css";
+import styles from "./style.module.css";
 
-export interface LinkButtonProps {
-  name: string;
-  link: string;
-  iconUrl?: string;
+export interface ButtonWithColorfulBorderProps {
+  children: JSXElement;
 }
 
-export const LinkButton = (props: LinkButtonProps) => {
-  const { name, link, iconUrl } = props;
+/**
+ * A button with a colorful border.
+ */
+export default function ButtonWithColorfulBorder(
+  props: ButtonWithColorfulBorderProps
+) {
+  const { children } = props;
 
   let btn: HTMLButtonElement | undefined;
 
@@ -35,10 +38,7 @@ export const LinkButton = (props: LinkButtonProps) => {
   return (
     <button ref={btn} class={styles.button}>
       <span class={styles.backdrop}></span>
-      <a href={link} class={styles.text}>
-        {iconUrl && <img class="h-4" src={iconUrl}></img>}
-        <span>{name}</span>
-      </a>
+      <span class={styles.text}>{children}</span>
     </button>
   );
-};
+}
