@@ -45,3 +45,7 @@ main > article blockquote {
   padding: 0 1rem;
   margin: 0;
 }
+
+main > article img {
+  margin: 0 auto;
+}
