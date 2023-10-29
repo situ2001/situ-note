@@ -1,4 +1,4 @@
-import Avatar from "../../public/28241963.png";
+import Avatar from "../assets/28241963.png";
 
 export const SelfIntro = () => {
   return (
