@@ -13,7 +13,7 @@ const Links = () => {
       {links.map((link) => (
         <LinkButton>
           <a class="flex items-center gap-1" href={link.link}>
-            {link.iconUrl && <img class="h-4" src={link.iconUrl}></img>}
+            {link.iconUrl && <img class="h-4 w-4" src={link.iconUrl}></img>}
             <span>{link.name}</span>
           </a>
         </LinkButton>
