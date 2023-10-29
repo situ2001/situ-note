@@ -4,11 +4,22 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Card from "../components/Card";
 import { LatestBlog } from "../components/LatestBlog";
 import { SelfIntro } from "../components/SelfIntro";
+
+import { Picture } from "astro:assets";
+import Avatar from "../assets/28241963.png";
 ---
 
 <BaseLayout title="Situ Note" description="Home Page">
   <Card>
-    <SelfIntro client:load />
+    <SelfIntro client:load>
+      <Picture
+        src={Avatar}
+        alt={"situ2001's GitHub avatar"}
+        class="h-16 w-16 rounded-full transition-all duration-300 hover:rotate-180"
+        width="100"
+        height="100"
+      />
+    </SelfIntro>
   </Card>
   <Card>
     <LatestBlog client:load />

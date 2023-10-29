@@ -5,6 +5,7 @@ import LinkButton, {
 import links from "../config/links";
 
 import Avatar from "../assets/28241963.png";
+import type { JSXElement } from "solid-js";
 
 const Links = () => {
   return (
@@ -21,7 +22,7 @@ const Links = () => {
   );
 };
 
-export const SelfIntro = () => {
+export const SelfIntro = ({ children }: { children: JSXElement }) => {
   return (
     <div class="flex flex-col">
       <div class="flex flex-row">
@@ -29,11 +30,7 @@ export const SelfIntro = () => {
           <h1 class="text-3xl font-bold">Hi!</h1>
           <p>I'm situ2001.</p>
         </div>
-        <img
-          class="h-16 w-16 rounded-full transition-all duration-300 hover:rotate-180"
-          src={Avatar.src}
-          alt={"situ2001's GitHub avatar"}
-        ></img>
+        {children}
       </div>
       <div class="my-1"></div>
       <Links />
