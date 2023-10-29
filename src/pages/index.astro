@@ -4,13 +4,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { Card } from "../components/Card";
 import { LatestBlog } from "../components/LatestBlog";
 import { SelfIntro } from "../components/SelfIntro";
+import { Links } from "../components/Links";
 ---
 
 <BaseLayout title="Situ Note" description="Home Page">
-  <Card client:load>
+  <Card>
     <SelfIntro client:load />
   </Card>
-  <Card client:load>
+  <Card><Links client:load /></Card>
+  <Card>
     <LatestBlog client:load />
   </Card>
 </BaseLayout>
