@@ -6,9 +6,9 @@ import {
   createSignal,
 } from "solid-js";
 
-import styles from "../styles/card.module.css";
+import styles from "./style.module.css";
 
-export const Card = (props: any) => {
+const Card = (props: any) => {
   const [rotate, setRotate] = createSignal(217);
 
   const linearGradientStyle = createMemo(
@@ -37,3 +37,5 @@ export const Card = (props: any) => {
     </div>
   );
 };
+
+export default Card;
