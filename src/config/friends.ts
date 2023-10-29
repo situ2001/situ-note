@@ -21,4 +21,8 @@ export const friends: FriendCardProps[] = [
     name: "7gugu",
     link: "https://7gugu.com",
   },
+  {
+    name: "songhn",
+    link: "https://songhn.com",
+  },
 ];
