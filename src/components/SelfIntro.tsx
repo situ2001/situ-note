@@ -4,7 +4,6 @@ import LinkButton, {
 
 import links from "../config/links";
 
-import Avatar from "../assets/28241963.png";
 import type { JSXElement } from "solid-js";
 
 const Links = () => {
