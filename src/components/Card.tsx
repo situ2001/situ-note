@@ -6,7 +6,7 @@ import {
   createSignal,
 } from "solid-js";
 
-import "../styles/card.css";
+import styles from "../styles/card.module.css";
 
 export const Card = (props: any) => {
   const [rotate, setRotate] = createSignal(217);
@@ -26,7 +26,7 @@ export const Card = (props: any) => {
   return (
     <div
       class={
-        "card-root" +
+        styles.root +
         " " +
         "bg-white rounded-xl shadow-lg p-4 transition-all mb-4"
       }

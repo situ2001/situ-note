@@ -11,6 +11,6 @@
   }
 }
 
-.card-root {
+.root {
   animation: 500ms ease-in-out fade-from-bottom;
 }
