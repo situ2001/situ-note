@@ -19,14 +19,15 @@ export default function ButtonWithColorfulBorder(
   onMount(() => {
     const update = _.throttle((e: PointerEvent) => {
       const { x, y } = e;
-      const styleObj = (e.currentTarget as HTMLButtonElement).style;
-      const bound = (
-        e.currentTarget as HTMLButtonElement
-      ).getBoundingClientRect();
+      const currentTarget = e.currentTarget as HTMLButtonElement | null;
+      if (currentTarget) {
+        const styleObj = currentTarget.style;
+        const bound = currentTarget.getBoundingClientRect();
 
-      styleObj.setProperty("--rx", (x - bound.x) / bound.width + "");
-      styleObj.setProperty("--x", (x - bound.x) / bound.width + "");
-      styleObj.setProperty("--y", (y - bound.y) / bound.height + "");
+        styleObj.setProperty("--rx", (x - bound.x) / bound.width + "");
+        styleObj.setProperty("--x", (x - bound.x) / bound.width + "");
+        styleObj.setProperty("--y", (y - bound.y) / bound.height + "");
+      }
     }, 10);
 
     btn?.addEventListener("pointermove", update, { capture: true });
