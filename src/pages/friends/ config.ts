@@ -1,4 +1,6 @@
-export const friends = [
+import type { FriendCardProps } from "../../components/FriendCard/type";
+
+export const friends: FriendCardProps[] = [
   {
     name: "Airing",
     link: "https://ursb.me",
