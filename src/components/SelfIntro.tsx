@@ -9,7 +9,7 @@ import type { JSXElement } from "solid-js";
 
 const Links = () => {
   return (
-    <div class="flex flex-wrap gap-1">
+    <div class="flex flex-wrap gap-2">
       {links.map((link) => (
         <LinkButton>
           <a class="flex items-center gap-1" href={link.link}>
