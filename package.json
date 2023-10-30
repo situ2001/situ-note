@@ -20,11 +20,15 @@
     "astro": "^3.3.2",
     "lodash": "^4.17.21",
     "lxgw-wenkai-webfont": "^1.7.0",
+    "markdown-it": "^13.0.2",
+    "sanitize-html": "^2.11.0",
     "sharp": "^0.32.6",
     "solid-js": "^1.4.3",
     "tailwindcss": "^3.0.24"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.200"
+    "@types/lodash": "^4.14.200",
+    "@types/markdown-it": "^13.0.5",
+    "@types/sanitize-html": "^2.9.3"
   }
 }
