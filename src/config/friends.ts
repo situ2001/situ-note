@@ -11,7 +11,7 @@ export const friends: FriendCardProps[] = [
   },
   {
     name: "Yuzi",
-    link: "https://blog.yuzi.dev",
+    link: "https://yuzi.dev",
   },
   {
     name: "RH-Xie",
