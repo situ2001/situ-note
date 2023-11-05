@@ -19,7 +19,7 @@
     "@fontsource/fira-code": "^5.0.15",
     "astro": "^3.3.2",
     "lodash": "^4.17.21",
-    "lxgw-wenkai-webfont": "^1.7.0",
+    "lxgw-wenkai-lite-webfont": "^1.7.0",
     "markdown-it": "^13.0.2",
     "sanitize-html": "^2.11.0",
     "sharp": "^0.32.6",

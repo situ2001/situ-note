@@ -32,7 +32,7 @@ dependencies:
   lodash:
     specifier: ^4.17.21
     version: 4.17.21
-  lxgw-wenkai-webfont:
+  lxgw-wenkai-lite-webfont:
     specifier: ^1.7.0
     version: 1.7.0
   markdown-it:
@@ -2598,8 +2598,8 @@ packages:
       yallist: 4.0.0
     dev: false
 
-  /lxgw-wenkai-webfont@1.7.0:
-    resolution: {integrity: sha512-kVJmT4xMAyOLhG6q0w63wJkVU7RP8UMQRGoAWj9tnpzL7sWFFYiEHBdUQyW9myqBQFa5SQfWfa2VLYF4IJBL5g==}
+  /lxgw-wenkai-lite-webfont@1.7.0:
+    resolution: {integrity: sha512-VcQYNRpdXAxaZsJ18rfT1mmAreGqkIFNZ/9pdVLbT2Tkb+2lLWJDXq4zYxMEk9AcecSnxO31R2LHh5ieLlxjRg==}
     dev: false
 
   /magic-string@0.30.5:
