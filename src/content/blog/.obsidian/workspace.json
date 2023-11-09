@@ -1,0 +1,137 @@
+{
+  "main": {
+    "id": "c8535fc565f5c64f",
+    "type": "split",
+    "children": [
+      {
+        "id": "0be4aad0f310b7db",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c1d1db7dec4a1a53",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "migration-to-astro.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "f25ff3d3ff3f9ca9",
+    "type": "split",
+    "children": [
+      {
+        "id": "475c59596da0363b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "33348f9834b909a7",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "b4becb81253ffe9b",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "5ec957efdee05718",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "fc30e92aa9cb5cec",
+    "type": "split",
+    "children": [
+      {
+        "id": "d5ca62c5b8e1e41a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "fd4b66c53fa6d885",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "migration-to-astro.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "a0acec15857afa62",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "migration-to-astro.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false
+    }
+  },
+  "active": "c1d1db7dec4a1a53",
+  "lastOpenFiles": [
+    "my-first-internship.md",
+    "migration-to-astro.md",
+    "assets/migration-to-astro-20231109212244725.png",
+    "assets/migration-to-astro/image-20231109212103962.png",
+    "assets/migration-to-astro/image-20231109212053664.png",
+    "assets/migration-to-astro",
+    "assets",
+    "migration-to-astro/Untitled.md",
+    "hello-astro.md",
+    "migration-to-astro",
+    "Untitled",
+    "git/git-remove-large-blob.md",
+    "git/hello-git.md"
+  ]
+}
