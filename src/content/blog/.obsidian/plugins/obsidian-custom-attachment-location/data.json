@@ -3,5 +3,5 @@
   "pastedImageFileName": "${filename}-${date}",
   "dateTimeFormat": "YYYYMMDDHHmmssSSS",
   "autoRenameFolder": true,
-  "autoRenameFiles": false
+  "autoRenameFiles": true
 }

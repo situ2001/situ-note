@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "0be4aad0f310b7db",
+        "id": "633726741a836a15",
         "type": "tabs",
         "children": [
           {
-            "id": "c1d1db7dec4a1a53",
+            "id": "3b49321439c4631e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "migration-to-astro.md",
+                "file": "make-obsidian-your-markdown-editor.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -70,7 +70,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 251.5
   },
   "right": {
     "id": "fc30e92aa9cb5cec",
@@ -86,7 +86,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "migration-to-astro.md",
+                "file": "make-obsidian-your-markdown-editor.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -98,7 +98,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "migration-to-astro.md"
+                "file": "make-obsidian-your-markdown-editor.md"
               }
             }
           }
@@ -118,13 +118,29 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "c1d1db7dec4a1a53",
+  "active": "3b49321439c4631e",
   "lastOpenFiles": [
+    "assets/make-obsidian-your-markdown-editor-20231109232407154.png",
+    "assets/make-obsidian-your-markdown-editor-20231109232332107.png",
+    "assets/make-obsidian-your-markdown-editor-20231109232245001.png",
+    "assets/make-obsidian-your-markdown-editor-20231109232031153.png",
+    "assets/make-obsidian-your-markdown-editor-20231109231943027.png",
+    "assets/make-obsidian-your-markdown-editor-20231109231725945.png",
+    "assets/make-obsidian-your-markdown-editor-20231109224129864.png",
+    "_templates/Create new post.md",
+    "make-obsidian-your-markdown-editor.md",
+    "assets/make-obsidian-your-markdown-editor-20231109225854243.png",
+    "assets/make-obsidian-your-markdown-editor-20231109225555998.png",
+    "assets/make-obsidian-your-markdown-editor-20231109225408515.png",
     "my-first-internship.md",
+    "_templates",
+    "templates/Create new post.md",
+    "templates/Create new post.template.md",
+    "templates/Create new post.template.txt",
+    "templates/Create new post.template",
+    "templates",
     "migration-to-astro.md",
     "assets/migration-to-astro-20231109212244725.png",
-    "assets/migration-to-astro/image-20231109212103962.png",
-    "assets/migration-to-astro/image-20231109212053664.png",
     "assets/migration-to-astro",
     "assets",
     "migration-to-astro/Untitled.md",

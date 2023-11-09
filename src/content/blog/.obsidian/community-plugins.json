@@ -1,5 +1,7 @@
 [
   "obsidian-custom-attachment-location",
   "table-editor-obsidian",
-  "obsidian-image-toolkit"
+  "obsidian-image-toolkit",
+  "obsidian-linter",
+  "cm-chs-patch"
 ]
