@@ -25,7 +25,12 @@ export async function GET(context: any) {
       pubDate: post.data.date,
       link: `/blog/${post.slug}/`,
       categories: post.data.categories.split(","),
-      content: sanitizeHtml(parser.render(post.body)),
+      content: sanitizeHtml(
+        parser.render(
+          "> 该内容使用MarkdownIt渲染，如需查看图片及获取更好的排版，请阅读原文\n\n" +
+            post.body
+        )
+      ),
     })),
   });
 }
