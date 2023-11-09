@@ -50,3 +50,8 @@ main > article blockquote {
 main > article img {
   margin: 0 auto;
 }
+
+main > article code:not(pre code) {
+  background: #F2F2F2;
+  @apply rounded px-1;
+}
