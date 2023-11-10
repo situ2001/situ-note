@@ -32,11 +32,11 @@ Main content ends.
 5. 支持 Markdown 文件的格式化（Linter）
 6. 支持 CJK 分词（用于：Option + 左右方向键跳词）
 
-在这里，我选择了平时常用的适合长文编辑的 Obsdian 作为博客 Markdown 编辑器，并为博客 Markdown 编辑需求专门进行了一番配置。
+在这里，我选择了平时常用的适合长文编辑的 Obsidian 作为博客 Markdown 编辑器，并为博客 Markdown 编辑需求专门进行了一番配置。
 
 ## 基本配置
 
-基本配置很简单，只需要博客文章文件夹把添加为 Vault 即可。这个时候就能在 Obsdian 编辑器里编辑博客的 Markdown 文件了。
+基本配置很简单，只需要把博客文章文件夹添加为 Obsidian Vault 即可。这个时候就能在 Obsidian 编辑器里编辑博客的 Markdown 文件了。
 
 ![](./assets/make-obsidian-your-markdown-editor-20231109224129864.png)
 
