@@ -52,6 +52,9 @@ main > article img {
 }
 
 main > article code:not(pre code) {
-  background: #F2F2F2;
-  @apply rounded px-1;
+  @apply rounded px-1 bg-gray-100;
+}
+
+main > article pre {
+  @apply rounded p-4 bg-gray-100 !important;
 }
