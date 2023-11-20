@@ -1,11 +1,9 @@
 ---
-import { getCollection } from "astro:content";
 import FormattedDate from "../../components/FormattedDate.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getPostSortedByDate } from "../../api/blog";
 
-const posts = (await getCollection("blog")).sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
-);
+const posts = getPostSortedByDate();
 ---
 
 <BaseLayout title="Blogs" description="Blog list" fullWidth>

@@ -1,9 +1,7 @@
-import { getCollection } from "astro:content";
 import { createSignal } from "solid-js";
+import { getTopKPosts } from "../api/blog";
 
-const posts = (await getCollection("blog"))
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 5);
+const posts = getTopKPosts(5);
 
 type Post = (typeof posts)[0];
 
