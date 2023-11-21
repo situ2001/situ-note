@@ -17,12 +17,12 @@ const { title, description, date, categories } = Astro.props;
   <h1>{title}</h1>
   <FormattedDate date={date} />
   <div>
-    <span
+    <span class="mr-1"
       >{
         convertStringCategoriesToArray(categories).length > 1
           ? "Categories"
           : "Category"
-      }:&nbsp;</span
+      }:</span
     >
     {
       interleave(
