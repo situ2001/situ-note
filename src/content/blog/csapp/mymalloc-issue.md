@@ -3,7 +3,7 @@ title: 处理运行时插桩错误
 comments: true
 date: 2022-02-27 15:10:00
 description: 好好的代码怎么就Segmentation fault了呢
-categories: CS:APP
+categories: Lab
 ---
 
 ## 出错

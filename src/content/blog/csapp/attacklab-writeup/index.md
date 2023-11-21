@@ -3,7 +3,7 @@ title: Writeup for AttackLab
 comments: true
 date: 2021-11-04 11:11:11
 description: CS:APP实验之缓冲区溢出
-categories: CS:APP
+categories: Lab
 ---
 
 ## 前言

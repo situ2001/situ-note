@@ -2,7 +2,7 @@
 title: 常见的排序算法
 comments: true
 date: 2021-05-12 15:30:00
-categories: 数据结构与算法
+categories: 算法
 description: 常见的排序算法
 ---
 
