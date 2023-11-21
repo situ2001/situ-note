@@ -31,6 +31,10 @@ export const getPostSortedByDate = (posts: Post[], descending = true) => {
   });
 };
 
+export const convertStringCategoriesToArray = (categoryString: string) => {
+  return categoryString.split(",").map((s) => s.trim());
+};
+
 /// -------------- api functions --------------
 
 export const getTopKPosts = (posts: Post[], k: number) => {
@@ -54,12 +58,11 @@ export const getPostsGroupByCategory: (posts: Post[]) => Dictionary<Post[]> = (
   posts: Post[]
 ) => {
   const flattenCategoryPosts = posts.flatMap((post) => {
-    return post.data.categories
-      .split(",")
-      .map((s) => s.trim())
-      .map((category) => {
+    return convertStringCategoriesToArray(post.data.categories).map(
+      (category) => {
         return { ...post, data: { ...post.data, categories: category } };
-      });
+      }
+    );
   });
   const c = groupBy(flattenCategoryPosts, (post) => post.data.categories);
   return c;

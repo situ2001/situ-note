@@ -9,14 +9,16 @@ import {
 
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 
-const posts = getPostsGroupByCategory(getPostSortedByDate(postsData));
+const postsGrouppedByCategory = getPostsGroupByCategory(
+  getPostSortedByDate(postsData)
+);
 ---
 
 <BaseLayout title="Category" description="The category page">
   <div>
     <ul>
       {
-        Object.keys(posts).map((category) => {
+        Object.keys(postsGrouppedByCategory).map((category) => {
           return (
             <span class="mr-4 inline-block">
               <a

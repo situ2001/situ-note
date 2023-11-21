@@ -1,7 +1,11 @@
 ---
 import FormattedDate from "../../components/FormattedDate.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { getPostSortedByDate, posts as postsData } from "../../api/blog";
+import {
+  getPostSortedByDate,
+  convertStringCategoriesToArray,
+  posts as postsData,
+} from "../../api/blog";
 
 const posts = getPostSortedByDate(postsData);
 ---
@@ -21,13 +25,15 @@ const posts = getPostSortedByDate(postsData);
               </a>
             </div>
             <div class="flex flex-row">
-              {post.data.categories.split(",").map((category) => (
-                <a href={`/blog/category/${category.trim()}`}>
-                  <div class="hover:underline underline-offset-4 opacity-60 mr-2">
-                    {category.trim()}
-                  </div>
-                </a>
-              ))}
+              {convertStringCategoriesToArray(post.data.categories).map(
+                (category) => (
+                  <a href={`/blog/category/${category}`}>
+                    <div class="hover:underline underline-offset-4 opacity-60 mr-2">
+                      {category}
+                    </div>
+                  </a>
+                )
+              )}
               <p class="ml-auto md:ml-0">
                 <FormattedDate date={post.data.date} />
               </p>
