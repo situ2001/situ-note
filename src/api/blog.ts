@@ -2,9 +2,9 @@ import { getCollection, type CollectionEntry } from "astro:content";
 import groupBy from "lodash/groupBy";
 
 // init once, because it's a static collection
-const posts = await getCollection("blog");
+export const posts = await getCollection("blog");
 
-type Post = CollectionEntry<"blog">;
+export type Post = CollectionEntry<"blog">;
 
 export const convertToUTC8 = (post: Post) => ({
   ...post,
@@ -45,8 +45,8 @@ export const getPostsForRSS = () => {
  * Notice that the category is flattened, so each post may appear multiple times
  * @returns
  */
-export const getPostsGroupByCategory = () => {
-  const flattenCategoryPosts = getPostSortedByDate().flatMap((post) => {
+export const getPostsGroupByCategory = (posts: Post[]) => {
+  const flattenCategoryPosts = posts.flatMap((post) => {
     return post.data.categories
       .split(",")
       .map((s) => s.trim())
@@ -59,7 +59,7 @@ export const getPostsGroupByCategory = () => {
 };
 
 export const getCategoryStaticPaths = () => {
-  const categories = getPostsGroupByCategory();
+  const categories = getPostsGroupByCategory(getPostSortedByDate());
   return Object.keys(categories).map((category) => ({
     params: { category },
     props: { posts: categories[category].map(convertToUTC8), category },
