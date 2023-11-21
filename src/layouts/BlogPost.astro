@@ -6,14 +6,35 @@ import FormattedDate from "../components/FormattedDate.astro";
 import BaseLayout from "./BaseLayout.astro";
 
 import "../styles/blog-post.css";
+import { convertStringCategoriesToArray } from "../api/blog";
+import { interleave } from "../utils";
 
 type Props = CollectionEntry<"blog">["data"];
-const { title, description, date } = Astro.props;
+const { title, description, date, categories } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description}>
   <h1>{title}</h1>
   <FormattedDate date={date} />
+  <div>
+    <span
+      >{
+        convertStringCategoriesToArray(categories).length > 1
+          ? "Categories"
+          : "Category"
+      }:&nbsp;</span
+    >
+    {
+      interleave(
+        convertStringCategoriesToArray(categories).map((category) => (
+          <a href={`/blog/category/${category}`}>
+            <span class="hover:underline underline-offset-4">{category}</span>
+          </a>
+        )),
+        <span class="mx-1">/</span>
+      )
+    }
+  </div>
   <hr />
   <article>
     <slot />
