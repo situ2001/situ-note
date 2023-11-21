@@ -7,7 +7,7 @@ export const Category = () => {
     <div class="h-full flex flex-col">
       {/* TODO not now but future */}
       {/* <a href="/blog/category"> */}
-      <header class="text-xl font-bold">Category</header>
+      <header class="text-xl font-bold">Categories</header>
       {/* </a> */}
       <hr class="my-1" />
       <div class="my-1">
