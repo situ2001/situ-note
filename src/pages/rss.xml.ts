@@ -1,12 +1,12 @@
 import rss from "@astrojs/rss";
 import sanitizeHtml from "sanitize-html";
 import MarkdownIt from "markdown-it";
-import { getPostsForRSS } from "../api/blog";
+import { getPostsForRSS, posts as postsData } from "../api/blog";
 
 const parser = new MarkdownIt();
 
 export async function GET(context: any) {
-  const posts = getPostsForRSS();
+  const posts = getPostsForRSS(postsData);
   return rss({
     title: "Situ Note",
     description: "Personal website of situ2001",

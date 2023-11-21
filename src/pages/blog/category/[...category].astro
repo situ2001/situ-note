@@ -5,12 +5,15 @@ import type { GetStaticPaths } from "astro";
 import {
   getPostsGroupByCategory,
   getCategoryStaticPaths,
+  posts as postsData,
 } from "../../../api/blog";
 
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import FormattedDate from "../../../components/FormattedDate.astro";
 
-export const getStaticPaths = getCategoryStaticPaths;
+export const getStaticPaths = getCategoryStaticPaths(
+  getPostsGroupByCategory(postsData)
+);
 
 type Props = {
   posts: CollectionEntry<"blog">[];

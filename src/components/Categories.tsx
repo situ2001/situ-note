@@ -1,6 +1,11 @@
-import { getPostSortedByDate, getPostsGroupByCategory } from "../api/blog";
+import {
+  getPostSortedByDate,
+  getPostsGroupByCategory,
+  posts as postsData,
+  type Post,
+} from "../api/blog";
 
-const posts = getPostsGroupByCategory(getPostSortedByDate());
+const posts = getPostsGroupByCategory(getPostSortedByDate(postsData));
 
 export const Category = () => {
   return (

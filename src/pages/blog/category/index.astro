@@ -4,11 +4,12 @@ import { type CollectionEntry } from "astro:content";
 import {
   getPostSortedByDate,
   getPostsGroupByCategory,
+  posts as postsData,
 } from "../../../api/blog";
 
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 
-const posts = getPostsGroupByCategory(getPostSortedByDate());
+const posts = getPostsGroupByCategory(getPostSortedByDate(postsData));
 ---
 
 <BaseLayout title="Category" description="The category page">

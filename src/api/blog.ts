@@ -1,10 +1,13 @@
 import { getCollection, type CollectionEntry } from "astro:content";
+import type { Dictionary } from "lodash";
 import groupBy from "lodash/groupBy";
 
 // init once, because it's a static collection
 export const posts = await getCollection("blog");
 
 export type Post = CollectionEntry<"blog">;
+
+/// -------------- mapper functions --------------
 
 export const convertToUTC8 = (post: Post) => ({
   ...post,
@@ -19,7 +22,7 @@ export const covertToStaticPaths = (post: Post) => ({
   props: post,
 });
 
-export const getPostSortedByDate = (descending = true) => {
+export const getPostSortedByDate = (posts: Post[], descending = true) => {
   // TODO use toSortedArray
   return posts.slice().sort((a, b) => {
     const dateA = a.data.date.valueOf();
@@ -28,16 +31,18 @@ export const getPostSortedByDate = (descending = true) => {
   });
 };
 
-export const getTopKPosts = (k: number) => {
-  return getPostSortedByDate().slice(0, k);
+/// -------------- api functions --------------
+
+export const getTopKPosts = (posts: Post[], k: number) => {
+  return getPostSortedByDate(posts).slice(0, k);
 };
 
-export const getStaticPaths = () => {
+export const getStaticPaths = (posts: Post[]) => () => {
   return posts.map(convertToUTC8).map(covertToStaticPaths);
 };
 
-export const getPostsForRSS = () => {
-  return getPostSortedByDate().map(convertToUTC8);
+export const getPostsForRSS = (posts: Post[]) => {
+  return getPostSortedByDate(posts).map(convertToUTC8);
 };
 
 /**
@@ -45,7 +50,9 @@ export const getPostsForRSS = () => {
  * Notice that the category is flattened, so each post may appear multiple times
  * @returns
  */
-export const getPostsGroupByCategory = (posts: Post[]) => {
+export const getPostsGroupByCategory: (posts: Post[]) => Dictionary<Post[]> = (
+  posts: Post[]
+) => {
   const flattenCategoryPosts = posts.flatMap((post) => {
     return post.data.categories
       .split(",")
@@ -58,8 +65,8 @@ export const getPostsGroupByCategory = (posts: Post[]) => {
   return c;
 };
 
-export const getCategoryStaticPaths = () => {
-  const categories = getPostsGroupByCategory(getPostSortedByDate());
+export const getCategoryStaticPaths = (groups: Dictionary<Post[]>) => () => {
+  const categories = groups;
   return Object.keys(categories).map((category) => ({
     params: { category },
     props: { posts: categories[category].map(convertToUTC8), category },

@@ -1,7 +1,7 @@
 import { createSignal } from "solid-js";
-import { getTopKPosts } from "../api/blog";
+import { getTopKPosts, posts as postsData } from "../api/blog";
 
-const posts = getTopKPosts(5);
+const posts = getTopKPosts(postsData, 5);
 
 type Post = (typeof posts)[0];
 

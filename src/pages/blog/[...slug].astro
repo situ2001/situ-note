@@ -2,9 +2,9 @@
 import { type CollectionEntry } from "astro:content";
 
 import BlogPost from "../../layouts/BlogPost.astro";
-import { getStaticPaths as getBlogPaths } from "../../api/blog";
+import { getStaticPaths as getBlogPaths, posts } from "../../api/blog";
 
-export const getStaticPaths = getBlogPaths;
+export const getStaticPaths = getBlogPaths(posts);
 
 type Props = CollectionEntry<"blog">;
 

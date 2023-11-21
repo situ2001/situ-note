@@ -1,9 +1,9 @@
 ---
 import FormattedDate from "../../components/FormattedDate.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { getPostSortedByDate } from "../../api/blog";
+import { getPostSortedByDate, posts as postsData } from "../../api/blog";
 
-const posts = getPostSortedByDate();
+const posts = getPostSortedByDate(postsData);
 ---
 
 <BaseLayout title="Blogs" description="Blog list" fullWidth>
