@@ -1,0 +1,52 @@
+---
+import { type CollectionEntry } from "astro:content";
+
+import type { GetStaticPaths } from "astro";
+import {
+  getPostsGroupByCategory,
+  getCategoryStaticPaths,
+} from "../../../api/blog";
+
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import FormattedDate from "../../../components/FormattedDate.astro";
+
+export const getStaticPaths = getCategoryStaticPaths;
+
+type Props = {
+  posts: CollectionEntry<"blog">[];
+  category: string;
+};
+
+const { posts, category } = Astro.props;
+
+// TODO use the styles of blog list page
+---
+
+<BaseLayout
+  title={`category--${category}`}
+  description={`Page of category ${category}`}
+  fullWidth
+>
+  <section>
+    <h1 class="text-xl">Category: {category}</h1>
+    <hr class="my-1" />
+    <ul>
+      {
+        posts.map((post) => (
+          <li class="my-2 flex flex-row">
+            <div class="flex-1">
+              <a rel="prefetch" href={`/blog/${post.slug}`}>
+                <div class="underline underline-offset-4">
+                  {post.data.title}
+                </div>
+              </a>
+            </div>
+            <p class="ml-auto md:ml-0">
+              <FormattedDate date={post.data.date} />
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</BaseLayout>

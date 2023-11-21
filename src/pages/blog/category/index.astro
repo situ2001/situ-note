@@ -1,0 +1,30 @@
+---
+import { type CollectionEntry } from "astro:content";
+
+import { getPostsGroupByCategory } from "../../../api/blog";
+
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+const posts = getPostsGroupByCategory();
+---
+
+<BaseLayout title="Category" description="The category page">
+  <div>
+    <ul>
+      {
+        Object.keys(posts).map((category) => {
+          return (
+            <span class="mr-4 inline-block">
+              <a
+                class="underline underline-offset-4"
+                href={`/blog/category/${category}`}
+              >
+                {category}
+              </a>
+            </span>
+          );
+        })
+      }
+    </ul>
+  </div>
+</BaseLayout>

@@ -7,6 +7,7 @@ import { SelfIntro } from "../components/SelfIntro";
 
 import { Picture } from "astro:assets";
 import Avatar from "../assets/28241963.png";
+import { Category } from "../components/Categories";
 ---
 
 <BaseLayout title="Situ Note" description="Home Page">
@@ -23,5 +24,8 @@ import Avatar from "../assets/28241963.png";
   </Card>
   <Card>
     <LatestBlog client:load />
+  </Card>
+  <Card>
+    <Category />
   </Card>
 </BaseLayout>
