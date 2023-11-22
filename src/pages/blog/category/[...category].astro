@@ -6,13 +6,14 @@ import {
   getPostsGroupByCategory,
   getCategoryStaticPaths,
   posts as postsData,
+  getPostSortedByDate,
 } from "../../../api/blog";
 
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import FormattedDate from "../../../components/FormattedDate.astro";
 
 export const getStaticPaths = getCategoryStaticPaths(
-  getPostsGroupByCategory(postsData)
+  getPostsGroupByCategory(getPostSortedByDate(postsData))
 );
 
 type Props = {
