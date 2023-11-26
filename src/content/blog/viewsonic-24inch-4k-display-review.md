@@ -119,7 +119,7 @@ description: 一款规格小众的显示器
 
 ### Galaxy S21
 
-成功点亮显示器并进入 Samsung Dex Mode，从 Dex Mode 的设置来看，支持元素 4K 输出。
+成功点亮显示器并进入 Samsung Dex Mode，从 Dex Mode 的设置来看，支持原生 4K 输出。
 
 ![](./assets/viewsonic-24inch-4k-display-review-20231126163352854.jpeg)
 
