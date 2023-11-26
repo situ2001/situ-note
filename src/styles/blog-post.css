@@ -27,7 +27,20 @@ main > article ul {
 }
 
 main > article table {
-  @apply table-auto;
+  display: block;
+  overflow: scroll;
+}
+
+main > article table thead {
+  @apply bg-gray-100;
+}
+
+main > article table th {
+  @apply px-2 py-2 border border-gray-200;
+}
+
+main > article table td {
+  @apply px-2 py-2 border border-gray-200;
 }
 
 main > article a {
