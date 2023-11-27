@@ -1,0 +1,14 @@
+---
+type Props = {
+  data: {
+    temp: number;
+    date: string;
+  }[];
+};
+
+const { data } = Astro.props;
+
+import { TempChart } from "./_TempChart";
+---
+
+<TempChart data={data} client:idle />
