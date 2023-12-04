@@ -8,13 +8,15 @@ import BaseLayout from "./BaseLayout.astro";
 import "../styles/blog-post.css";
 import { convertStringCategoriesToArray } from "../api/blog";
 import { interleave } from "../utils";
+import type { MarkdownHeading } from "astro";
+import { TableOfContent } from "../components/TableOfContent";
 
-type Props = CollectionEntry<"blog">["data"];
-const { title, description, date, categories } = Astro.props;
+type Props = CollectionEntry<"blog">["data"] & { headings: MarkdownHeading[] };
+const { title, description, date, categories, headings } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description}>
-  <h1>{title}</h1>
+  <h1 class="text-3xl mb-1">{title}</h1>
   <FormattedDate date={date} />
   <div>
     <span class="mr-1"
@@ -36,7 +38,22 @@ const { title, description, date, categories } = Astro.props;
     }
   </div>
   <hr />
-  <article>
-    <slot />
-  </article>
+  <div class="flex flex-row">
+    <article class="min-w-0 md:w-3/4">
+      <slot />
+    </article>
+    <!-- TODO adjust height -->
+    <aside
+      class="hidden md:block pl-2 sticky top-0 self-start h-[90vh] w-1/4 mt-4"
+    >
+      <div class="flex flex-col h-full">
+        <div class="text-lg font-bold">ToC</div>
+        <div class="overflow-y-scroll">
+          <TableOfContent headings={headings} />
+        </div>
+        <!-- TODO reading progress -->
+        <!-- <div>100%</div> -->
+      </div>
+    </aside>
+  </div>
 </BaseLayout>
