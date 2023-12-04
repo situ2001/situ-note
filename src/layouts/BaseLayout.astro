@@ -16,7 +16,7 @@ const { title, description, fullWidth } = Astro.props;
   </head>
   <body>
     <TopNavigation />
-    <main class={"p-4 " + (fullWidth ? "" : "md:w-180 md:m-auto")}>
+    <main class="p-4 mx-auto max-w-6xl">
       <slot />
     </main>
   </body>
