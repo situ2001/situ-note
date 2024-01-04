@@ -15,6 +15,36 @@ type Props = CollectionEntry<"blog">["data"] & { headings: MarkdownHeading[] };
 const { title, description, date, categories, headings } = Astro.props;
 ---
 
+<script>
+  const getReadingProgress = () => {
+    let content = document.querySelector("article");
+    let elemReadingProgress = document.querySelector("#reading-progress");
+
+    if (!content || !elemReadingProgress) {
+      return;
+    }
+
+    // compute reading progress
+    let contentHeight = content.clientHeight;
+    let documentOffset = document.documentElement.scrollTop;
+    let contentHeightForComputation = contentHeight - window.outerHeight; // base line is the top of the viewport when scrolled to the bottom
+    let progress = (documentOffset / contentHeightForComputation) * 100;
+    if (progress > 100) {
+      progress = 100;
+    } else if (progress < 0) {
+      progress = 0;
+    }
+
+    // update reading progress
+    if (elemReadingProgress) {
+      elemReadingProgress.innerHTML = `Reading: ${Math.floor(progress)}%`;
+    }
+  };
+
+  getReadingProgress();
+  window.addEventListener("scroll", getReadingProgress);
+</script>
+
 <BaseLayout title={title} description={description}>
   <h1 class="text-3xl mb-1">{title}</h1>
   <FormattedDate date={date} />
@@ -47,12 +77,11 @@ const { title, description, date, categories, headings } = Astro.props;
       class="hidden md:block pl-4 sticky top-0 self-start h-[90vh] w-1/4 mt-4"
     >
       <div class="flex flex-col h-full">
+        <div id="reading-progress"></div>
         <div class="text-lg font-bold">ToC</div>
         <div class="overflow-y-auto">
           <TableOfContent headings={headings} />
         </div>
-        <!-- TODO reading progress -->
-        <!-- <div>100%</div> -->
       </div>
     </aside>
   </div>
