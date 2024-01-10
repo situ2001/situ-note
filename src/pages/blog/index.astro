@@ -5,42 +5,52 @@ import {
   getPostSortedByDate,
   convertStringCategoriesToArray,
   posts as postsData,
+  groupPostsByYear,
 } from "../../api/blog";
 
 const posts = getPostSortedByDate(postsData);
+const postsGroupedByYear = groupPostsByYear(posts);
 ---
 
 <BaseLayout title="Blogs" description="Blog list" fullWidth>
-  <section>
-    <ul>
-      {
-        // TODO add category
-        posts.map((post) => (
-          <li class="my-2 flex flex-col md:flex-row">
-            <div class="flex-1">
-              <a rel="prefetch" href={`/blog/${post.slug}`}>
-                <div class="underline underline-offset-4">
-                  {post.data.title}
-                </div>
-              </a>
-            </div>
-            <div class="flex flex-row">
-              {convertStringCategoriesToArray(post.data.categories).map(
-                (category) => (
-                  <a href={`/blog/category/${category}`}>
-                    <div class="hover:underline underline-offset-4 opacity-60 mr-2">
-                      {category}
+  {
+    Object.entries(postsGroupedByYear)
+      .sort(([year1], [year2]) => String(year2).localeCompare(String(year1)))
+      .map(([year, posts]) => {
+        return (
+          <section class="mb-12">
+            <h1 class="text-xl">{year}</h1>
+            <ul>
+              {
+                posts.map((post) => (
+                  <li class="my-2 flex flex-col md:flex-row">
+                    <div class="flex-1">
+                      <a rel="prefetch" href={`/blog/${post.slug}`}>
+                        <div class="underline underline-offset-4">
+                          {post.data.title}
+                        </div>
+                      </a>
                     </div>
-                  </a>
-                )
-              )}
-              <p class="ml-auto md:ml-0">
-                <FormattedDate date={post.data.date} />
-              </p>
-            </div>
-          </li>
-        ))
-      }
-    </ul>
-  </section>
+                    <div class="flex flex-row">
+                      {convertStringCategoriesToArray(post.data.categories).map(
+                        (category) => (
+                          <a href={`/blog/category/${category}`}>
+                            <div class="hover:underline underline-offset-4 opacity-60 mr-2">
+                              {category}
+                            </div>
+                          </a>
+                        )
+                      )}
+                      <p class="ml-auto md:ml-0">
+                        <FormattedDate date={post.data.date} />
+                      </p>
+                    </div>
+                  </li>
+                ))
+              }
+            </ul>
+          </section>
+        );
+      })
+  }
 </BaseLayout>

@@ -35,6 +35,11 @@ export const convertStringCategoriesToArray = (categoryString: string) => {
   return categoryString.split(",").map((s) => s.trim());
 };
 
+export const groupPostsByYear = (posts: Post[]) => {
+  const postsByYear = groupBy(posts, (post) => post.data.date.getFullYear());
+  return postsByYear;
+};
+
 /// -------------- api functions --------------
 
 export const getTopKPosts = (posts: Post[], k: number) => {
