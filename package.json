@@ -11,27 +11,27 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@antv/g2": "^5.1.9",
-    "@astrojs/mdx": "^1.1.2",
+    "@antv/g2": "^5.1.14",
+    "@astrojs/mdx": "^2.0.4",
     "@astrojs/prefetch": "^0.4.1",
     "@astrojs/rss": "^3.0.0",
-    "@astrojs/sitemap": "^3.0.2",
-    "@astrojs/solid-js": "^3.0.2",
-    "@astrojs/tailwind": "^5.0.2",
-    "@fontsource/fira-code": "^5.0.15",
-    "astro": "^3.3.2",
+    "@astrojs/sitemap": "^3.0.4",
+    "@astrojs/solid-js": "^4.0.1",
+    "@astrojs/tailwind": "^5.1.0",
+    "@fontsource/fira-code": "^5.0.16",
+    "astro": "^4.1.2",
     "lodash": "^4.17.21",
     "lxgw-wenkai-lite-webfont": "^1.7.0",
     "markdown-it": "^13.0.2",
     "sanitize-html": "^2.11.0",
     "sharp": "^0.32.6",
-    "solid-js": "^1.4.3",
-    "tailwindcss": "^3.0.24"
+    "solid-js": "^1.8.11",
+    "tailwindcss": "^3.4.1"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.200",
-    "@types/markdown-it": "^13.0.5",
-    "@types/sanitize-html": "^2.9.3",
+    "@types/lodash": "^4.14.202",
+    "@types/markdown-it": "^13.0.7",
+    "@types/sanitize-html": "^2.9.5",
     "vitest": "^0.34.6"
   }
 }
