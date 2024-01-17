@@ -12,7 +12,7 @@ const service: LocalImageService = {
     // hook, add inline style
     const inlineStyle = ``; // tmp remove
 
-    return { ...ret, style: inlineStyle } ?? {};
+    return { ...ret, style: inlineStyle };
   },
 };
 export default service;
