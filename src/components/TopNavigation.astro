@@ -1,14 +1,107 @@
 ---
 import "../styles/header.css";
+
+type Props = {
+  showAnimation?: boolean;
+};
+
+const { showAnimation } = Astro.props;
 ---
+
+<style is:inline>
+  @keyframes fade-from-bottom {
+    from {
+      transform: translateY(4px);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-from-top {
+    from {
+      transform: translateY(-4px);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-from-left {
+    from {
+      transform: translateX(-4px);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-from-right {
+    from {
+      transform: translateX(4px);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  .fade {
+    display: inline-block;
+    animation: 700ms ease-in-out fade-from-bottom;
+  }
+
+  .fade-top {
+    display: inline-block;
+    animation: 700ms ease-in-out fade-from-top;
+  }
+
+  .fade-left {
+    display: inline-block;
+    animation: 700ms ease-in-out fade-from-left;
+  }
+
+  .fade-right {
+    display: inline-block;
+    animation: 700ms ease-in-out fade-from-right;
+  }
+</style>
 
 <header class="p-4">
   <nav class="text-xl">
-    <h2 class="left"><a href="/">Situ Note</a></h2>
+    <h2 class="left">
+      {
+        showAnimation ? (<a href="/">
+        <!-- Refactor: Props to decide wether play animation or not -->
+        <span class="transition-all fade-left">S</span><span
+          class="transition-all fade-top">i</span
+        ><span class="transition-all fade">t</span><span
+          class="transition-all fade-right">u</span
+        ><span>&nbsp;</span><span class="transition-all fade-left">N</span><span
+          class="transition-all fade">o</span
+        ><span class="transition-all fade-top">t</span><span
+          class="transition-all fade-right">e</span
+        >
+      </a>): (<a href="/">Situ Note</a>)
+      }
+    </h2>
     <div class="right flex">
-      <h2><a rel="prefetch" href="/blog">Blog</a></h2>
-      <h2 class="ml-4"><a href="/friends">Friends</a></h2>
-      <h2 class="ml-4"><a href="/rss.xml">RSS</a></h2>
+      <h2 class={`${showAnimation ? "transition-all fade-top" :""}`}>
+        <a rel="prefetch" href="/blog">Blog</a>
+      </h2>
+      <h2 class={`${showAnimation ? "transition-all fade-top" :""} ml-4`}><a href="/friends">Friends</a></h2>
+      <h2 class={`${showAnimation ? "transition-all fade-right" :""} ml-4`}><a href="/rss.xml">RSS</a></h2>
     </div>
   </nav>
 </header>

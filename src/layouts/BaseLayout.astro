@@ -6,8 +6,9 @@ interface Props {
   title: string;
   description: string;
   fullWidth?: boolean;
+  topNavigationAnimation?: boolean;
 }
-const { title, description, fullWidth } = Astro.props;
+const { title, description, fullWidth, topNavigationAnimation } = Astro.props;
 ---
 
 <html lang="zh">
@@ -15,7 +16,7 @@ const { title, description, fullWidth } = Astro.props;
     <BaseHtmlHead title={title} description={description} />
   </head>
   <body>
-    <TopNavigation />
+    <TopNavigation showAnimation={topNavigationAnimation} />
     <main class="p-4 mx-auto max-w-6xl">
       <slot />
     </main>
