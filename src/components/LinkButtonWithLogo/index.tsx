@@ -22,7 +22,7 @@ export default function LinkButtonWithLogo(
       title={name}
       href={link}
     >
-      <img class="h-6 w-6" src={iconUrl}></img>
+      <img class="h-6 w-6" src={iconUrl} alt={name}></img>
     </a>
   );
 }
