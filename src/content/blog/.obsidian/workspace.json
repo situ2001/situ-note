@@ -4,23 +4,29 @@
     "type": "split",
     "children": [
       {
-        "id": "633726741a836a15",
+        "id": "9607deeb3cbc810e",
         "type": "tabs",
         "children": [
           {
-            "id": "3b49321439c4631e",
+            "id": "6fb62f86d8d6d09a",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "empty",
+              "state": {}
+            }
+          },
+          {
+            "id": "fd86f7215f7d67ad",
+            "type": "leaf",
+            "state": {
+              "type": "image",
               "state": {
-                "file": "make-obsidian-your-markdown-editor.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
+                "file": "so-many-fever-in-2023/WX20231127-191858.png"
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -81,24 +87,12 @@
         "type": "tabs",
         "children": [
           {
-            "id": "fd4b66c53fa6d885",
-            "type": "leaf",
-            "state": {
-              "type": "outgoing-link",
-              "state": {
-                "file": "make-obsidian-your-markdown-editor.md",
-                "linksCollapsed": false,
-                "unlinkedCollapsed": true
-              }
-            }
-          },
-          {
             "id": "a0acec15857afa62",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "make-obsidian-your-markdown-editor.md"
+                "file": "so-many-fever-in-2023/WX20231127-191858.png"
               }
             }
           }
@@ -106,8 +100,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 274.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -118,29 +111,35 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "3b49321439c4631e",
+  "active": "fd86f7215f7d67ad",
   "lastOpenFiles": [
-    "assets/make-obsidian-your-markdown-editor-20231109232407154.png",
-    "assets/make-obsidian-your-markdown-editor-20231109232332107.png",
-    "assets/make-obsidian-your-markdown-editor-20231109232245001.png",
-    "assets/make-obsidian-your-markdown-editor-20231109232031153.png",
-    "assets/make-obsidian-your-markdown-editor-20231109231943027.png",
-    "assets/make-obsidian-your-markdown-editor-20231109231725945.png",
-    "assets/make-obsidian-your-markdown-editor-20231109224129864.png",
+    "so-many-fever-in-2023/IMG_9427.jpeg",
+    "configure-gzhu-ipv6-nat.md",
+    "assets/configure-gzhu-ipv6-nat-20231213160434356.png",
+    "assets/configure-gzhu-ipv6-nat-20231213154404117.png",
+    "assets/configure-gzhu-ipv6-nat-20231213153816701.png",
+    "assets/configure-gzhu-ipv6-nat-20231213153729851.png",
+    "assets/configure-gzhu-ipv6-nat-20231213152833665.png",
+    "viewsonic-24inch-4k-display-review.md",
     "_templates/Create new post.md",
-    "make-obsidian-your-markdown-editor.md",
-    "assets/make-obsidian-your-markdown-editor-20231109225854243.png",
-    "assets/make-obsidian-your-markdown-editor-20231109225555998.png",
-    "assets/make-obsidian-your-markdown-editor-20231109225408515.png",
+    "assets/viewsonic-24inch-4k-display-review-20231126164626399.jpeg",
+    "assets/viewsonic-24inch-4k-display-review-20231126164539712.jpeg",
+    "assets/viewsonic-24inch-4k-display-review-20231126164425583.jpeg",
+    "assets/viewsonic-24inch-4k-display-review-20231126164408179.jpeg",
+    "assets/viewsonic-24inch-4k-display-review-20231126164229765.png",
+    "assets/viewsonic-24inch-4k-display-review",
     "my-first-internship.md",
+    "viewsonic-4k-display-review.md",
+    "my-first-internship copy.md",
+    "migration-nextjs-to-astro.md",
+    "[.md",
+    "make-obsidian-your-markdown-editor.md",
     "_templates",
     "templates/Create new post.md",
     "templates/Create new post.template.md",
     "templates/Create new post.template.txt",
     "templates/Create new post.template",
     "templates",
-    "migration-to-astro.md",
-    "assets/migration-to-astro-20231109212244725.png",
     "assets/migration-to-astro",
     "assets",
     "migration-to-astro/Untitled.md",
