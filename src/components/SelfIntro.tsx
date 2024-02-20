@@ -1,6 +1,6 @@
 import LinkButton, {
   type ButtonWithColorfulBorderProps,
-} from "./ButtonWithColorfulBorder";
+} from "./LinkButtonWithLogo";
 
 import links from "../config/links";
 
@@ -8,14 +8,9 @@ import type { JSXElement } from "solid-js";
 
 const Links = () => {
   return (
-    <div class="flex flex-wrap gap-2">
+    <div class="flex flex-wrap gap-4">
       {links.map((link) => (
-        <LinkButton>
-          <a class="flex items-center gap-1" href={link.link}>
-            {link.iconUrl && <img class="h-4 w-4" src={link.iconUrl}></img>}
-            <span>{link.name}</span>
-          </a>
-        </LinkButton>
+        <LinkButton iconUrl={link.iconUrl} link={link.link} name={link.name} />
       ))}
     </div>
   );
@@ -23,7 +18,7 @@ const Links = () => {
 
 export const SelfIntro = ({ children }: { children: JSXElement }) => {
   return (
-    <div class="flex flex-col">
+    <div class="flex flex-col h-full">
       <div class="flex flex-row">
         <div class="flex-1">
           <h1 class="text-3xl font-bold">Hi!</h1>
