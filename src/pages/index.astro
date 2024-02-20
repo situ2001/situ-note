@@ -3,7 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 import Card, { FadeFromDirection } from "../components/Card";
 import { LatestBlog } from "../components/LatestBlog";
-import { SelfIntro } from "../components/SelfIntro";
+import { SelfIntro, SelfLinks } from "../components/SelfIntro";
 
 import { Picture } from "astro:assets";
 import Avatar from "../assets/28241963.png";
@@ -18,7 +18,11 @@ import { Category } from "../components/Categories";
   }
 
   .item-self-intro {
-    grid-column: 1 / -1;
+    grid-column: 1 / 2;
+  }
+
+  .item-self-link {
+    grid-column: 2 / 4;
   }
 
   .item-latest-blog {
@@ -31,10 +35,10 @@ import { Category } from "../components/Categories";
 </style>
 
 <BaseLayout title="Situ Note" description="Home Page" topNavigationAnimation>
-  <div class="hidden md:grid grid-block">
+  <div class="block md:grid grid-block">
     <div class="item-self-intro">
       <Card fadeFromDirection={FadeFromDirection.Top} fullHeight>
-        <SelfIntro client:load>
+        <SelfIntro>
           <Picture
             src={Avatar}
             alt={"situ2001's GitHub avatar"}
@@ -45,36 +49,23 @@ import { Category } from "../components/Categories";
         </SelfIntro>
       </Card>
     </div>
+
+    <div class="item-self-link">
+      <Card fadeFromDirection={FadeFromDirection.Right} fullHeight>
+        <SelfLinks client:load />
+      </Card>
+    </div>
+
     <div class="item-latest-blog">
       <Card fadeFromDirection={FadeFromDirection.Left} fullHeight>
         <LatestBlog client:load />
       </Card>
     </div>
+
     <div class="item-category">
-      <Card fadeFromDirection={FadeFromDirection.Right} fullHeight>
+      <Card fadeFromDirection={FadeFromDirection.Bottom} fullHeight>
         <Category />
       </Card>
     </div>
-  </div>
-
-  <!-- Mobile Device -->
-  <div class="md:hidden">
-    <Card fadeFromDirection={FadeFromDirection.Bottom}>
-      <SelfIntro client:load>
-        <Picture
-          src={Avatar}
-          alt={"situ2001's GitHub avatar"}
-          class="h-16 w-16 rounded-full transition-all duration-300 hover:rotate-180"
-          width="100"
-          height="100"
-        />
-      </SelfIntro>
-    </Card>
-    <Card fadeFromDirection={FadeFromDirection.Bottom}>
-      <LatestBlog client:load />
-    </Card>
-    <Card fadeFromDirection={FadeFromDirection.Bottom}>
-      <Category />
-    </Card>
   </div>
 </BaseLayout>

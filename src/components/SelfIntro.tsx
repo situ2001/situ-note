@@ -4,14 +4,43 @@ import LinkButton, {
 
 import links from "../config/links";
 
-import type { JSXElement } from "solid-js";
+import { createSignal, type JSXElement } from "solid-js";
 
 const Links = () => {
   return (
-    <div class="flex flex-wrap gap-4">
+    <div class="flex flex-wrap gap-4 justify-center">
       {links.map((link) => (
         <LinkButton iconUrl={link.iconUrl} link={link.link} name={link.name} />
       ))}
+    </div>
+  );
+};
+
+export const SelfLinks = () => {
+  const [currentHoveredLink, setCurrentHoveredLink] = createSignal<
+    string | null
+  >("");
+
+  return (
+    <div class="flex flex-wrap md:flex-col">
+      <header class="text-xl font-bold transition-all duration-150 md:text-center">
+        Find me on <a>{currentHoveredLink()}</a>
+      </header>
+      <div class="m-1"></div>
+      <div class="flex gap-4 justify-center ml-auto md:m-0">
+        {links.map((link) => (
+          <div
+            onPointerOver={() => setCurrentHoveredLink(link.name)}
+            onPointerLeave={() => setCurrentHoveredLink("")}
+          >
+            <LinkButton
+              iconUrl={link.iconUrl}
+              link={link.link}
+              name={link.name}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
@@ -27,7 +56,6 @@ export const SelfIntro = ({ children }: { children: JSXElement }) => {
         {children}
       </div>
       <div class="my-1"></div>
-      <Links />
     </div>
   );
 };
