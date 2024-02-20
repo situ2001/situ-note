@@ -24,7 +24,7 @@ export const SelfLinks = () => {
   return (
     <div class="flex flex-wrap md:flex-col">
       <header class="text-xl font-bold transition-all duration-150 md:text-center">
-        Find me on <a>{currentHoveredLink()}</a>
+        Find me on <span class="hidden md:inline">{currentHoveredLink()}</span>
       </header>
       <div class="m-1"></div>
       <div class="flex gap-4 justify-center ml-auto md:m-0">
