@@ -45,7 +45,7 @@ export const SelfLinks = () => {
   );
 };
 
-export const SelfIntro = ({ children }: { children: JSXElement }) => {
+export const SelfIntro = () => {
   return (
     <div class="flex flex-col h-full">
       <div class="flex flex-row">
@@ -53,7 +53,14 @@ export const SelfIntro = ({ children }: { children: JSXElement }) => {
           <h1 class="text-3xl font-bold">Hi!</h1>
           <p>I'm situ2001.</p>
         </div>
-        {children}
+        <img
+          src="/avatar.png"
+          loading="lazy"
+          alt={"situ2001's GitHub avatar"}
+          class="h-16 w-16 rounded-full transition-all duration-300 hover:rotate-180"
+          width="100"
+          height="100"
+        />
       </div>
       <div class="my-1"></div>
     </div>
