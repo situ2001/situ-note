@@ -13,7 +13,7 @@ const links: LinkButtonProps[] = [
   },
   {
     name: "Twitter",
-    link: "https://twitter.com/situ2oo1",
+    link: "https://twitter.com/situ200l",
     iconUrl: IconX.src,
   },
   {
