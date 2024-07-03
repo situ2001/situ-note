@@ -23,7 +23,7 @@ export const SelfLinks = () => {
 
   return (
     <div class="flex flex-wrap md:flex-col">
-      <header class="text-xl font-bold transition-all duration-150 md:text-center">
+      <header class="text-xl font-bold transition-transform duration-150 md:text-center">
         Find me on <span class="hidden md:inline">{currentHoveredLink()}</span>
       </header>
       <div class="m-1"></div>
@@ -57,7 +57,7 @@ export const SelfIntro = () => {
           src="/avatar.png"
           loading="lazy"
           alt={"situ2001's GitHub avatar"}
-          class="h-16 w-16 rounded-full transition-all duration-300 hover:rotate-180"
+          class="h-16 w-16 rounded-full transition-transform duration-300 hover:rotate-180"
           width="100"
           height="100"
         />

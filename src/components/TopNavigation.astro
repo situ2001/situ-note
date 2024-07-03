@@ -8,6 +8,7 @@ type Props = {
 const { showAnimation } = Astro.props;
 ---
 
+<!-- TODO refactor the styles -->
 <style is:inline>
   @keyframes fade-from-bottom {
     from {
@@ -84,26 +85,27 @@ const { showAnimation } = Astro.props;
       {
         showAnimation ? (<a href="/">
         <!-- Refactor: Props to decide wether play animation or not -->
-        <span class="transition-all fade-left">S</span><span
-          class="transition-all fade-top">i</span
-        ><span class="transition-all fade">t</span><span
-          class="transition-all fade-right">u</span
-        ><span style="margin-left: 0.5rem;"></span><span class="transition-all fade-left">N</span><span
-          class="transition-all fade">o</span
-        ><span class="transition-all fade-top">t</span><span
-          class="transition-all fade-right">e</span
+        <span class="transition-transform fade-left">S</span><span
+          class="transition-transform fade-top">i</span
+        ><span class="transition-transform fade">t</span><span
+          class="transition-transform fade-right">u</span
+        ><span style="margin-left: 0.5rem;"></span><span class="transition-transform fade-left">N</span><span
+          class="transition-transform fade">o</span
+        ><span class="transition-transform fade-top">t</span><span
+          class="transition-transform fade-right">e</span
         >
       </a>): (<a href="/">
           <span>Situ</span><span style="margin-left: 0.5rem;"></span><span>Note</span>
         </a>)
       }
     </h2>
+    
     <div class="right flex">
-      <h2 class={`${showAnimation ? "transition-all fade-top" :""}`}>
+      <h2 class={`${showAnimation ? "transition-transform fade-top" :""}`}>
         <a rel="prefetch" href="/blog">Blog</a>
       </h2>
-      <h2 class={`${showAnimation ? "transition-all fade-top" :""} ml-4`}><a href="/friends">Friends</a></h2>
-      <h2 class={`${showAnimation ? "transition-all fade-right" :""} ml-4`}><a href="/rss.xml">RSS</a></h2>
+      <h2 class={`${showAnimation ? "transition-transform fade-top" :""} ml-4`}><a href="/friends">Friends</a></h2>
+      <h2 class={`${showAnimation ? "transition-transform fade-right" :""} ml-4`}><a href="/rss.xml">RSS</a></h2>
     </div>
   </nav>
 </header>

@@ -24,7 +24,10 @@ export default defineConfig({
     shikiConfig: {
       // Choose from Shiki's built-in themes (or add your own)
       // https://github.com/shikijs/shiki/blob/main/docs/themes.md
-      theme: "github-light",
+      themes:  {
+        light: "github-light",
+        dark: "github-dark",
+      },
       // Alternatively, provide multiple themes
       // https://github.com/antfu/shikiji#lightdark-dual-themes
       experimentalThemes: {

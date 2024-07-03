@@ -44,7 +44,7 @@ const Card = (props: CardProps & { children?: any }) => {
       class={
         directionClassName() +
         " " +
-        "bg-white rounded-xl shadow-lg p-4 transition-all mb-4"
+        "bg-white dark:bg-gray-700 rounded-xl shadow-lg p-4 transition-transform mb-4"
       }
     >
       {props.children}

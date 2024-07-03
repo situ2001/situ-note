@@ -15,7 +15,7 @@ const { title, description, fullWidth, topNavigationAnimation } = Astro.props;
   <head>
     <BaseHtmlHead title={title} description={description} />
   </head>
-  <body>
+  <body class="dark:bg-gray-800 dark:text-gray-300">
     <TopNavigation showAnimation={topNavigationAnimation} />
     <main class="p-4 mx-auto max-w-6xl">
       <slot />

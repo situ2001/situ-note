@@ -44,3 +44,40 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   name="google-site-verification"
   content="HKmw1FhzbCh-mBGnSzdcwyZCnqOq6NfeHht8lGh3wtE"
 />
+
+<script is:inline>
+  // For dark mode
+  const MEDIA_QUERY_STR = "(prefers-color-scheme: dark)";
+  const element = document.documentElement;
+
+  const theme = (() => {
+    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+      return localStorage.getItem("theme");
+    }
+    if (window.matchMedia(MEDIA_QUERY_STR).matches) {
+      return "dark";
+    }
+    return "light";
+  })();
+
+  if (theme === "light") {
+    element.classList.remove("dark");
+  } else {
+    element.classList.add("dark");
+  }
+
+  window.localStorage.setItem("theme", theme);
+
+  // add event listener for prefers-color-scheme
+  window.matchMedia(MEDIA_QUERY_STR).addEventListener("change", (e) => {
+    const isDark = e.matches;
+    const theme = isDark ? "dark" : "light";
+    if (isDark) {
+      element.classList.add("dark");
+      localStorage.setItem("theme", theme);
+    } else {
+      element.classList.remove("dark");
+      localStorage.setItem("theme", theme);
+    }
+  });
+</script>

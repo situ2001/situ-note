@@ -18,7 +18,7 @@ export default function LinkButtonWithLogo(
 
   return (
     <a
-      class={styles.button + " " + "flex items-center"}
+      class={styles.button + " " + "flex items-center dark:invert"}
       title={name}
       href={link}
     >

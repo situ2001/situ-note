@@ -12,7 +12,7 @@ export const LatestBlog = () => {
   return (
     <div class="h-full flex flex-col">
       <header
-        class="text-xl font-bold transition-all duration-150"
+        class="text-xl font-bold transition-transform duration-150"
         style={{
           opacity: !isPointerOverBlogList() ? 1 : 0.3,
         }}
@@ -30,7 +30,7 @@ export const LatestBlog = () => {
           <div
             onPointerOver={() => setHoveredElement(post)}
             onPointerOut={() => setHoveredElement(null)}
-            class={`my-1 transition-all duration-150 hover:scale-105 origin-left`}
+            class={`my-1 transition-transform duration-150 hover:scale-105 origin-left`}
             style={{
               opacity:
                 !isPointerOverBlogList() || hoveredElement() === post ? 1 : 0.3,
