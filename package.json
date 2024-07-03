@@ -13,7 +13,6 @@
   "dependencies": {
     "@antv/g2": "^5.2.0",
     "@astrojs/mdx": "^2.3.1",
-    "@astrojs/prefetch": "^0.4.1",
     "@astrojs/rss": "^3.0.0",
     "@astrojs/sitemap": "^3.1.6",
     "@astrojs/solid-js": "^4.4.0",
@@ -32,6 +31,6 @@
     "@types/lodash": "^4.17.6",
     "@types/markdown-it": "^13.0.8",
     "@types/sanitize-html": "^2.11.0",
-    "vitest": "^0.34.6"
+    "vitest": "^1.4.0"
   }
 }
