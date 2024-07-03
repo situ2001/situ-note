@@ -2,7 +2,6 @@ import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
-import prefectch from "@astrojs/prefetch";
 
 import solidJs from "@astrojs/solid-js";
 
@@ -13,7 +12,8 @@ import solidJs from "@astrojs/solid-js";
  */
 export default defineConfig({
   site: "https://situ2001.com",
-  integrations: [mdx(), sitemap(), tailwind(), prefectch(), solidJs()],
+  integrations: [mdx(), sitemap(), tailwind(), solidJs()],
+  prefetch: true,
   image: {
     service: {
       entrypoint: "src/api/image.ts",
