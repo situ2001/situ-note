@@ -28,5 +28,9 @@ export const friends: FriendCardProps[] = [
   {
     name: "younggglcy",
     link: "https://www.younggglcy.com/"
+  },
+  {
+    name: "Talaxy",
+    link: "https://www.talaxy.site/"
   }
 ];
