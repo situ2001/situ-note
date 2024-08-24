@@ -11,26 +11,26 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@antv/g2": "^5.2.0",
+    "@antv/g2": "^5.2.3",
     "@astrojs/mdx": "^2.3.1",
     "@astrojs/rss": "^3.0.0",
     "@astrojs/sitemap": "^3.1.6",
-    "@astrojs/solid-js": "^4.4.0",
+    "@astrojs/solid-js": "^4.4.1",
     "@astrojs/tailwind": "^5.1.0",
-    "@fontsource/fira-code": "^5.0.18",
-    "astro": "^4.11.3",
+    "@fontsource/fira-code": "^5.0.19",
+    "astro": "^4.14.5",
     "lodash": "^4.17.21",
     "lxgw-wenkai-lite-webfont": "^1.7.0",
     "markdown-it": "^13.0.2",
     "sanitize-html": "^2.13.0",
     "sharp": "^0.32.6",
-    "solid-js": "^1.8.18",
-    "tailwindcss": "^3.4.4"
+    "solid-js": "^1.8.21",
+    "tailwindcss": "^3.4.10"
   },
   "devDependencies": {
-    "@types/lodash": "^4.17.6",
-    "@types/markdown-it": "^13.0.8",
-    "@types/sanitize-html": "^2.11.0",
-    "vitest": "^1.4.0"
+    "@types/lodash": "^4.17.7",
+    "@types/markdown-it": "^13.0.9",
+    "@types/sanitize-html": "^2.13.0",
+    "vitest": "^1.6.0"
   }
 }
