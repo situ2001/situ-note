@@ -45,6 +45,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   content="HKmw1FhzbCh-mBGnSzdcwyZCnqOq6NfeHht8lGh3wtE"
 />
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JQ438Q8K4Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JQ438Q8K4Z');
+</script>
+
 <script is:inline>
   // For dark mode
   const MEDIA_QUERY_STR = "(prefers-color-scheme: dark)";
