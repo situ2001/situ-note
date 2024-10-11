@@ -29,6 +29,15 @@ body {
   /* @apply transition-colors duration-200; */
 }
 
+/* class for controlling font-family */
+.font-sans {
+  font-family: var(--font-sans), var(--font-cjk-sans), sans-serif !important;
+}
+
+.font-serif {
+  font-family: var(--font-serif), var(--font-cjk-serif), serif !important;
+}
+
 /* Mono font */
 pre,
 code {

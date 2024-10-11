@@ -19,27 +19,29 @@ const { title, description, date, categories, headings } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description}>
-  <h1 class="text-3xl mb-1">{title}</h1>
-  <FormattedDate date={date} />
-  <div>
-    {
-      pluralize(
-        "Category",
-        convertStringCategoriesToArray(categories).length,
-        false
-      )
-    }
-    {": "}
-    {
-      interleave(
-        convertStringCategoriesToArray(categories).map((category) => (
-          <a href={`/blog/category/${category}`}>
-            <span class="hover:underline underline-offset-4">{category}</span>
-          </a>
-        )),
-        "/"
-      )
-    }
+  <div class="font-serif mb-4">
+    <h1 class="text-3xl mb-1">{title}</h1>
+    <FormattedDate date={date} />
+    <div>
+      {
+        pluralize(
+          "Category",
+          convertStringCategoriesToArray(categories).length,
+          false
+        )
+      }
+      {": "}
+      {
+        interleave(
+          convertStringCategoriesToArray(categories).map((category) => (
+            <a href={`/blog/category/${category}`}>
+              <span class="hover:underline underline-offset-4">{category}</span>
+            </a>
+          )),
+          "/"
+        )
+      }
+    </div>
   </div>
   <hr />
   <div class="flex flex-row">
