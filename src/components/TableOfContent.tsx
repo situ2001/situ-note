@@ -5,15 +5,15 @@ export const TableOfContent = ({
 }: {
   headings: MarkdownHeading[];
 }) => {
-  // map depth => depth - 2, with minimum 0
-  headings = headings.map((heading) => ({
+  const minHeadingLevel = Math.min(...headings.map((heading) => heading.depth));
+  const headingsWithDepthAdjusted = headings.map((heading) => ({
     ...heading,
-    depth: Math.max(heading.depth - 2, 0),
+    depth: Math.max(heading.depth - minHeadingLevel, 0),
   }));
 
   return (
     <div>
-      {headings.map((heading) => {
+      {headingsWithDepthAdjusted.map((heading) => {
         return (
           <div
             style={{ "padding-left": `${heading.depth}rem` }}
