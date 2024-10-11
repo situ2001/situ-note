@@ -3,139 +3,25 @@ import "../styles/header.css";
 import { BLOG_TITLE } from "../config";
 import clsx from "clsx";
 
-type Props = {
-  showAnimation?: boolean;
-};
+type Props = {};
 
-const { showAnimation } = Astro.props;
-
-const makeDirectionGetter = () => {
-  const baseName = "fade";
-  const directions = ["-left", "", "-right", "-top"];
-
-  function* getDirection() {
-    while (true) {
-      for (const direction of directions) {
-        yield baseName + direction;
-      }
-    }
-  }
-
-  const directionGenerator = getDirection();
-
-  return () => {
-    const direction = directionGenerator.next().value;
-    return direction as string;
-  };
-};
-const getDirection = makeDirectionGetter();
+const {} = Astro.props;
 ---
-
-<!-- TODO refactor the styles -->
-<style is:inline>
-  @keyframes fade-from-bottom {
-    from {
-      transform: translateY(4px);
-      opacity: 0;
-    }
-
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-
-  @keyframes fade-from-top {
-    from {
-      transform: translateY(-4px);
-      opacity: 0;
-    }
-
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-
-  @keyframes fade-from-left {
-    from {
-      transform: translateX(-4px);
-      opacity: 0;
-    }
-
-    to {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-
-  @keyframes fade-from-right {
-    from {
-      transform: translateX(4px);
-      opacity: 0;
-    }
-
-    to {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-
-  .fade {
-    display: inline-block;
-    animation: 700ms ease-in-out fade-from-bottom;
-  }
-
-  .fade-top {
-    display: inline-block;
-    animation: 700ms ease-in-out fade-from-top;
-  }
-
-  .fade-left {
-    display: inline-block;
-    animation: 700ms ease-in-out fade-from-left;
-  }
-
-  .fade-right {
-    display: inline-block;
-    animation: 700ms ease-in-out fade-from-right;
-  }
-</style>
 
 <header class="p-4">
   <nav class="text-xl">
     <h2 class="left">
-      {
-        showAnimation ? (
-          <a href="/">
-            {[...BLOG_TITLE].map((ch) =>
-              ch !== " " ? (
-                <span class={clsx("transition-transform", getDirection())}>
-                  {ch}
-                </span>
-              ) : (
-                <span>{ch}</span>
-              )
-            )}
-          </a>
-        ) : (
-          <a href="/">Situ Note</a>
-        )
-      }
+      <a href="/">Situ Note</a>s
     </h2>
 
     <div class="right flex">
-      <h2 class={`${showAnimation ? "transition-transform fade" : ""}`}>
+      <h2>
         <a rel="prefetch" href="/blog">Blog</a>
       </h2>
-      <h2
-        class={`${showAnimation ? "transition-transform fade-top" : ""} ml-4`}
-      >
+      <h2 class="ml-4">
         <a href="/friends">Friends</a>
       </h2>
-      <h2
-        class={`${showAnimation ? "transition-transform fade-right" : ""} ml-4`}
-      >
+      <h2 class="ml-4">
         <a href="/rss.xml">RSS</a>
       </h2>
     </div>

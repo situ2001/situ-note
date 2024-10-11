@@ -33,28 +33,28 @@ import { BLOG_TITLE } from "../config";
   }
 </style>
 
-<BaseLayout title={BLOG_TITLE} description="Home Page" topNavigationAnimation>
+<BaseLayout title={BLOG_TITLE} description="Home Page">
   <div class="block md:grid grid-block">
     <div class="item-self-intro">
-      <Card fadeFromDirection={FadeFromDirection.Top} fullHeight>
+      <Card fullHeight>
         <SelfIntro />
       </Card>
     </div>
 
     <div class="item-self-link">
-      <Card fadeFromDirection={FadeFromDirection.Right} fullHeight>
+      <Card fullHeight>
         <SelfLinks client:load />
       </Card>
     </div>
 
     <div class="item-latest-blog">
-      <Card fadeFromDirection={FadeFromDirection.Left} fullHeight>
+      <Card fullHeight>
         <LatestBlog client:load />
       </Card>
     </div>
 
     <div class="item-category">
-      <Card fadeFromDirection={FadeFromDirection.Bottom} fullHeight>
+      <Card fullHeight>
         <Category />
       </Card>
     </div>
