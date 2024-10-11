@@ -1,6 +1,6 @@
 article p {
   @apply my-4;
-  line-height: 1.75;
+  @apply leading-relaxed;
 }
 
 article h1 {
