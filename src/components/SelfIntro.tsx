@@ -1,6 +1,6 @@
 import LinkButton, {
-  type ButtonWithColorfulBorderProps,
-} from "./LinkButtonWithLogo";
+  type LinkButtonProps,
+} from "./Button/LinkButtonWithLogo";
 
 import links from "../config/links";
 

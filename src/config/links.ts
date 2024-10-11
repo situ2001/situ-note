@@ -1,4 +1,4 @@
-import type { LinkButtonProps } from "../components/LinkButton";
+import type { LinkButtonProps } from "../components/Button/LinkButtonWithLogo";
 
 // Credit: https://simpleicons.org/
 import IconGitHub from "../assets/github.svg";

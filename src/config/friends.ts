@@ -1,4 +1,4 @@
-import type { FriendCardProps } from "../components/FriendCard/type";
+import type { FriendCardProps } from "../components/Card/FriendCard/type";
 
 export const friends: FriendCardProps[] = [
   {
