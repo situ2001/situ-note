@@ -1,6 +1,6 @@
 import LinkButton, {
-  type LinkButtonProps,
-} from "./Button/LinkButtonWithLogo";
+  type IconLinkProps,
+} from "./IconLink";
 
 import links from "../config/links";
 
@@ -23,8 +23,8 @@ export const SelfLinks = () => {
 
   return (
     <div class="flex flex-wrap md:flex-col">
-      <header class="text-xl font-bold transition-transform duration-150 md:text-center">
-        Find me on <span class="hidden md:inline">{currentHoveredLink()}</span>
+      <header class="text-xl transition-transform duration-150 md:text-center">
+        Find me on <span class="hidden md:inline italic">{currentHoveredLink()}</span>
       </header>
       <div class="m-1"></div>
       <div class="flex gap-4 justify-center ml-auto md:m-0">

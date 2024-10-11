@@ -1,11 +1,11 @@
-import type { LinkButtonProps } from "../components/Button/LinkButtonWithLogo";
+import type { IconLinkProps } from "../components/IconLink";
 
 // Credit: https://simpleicons.org/
 import IconGitHub from "../assets/github.svg";
 import IconMail from "../assets/gmail.svg";
 import IconX from '../assets/x.svg';
 
-const links: LinkButtonProps[] = [
+const links: IconLinkProps[] = [
   {
     name: "GitHub",
     link: "https://github.com/situ2001",

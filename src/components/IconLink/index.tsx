@@ -2,7 +2,7 @@ import { onCleanup, onMount, type JSXElement } from "solid-js";
 import _ from "lodash";
 import styles from "./style.module.css";
 
-export interface LinkButtonProps {
+export interface IconLinkProps {
   link: string;
   iconUrl: string;
   name: string;
@@ -11,8 +11,8 @@ export interface LinkButtonProps {
 /**
  * A button with a colorful border.
  */
-export default function LinkButtonWithLogo(
-  props: LinkButtonProps
+export default function IconLink(
+  props: IconLinkProps
 ) {
   const { link, iconUrl, name } = props;
 
