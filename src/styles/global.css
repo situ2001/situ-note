@@ -1,22 +1,27 @@
-/* @import "lxgw-wenkai-lite-webfont/style.css"; */
 @import '@fontsource-variable/noto-sans';
+@import '@fontsource-variable/noto-serif';
 @import '@fontsource-variable/noto-sans-sc';
+@import '@fontsource-variable/noto-serif-sc';
 /* @import '@fontsource-variable/noto-sans-tc'; */
+/* @import '@fontsource-variable/noto-serif-tc'; */
 /* @import '@fontsource-variable/noto-sans-jp'; */
+/* @import '@fontsource-variable/noto-serif-jp'; */
 
 /* @import '@fontsource-variable/noto-sans-mono'; */
 @import "@fontsource/fira-code";
 
 :root {
-  --font-cjk: 'Noto Sans SC Variable', "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei";
   --font-sans: "Noto Sans Variable", "Segoe UI", "Droid Sans", "Helvetica Neue";
+  --font-cjk-sans: 'Noto Sans SC Variable', "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei";
+  --font-serif: "Noto Serif Variable", "Georgia", "Times New Roman";
+  --font-cjk-serif: 'Noto Serif SC Variable', "Songti SC", "STSong", "Microsoft YaHei";
   /* --font-mono: "Noto Sans Mono Variable", monospace; */
   --font-mono: "Fira Code", monospace;
 }
 
 body {
   @apply text-base;
-  font-family: var(--font-sans), var(--font-cjk), sans-serif;
+  font-family: var(--font-sans), var(--font-cjk-sans), sans-serif;
   font-weight: 400;
 
   /* color transition for text */

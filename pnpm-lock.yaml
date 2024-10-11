@@ -41,6 +41,18 @@ importers:
       '@fontsource-variable/noto-sans-tc':
         specifier: ^5.1.0
         version: 5.1.0
+      '@fontsource-variable/noto-serif':
+        specifier: ^5.1.0
+        version: 5.1.0
+      '@fontsource-variable/noto-serif-jp':
+        specifier: ^5.1.1
+        version: 5.1.1
+      '@fontsource-variable/noto-serif-sc':
+        specifier: ^5.1.0
+        version: 5.1.0
+      '@fontsource-variable/noto-serif-tc':
+        specifier: ^5.1.1
+        version: 5.1.1
       '@fontsource/fira-code':
         specifier: ^5.1.0
         version: 5.1.0
@@ -465,6 +477,18 @@ packages:
 
   '@fontsource-variable/noto-sans@5.1.0':
     resolution: {integrity: sha512-mLn33cgmryVFjpHoHy/lx6/DsRvp8kbxDmfMbMNl75eY+bVubad3u6oGSCyc8izcSNZAhAlXdoFW7mCnI2l63w==, tarball: https://mirrors.tencent.com/npm/@fontsource-variable/noto-sans/-/noto-sans-5.1.0.tgz}
+
+  '@fontsource-variable/noto-serif-jp@5.1.1':
+    resolution: {integrity: sha512-4SrCBsCnRpi/oklzPOgKYuPpY+ayKq0x9YowAmV66M6ij9CXWaP8Jb9UPAMbEYrQmOAVsJSztwHPT73HpwpQyw==, tarball: https://mirrors.tencent.com/npm/@fontsource-variable/noto-serif-jp/-/noto-serif-jp-5.1.1.tgz}
+
+  '@fontsource-variable/noto-serif-sc@5.1.0':
+    resolution: {integrity: sha512-C/8NjFRJ9L8I2kEJ4PDI38HF9ih12EeUlIgE1W9PmTCEqhbovGDjYU9kCR+4r7YvuO62Bt8ysLxKgP2cswORzQ==, tarball: https://mirrors.tencent.com/npm/@fontsource-variable/noto-serif-sc/-/noto-serif-sc-5.1.0.tgz}
+
+  '@fontsource-variable/noto-serif-tc@5.1.1':
+    resolution: {integrity: sha512-Hk7zDA1Gqs+pRCOnVCERSaH2lE1JIkFjuP3caLtdjsEPpeCqAsOuJkzmuBDB23fnlsCH+2ZlOuQ6oTpmLXcdsA==, tarball: https://mirrors.tencent.com/npm/@fontsource-variable/noto-serif-tc/-/noto-serif-tc-5.1.1.tgz}
+
+  '@fontsource-variable/noto-serif@5.1.0':
+    resolution: {integrity: sha512-IwXdv2o5o84TZqaIfEFdTQA8V8X8NRlkjetcxNyKPajcjmVVhBQUXZplgYWvgM9mR5Zwfwq8Hx8e50sln/+Tfg==, tarball: https://mirrors.tencent.com/npm/@fontsource-variable/noto-serif/-/noto-serif-5.1.0.tgz}
 
   '@fontsource/fira-code@5.1.0':
     resolution: {integrity: sha512-ti2XDP0qthaTDu44QawNP3PjEZIZ/cNl5VUZzvF9oYS/WY4LgmbF43IMTgTUZL33hknwFWBfmLmZCheOQmzJDg==}
@@ -2958,7 +2982,7 @@ packages:
         optional: true
 
   tslib@2.7.0:
-    resolution: {integrity: sha512-gLXCKdN1/j47AiHiOkJN69hJmcbGTHI0ImLmbYLHykhgeN0jVGola9yVjFgzCUklsZQMW55o+dW7IXv3RCXDzA==}
+    resolution: {integrity: sha512-gLXCKdN1/j47AiHiOkJN69hJmcbGTHI0ImLmbYLHykhgeN0jVGola9yVjFgzCUklsZQMW55o+dW7IXv3RCXDzA==, tarball: https://mirrors.tencent.com/npm/tslib/-/tslib-2.7.0.tgz}
 
   tunnel-agent@0.6.0:
     resolution: {integrity: sha512-McnNiV1l8RYeY8tBgEpuodCC1mLUdbSN+CYBL7kJsJNInOP8UjDDEwdk6Mw60vdLLrr5NHKZhMAOSrR2NZuQ+w==}
@@ -3783,6 +3807,14 @@ snapshots:
   '@fontsource-variable/noto-sans-tc@5.1.0': {}
 
   '@fontsource-variable/noto-sans@5.1.0': {}
+
+  '@fontsource-variable/noto-serif-jp@5.1.1': {}
+
+  '@fontsource-variable/noto-serif-sc@5.1.0': {}
+
+  '@fontsource-variable/noto-serif-tc@5.1.1': {}
+
+  '@fontsource-variable/noto-serif@5.1.0': {}
 
   '@fontsource/fira-code@5.1.0': {}
 
