@@ -46,6 +46,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 />
 
 <!-- Google tag (gtag.js) -->
+{ import.meta.env.PROD && (
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JQ438Q8K4Z"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -54,6 +55,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
   gtag('config', 'G-JQ438Q8K4Z');
 </script>
+)}
 
 <script is:inline>
   // For dark mode
