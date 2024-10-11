@@ -6,14 +6,16 @@ import {
   getPostsForRSS,
   posts as postsData,
 } from "../api/blog";
+import { BLOG_DESCRIPTION, BLOG_TITLE } from "../config";
 
 const parser = new MarkdownIt();
 
 export async function GET(context: any) {
   const posts = getPostsForRSS(postsData);
+
   return rss({
-    title: "Situ Note",
-    description: "Personal website of situ2001",
+    title: BLOG_TITLE,
+    description: BLOG_DESCRIPTION,
     site: context.site,
     items: posts.map((post) => ({
       title: post.data.title,
@@ -23,7 +25,8 @@ export async function GET(context: any) {
       categories: convertStringCategoriesToArray(post.data.categories),
       content: sanitizeHtml(
         parser.render(
-          "> 该内容使用MarkdownIt渲染，如需查看图片及获取更好的排版，请阅读原文\n\n" +
+          "> 该内容使用MarkdownIt渲染，如需查看图片及获取更好的排版，请阅读原文\n" +
+          "> This content is rendered using MarkdownIt, for better layout and images, please read the original post\n\n" +
             post.body
         )
       ),

@@ -4,8 +4,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Card, { FadeFromDirection } from "../components/Card";
 import { LatestBlog } from "../components/LatestBlog";
 import { SelfIntro, SelfLinks } from "../components/SelfIntro";
-
 import { Category } from "../components/Categories";
+
+import { BLOG_TITLE } from "../config";
 ---
 
 <style>
@@ -32,7 +33,7 @@ import { Category } from "../components/Categories";
   }
 </style>
 
-<BaseLayout title="Situ Note" description="Home Page" topNavigationAnimation>
+<BaseLayout title={BLOG_TITLE} description="Home Page" topNavigationAnimation>
   <div class="block md:grid grid-block">
     <div class="item-self-intro">
       <Card fadeFromDirection={FadeFromDirection.Top} fullHeight>
