@@ -1,5 +1,6 @@
 article p {
   @apply my-4;
+  line-height: 1.75;
 }
 
 article h1 {

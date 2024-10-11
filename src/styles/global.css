@@ -1,19 +1,33 @@
-@import "lxgw-wenkai-lite-webfont/style.css";
+/* @import "lxgw-wenkai-lite-webfont/style.css"; */
+@import '@fontsource-variable/noto-sans';
+@import '@fontsource-variable/noto-sans-sc';
+/* @import '@fontsource-variable/noto-sans-tc'; */
+/* @import '@fontsource-variable/noto-sans-jp'; */
+
+/* @import '@fontsource-variable/noto-sans-mono'; */
 @import "@fontsource/fira-code";
 
+:root {
+  --font-cjk: 'Noto Sans SC Variable', "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei";
+  --font-sans: "Noto Sans Variable", "Segoe UI", "Droid Sans", "Helvetica Neue";
+  /* --font-mono: "Noto Sans Mono Variable", monospace; */
+  --font-mono: "Fira Code", monospace;
+}
+
 body {
-  font-family: "LXGW WenKai Lite", sans-serif;
   @apply text-base;
+  font-family: var(--font-sans), var(--font-cjk), sans-serif;
+  font-weight: 400;
 
   /* color transition for text */
-  /* Has performance issues on Safari */
+  /* FIXME: Has performance issues on Safari */
   /* @apply transition-colors duration-200; */
 }
 
 /* Mono font */
 pre,
 code {
-  font-family: "Fira Code", monospace;
+  font-family: var(--font-mono);
   @apply text-sm;
 }
 
