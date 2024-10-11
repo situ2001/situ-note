@@ -1,11 +1,34 @@
 ---
 import "../styles/header.css";
+import { BLOG_TITLE } from "../config";
+import clsx from "clsx";
 
 type Props = {
   showAnimation?: boolean;
 };
 
 const { showAnimation } = Astro.props;
+
+const makeDirectionGetter = () => {
+  const baseName = "fade";
+  const directions = ["-left", "", "-right", "-top"];
+
+  function* getDirection() {
+    while (true) {
+      for (const direction of directions) {
+        yield baseName + direction;
+      }
+    }
+  }
+
+  const directionGenerator = getDirection();
+
+  return () => {
+    const direction = directionGenerator.next().value;
+    return direction as string;
+  };
+};
+const getDirection = makeDirectionGetter();
 ---
 
 <!-- TODO refactor the styles -->
@@ -83,29 +106,38 @@ const { showAnimation } = Astro.props;
   <nav class="text-xl">
     <h2 class="left">
       {
-        showAnimation ? (<a href="/">
-        <!-- Refactor: Props to decide wether play animation or not -->
-        <span class="transition-transform fade-left">S</span><span
-          class="transition-transform fade-top">i</span
-        ><span class="transition-transform fade">t</span><span
-          class="transition-transform fade-right">u</span
-        ><span style="margin-left: 0.5rem;"></span><span class="transition-transform fade-left">N</span><span
-          class="transition-transform fade">o</span
-        ><span class="transition-transform fade-top">t</span><span
-          class="transition-transform fade-right">e</span
-        >
-      </a>): (<a href="/">
-          <span>Situ</span><span style="margin-left: 0.5rem;"></span><span>Note</span>
-        </a>)
+        showAnimation ? (
+          <a href="/">
+            {[...BLOG_TITLE].map((ch) =>
+              ch !== " " ? (
+                <span class={clsx("transition-transform", getDirection())}>
+                  {ch}
+                </span>
+              ) : (
+                <span>{ch}</span>
+              )
+            )}
+          </a>
+        ) : (
+          <a href="/">Situ Note</a>
+        )
       }
     </h2>
-    
+
     <div class="right flex">
-      <h2 class={`${showAnimation ? "transition-transform fade-top" :""}`}>
+      <h2 class={`${showAnimation ? "transition-transform fade" : ""}`}>
         <a rel="prefetch" href="/blog">Blog</a>
       </h2>
-      <h2 class={`${showAnimation ? "transition-transform fade-top" :""} ml-4`}><a href="/friends">Friends</a></h2>
-      <h2 class={`${showAnimation ? "transition-transform fade-right" :""} ml-4`}><a href="/rss.xml">RSS</a></h2>
+      <h2
+        class={`${showAnimation ? "transition-transform fade-top" : ""} ml-4`}
+      >
+        <a href="/friends">Friends</a>
+      </h2>
+      <h2
+        class={`${showAnimation ? "transition-transform fade-right" : ""} ml-4`}
+      >
+        <a href="/rss.xml">RSS</a>
+      </h2>
     </div>
   </nav>
 </header>

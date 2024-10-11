@@ -1,7 +1,10 @@
 ---
+import pluralize from "../utils/pluralize";
+
 import type { CollectionEntry } from "astro:content";
 
 import FormattedDate from "../components/FormattedDate.astro";
+import ReadingProgress from "../components/ReadingProgress";
 
 import BaseLayout from "./BaseLayout.astro";
 
@@ -15,47 +18,18 @@ type Props = CollectionEntry<"blog">["data"] & { headings: MarkdownHeading[] };
 const { title, description, date, categories, headings } = Astro.props;
 ---
 
-<script>
-  const getReadingProgress = () => {
-    let content = document.querySelector("article");
-    let elemReadingProgress = document.querySelector("#reading-progress");
-
-    if (!content || !elemReadingProgress) {
-      return;
-    }
-
-    // compute reading progress
-    let contentHeight = content.clientHeight;
-    let documentOffset = document.documentElement.scrollTop;
-    let contentHeightForComputation = contentHeight - window.outerHeight; // base line is the top of the viewport when scrolled to the bottom
-    let progress = (documentOffset / contentHeightForComputation) * 100;
-    if (progress > 100) {
-      progress = 100;
-    } else if (progress < 0) {
-      progress = 0;
-    }
-
-    // update reading progress
-    if (elemReadingProgress) {
-      elemReadingProgress.innerHTML = `Reading: ${Math.floor(progress)}%`;
-    }
-  };
-
-  getReadingProgress();
-  window.addEventListener("scroll", getReadingProgress);
-</script>
-
 <BaseLayout title={title} description={description}>
   <h1 class="text-3xl mb-1">{title}</h1>
   <FormattedDate date={date} />
   <div>
-    <span class="mr-1"
-      >{
-        convertStringCategoriesToArray(categories).length > 1
-          ? "Categories"
-          : "Category"
-      }:</span
-    >
+    {
+      pluralize(
+        "Category",
+        convertStringCategoriesToArray(categories).length,
+        false
+      )
+    }
+    {": "}
     {
       interleave(
         convertStringCategoriesToArray(categories).map((category) => (
@@ -63,7 +37,7 @@ const { title, description, date, categories, headings } = Astro.props;
             <span class="hover:underline underline-offset-4">{category}</span>
           </a>
         )),
-        <span class="mx-1">/</span>
+        "/"
       )
     }
   </div>
@@ -82,6 +56,8 @@ const { title, description, date, categories, headings } = Astro.props;
         <div class="overflow-y-auto">
           <TableOfContent headings={headings} />
         </div>
+        <div class="py-2"></div>
+        <ReadingProgress querySelector="article" client:only="solid-js" />
       </div>
     </aside>
   </div>
