@@ -1,4 +1,4 @@
-import { createEffect, createSignal } from "solid-js";
+import { useEffect, useState } from "react";
 
 export interface ReadingProgressProps {
   querySelector: string;
@@ -7,7 +7,7 @@ export interface ReadingProgressProps {
 export default function ReadingProgress(props: ReadingProgressProps) {
   let { querySelector } = props;
 
-  const [readingProgress, setReadingProgress] = createSignal(0);
+  const [readingProgress, setReadingProgress] = useState(0);
   const getReadingProgress = () => {
     const contentRef = document.querySelector(querySelector);
 
@@ -27,13 +27,13 @@ export default function ReadingProgress(props: ReadingProgressProps) {
     setReadingProgress(progress);
   };
 
-  createEffect(() => {
+  useEffect(() => {
     getReadingProgress();
     window.addEventListener("scroll", getReadingProgress);
     return () => {
       window.removeEventListener("scroll", getReadingProgress);
     };
-  });
+  }, []);
 
-  return <div>Read {readingProgress()}%</div>
+  return <div>Read {readingProgress}%</div>
 }

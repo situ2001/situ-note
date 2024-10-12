@@ -1,4 +1,3 @@
-import { onCleanup, onMount, type JSXElement } from "solid-js";
 import _ from "lodash";
 import styles from "./style.module.css";
 
@@ -18,11 +17,11 @@ export default function IconLink(
 
   return (
     <a
-      class={styles.button + " " + "flex items-center dark:invert"}
+      className={styles.button + " " + "flex items-center dark:invert"}
       title={name}
       href={link}
     >
-      <img class="h-6 w-6" src={iconUrl} alt={name}></img>
+      <img className="h-6 w-6" src={iconUrl} alt={name}></img>
     </a>
   );
 }

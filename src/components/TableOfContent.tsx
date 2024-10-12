@@ -16,8 +16,8 @@ export const TableOfContent = ({
       {headingsWithDepthAdjusted.map((heading) => {
         return (
           <div
-            style={{ "padding-left": `${heading.depth}rem` }}
-            class={`overflow-hidden overflow-ellipsis whitespace-nowrap underline-offset-4 underline`}
+            style={{ "paddingLeft": `${heading.depth}rem` }}
+            className={`overflow-hidden overflow-ellipsis whitespace-nowrap underline-offset-4 underline`}
           >
             <a href={`#${heading.slug}`}>{heading.text}</a>
           </div>

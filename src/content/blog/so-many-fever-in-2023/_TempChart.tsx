@@ -1,7 +1,7 @@
 // TODO why not work?
 // import { Chart } from "@antv/g2";
 
-import { onMount } from "solid-js";
+import { useEffect, useRef } from "react";
 
 type Data = {
   temp: number;
@@ -9,12 +9,14 @@ type Data = {
 };
 
 export const TempChart = ({ data }: { data: Data[] }) => {
-  let container: HTMLDivElement | undefined;
+  const container = useRef<HTMLDivElement>(null);
 
-  onMount(() => {
+  useEffect(() => {
+    if (!container.current) return;
+
     import("@antv/g2").then(({ Chart }) => {
       const chart = new Chart({
-        container,
+        container: container.current!,
         autoFit: true,
         height: 480, // static height to avoid layout shift
       });
@@ -37,7 +39,7 @@ export const TempChart = ({ data }: { data: Data[] }) => {
 
       chart.render();
     });
-  });
+  }, [container]);
 
   return <div style={{ height: "480px" }} ref={container}></div>;
 };
