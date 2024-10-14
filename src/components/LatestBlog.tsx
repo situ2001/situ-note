@@ -12,12 +12,12 @@ export const LatestBlog = () => {
   return (
     <div className="h-full flex flex-col">
       <header
-        className="text-xl font-bold transition-transform duration-150"
+        className="text-xl font-bold transition-opacity duration-150"
         style={{
           opacity: !isPointerOverBlogList ? 1 : 0.3,
         }}
       >
-        Latest Blog Posts
+        Latest Blog
       </header>
       <hr className="my-1" />
       {/* <section className="overflow-scroll flex-1"> */}
@@ -31,7 +31,7 @@ export const LatestBlog = () => {
             key={post.slug}
             onPointerOver={() => setHoveredElement(post)}
             onPointerOut={() => setHoveredElement(null)}
-            className={`my-1 transition-transform duration-150 hover:scale-105 origin-left`}
+            className={`my-1 transition-all duration-150 hover:scale-105 origin-left`}
             style={{
               opacity:
                 !isPointerOverBlogList || hoveredElement === post ? 1 : 0.3,
