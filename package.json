@@ -31,6 +31,7 @@
     "@fontsource/fira-code": "^5.1.0",
     "astro": "^4.16.0",
     "clsx": "^2.1.1",
+    "framer-motion": "^11.11.8",
     "lodash": "^4.17.21",
     "lxgw-wenkai-lite-webfont": "^1.7.0",
     "markdown-it": "^13.0.2",

@@ -1,5 +1,6 @@
 import _ from "lodash";
-import styles from "./style.module.css";
+import { motion } from 'framer-motion';
+import clsx from "clsx";
 
 export interface IconLinkProps {
   link: string;
@@ -16,12 +17,14 @@ export default function IconLink(
   const { link, iconUrl, name } = props;
 
   return (
-    <a
-      className={styles.button + " " + "flex items-center dark:invert"}
+    <motion.a
+      whileHover={{ scale: 1.2, rotate: 5 }}
+      whileTap={{ scale: 0.9 }}
+      className={clsx("flex items-center dark:invert")}
       title={name}
       href={link}
     >
       <img className="h-6 w-6" src={iconUrl} alt={name}></img>
-    </a>
+    </motion.a>
   );
 }
