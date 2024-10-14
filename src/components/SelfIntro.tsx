@@ -1,19 +1,7 @@
-import LinkButton, {
-  type IconLinkProps,
-} from "./IconLink";
-
-import links from "../config/links";
 import { useState } from "react";
 
-const Links = () => {
-  return (
-    <div className="flex flex-wrap gap-4 justify-center">
-      {links.map((link) => (
-        <LinkButton iconUrl={link.iconUrl} link={link.link} name={link.name} />
-      ))}
-    </div>
-  );
-};
+import LinkButton from "./IconLink";
+import links from "../config/links";
 
 export const SelfLinks = () => {
   const [currentHoveredLink, setCurrentHoveredLink] = useState<

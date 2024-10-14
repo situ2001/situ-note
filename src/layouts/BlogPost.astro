@@ -4,7 +4,6 @@ import pluralize from "../utils/pluralize";
 import type { CollectionEntry } from "astro:content";
 
 import FormattedDate from "../components/FormattedDate.astro";
-import ReadingProgress from "../components/ReadingProgress";
 
 import BaseLayout from "./BaseLayout.astro";
 
@@ -12,7 +11,6 @@ import "../styles/blog-post.css";
 import { convertStringCategoriesToArray } from "../api/blog";
 import { interleave } from "../utils";
 import type { MarkdownHeading } from "astro";
-import { TableOfContent } from "../components/TableOfContent";
 
 type Props = CollectionEntry<"blog">["data"] & { headings: MarkdownHeading[] };
 const { title, description, date, categories, headings } = Astro.props;
