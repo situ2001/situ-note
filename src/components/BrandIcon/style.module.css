@@ -38,11 +38,24 @@
   transition: all 300ms ease;
 }
 
+.tu,
+.year-01 {
+  transition-delay: 75ms;
+}
+
 .container:hover .si,
 .container:hover .tu,
 .container:hover .year-20,
 .container:hover .year-01 {
   transform: translateX(-100%);
+}
+
+.transform-name-to-year {
+  transform: translateX(-100%);
+}
+
+.transform-year-to-name {
+  transform: translateX(0);
 }
 
 .container-year {
@@ -52,9 +65,4 @@
   left: 100%;
 
   width: 100%;
-}
-
-.container:hover .tu,
-.container:hover .year-01 {
-  transition-delay: 75ms;
 }
