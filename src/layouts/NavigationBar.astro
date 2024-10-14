@@ -3,18 +3,23 @@ import "../styles/header.css";
 import { BLOG_TITLE } from "../config";
 import clsx from "clsx";
 
+import BrandIcon from "../components/BrandIcon";
+
 type Props = {};
 
 const {} = Astro.props;
 ---
 
-<header class="p-4">
+<header class="p-4 max-w-screen-lg mx-auto lg:mt-10 lg:mb-4">
   <nav class="text-xl">
     <h2 class="left">
-      <a href="/" class="font-serif">Situ Note</a>
+      <!-- <a href="/" class="font-serif">Situ Note</a> -->
+      <a href="/" class="font-serif">
+        <BrandIcon />
+      </a>
     </h2>
 
-    <div class="right flex">
+    <div class="right flex items-center">
       <h2>
         <a rel="prefetch" href="/blog">Blog</a>
       </h2>

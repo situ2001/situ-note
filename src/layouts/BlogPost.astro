@@ -19,48 +19,52 @@ const { title, description, date, categories, headings } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description}>
-  <div class="font-serif mb-4">
-    <h1 class="text-3xl mb-1">{title}</h1>
-    <FormattedDate date={date} />
-    <div>
-      {
-        pluralize(
-          "Category",
-          convertStringCategoriesToArray(categories).length,
-          false
-        )
-      }
-      {": "}
-      {
-        interleave(
-          convertStringCategoriesToArray(categories).map((category) => (
-            <a href={`/blog/category/${category}`}>
-              <span class="hover:underline underline-offset-4">{category}</span>
-            </a>
-          )),
-          "/"
-        )
-      }
-    </div>
-  </div>
-  <hr />
-  <div class="flex flex-row">
-    <article class="min-w-0 md:w-3/4">
-      <slot />
-    </article>
-    <!-- TODO adjust height -->
-    <aside
-      class="hidden md:block pl-4 sticky top-0 self-start h-[90vh] w-1/4 mt-4"
-    >
-      <div class="flex flex-col h-full">
-        <div id="reading-progress"></div>
-        <div class="text-lg font-bold">ToC</div>
-        <div class="overflow-y-auto">
-          <TableOfContent headings={headings} />
-        </div>
-        <div class="py-2"></div>
-        <ReadingProgress querySelector="article" client:only="react" />
+  <div class="max-w-screen-md mx-auto">
+    <div class="font-serif mb-4">
+      <h1 class="text-3xl mb-1">{title}</h1>
+      <FormattedDate date={date} />
+      <div>
+        {
+          pluralize(
+            "Category",
+            convertStringCategoriesToArray(categories).length,
+            false
+          )
+        }
+        {": "}
+        {
+          interleave(
+            convertStringCategoriesToArray(categories).map((category) => (
+              <a href={`/blog/category/${category}`}>
+                <span class="hover:underline underline-offset-4">
+                  {category}
+                </span>
+              </a>
+            )),
+            "/"
+          )
+        }
       </div>
-    </aside>
+    </div>
+    <hr />
+    <div class="flex flex-row">
+      <article class="min-w-0">
+        <slot />
+      </article>
+      <!-- TODO adjust height -->
+      <!-- <aside
+          class="hidden md:block pl-4 sticky top-0 self-start h-[90vh] mt-4 min-w-48"
+        >
+          <div class="flex flex-col h-full">
+            <div id="reading-progress"></div>
+            <div class="text-lg font-bold">ToC</div>
+            <div class="overflow-y-auto">
+              <TableOfContent headings={headings} />
+            </div>
+            <div class="py-2"></div>
+            <ReadingProgress querySelector="article" client:only="react" />
+          </div>
+        </aside> -->
+    </div>
   </div>
 </BaseLayout>
