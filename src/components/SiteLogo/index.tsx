@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import styles from './style.module.css';
 import clsx from 'clsx';
+import throttle from 'lodash/throttle';
 
 // TODO Pick a better font
 export default function BrandIcon() {
@@ -8,7 +9,7 @@ export default function BrandIcon() {
 
   useEffect(() => {
     let lastScrollTop = 0;
-    const handleScroll = () => {
+    const handleScroll = throttle(() => {
       // FIXME copilot generated this code, it may not working as expected
       const st = window.pageYOffset || document.documentElement.scrollTop;
       if (st > lastScrollTop) {
@@ -17,7 +18,7 @@ export default function BrandIcon() {
         setScrollDirection('up');
       }
       lastScrollTop = st <= 0 ? 0 : st;
-    }
+    }, 100);
 
     window.addEventListener('scroll', handleScroll);
     return () => {
