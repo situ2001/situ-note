@@ -1,3 +1,5 @@
+@import '@fontsource-variable/inconsolata';
+
 /* inconsolata-latin-wght-normal */
 @font-face {
   font-family: 'Inconsolata Variable';
@@ -12,7 +14,7 @@
 .container {
   max-width: fit-content;
   overflow: hidden;
-  
+
   --centered-val: 1.25rem;
   font-family: 'Inconsolata Variable', sans-serif;
   font-size: var(--centered-val);
