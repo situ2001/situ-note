@@ -17,13 +17,14 @@ const {} = Astro.props;
     if (!header || !main) return;
 
     const isIntersecting = isTwoElementsIntersecting(header, main);
+    const fn = isIntersecting ? "add" : "remove";
 
     if (!isIntersecting) {
-      header.classList.add("bg-white");
-      header.classList.remove("bg-slate-200");
+      header.classList.add("bg-white", "dark:bg-slate-800");
+      header.classList.remove("bg-slate-200", "dark:bg-slate-700");
     } else {
-      header.classList.remove("bg-white");
-      header.classList.add("bg-slate-200");
+      header.classList.remove("bg-white", "dark:bg-slate-800");
+      header.classList.add("bg-slate-200", "dark:bg-slate-700");
     }
   };
 
