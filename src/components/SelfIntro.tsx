@@ -21,7 +21,7 @@ export const SelfLinks = () => {
             onPointerLeave={() => setCurrentHoveredLink("")}
           >
             <LinkButton
-              iconUrl={link.iconUrl}
+              icon={link.icon}
               link={link.link}
               name={link.name}
             />

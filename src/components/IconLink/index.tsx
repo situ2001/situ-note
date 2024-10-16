@@ -1,9 +1,11 @@
 import { motion } from 'framer-motion';
 import clsx from "clsx";
+import type { IconType } from 'react-icons/lib';
+import type { ImageMetadata } from 'astro';
 
 export interface IconLinkProps {
   link: string;
-  iconUrl: string;
+  icon: ImageMetadata | IconType;
   name: string;
 }
 
@@ -13,7 +15,9 @@ export interface IconLinkProps {
 export default function IconLink(
   props: IconLinkProps
 ) {
-  const { link, iconUrl, name } = props;
+  const { link, icon, name } = props;
+
+  const Icon = icon as IconType;
 
   return (
     <motion.a
@@ -23,7 +27,11 @@ export default function IconLink(
       title={name}
       href={link}
     >
-      <img className="h-6 w-6" src={iconUrl} alt={name}></img>
+      {
+        (icon as ImageMetadata).src
+          ? (<img className="h-6 w-6" src={(icon as ImageMetadata).src} alt={name}></img>)
+          : <Icon className='h-6 w-6' />
+      }
     </motion.a>
   );
 }
