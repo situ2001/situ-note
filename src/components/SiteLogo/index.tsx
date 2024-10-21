@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import styles from './style.module.css';
 import clsx from 'clsx';
-import throttle from 'lodash/throttle';
+import { throttle } from 'es-toolkit';
 
 // TODO Pick a better font
 export default function BrandIcon() {

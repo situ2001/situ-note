@@ -1,6 +1,5 @@
 import { getCollection, type CollectionEntry } from "astro:content";
-import type { Dictionary } from "lodash";
-import groupBy from "lodash/groupBy";
+import { groupBy } from "es-toolkit";
 
 // init once, because it's a static collection
 export const posts = await getCollection("blog");
@@ -59,7 +58,7 @@ export const getPostsForRSS = (posts: Post[]) => {
  * Notice that the category is flattened, so each post may appear multiple times
  * @returns
  */
-export const getPostsGroupByCategory: (posts: Post[]) => Dictionary<Post[]> = (
+export const getPostsGroupByCategory: (posts: Post[]) => Record<string, Post[]> = (
   posts: Post[]
 ) => {
   const flattenCategoryPosts = posts.flatMap((post) => {
@@ -73,7 +72,7 @@ export const getPostsGroupByCategory: (posts: Post[]) => Dictionary<Post[]> = (
   return c;
 };
 
-export const getCategoryStaticPaths = (groups: Dictionary<Post[]>) => () => {
+export const getCategoryStaticPaths = (groups: Record<string, Post[]>) => () => {
   const categories = groups;
   return Object.keys(categories).map((category) => ({
     params: { category },

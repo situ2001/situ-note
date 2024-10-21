@@ -8,7 +8,7 @@ const {} = Astro.props;
 ---
 
 <script>
-  import thorttle from "lodash/throttle";
+  import { throttle } from "es-toolkit";
   import { isTwoElementsIntersecting } from "../utils/intersection";
 
   const onScroll = () => {
@@ -28,7 +28,7 @@ const {} = Astro.props;
     }
   };
 
-  window.addEventListener("scroll", thorttle(onScroll, 100));
+  window.addEventListener("scroll", throttle(onScroll, 100));
   onScroll();
 </script>
 
