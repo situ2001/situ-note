@@ -1,0 +1,57 @@
+.slide-in,
+.scale-from-center,
+.fade-in {
+  position: relative;
+  overflow: hidden;
+}
+
+.slide-in::after,
+.scale-from-center::after,
+.fade-in::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.1rem;
+  background-color: black;
+
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+:global .dark {
+  :local .slide-in::after,
+  :local .scale-from-center::after, 
+  :local .fade-in::after {
+    @apply bg-gray-300;
+  }
+}
+
+.slide-in::after {
+  transform: translate3d(-100%, 0, 0);
+}
+
+.slide-in:hover::after {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.scale-from-center::after {
+  transform-origin: center;
+  transform: scale(0);
+}
+
+.scale-from-center:hover::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.fade-in::after {
+  transform: translate3d(0, -0.25rem, 0);
+}
+
+.fade-in:hover::after {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
