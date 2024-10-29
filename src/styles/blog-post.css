@@ -79,11 +79,3 @@ article blockquote {
 article img {
   margin: 0 auto;
 }
-
-article code:not(pre code) {
-  @apply rounded px-1 bg-gray-100;
-}
-
-article pre {
-  @apply rounded p-4 bg-gray-100 !important;
-}

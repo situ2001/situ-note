@@ -45,12 +45,20 @@ code {
   @apply text-sm;
 }
 
-.dark img {
+html.dark img {
   @apply brightness-75;
 }
 
-.dark :not(pre) > code {
+html.dark :not(pre) > code {
   @apply bg-gray-600;
+}
+
+code:not(pre code) {
+  @apply rounded px-1 bg-gray-100 !important;
+}
+
+pre {
+  @apply rounded p-4 bg-gray-100 !important;
 }
 
 /* Shiki code block highlight */
