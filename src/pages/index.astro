@@ -1,62 +1,23 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-import Card from "../components/Card";
-import { LatestBlog } from "../components/LatestBlog";
-import { SelfIntro, SelfLinks } from "../components/SelfIntro";
-import { Category } from "../components/Categories";
+import {
+  AboutMe,
+  Roles,
+  Contact,
+  Blog,
+  Categories,
+} from "../components/home";
 
 import { BLOG_TITLE } from "../config";
 ---
 
-<style>
-  .grid-block {
-    grid-template-rows: auto;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-  }
-
-  .item-self-intro {
-    grid-column: 1 / 2;
-  }
-
-  .item-self-link {
-    grid-column: 2 / 4;
-  }
-
-  .item-latest-blog {
-    grid-column: 1 / 3;
-  }
-
-  .item-category {
-    grid-column: 3 / 4;
-  }
-</style>
-
 <BaseLayout title={BLOG_TITLE} description="Home Page">
-  <div class="block md:grid grid-block">
-    <div class="item-self-intro">
-      <Card fullHeight>
-        <SelfIntro />
-      </Card>
-    </div>
-
-    <div class="item-self-link">
-      <Card fullHeight>
-        <SelfLinks client:load />
-      </Card>
-    </div>
-
-    <div class="item-latest-blog">
-      <Card fullHeight>
-        <LatestBlog client:load />
-      </Card>
-    </div>
-
-    <div class="item-category">
-      <Card fullHeight>
-        <Category />
-      </Card>
-    </div>
+  <div class="flex flex-col gap-4">
+    <AboutMe />
+    <Roles />
+    <Blog />
+    <Contact client:load />
+    <!-- <Categories /> -->
   </div>
 </BaseLayout>

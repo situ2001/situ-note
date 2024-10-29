@@ -1,8 +1,6 @@
 import type { IconLinkProps } from "../components/IconLink";
-import { FaGithub, FaTwitter } from "react-icons/fa6";
+import { FaGithub, FaXTwitter, FaInstagram, FaTelegram, FaBilibili } from "react-icons/fa6";
 
-// Credit: https://simpleicons.org/
-import IconMail from "../assets/gmail.svg";
 
 const links: IconLinkProps[] = [
   {
@@ -13,13 +11,18 @@ const links: IconLinkProps[] = [
   {
     name: "Twitter",
     link: "https://twitter.com/situ200l",
-    icon: FaTwitter,
+    icon: FaXTwitter,
   },
   {
-    name: "Gmail",
-    link: "mailto:dogecong@gmail.com",
-    icon: IconMail,
+    name: "Telegram",
+    link: "https://t.me/situ2001_channel",
+    icon: FaTelegram,
   },
+  {
+    name: "Instagram",
+    link: "https://instagram.com/situ2oo1",
+    icon: FaInstagram,
+  }
 ];
 
 export default links;

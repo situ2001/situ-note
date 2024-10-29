@@ -3,11 +3,11 @@ import {
   getPostsGroupByCategory,
   posts as postsData,
   type Post,
-} from "../api/blog";
+} from "../../api/blog";
 
 const posts = getPostsGroupByCategory(getPostSortedByDate(postsData));
 
-export const Category = () => {
+const Category = () => {
   return (
     <div className="h-full flex flex-col">
       {/* TODO not now but future */}
@@ -32,3 +32,5 @@ export const Category = () => {
     </div>
   );
 };
+
+export default Category;

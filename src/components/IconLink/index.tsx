@@ -3,6 +3,8 @@ import clsx from "clsx";
 import type { IconType } from 'react-icons/lib';
 import type { ImageMetadata } from 'astro';
 
+import styles from './index.module.css';
+
 export interface IconLinkProps {
   link: string;
   icon: ImageMetadata | IconType;
@@ -10,7 +12,7 @@ export interface IconLinkProps {
 }
 
 /**
- * A button with a colorful border.
+ * A link with an icon and a name.
  */
 export default function IconLink(
   props: IconLinkProps
@@ -21,17 +23,18 @@ export default function IconLink(
 
   return (
     <motion.a
-      whileHover={{ scale: 1.2, rotate: 5 }}
+      whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
-      className={clsx("flex items-center dark:invert")}
+      className={clsx("flex max-w-fit items-center dark:invert gap-1", styles['with-animated-underline'])}
       title={name}
       href={link}
     >
       {
         (icon as ImageMetadata).src
-          ? (<img className="h-6 w-6" src={(icon as ImageMetadata).src} alt={name}></img>)
-          : <Icon className='h-6 w-6' />
+          ? (<img className="h-4 w-4" src={(icon as ImageMetadata).src} alt={name}></img>)
+          : <Icon className='h-4 w-4' />
       }
+      <p>{name}</p>
     </motion.a>
   );
 }
