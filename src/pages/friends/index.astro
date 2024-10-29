@@ -4,10 +4,15 @@ import FriendCard from "../../components/Card/FriendCard/index.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 import { friends } from "../../config/friends";
+
+import Info from "../../config/site-info.mdx";
 ---
 
 <BaseLayout title="Friends" description="My friends" fullWidth>
   <div class="flex flex-col md:grid md:grid-cols-4 md:gap-8">
     {friends.map(({ name, link }) => <FriendCard name={name} link={link} />)}
+  </div>
+  <div class="mt-4">
+    <Info />
   </div>
 </BaseLayout>
