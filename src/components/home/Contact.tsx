@@ -1,3 +1,4 @@
+import { EMAIL } from "../../config";
 import links from "../../config/links";
 import LinkButton from "../IconLink";
 
@@ -8,7 +9,7 @@ const SelfLinks = () => {
         Contact
       </header>
       <div>
-        Send me an <a className="underline" href="mailto:dogecong@gmail.com">email</a> or find me on:
+        Send me an <a className="underline" href={`mailto:${EMAIL}`}>email</a> or find me on:
       </div>
       <div className="flex gap-2 md:gap-4 flex-col md:flex-row">
         {links.map((link) => (
