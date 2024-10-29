@@ -1,6 +1,8 @@
 import clsx from "clsx";
 import { getTopKPosts, posts as postsData } from "../../api/blog";
 
+import underline from '../AnimatedUnderline/index.module.css';
+
 const posts = getTopKPosts(postsData, 5);
 
 const LatestBlog = () => {
@@ -23,7 +25,7 @@ const LatestBlog = () => {
         {posts.map((post) => (
           <div
             key={post.slug}
-            className="my-1 origin-left"
+            className={clsx("my-1 origin-left max-w-fit", underline['fade-in'])}
           >
             <a href={`/blog/${post.slug}`}>
               <li>{post.data.title}</li>
