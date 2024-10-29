@@ -33,6 +33,7 @@
     "clsx": "^2.1.1",
     "es-toolkit": "^1.26.1",
     "framer-motion": "^11.11.10",
+    "indefinite": "^2.5.1",
     "lxgw-wenkai-lite-webfont": "^1.7.0",
     "markdown-it": "^13.0.2",
     "pluralize": "^8.0.0",
@@ -44,6 +45,7 @@
     "tailwindcss": "^3.4.14"
   },
   "devDependencies": {
+    "@types/indefinite": "^2.3.4",
     "@types/markdown-it": "^13.0.9",
     "@types/pluralize": "^0.0.33",
     "@types/react": "^18.3.12",

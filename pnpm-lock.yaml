@@ -71,6 +71,9 @@ importers:
       framer-motion:
         specifier: ^11.11.10
         version: 11.11.10(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      indefinite:
+        specifier: ^2.5.1
+        version: 2.5.1
       lxgw-wenkai-lite-webfont:
         specifier: ^1.7.0
         version: 1.7.0
@@ -99,6 +102,9 @@ importers:
         specifier: ^3.4.14
         version: 3.4.14
     devDependencies:
+      '@types/indefinite':
+        specifier: ^2.3.4
+        version: 2.3.4
       '@types/markdown-it':
         specifier: ^13.0.9
         version: 13.0.9
@@ -818,6 +824,9 @@ packages:
 
   '@types/hast@3.0.4':
     resolution: {integrity: sha512-WPs+bbQw5aCj+x6laNGWLH3wviHtoCv/P3+otBhbOhJgG8qtpdAMlTCxLtsTWA7LH1Oh/bFCHsBn0TPS5m30EQ==}
+
+  '@types/indefinite@2.3.4':
+    resolution: {integrity: sha512-X9sp9nbqkZT7hFNUKxicGr6gZLahs95lryW2Vvx5+krDxhWWle4K1OfJ4b8Sjd+FLul3tGhfYehtfeoFF1Ot4g==}
 
   '@types/linkify-it@3.0.5':
     resolution: {integrity: sha512-yg6E+u0/+Zjva+buc3EIb+29XEg4wltq7cSmd4Uc2EE/1nUVmxyzpX6gUXD0V8jIrG0r7YeOGVIbYRkxeooCtw==}
@@ -1700,6 +1709,10 @@ packages:
 
   import-meta-resolve@4.1.0:
     resolution: {integrity: sha512-I6fiaX09Xivtk+THaMfAwnA3MVA5Big1WHF1Dfx9hFuvNIWpXnorlkzhcQf6ehrqQiiZECRt1poOAkPmer3ruw==}
+
+  indefinite@2.5.1:
+    resolution: {integrity: sha512-Ul0hCdnSjuFDEloYWeozTaEfljbz+0q+u4HsHns2dOk2DlhGlbRMGFtNcIL+Ve7sZYeIOTOAKA0usAXBGHpNDg==}
+    engines: {node: '>=6.0.0'}
 
   inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
@@ -3904,6 +3917,8 @@ snapshots:
     dependencies:
       '@types/unist': 3.0.3
 
+  '@types/indefinite@2.3.4': {}
+
   '@types/linkify-it@3.0.5': {}
 
   '@types/markdown-it@13.0.9':
@@ -5013,6 +5028,8 @@ snapshots:
       safer-buffer: 2.1.2
 
   import-meta-resolve@4.1.0: {}
+
+  indefinite@2.5.1: {}
 
   inflight@1.0.6:
     dependencies:
