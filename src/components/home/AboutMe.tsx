@@ -1,6 +1,6 @@
 export default function AboutMe() {
   return (
-    <div className="flex flex-col h-full">
+    <section className="flex flex-col h-full">
       <div className="flex flex-row">
         <div className="flex-1">
           <h1 className="text-3xl font-bold mb-2">Hi!</h1>
@@ -19,6 +19,6 @@ export default function AboutMe() {
         </div> */}
       </div>
       <div className="my-1"></div>
-    </div>
+    </section>
   );
 }

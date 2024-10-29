@@ -3,7 +3,7 @@ import LinkButton from "../IconLink";
 
 const SelfLinks = () => {
   return (
-    <div className="flex flex-wrap flex-col gap-2">
+    <section className="flex flex-wrap flex-col gap-2">
       <header className="text-xl font-bold">
         Contact
       </header>
@@ -20,7 +20,7 @@ const SelfLinks = () => {
           />
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -5,7 +5,7 @@ const posts = getTopKPosts(postsData, 5);
 
 const LatestBlog = () => {
   return (
-    <div className={clsx(
+    <section className={clsx(
       "h-full flex flex-col gap-2",
     )}>
       <header
@@ -31,7 +31,7 @@ const LatestBlog = () => {
           </div>
         ))}
       </ul>
-    </div>
+    </section>
   );
 };
 

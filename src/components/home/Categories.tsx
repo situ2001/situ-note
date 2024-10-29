@@ -9,7 +9,7 @@ const posts = getPostsGroupByCategory(getPostSortedByDate(postsData));
 
 const Category = () => {
   return (
-    <div className="h-full flex flex-col">
+    <section className="h-full flex flex-col">
       {/* TODO not now but future */}
       {/* <a href="/blog/category"> */}
       <header className="text-xl font-bold">Categories</header>
@@ -29,7 +29,7 @@ const Category = () => {
           );
         })}
       </div>
-    </div>
+    </section>
   );
 };
 
