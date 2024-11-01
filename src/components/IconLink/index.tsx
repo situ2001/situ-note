@@ -28,6 +28,7 @@ export default function IconLink(
       className={clsx("flex max-w-fit items-center gap-1", underline['slide-in'])}
       title={name}
       href={link}
+      target="_blank"
     >
       {
         (icon as ImageMetadata).src
