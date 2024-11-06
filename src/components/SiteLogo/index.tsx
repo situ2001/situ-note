@@ -1,34 +1,36 @@
 import { useEffect, useState } from 'react';
 import styles from './style.module.css';
 import clsx from 'clsx';
-import { throttle } from 'es-toolkit';
+import useScrollIdle from '../../lib/useScrollIdle';
 
 // TODO Pick a better font
 export default function BrandIcon() {
   const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('up');
 
-  useEffect(() => {
-    let lastScrollTop = 0;
-    const handleScroll = throttle(() => {
-      // FIXME copilot generated this code, it may not working as expected
-      const st = window.pageYOffset || document.documentElement.scrollTop;
-      if (st > lastScrollTop) {
-        setScrollDirection('down');
-      } else {
-        setScrollDirection('up');
-      }
-      lastScrollTop = st <= 0 ? 0 : st;
-    }, 100);
+  const isScrollIdle = useScrollIdle(1000);
 
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    }
-  }, []);
+  // useEffect(() => {
+  //   let lastScrollTop = 0;
+  //   const handleScroll = throttle(() => {
+  //     // FIXME copilot generated this code, it may not working as expected
+  //     const st = window.pageYOffset || document.documentElement.scrollTop;
+  //     if (st > lastScrollTop) {
+  //       setScrollDirection('down');
+  //     } else {
+  //       setScrollDirection('up');
+  //     }
+  //     lastScrollTop = st <= 0 ? 0 : st;
+  //   }, 100);
+
+  //   window.addEventListener('scroll', handleScroll);
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll);
+  //   }
+  // }, []);
 
   const clsxParamBasedOnScrollDirection = {
-    [styles['transform-year-to-name']]: scrollDirection === 'up',
-    [styles['transform-name-to-year']]: scrollDirection === 'down',
+    [styles['transform-year-to-name']]: isScrollIdle,
+    [styles['transform-name-to-year']]: !isScrollIdle
   }
 
   return <div className={
