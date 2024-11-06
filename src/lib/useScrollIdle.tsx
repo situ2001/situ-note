@@ -1,17 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const useScrollIdle = (idleDelay = 200, scrollThreshold = 100) => {
   const [isIdle, setIsIdle] = useState(true);
   let idleTimeout: NodeJS.Timeout;
-  let lastScrollY = window.scrollY;
+  let lastScrollY = useRef(0);
 
   const handleScroll = () => {
     const scrollY = window.scrollY;
-    const scrollDistance = Math.abs(scrollY - lastScrollY);
+    const scrollDistance = Math.abs(scrollY - lastScrollY.current);
 
     if (scrollDistance > scrollThreshold) {
       setIsIdle(false);
-      lastScrollY = scrollY; // Update lastScrollY to current position
+      lastScrollY.current = scrollY; // Update lastScrollY to current position
       
       if (idleTimeout) {
         clearTimeout(idleTimeout);
