@@ -20,9 +20,7 @@ const { title, description, date, categories, headings } = Astro.props;
 
 <BaseLayout title={title} description={description}>
   <div class="max-w-screen-md mx-auto">
-    <div class="h-screen fixed left-0 top-0 z-20">
-      <FloatingMenu client:only />
-    </div>
+    <FloatingMenu position="right-bottom" client:only />
 
     <div class="font-serif mb-4">
       <h1 class="text-3xl mb-1">{title}</h1>

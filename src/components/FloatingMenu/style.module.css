@@ -1,39 +1,35 @@
-.background {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  @apply bg-slate-200;
+.menu {
+  width: 100vw;
+  height: 100vh;
 }
 
-
-.menu {
-  position: absolute;
+.background {
+  /* position: absolute; */
   top: 0;
   bottom: 0;
   left: 0;
-  width: 100vw;
+  /* width: 100%; */
+  @apply bg-slate-200;
 }
 
 .button {
   outline: none;
   border: none;
-  
+
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
 
   cursor: pointer;
-  
+
   position: absolute;
-  top: 18px;
-  left: 15px;
+  /* top: 18px;
+  left: 15px; */
   width: 50px;
   height: 50px;
-  
+
   border-radius: 50%;
-  
+
   background: transparent;
 }
