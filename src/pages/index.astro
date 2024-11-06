@@ -1,18 +1,12 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-import {
-  AboutMe,
-  Roles,
-  Contact,
-  Blog,
-  Categories,
-} from "../components/home";
+import { AboutMe, Roles, Contact, Blog, Categories } from "../components/home";
 
-import { BLOG_TITLE } from "../config";
+import { BLOG_TITLE, BLOG_DESCRIPTION } from "../config";
 ---
 
-<BaseLayout title={BLOG_TITLE} description="Home Page">
+<BaseLayout title={BLOG_TITLE} description={BLOG_DESCRIPTION}>
   <div class="flex flex-col gap-4">
     <AboutMe />
     <Roles />

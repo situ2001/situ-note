@@ -12,7 +12,7 @@ const posts = getPostSortedByDate(postsData);
 const postsGroupedByYear = groupPostsByYear(posts);
 ---
 
-<BaseLayout title="Blogs" description="Blog list" fullWidth>
+<BaseLayout title="Blogs" description="Blogs" fullWidth>
   {
     Object.entries(postsGroupedByYear)
       .sort(([year1], [year2]) => String(year2).localeCompare(String(year1)))
