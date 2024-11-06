@@ -13,14 +13,14 @@ if (!nodeVersion.toString().startsWith("v22")) {
 
 // ensure there is no uncommitted changes
 const gitStatus = await $`git status --porcelain`;
-if (gitStatus !== "") {
+if (gitStatus.toString() !== "") {
   console.error("Please commit your changes before publishing");
   process.exit(1);
 }
 
 // ensure there is no untracked files
 const gitUntrackedFiles = await $`git ls-files --others --exclude-standard`;
-if (gitUntrackedFiles !== "") {
+if (gitUntrackedFiles.toString() !== "") {
   console.error("Please commit your changes before publishing");
   process.exit(1);
 }
