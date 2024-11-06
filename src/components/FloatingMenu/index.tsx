@@ -9,7 +9,7 @@ export interface FloatingMenuProps {
   position?: "left-top" | "left-bottom" | "right-top" | "right-bottom";
 }
 
-const positionStyleObj: Record<NonNullable<FloatingMenuProps['position']>, CSSProperties> = {
+const buttonPositionStyleObj: Record<NonNullable<FloatingMenuProps['position']>, CSSProperties> = {
   "left-top": {
     top: '18px',
     left: '15px',
@@ -68,7 +68,6 @@ export default function FloatingMenu(props: FloatingMenuProps) {
   const { position = "left-top" } = props;
 
   const { width, height } = useWindowDimensions();
-  const scrollIdle = useScrollIdle();
   const [isOpen, toggleOpen] = useCycle(false, true);
 
   return (
@@ -80,7 +79,7 @@ export default function FloatingMenu(props: FloatingMenuProps) {
               'fixed z-20',
               'w-screen h-screen',
               'md:w-1/2 md:h-1/2',
-              { // TODO fix z-index
+              {
                 'left-0 top-0': position === "left-top",
                 'left-0 bottom-0': position === "left-bottom",
                 'right-0 top-0': position === "right-top",
@@ -90,7 +89,6 @@ export default function FloatingMenu(props: FloatingMenuProps) {
             initial={false}
             animate={[
               isOpen ? "open" : "closed",
-              isOpen || scrollIdle ? "scrollIdle" : "scrollActive"
             ]}
           >
             {/* Span-able Background */}
@@ -129,40 +127,12 @@ export default function FloatingMenu(props: FloatingMenuProps) {
               initial={{}}
               animate={{ transition: { staggerChildren: 0.07, delayChildren: 0.2 } }}
               exit={{ transition: { staggerChildren: 0.05, staggerDirection: -1 } }}
-              // variants={{
-              //   open: {
-              //     transition: { staggerChildren: 0.07, delayChildren: 0.2 },
-              //     display: 'block',
-              //   },
-              //   closed: {
-              //     transition: { staggerChildren: 0.05, staggerDirection: -1 },
-              //     display: 'none',
-              //   },
-              // }}
               className='absolute top-20'
             >
               <motion.div
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1, transition: { y: { stiffness: 1000, velocity: -100 } } }}
                 exit={{ y: 50, opacity: 0, transition: { y: { stiffness: 1000 } } }}
-
-                // variants={{
-                //   open: {
-                //     y: 0,
-                //     opacity: 1,
-                //     transition: {
-                //       y: { stiffness: 1000, velocity: -100 }
-                //     }
-                //   },
-                //   closed: {
-                //     y: 50,
-                //     opacity: 0,
-                //     transition: {
-                //       y: { stiffness: 1000 }
-                //     }
-                //   }
-                // }}
-
                 style={{ border: '2px solid #FF008C' }}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
@@ -176,30 +146,25 @@ export default function FloatingMenu(props: FloatingMenuProps) {
 
       {/* Toggle Button */}
       <motion.div
-        className={clsx(style.background, 'fixed', 'z-40')}
+        className={clsx(style.background, 'fixed', 'z-40', {
+          'left-0 top-0': position === "left-top",
+          'left-0 bottom-0': position === "left-bottom",
+          'right-0 top-0': position === "right-top",
+          'right-0 bottom-0': position === "right-bottom",
+        })}
         style={{
-          // transformOrigin: "calc(100% - 40px) calc(100% - 40px)",
+          transformOrigin: "calc(100% - 40px) calc(100% - 40px)",
           clipPath: getCircleClipPaths(height)[position].closed,
-          ...positionStyleObj[position],
-
-          // TODO refactor this
-          bottom: '0',
-          right: '0',
-        }}
-        variants={{
-          scrollIdle: { scale: 1 },
-          scrollActive: { scale: 0 }
         }}
         animate={[
           isOpen ? "open" : "closed",
-          isOpen || scrollIdle ? "scrollIdle" : "scrollActive"
         ]}
       >
         <motion.button
           onClick={() => toggleOpen()}
           className={clsx(style.button)}
           style={{
-            ...positionStyleObj[position],
+            ...buttonPositionStyleObj[position],
           }}
         >
           <svg width="23" height="23" viewBox="0 0 23 23" className="mx-auto">
