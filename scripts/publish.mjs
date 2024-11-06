@@ -11,6 +11,20 @@ if (!nodeVersion.toString().startsWith("v22")) {
   process.exit(1);
 }
 
+// ensure there is no uncommitted changes
+const gitStatus = await $`git status --porcelain`;
+if (gitStatus !== "") {
+  console.error("Please commit your changes before publishing");
+  process.exit(1);
+}
+
+// ensure there is no untracked files
+const gitUntrackedFiles = await $`git ls-files --others --exclude-standard`;
+if (gitUntrackedFiles !== "") {
+  console.error("Please commit your changes before publishing");
+  process.exit(1);
+}
+
 await $`pnpm install`;
 
 const pwd = await $`pwd`;
@@ -48,7 +62,8 @@ if (OUT_DIR !== undefined) {
   try {
     await $`git add .`;
     const dateString = new Date().toLocaleString('en-HK',{ timeZone: 'Asia/Hong_Kong' });
-    await $`git commit -m "Update site: ${dateString}"`;
+    const commitHash = await $`git rev-parse --short HEAD`;
+    await $`git commit -m "Update site: ${dateString} ${commitHash}"`;
     await $`git push origin dist`;
   } catch (e) {
     console.error(e);
