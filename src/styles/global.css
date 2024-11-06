@@ -54,11 +54,11 @@ html.dark :not(pre) > code {
 }
 
 code:not(pre code) {
-  @apply rounded px-1 bg-gray-100 !important;
+  @apply rounded px-1 bg-gray-100;
 }
 
 pre {
-  @apply rounded p-4 bg-gray-100 !important;
+  @apply rounded p-4 bg-gray-100;
 }
 
 /* Shiki code block highlight */
