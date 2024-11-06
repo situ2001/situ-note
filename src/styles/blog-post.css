@@ -1,3 +1,7 @@
+article {
+  @apply z-0;
+}
+
 article p {
   @apply my-4;
   @apply leading-relaxed;
