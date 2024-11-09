@@ -13,7 +13,9 @@
   flex-direction: column;
   gap: 10px;
   background: #d1c4e9; /* Light purple */
+
   pointer-events: none;
+
   clip-path: inset(10% 50% 90% 50% round 10px);
   position: absolute;
   top: 100%;
@@ -24,15 +26,6 @@
   color: purple;
   display: block;
   transform-origin: -20px 50%;
-}
-
-ul,
-li {
-  display: flex;
-  flex-direction: column;
-  list-style: none;
-  margin: 0;
-  padding: 10px;
 }
 
 .menuButton {

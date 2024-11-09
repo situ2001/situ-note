@@ -10,7 +10,7 @@ function useMenuAnimation(isOpen: boolean) {
   const [scope, animate] = useAnimate();
 
   useEffect(() => {
-    animate(`.${styles.arrow}`, { rotate: isOpen ? 180 : 0 }, { duration: 0.2 });
+    // animate(`.${styles.arrow}`, { rotate: isOpen ? 180 : 0 }, { duration: 0.2 });
 
     animate(
       `.${styles.menuList}`,
@@ -53,12 +53,14 @@ export default function App() {
         className={styles.menuButton}
       >
         <FaBars size={24} />
-        <div className={styles.arrow}>
+
+        {/* <div className={styles.arrow}>
           <svg width="15" height="15" viewBox="0 0 20 20">
             <path d="M0 7 L 20 7 L 10 16" />
           </svg>
-        </div>
+        </div> */}
       </motion.button>
+
       <ul
         className={clsx(styles.menuList, { [styles.open]: isOpen })}
       >
