@@ -9,7 +9,7 @@ function useMenuAnimation(isOpen: boolean) {
   const [scope, animate] = useAnimate();
 
   useEffect(() => {
-    const menuAnimations: Segment = isOpen
+    const menuAnimations: Segment[] = isOpen
       ? [
           [
             "nav",
