@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   filter: drop-shadow(1px 1px 1px #5116a9);
-  width: 300px;
+  width: auto;
   position: relative;
 
   @apply z-30;

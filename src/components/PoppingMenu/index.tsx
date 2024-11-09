@@ -2,6 +2,7 @@ import styles from "./index.module.css";
 import { useState, useEffect } from "react";
 import { useAnimate, stagger, motion } from "framer-motion";
 import clsx from "clsx";
+import { FaBars } from "react-icons/fa6";
 
 const staggerMenuItems = stagger(0.1, { startDelay: 0.15 });
 
@@ -51,7 +52,7 @@ export default function App() {
         onClick={() => setIsOpen(!isOpen)}
         className={styles.menuButton}
       >
-        Menu
+        <FaBars size={24} />
         <div className={styles.arrow}>
           <svg width="15" height="15" viewBox="0 0 20 20">
             <path d="M0 7 L 20 7 L 10 16" />
