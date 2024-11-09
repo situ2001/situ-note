@@ -4,16 +4,12 @@
   top: 0;
   left: 0;
   bottom: 0;
-  /* width: 400px; */
+  right: 0;
   width: 100%;
-  /* background: var(--accent); */
-  /* background: gray; */
+  height: 100%;
   padding-top: 100px;
-  transform: translateX(-100%);
+  transform: translateY(100%);
   will-change: transform;
-  /* TODO why dark:* apply does not work in CSS module? */
-  /* @apply dark:bg-slate-700 */
-  /* @apply bg-slate-100; */
 }
 
 .button {
