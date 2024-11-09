@@ -17,7 +17,7 @@ function useMenuAnimation(isOpen: boolean) {
       {
         clipPath: isOpen
           ? "inset(0% 0% 0% 0% round 10px)"
-          : "inset(10% 50% 90% 50% round 10px)",
+          : "inset(0% 10% 100% 90% round 10px)",
       },
       {
         type: "spring",
@@ -44,11 +44,11 @@ function useMenuAnimation(isOpen: boolean) {
 export default function App() {
   const [isOpen, setIsOpen] = useState(false);
   const scope = useMenuAnimation(isOpen);
-
+  
   return (
     <nav className={styles.menu} ref={scope}>
       <motion.button
-        whileTap={{ scale: 0.97 }}
+        whileTap={{ scale: 0.8 }}
         onClick={() => setIsOpen(!isOpen)}
         className={styles.menuButton}
       >
@@ -68,7 +68,7 @@ export default function App() {
         <li className={styles.menuItem}>Item 2</li>
         <li className={styles.menuItem}>Item 3</li>
         <li className={styles.menuItem}>Item 4</li>
-        <li className={styles.menuItem}>Item 5</li>
+        <li className={styles.menuItem}>Item 114514</li>
       </ul>
     </nav>
   );
