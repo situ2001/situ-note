@@ -2,7 +2,8 @@ import * as styles from "./styles.module.css";
 import { useState, useEffect } from "react";
 import { useAnimate, stagger, type Segment } from "framer-motion";
 import { MenuToggle } from "./MenuToggle";
-import { Menu } from "./Menu";
+import MenuContent from "./Menu";
+import type { Link } from "./types";
 
 function useMenuAnimation(isOpen: boolean) {
   const [scope, animate] = useAnimate();
@@ -30,6 +31,8 @@ function useMenuAnimation(isOpen: boolean) {
           ["nav", { transform: "translateY(100%)" }, { at: "-0.1" }]
         ];
 
+        console.log(menuAnimations);
+
     animate([
       [
         "path.top",
@@ -49,14 +52,18 @@ function useMenuAnimation(isOpen: boolean) {
   return scope;
 }
 
-export default function App() {
-  const [isOpen, setIsOpen] = useState(true);
+type AppProps = {
+  links: Link[];
+};
+
+export default function Menu({ links }: AppProps) {
+  const [isOpen, setIsOpen] = useState(false);
 
   const scope = useMenuAnimation(isOpen);
 
   return (
     <div ref={scope}>
-      <Menu />
+      <MenuContent links={links} />
       <MenuToggle toggle={() => setIsOpen(!isOpen)} />
     </div>
   );

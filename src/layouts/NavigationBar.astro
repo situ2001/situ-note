@@ -1,6 +1,14 @@
 ---
 import "../styles/header.css";
 import SiteLogo from "../components/SiteLogo";
+import Menu from "../components/Menu";
+import type { Link } from "../components/Menu/types";
+
+const links: Link[] = [
+  { link: "/blog", content: "Blog" },
+  { link: "/friends", content: "Friends" },
+  { link: "/rss.xml", content: "RSS" },
+];
 
 type Props = {};
 
@@ -52,6 +60,7 @@ const {} = Astro.props;
       <h2>
         <a href="/rss.xml">RSS</a>
       </h2>
+      <Menu links={links} client:only />
     </div>
   </nav>
 </header>
