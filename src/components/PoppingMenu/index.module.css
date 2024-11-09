@@ -1,7 +1,7 @@
 .menu {
   display: flex;
   flex-direction: column;
-  filter: drop-shadow(1px 1px 1px #5116a9);
+  
   width: auto;
   position: relative;
 
@@ -32,7 +32,7 @@
   -webkit-appearance: button;
   appearance: button;
   background: #d1c4e9; /* Light purple */
-  color: purple;
+  /* color: purple; */
   border: none;
   border-radius: 10px;
   padding: 10px 20px;
