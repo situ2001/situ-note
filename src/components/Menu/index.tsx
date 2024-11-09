@@ -1,6 +1,6 @@
 import * as styles from "./styles.module.css";
 import { useState, useEffect } from "react";
-import { useAnimate, stagger } from "framer-motion";
+import { useAnimate, stagger, type Segment } from "framer-motion";
 import { MenuToggle } from "./MenuToggle";
 import { Menu } from "./Menu";
 
@@ -8,7 +8,7 @@ function useMenuAnimation(isOpen: boolean) {
   const [scope, animate] = useAnimate();
 
   useEffect(() => {
-    const menuAnimations = isOpen
+    const menuAnimations: Segment = isOpen
       ? [
           [
             "nav",
