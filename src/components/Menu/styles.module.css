@@ -20,7 +20,7 @@
 }
 
 .menu ul {
-  @apply text-2xl font-serif;
+  @apply text-3xl font-serif;
   list-style: none;
   padding: 0;
   margin: 0;
