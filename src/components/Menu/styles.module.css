@@ -7,6 +7,9 @@
   height: 100%;
   padding-top: 100px;
   will-change: transform;
+
+  /* Initial state */
+  transform: translateY(100%);
 }
 
 .menu-wrapper {
