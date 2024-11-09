@@ -18,6 +18,8 @@ function useMenuAnimation(isOpen: boolean) {
         clipPath: isOpen
           ? "inset(0% 0% 0% 0% round 10px)"
           : "inset(0% 10% 100% 90% round 10px)",
+
+        display: isOpen ? "flex" : "none",
       },
       {
         type: "spring",
@@ -44,7 +46,7 @@ function useMenuAnimation(isOpen: boolean) {
 export default function App() {
   const [isOpen, setIsOpen] = useState(false);
   const scope = useMenuAnimation(isOpen);
-  
+
   return (
     <nav className={styles.menu} ref={scope}>
       <motion.button
