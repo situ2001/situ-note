@@ -1,0 +1,61 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+  filter: drop-shadow(1px 1px 1px #5116a9);
+  width: 300px;
+}
+
+.menuList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #d1c4e9; /* Light purple */
+  pointer-events: none;
+  clip-path: inset(10% 50% 90% 50% round 10px);
+}
+
+.menuItem {
+  color: purple;
+  display: block;
+  transform-origin: -20px 50%;
+}
+
+ul,
+li {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 10px;
+}
+
+.menuButton {
+  -webkit-appearance: button;
+  appearance: button;
+  background: #d1c4e9; /* Light purple */
+  color: purple;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arrow {
+  transform-origin: 50% 55%;
+}
+
+button path {
+  fill: purple;
+}
+
+.open {
+  pointer-events: auto;
+}
