@@ -3,6 +3,9 @@
   flex-direction: column;
   filter: drop-shadow(1px 1px 1px #5116a9);
   width: 300px;
+  position: relative;
+
+  @apply z-30;
 }
 
 .menuList {
@@ -12,6 +15,9 @@
   background: #d1c4e9; /* Light purple */
   pointer-events: none;
   clip-path: inset(10% 50% 90% 50% round 10px);
+  position: absolute;
+  top: 100%;
+  left: 0;
 }
 
 .menuItem {
