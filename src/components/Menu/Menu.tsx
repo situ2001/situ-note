@@ -13,7 +13,7 @@ export default function MenuContent({ links }: MenuProps) {
         <ul>
           {links.map((link, index) => (
             <li key={index}>
-              <a href={link.link}>{link.content}</a>
+              <a href={link.href}>{link.text}</a>
             </li>
           ))}
         </ul>

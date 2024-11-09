@@ -5,9 +5,9 @@ import Menu from "../components/Menu";
 import type { Link } from "../components/Menu/types";
 
 const links: Link[] = [
-  { link: "/blog", content: "Blog" },
-  { link: "/friends", content: "Friends" },
-  { link: "/rss.xml", content: "RSS" },
+  { href: "/blog", text: "Blog" },
+  { href: "/friends", text: "Friends" },
+  { href: "/rss.xml", text: "RSS" },
 ];
 
 type Props = {};
@@ -60,7 +60,7 @@ const {} = Astro.props;
       <h2>
         <a href="/rss.xml">RSS</a>
       </h2>
-      <Menu links={links} client:only />
+      <Menu links={links} client:load />
     </div>
   </nav>
 </header>
