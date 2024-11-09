@@ -50,7 +50,7 @@ function useMenuAnimation(isOpen: boolean) {
 }
 
 export default function App() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   const scope = useMenuAnimation(isOpen);
 

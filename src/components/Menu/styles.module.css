@@ -3,13 +3,35 @@
   position: fixed;
   top: 0;
   left: 0;
-  bottom: 0;
-  right: 0;
   width: 100%;
   height: 100%;
   padding-top: 100px;
-  transform: translateY(100%);
   will-change: transform;
+}
+
+.menu-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: auto;
+  text-align: center;
+}
+
+.menu ul {
+  @apply text-2xl font-serif;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  margin: 20px 0;
+}
+
+.menu li:hover {
+  text-decoration: underline;
 }
 
 .button {
