@@ -3,6 +3,7 @@ import "../styles/header.css";
 import SiteLogo from "../components/SiteLogo";
 import Menu from "../components/Menu";
 import type { Link } from "../components/Menu/types";
+import PoppingMenu from "../components/PoppingMenu";
 
 const links: Link[] = [
   { href: "/blog", text: "Blog" },
@@ -12,6 +13,7 @@ const links: Link[] = [
 
 type Props = {};
 
+import { FaLink, FaSquareRss } from "react-icons/fa6";
 const {} = Astro.props;
 ---
 
@@ -60,7 +62,19 @@ const {} = Astro.props;
       <h2>
         <a href="/rss.xml">RSS</a>
       </h2>
-      <Menu links={links} client:load />
+      <PoppingMenu client:load>
+        <div class="flex flex-col p-4">
+          <h2 class="flex gap-1 items-center">
+            <FaLink />
+            <a href="/friends">Friends</a>
+          </h2>
+          <h2 class="flex gap-1 items-center">
+            <FaSquareRss />
+            <a href="/rss.xml">RSS</a>
+          </h2>
+        </div>
+      </PoppingMenu>
+      <!-- <Menu links={links} client:load /> -->
     </div>
   </nav>
 </header>

@@ -1,12 +1,18 @@
 import styles from "./index.module.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, type PropsWithChildren } from "react";
 import { useAnimate, stagger, motion } from "framer-motion";
 import clsx from "clsx";
 import { FaBars } from "react-icons/fa6";
 
 const staggerMenuItems = stagger(0.1, { startDelay: 0.15 });
 
-function useMenuAnimation(isOpen: boolean) {
+export interface PoppingMenuProps {
+}
+
+export default function App(props: PropsWithChildren<PoppingMenuProps>) {
+  const { children } = props;
+
+  const [isOpen, setIsOpen] = useState(false);
   const [scope, animate] = useAnimate();
 
   useEffect(() => {
@@ -17,9 +23,7 @@ function useMenuAnimation(isOpen: boolean) {
       {
         clipPath: isOpen
           ? "inset(0% 0% 0% 0% round 10px)"
-          : "inset(0% 10% 100% 90% round 10px)",
-
-        display: isOpen ? "flex" : "none",
+          : "inset(20% 50% 80% 50% round 10px)",
       },
       {
         type: "spring",
@@ -28,24 +32,39 @@ function useMenuAnimation(isOpen: boolean) {
       }
     );
 
-    animate(
-      `.${styles.menuItem}`,
-      isOpen
-        ? { opacity: 1, scale: 1, filter: "blur(0px)" }
-        : { opacity: 0, scale: 0.3, filter: "blur(20px)" },
-      {
-        duration: 0.2,
-        delay: isOpen ? staggerMenuItems : 0,
+    // if (children) {
+    //   animate(
+    //     `ul > *:not(astro-slot), ul > astro-slot > *`,
+    //     isOpen
+    //       ? { opacity: 1, scale: 1, filter: "blur(0px)" }
+    //       : { opacity: 0, scale: 0.3, filter: "blur(20px)" },
+    //     {
+    //       duration: 0.2,
+    //       delay: isOpen ? staggerMenuItems : 0,
+    //     }
+    //   );
+    // }
+  }, [isOpen, children]);
+
+
+  // click other area to close
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (scope.current
+        && !scope.current.contains(e.target as Node)
+        && isOpen) {
+        setIsOpen(false);
+        e.preventDefault();
+        e.stopPropagation();
       }
-    );
+    }
+
+    document.addEventListener("click", handleClick);
+
+    return () => {
+      document.removeEventListener("click", handleClick);
+    };
   }, [isOpen]);
-
-  return scope;
-}
-
-export default function App() {
-  const [isOpen, setIsOpen] = useState(false);
-  const scope = useMenuAnimation(isOpen);
 
   return (
     <nav className={styles.menu} ref={scope}>
@@ -54,7 +73,7 @@ export default function App() {
         onClick={() => setIsOpen(!isOpen)}
         className={styles.menuButton}
       >
-        <FaBars size={24} />
+        <FaBars />
 
         {/* <div className={styles.arrow}>
           <svg width="15" height="15" viewBox="0 0 20 20">
@@ -64,13 +83,11 @@ export default function App() {
       </motion.button>
 
       <ul
-        className={clsx(styles.menuList, { [styles.open]: isOpen })}
+        className={clsx(styles.menuList,
+          { [styles.open]: isOpen },
+        )}
       >
-        <li className={styles.menuItem}>Item 1</li>
-        <li className={styles.menuItem}>Item 2</li>
-        <li className={styles.menuItem}>Item 3</li>
-        <li className={styles.menuItem}>Item 4</li>
-        <li className={styles.menuItem}>Item 114514</li>
+        {props.children}
       </ul>
     </nav>
   );
