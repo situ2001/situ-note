@@ -8,6 +8,9 @@ import FormattedDate from "../components/FormattedDate.astro";
 import BaseLayout from "./BaseLayout.astro";
 
 import "../styles/blog-post.css";
+// KaTeX CSS
+import 'katex/dist/katex.min.css';
+
 import { convertStringCategoriesToArray } from "../api/blog";
 import { interleave } from "../utils";
 import type { MarkdownHeading } from "astro";
