@@ -3,7 +3,7 @@ title: 为什么你的硬盘可用容量少了又少
 comments: true
 date: 2024-11-17 00:40:40
 categories: 分享
-description: 博客框架更换为 Astro
+description: 除了单位换算，文件系统的数据也会占用一部分硬盘容量
 ---
 
 > Disclaimer: 这是一篇科普向文章
