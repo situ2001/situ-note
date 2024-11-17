@@ -230,7 +230,7 @@ Filesystem           1K-blocks      Used Available Use% Mounted on
                      7663948048 370873880 7292533496   5% /share/CACHEDEV2_DATA
 ```
 
-经过计算，得出提供给 data block 的容量大约如下所示，与上图 UI 所示的 Capacity 差不多
+经过计算，得出提供给 data block 的容量大约如下所示，与开头图片的 UI 所示的 Capacity 差不多
 
 $$
 7663948048KiB \approx7.14TB
