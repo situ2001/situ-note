@@ -6,6 +6,8 @@
 article p {
   @apply my-4;
   @apply leading-relaxed;
+
+  word-break: break-all;
 }
 
 article h1 {
