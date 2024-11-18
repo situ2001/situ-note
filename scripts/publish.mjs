@@ -46,7 +46,9 @@ if (OUT_DIR !== undefined) {
   const isGitRepo = await $`git rev-parse --is-inside-work-tree`.catch(() => false);
   if (isGitRepo) {
     await $`git reset --hard`;
-    await $`git checkout dist`;
+    await $`git switch dist`;
+    await $`git reset --hard origin/dist`;
+    await $`git pull origin dist`;
     await $`rm -rf *`;
   }
   cd(pwd);
