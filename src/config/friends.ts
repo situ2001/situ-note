@@ -36,5 +36,9 @@ export const friends: FriendCardProps[] = [
   {
     name: "Lakphy",
     link: "https://lakphy.me/"
+  },
+  {
+    name: 'cos',
+    link: 'https://ysx.cosine.ren/',
   }
 ];
