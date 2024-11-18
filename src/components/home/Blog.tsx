@@ -14,7 +14,7 @@ const LatestBlog = () => {
         className="flex"
       >
         <h2 className="text-xl font-bold">
-          Blog
+          Latest Blog
         </h2>
 
         <a href="/blog" className="block ml-auto">
