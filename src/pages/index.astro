@@ -8,10 +8,35 @@ import { BLOG_TITLE, BLOG_DESCRIPTION } from "../config";
 
 <BaseLayout title={BLOG_TITLE} description={BLOG_DESCRIPTION}>
   <div class="flex flex-col gap-4">
-    <AboutMe />
-    <Roles />
-    <Blog />
-    <Contact client:load />
-    <!-- <Categories /> -->
+    <section>
+      <AboutMe />
+    </section>
+
+    <section>
+      <div class="flex flex-col md:flex-row gap-4 justify-between">
+        <div class="w-full md:w-1/2">
+          <h2 class="text-xl font-bold mb-2">Current Role</h2>
+          <Roles type="current" />
+        </div>
+        <div class="w-full md:w-1/2">
+          <h2 class="text-xl font-bold mb-2">Side Roles</h2>
+          <Roles type="side" />
+        </div>
+      </div>
+    </section>
+
+    {/* Blog & Categories Section */}
+    <section class="flex flex-col md:flex-row gap-4 py-8">
+      <div class="w-full md:w-1/2">
+        <Blog />
+      </div>
+      <div class="w-full md:w-1/2">
+        <Categories />
+      </div>
+    </section>
+
+    <section>
+      <Contact client:load />
+    </section>
   </div>
 </BaseLayout>
