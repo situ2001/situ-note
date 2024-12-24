@@ -11,7 +11,7 @@ export default function AboutMe() {
         </div>
       </div>
       <div className="my-1"></div>
-      <div className="flex gap-2 md:gap-4 flex-col md:flex-row">
+      <div className="flex gap-2 md:gap-4 flex-row">
         {links.map((link) => (
           <LinkButton
             key={link.name}
