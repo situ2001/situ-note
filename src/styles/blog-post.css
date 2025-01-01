@@ -7,27 +7,27 @@ article p {
   @apply my-4;
   @apply leading-relaxed;
 
-  word-break: break-all;
+  word-break: break-word;
 }
 
 article h1 {
-  @apply text-3xl my-4;
+  @apply text-3xl mb-6 mt-8 font-bold;
 }
 
 article h2 {
-  @apply text-2xl my-4;
+  @apply text-2xl mb-6 mt-8 font-bold;
 }
 
 article h3 {
-  @apply text-xl my-4;
+  @apply text-xl mb-3 mt-5 font-semibold;
 }
 
 article ol {
-  @apply list-decimal list-inside my-4;
+  @apply list-decimal list-outside my-4 pl-4;
 }
 
 article ul {
-  @apply list-disc list-inside my-4;
+  @apply list-disc list-outside my-4 pl-4;
 }
 
 article table {
@@ -80,7 +80,7 @@ article blockquote {
 }
 
 .dark article blockquote {
-  @apply border-l-gray-600;
+  @apply border-l-gray-700;
 }
 
 article img {

@@ -57,6 +57,10 @@ code:not(pre code) {
   @apply rounded px-1 bg-gray-100 !important;
 }
 
+html.dark code:not(pre code) {
+  @apply bg-gray-600 !important;
+}
+
 pre {
   @apply rounded p-4 bg-gray-100 !important;
 }
