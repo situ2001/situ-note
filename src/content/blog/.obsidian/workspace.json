@@ -4,29 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "9607deeb3cbc810e",
+        "id": "d567d9908065a262",
         "type": "tabs",
         "children": [
           {
-            "id": "6fb62f86d8d6d09a",
-            "type": "leaf",
-            "state": {
-              "type": "empty",
-              "state": {}
-            }
-          },
-          {
-            "id": "fd86f7215f7d67ad",
+            "id": "4a3ba8b63772257d",
             "type": "leaf",
             "state": {
               "type": "image",
               "state": {
-                "file": "so-many-fever-in-2023/WX20231127-191858.png"
-              }
+                "file": "assets/2024-summary/IMG_6483.jpeg"
+              },
+              "icon": "lucide-image",
+              "title": "IMG_6483"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -46,7 +39,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
             }
           },
           {
@@ -55,13 +50,15 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "大家",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Search"
             }
           },
           {
@@ -69,14 +66,16 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 251.5
+    "width": 386.5
   },
   "right": {
     "id": "fc30e92aa9cb5cec",
@@ -92,8 +91,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "so-many-fever-in-2023/WX20231127-191858.png"
-              }
+                "file": "assets/2024-summary/IMG_6483.jpeg"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of IMG_6483"
             }
           }
         ]
@@ -111,22 +112,26 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "fd86f7215f7d67ad",
+  "active": "4a3ba8b63772257d",
   "lastOpenFiles": [
-    "so-many-fever-in-2023/IMG_9427.jpeg",
+    "assets/2024-summary/interchange-between-metro-intercity.jpg",
+    "assets/2024-summary/PastedGraphic10.png",
+    "assets/2024-summary/PastedGraphic3.png",
+    "assets/2024-summary/Pasted_Graphic2.png",
+    "assets/2024-summary/Pasted_Graphic5.png",
+    "assets/2024-summary/Pasted_Graphic.png",
+    "assets/2024-summary/zhuhai-bus-card-machine.jpeg",
+    "assets/2024-summary/zhuhai-airport-intercity.jpeg",
+    "assets/2024-summary/hong-kong–zhuhai–macao-bridge-1.jpeg",
+    "assets/2024-summary/hong-kong–zhuhai–macao-bridge.jpeg",
+    "assets/2024-summary/yangtze-river-cableway-2.jpeg",
+    "2024-summary.md",
+    "graduation/index.md",
+    "2023-summary.md",
+    "assets/2024-summary",
     "configure-gzhu-ipv6-nat.md",
-    "assets/configure-gzhu-ipv6-nat-20231213160434356.png",
-    "assets/configure-gzhu-ipv6-nat-20231213154404117.png",
-    "assets/configure-gzhu-ipv6-nat-20231213153816701.png",
-    "assets/configure-gzhu-ipv6-nat-20231213153729851.png",
-    "assets/configure-gzhu-ipv6-nat-20231213152833665.png",
     "viewsonic-24inch-4k-display-review.md",
     "_templates/Create new post.md",
-    "assets/viewsonic-24inch-4k-display-review-20231126164626399.jpeg",
-    "assets/viewsonic-24inch-4k-display-review-20231126164539712.jpeg",
-    "assets/viewsonic-24inch-4k-display-review-20231126164425583.jpeg",
-    "assets/viewsonic-24inch-4k-display-review-20231126164408179.jpeg",
-    "assets/viewsonic-24inch-4k-display-review-20231126164229765.png",
     "assets/viewsonic-24inch-4k-display-review",
     "my-first-internship.md",
     "viewsonic-4k-display-review.md",
