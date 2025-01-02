@@ -14,7 +14,6 @@ const Category = () => {
       {/* <a href="/blog/category"> */}
       <header className="text-xl font-bold">Categories</header>
       {/* </a> */}
-      <hr className="my-1" />
       <div className="my-1">
         {Object.keys(posts).map((category) => {
           return (
