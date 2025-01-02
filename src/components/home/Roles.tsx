@@ -15,16 +15,17 @@ interface Role {
 }
 
 const currentRole: Role = {
-  title: "Frontend Developer",
-  company: "Company Name",
+  title: "Web Dev",
+  company: "TME",
   infoTags: [
+    { name: "JavaScript" },
     { name: "React" },
-    { name: "TypeScript" },
-    { name: "Tailwind" }
+    { name: "CI/CD" },
+    { name: "Ops" },
   ],
   projects: [
-    { name: "Project A", icon: "project-a" },
-    { name: "Project B", icon: "project-b" }
+    // { name: "Project A", icon: "project-a" },
+    // { name: "Project B", icon: "project-b" }
   ]
 }
 
@@ -32,16 +33,19 @@ const sideRoles: Role[] = [
   {
     title: "Open Source Contributor",
     infoTags: [
-      { name: "JavaScript" }
+      { name: "JavaScript" },
+      { name: "Rust" }
     ],
     projects: [
       { name: "Project OSS", icon: "oss" }
     ]
   },
   {
-    title: "Technical Writer",
+    title: "Writer",
     infoTags: [
-      { name: "Technical Writing" }
+      { name: "Blogging" },
+      { name: "PKM" },
+      { name: "Technical Writing" },
     ]
   }
 ]
@@ -86,20 +90,17 @@ function RoleCard({ role }: { role: Role }) {
 export default function Roles({ type = "current" }: { type?: "current" | "side" }) {
   return (
     <div className="flex flex-col gap-4">
-      <div className="p-3 border rounded-lg">
-        <h2 className="text-gray-500 text-sm font-medium mb-2">Current</h2>
+      <div className="md:p-3 md:border rounded-lg">
+        <h2 className="text-gray-500 text-sm font-medium mb-2">Current Role</h2>
         <RoleCard role={currentRole} />
       </div>
 
-      <div className='p-3 border rounded-lg'>
-        <h2 className="text-gray-500 text-sm font-medium mb-2">Side</h2>
-        <div className="flex flex-col">
+      <div className='md:p-3 md:border rounded-lg'>
+        <h2 className="text-gray-500 text-sm font-medium mb-2">Side Role</h2>
+        <div className="flex flex-col gap-4">
           {sideRoles.map((role, index) => (
             <div key={index}>
               <RoleCard role={role} />
-              {index < sideRoles.length - 1 && (
-                <hr className="my-4 mx-2 border-gray-200" />
-              )}
             </div>
           ))}
         </div>
