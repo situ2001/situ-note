@@ -1,15 +1,13 @@
 import type { ReactNode } from 'react'
 
-type TechStack = {
+type InfoTag = {
   name: string;
-  icon: string;
 }
 
 interface Role {
   title: string;
   company?: string;
-  description: string;
-  techStack: TechStack[];
+  infoTags: InfoTag[];
   projects?: Array<{
     name: string;
     icon: string;
@@ -19,11 +17,10 @@ interface Role {
 const currentRole: Role = {
   title: "Frontend Developer",
   company: "Company Name",
-  description: "Building web applications with modern technologies",
-  techStack: [
-    { name: "React", icon: "react" },
-    { name: "TypeScript", icon: "typescript" },
-    { name: "Tailwind", icon: "tailwind" }
+  infoTags: [
+    { name: "React" },
+    { name: "TypeScript" },
+    { name: "Tailwind" }
   ],
   projects: [
     { name: "Project A", icon: "project-a" },
@@ -34,9 +31,8 @@ const currentRole: Role = {
 const sideRoles: Role[] = [
   {
     title: "Open Source Contributor",
-    description: "Contributing to web ecosystem",
-    techStack: [
-      { name: "JavaScript", icon: "javascript" }
+    infoTags: [
+      { name: "JavaScript" }
     ],
     projects: [
       { name: "Project OSS", icon: "oss" }
@@ -44,28 +40,33 @@ const sideRoles: Role[] = [
   },
   {
     title: "Technical Writer",
-    description: "Sharing web development insights",
-    techStack: [
-      { name: "Technical Writing", icon: "writing" }
+    infoTags: [
+      { name: "Technical Writing" }
     ]
   }
 ]
 
+function InfoTagComponent({ tag }: { tag: InfoTag }) {
+  return (
+    <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-gray-100">
+      {tag.name}
+    </span>
+  );
+}
+
 function RoleCard({ role }: { role: Role }) {
   return (
-    <div className="p-4 border rounded-lg">
-      <h3 className="text-lg font-semibold">
+    <div>
+      <h3 className="text-base font-semibold">
         {role.title}
         {role.company && <span className="text-gray-500"> @ {role.company}</span>}
       </h3>
-      <p className="mt-2 text-gray-600">{role.description}</p>
 
       {role.projects && (
-        <div className="mt-3">
-          <div className="flex gap-2">
+        <div className="mt-2">
+          <div className="flex gap-1">
             {role.projects.map(project => (
-              <span key={project.name} className="inline-flex items-center">
-                {/* Add your icon component here */}
+              <span key={project.name} className="inline-flex items-center text-sm">
                 {project.name}
               </span>
             ))}
@@ -73,12 +74,9 @@ function RoleCard({ role }: { role: Role }) {
         </div>
       )}
 
-      <div className="mt-3 flex flex-wrap gap-2">
-        {role.techStack.map(tech => (
-          <span key={tech.name} className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100">
-            {/* Add your icon component here */}
-            {tech.name}
-          </span>
+      <div className="mt-2 flex flex-wrap gap-1">
+        {role.infoTags.map(tag => (
+          <InfoTagComponent key={tag.name} tag={tag} />
         ))}
       </div>
     </div>
@@ -86,15 +84,26 @@ function RoleCard({ role }: { role: Role }) {
 }
 
 export default function Roles({ type = "current" }: { type?: "current" | "side" }) {
-  if (type === "current") {
-    return <RoleCard role={currentRole} />
-  }
-
   return (
     <div className="flex flex-col gap-4">
-      {sideRoles.map((role, index) => (
-        <RoleCard key={index} role={role} />
-      ))}
+      <div className="p-3 border rounded-lg">
+        <h2 className="text-gray-500 text-sm font-medium mb-2">Current</h2>
+        <RoleCard role={currentRole} />
+      </div>
+
+      <div className='p-3 border rounded-lg'>
+        <h2 className="text-gray-500 text-sm font-medium mb-2">Side</h2>
+        <div className="flex flex-col">
+          {sideRoles.map((role, index) => (
+            <div key={index}>
+              <RoleCard role={role} />
+              {index < sideRoles.length - 1 && (
+                <hr className="my-4 mx-2 border-gray-200" />
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   )
 }
