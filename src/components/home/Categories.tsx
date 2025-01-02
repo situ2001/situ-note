@@ -5,6 +5,9 @@ import {
   type Post,
 } from "../../api/blog";
 
+import clsx from "clsx";
+import underline from '../AnimatedUnderline/index.module.css';
+
 const posts = getPostsGroupByCategory(getPostSortedByDate(postsData));
 
 const Category = () => {
@@ -14,17 +17,16 @@ const Category = () => {
       {/* <a href="/blog/category"> */}
       <header className="text-xl font-bold">Categories</header>
       {/* </a> */}
-      <div className="my-1">
+      <div className="my-1 flex flex-row flex-wrap gap-x-4 gap-y-1">
         {Object.keys(posts).map((category) => {
           return (
-            <span className="mr-4 inline-block relative">
-              <a
-                className="hover:underline underline-offset-4"
-                href={`/blog/category/${category}`}
-              >
+            <div className={
+              clsx(underline['fade-in'])
+            }>
+              <a href={`/blog/category/${category}`}>
                 {category}
               </a>
-            </span>
+            </div>
           );
         })}
       </div>
