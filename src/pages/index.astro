@@ -1,14 +1,19 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-import { HeroSection, Roles, Blog, Categories } from "../components/home";
+import {
+  HeroSection,
+  Roles,
+  Projects,
+  Blog,
+  Categories,
+} from "../components/home";
 
 import { BLOG_TITLE, BLOG_DESCRIPTION } from "../config";
 ---
 
 <BaseLayout title={BLOG_TITLE} description={BLOG_DESCRIPTION}>
   <div class="flex flex-col gap-4">
-    <!-- Hero Section -->
     <section class="flex flex-col md:flex-row justify-between py-8 md:py-4">
       <div class="md:p-2">
         <HeroSection client:load />
@@ -19,7 +24,7 @@ import { BLOG_TITLE, BLOG_DESCRIPTION } from "../config";
     </section>
 
     <section>
-      <!-- <p>TODO Project Section</p> -->
+      <Projects client:load />
     </section>
 
     <section>
