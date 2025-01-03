@@ -1,6 +1,6 @@
 ---
 import BaseHtmlHead from "./BaseHtmlHead.astro";
-import TopNavigation from "./NavigationBar.astro";
+import TopNavigation from "./NavigationBar";
 
 interface Props {
   title: string;
@@ -17,7 +17,7 @@ const year = new Date().getFullYear();
     <BaseHtmlHead title={title} description={description} />
   </head>
   <body class="dark:bg-gray-800 dark:text-gray-300 h-full">
-    <TopNavigation />
+    <TopNavigation client:load />
     <main class="p-4 mx-auto max-w-screen-lg">
       <slot />
     </main>
