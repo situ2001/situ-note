@@ -1,5 +1,5 @@
 // Main components for portfolio
-export { default as AboutMe } from './AboutMe';
+export { default as HeroSection } from './HeroSection';
 export { default as Roles } from './Roles';
 
 // Blog-related components
