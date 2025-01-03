@@ -1,5 +1,3 @@
-import type { ReactNode } from 'react'
-
 type InfoTag = {
   name: string;
 }
