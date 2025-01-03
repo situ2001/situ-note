@@ -4,7 +4,7 @@ import {
   posts as postsData,
   type Post,
 } from "../../api/blog";
-
+import Button from "../common/Button";
 import clsx from "clsx";
 import underline from '../AnimatedUnderline/index.module.css';
 
@@ -13,10 +13,12 @@ const posts = getPostsGroupByCategory(getPostSortedByDate(postsData));
 const Category = () => {
   return (
     <section className="h-full flex flex-col gap-2">
-      {/* TODO not now but future */}
-      {/* <a href="/blog/category"> */}
-      <header className="text-xl font-bold">Categories</header>
-      {/* </a> */}
+      <header className="flex items-center justify-between">
+        <h2 className="text-xl font-bold">Categories</h2>
+        <a href="/blog/category">
+          <Button text="More" className="text-sm opacity-50" />
+        </a>
+      </header>
       <div className="my-1 flex flex-row flex-wrap gap-x-4 gap-y-1">
         {Object.keys(posts).map((category) => {
           return (

@@ -1,24 +1,24 @@
 import clsx from "clsx";
 import { getTopKPosts, posts as postsData } from "../../api/blog";
-
+import Button from "../common/Button";
 import underline from '../AnimatedUnderline/index.module.css';
 
 const posts = getTopKPosts(postsData, 5);
 
-const LatestBlog = () => {
+const Blog = () => {
   return (
     <section className={clsx(
       "h-full flex flex-col gap-2",
     )}>
       <header
-        className="flex"
+        className="flex items-center justify-between"
       >
         <h2 className="text-xl font-bold">
-          Latest Blog
+          Blogs
         </h2>
 
-        <a href="/blog" className="block ml-auto">
-          <span className="ml-auto opacity-50">More {">"}</span>
+        <a href="/blog">
+          <Button text="More" className="ml-auto text-sm opacity-50" />
         </a>
       </header>
       <ul className="flex flex-col justify-between flex-1">
@@ -37,4 +37,4 @@ const LatestBlog = () => {
   );
 };
 
-export default LatestBlog;
+export default Blog;

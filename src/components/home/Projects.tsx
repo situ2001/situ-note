@@ -2,6 +2,7 @@ import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import Card from './Card';
 import { FiBook, FiPackage, FiCloud, FiTerminal, FiLayout, FiCode } from 'react-icons/fi';
+import Button from "../common/Button";
 
 const projectData = [
   {
@@ -54,8 +55,11 @@ const projectData = [
 const Projects = () => {
   return (
     <div className="w-full">
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex items-center justify-between mb-4">
         <h2 className="text-xl font-bold">Projects</h2>
+        <a href="/projects">
+          <Button text="More" className="text-sm opacity-50" />
+        </a>
       </div>
 
       <div className="relative">
