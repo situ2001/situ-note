@@ -7,6 +7,7 @@ import {
 import Button from "../../components/common/Button";
 import clsx from "clsx";
 import underline from '../../components/AnimatedUnderline/index.module.css';
+import Card from "../../components/common/Card";
 
 const posts = getPostsGroupByCategory(getPostSortedByDate(postsData));
 
@@ -20,7 +21,7 @@ const Category = () => {
         </a>
       </header>
 
-      <div className="p-4 border rounded-lg h-full dark:border-zinc-700">
+      <Card className="h-full">
         <div className="my-1 flex flex-row flex-wrap gap-x-4 gap-y-1">
           {Object.keys(posts).map((category) => {
             return (
@@ -34,7 +35,7 @@ const Category = () => {
             );
           })}
         </div>
-      </div>
+      </Card>
     </section>
   );
 };

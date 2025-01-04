@@ -34,14 +34,14 @@ const config: BlogConfig = {
   ],
 
   projects: [
-    // {
-    //   title: "Situ Note",
-    //   description: "My personal website. This is what you are looking at right now.",
-    //   link: "https://situ2001.com",
-    //   tags: ["Astro", "React", "Tailwind CSS"],
-    //   // icon: FiBook,
-    //   featured: true
-    // }
+    {
+      title: "Situ Note",
+      description: "My personal website. This is what you are looking at right now.",
+      link: "https://situ2001.com",
+      tags: ["Astro", "React", "Tailwind CSS"],
+      // icon: FiBook,
+      featured: true
+    }
   ],
 
   friends: [

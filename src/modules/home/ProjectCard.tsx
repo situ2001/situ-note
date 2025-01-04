@@ -1,4 +1,5 @@
 import { FiExternalLink, FiBox } from 'react-icons/fi';
+import Card from "../../components/common/Card";
 
 interface CardProps {
   title: string;
@@ -9,9 +10,9 @@ interface CardProps {
   featured?: boolean;
 }
 
-const Card = ({ title, description, link, icon, tags, featured = false }: CardProps) => {
+const ProjectCard = ({ title, description, link, icon, tags, featured = false }: CardProps) => {
   const IconComponent = typeof icon === 'function' ? icon : undefined;
-  
+
   return (
     <a
       href={link}
@@ -19,21 +20,21 @@ const Card = ({ title, description, link, icon, tags, featured = false }: CardPr
       rel="noopener noreferrer"
       className="block h-full"
     >
-      <div className="h-full rounded-lg border border-zinc-200 dark:border-zinc-700 p-4 overflow-hidden hover:shadow-md dark:shadow-zinc-600 transition-shadow relative">
+      <Card className="h-full relative">
         {link && (
           <div className="absolute top-4 right-4 text-zinc-400">
             <FiExternalLink size={14} />
           </div>
         )}
-        
+
         <div className="flex flex-col gap-3 h-full">
           <div className="flex items-center gap-3">
             <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-zinc-100 dark:bg-zinc-700 rounded-lg overflow-hidden">
               {IconComponent ? (
                 <IconComponent size={20} className="text-zinc-600 dark:text-zinc-400" />
               ) : typeof icon === 'string' ? (
-                <img 
-                  src={icon as string} 
+                <img
+                  src={icon as string}
                   alt=""
                   className="w-6 h-6 object-contain"
                 />
@@ -61,9 +62,9 @@ const Card = ({ title, description, link, icon, tags, featured = false }: CardPr
             </div>
           )}
         </div>
-      </div>
+      </Card>
     </a>
   );
 };
 
-export default Card;
+export default ProjectCard;

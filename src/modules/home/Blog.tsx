@@ -2,6 +2,7 @@ import clsx from "clsx";
 import { getTopKPosts, posts as postsData } from "../../api/blog";
 import Button from "../../components/common/Button";
 import underline from '../../components/AnimatedUnderline/index.module.css';
+import Card from "../../components/common/Card";
 
 const posts = getTopKPosts(postsData, 5);
 
@@ -21,18 +22,20 @@ const Blog = () => {
           <Button text="More" className="ml-auto text-sm opacity-50" />
         </a>
       </header>
-      <ul className="flex flex-col justify-between flex-1 border p-4 rounded-lg dark:border-zinc-700">
-        {posts.map((post) => (
-          <div
-            key={post.slug}
-            className={clsx("my-1 origin-left max-w-fit", underline['fade-in'])}
-          >
-            <a href={`/blog/${post.slug}`}>
-              <li>{post.data.title}</li>
-            </a>
-          </div>
-        ))}
-      </ul>
+      <Card className="flex-1">
+        <ul className="flex flex-col justify-between">
+          {posts.map((post) => (
+            <div
+              key={post.slug}
+              className={clsx("my-1 origin-left max-w-fit", underline['fade-in'])}
+            >
+              <a href={`/blog/${post.slug}`}>
+                <li>{post.data.title}</li>
+              </a>
+            </div>
+          ))}
+        </ul>
+      </Card>
     </section>
   );
 };
