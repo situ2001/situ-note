@@ -49,9 +49,9 @@ function Roles({
         {/* TODO pick one of theme */}
         <h2 className="text-xl font-medium">Roles</h2>
         {/* <h2 className="text-zinc-500 text-sm font-medium mb-2">Roles</h2> */}
-        <a href="/roles">
+        {/* <a href="/roles">
           <Button text="More" className="text-sm opacity-50" />
-        </a>
+        </a> */}
       </div>
 
 

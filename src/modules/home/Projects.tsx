@@ -14,9 +14,9 @@ const Projects = (
     <div className="w-full">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-xl font-medium">Projects</h2>
-        <a href="/projects">
+        {/* <a href="/projects">
           <Button text="More" className="text-sm opacity-50" />
-        </a>
+        </a> */}
       </div>
 
       <div className="relative">
