@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import links from "../../config/links";
-import LinkButton from "../IconLink";
+import LinkButton from "../../components/IconLink";
 
 import { useStore } from '@nanostores/react';
 import globalState from "../../config/global-state";

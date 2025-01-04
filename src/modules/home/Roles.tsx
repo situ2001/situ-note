@@ -1,0 +1,55 @@
+import Button from "../../components/common/Button";
+
+import type { Role } from "../../config/roles";
+import roles from "../../config/roles";
+
+function RoleCard({ role }: { role: Role }) {
+  return (
+    <div className="rounded-lg border border-gray-200 p-4 hover:shadow-lg transition-shadow">
+      <div className="flex flex-col gap-3">
+        <div className="flex items-center gap-3">
+          <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-gray-100 rounded-lg">
+            <span className="text-gray-600 text-xl font-medium">
+              {role.title[0]}
+            </span>
+          </div>
+          <h3 className="font-semibold">
+            {role.title}
+            {role.place && <span className="text-gray-500"> @ {role.place}</span>}
+          </h3>
+        </div>
+
+      </div>
+    </div>
+  )
+}
+
+function Roles({
+  roles
+}: {
+  roles: Role[]
+}) {
+  return (
+    <div>
+      <div className="flex items-center justify-between mb-2">
+        {/* TODO pick one of theme */}
+        <h2 className="text-xl font-medium">Roles</h2>
+        {/* <h2 className="text-gray-500 text-sm font-medium mb-2">Roles</h2> */}
+        <a href="/roles">
+          <Button text="More" className="text-sm opacity-50" />
+        </a>
+      </div>
+
+
+      <div className="flex flex-col gap-4">
+        {/* TODO merge roles */}
+        {roles.map((role, index) => (
+          <RoleCard key={index} role={role} />
+        ))}
+      </div>
+    </div>
+  )
+}
+
+const RolesWithProps = () => <Roles roles={roles} />;
+export default RolesWithProps;

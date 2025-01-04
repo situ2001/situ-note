@@ -1,10 +1,15 @@
-import { useState, useRef } from 'react';
-import { motion } from 'framer-motion';
-import Card from './Card';
 import { FiBook, FiPackage, FiCloud, FiTerminal, FiLayout, FiCode } from 'react-icons/fi';
-import Button from "../common/Button";
 
-const projectData = [
+export interface Project {
+  title: string;
+  description: string;
+  link: string;
+  icon: string | React.ElementType;
+  tags: string[];
+  featured?: boolean;
+}
+
+const projects: Project[] = [
   {
     title: "VS Code Theme",
     description: "Custom Visual Studio Code theme with focus on readability and eye comfort.",
@@ -52,39 +57,4 @@ const projectData = [
   }
 ];
 
-const Projects = () => {
-  return (
-    <div className="w-full">
-      <div className="flex items-center justify-between mb-2">
-        <h2 className="text-xl font-medium">Projects</h2>
-        <a href="/projects">
-          <Button text="More" className="text-sm opacity-50" />
-        </a>
-      </div>
-
-      <div className="relative">
-        <div
-          className="flex flex-col md:grid md:grid-cols-3 gap-4"
-        >
-          {projectData.map((project, index) => (
-            <div
-              key={index}
-              className="h-full"
-            >
-              <Card
-                title={project.title}
-                description={project.description}
-                link={project.link}
-                icon={project.icon}
-                tags={project.tags}
-                featured={project.featured}
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default Projects;
+export default projects;

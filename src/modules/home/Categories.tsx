@@ -4,9 +4,9 @@ import {
   posts as postsData,
   type Post,
 } from "../../api/blog";
-import Button from "../common/Button";
+import Button from "../../components/common/Button";
 import clsx from "clsx";
-import underline from '../AnimatedUnderline/index.module.css';
+import underline from '../../components/AnimatedUnderline/index.module.css';
 
 const posts = getPostsGroupByCategory(getPostSortedByDate(postsData));
 

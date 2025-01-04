@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { getTopKPosts, posts as postsData } from "../../api/blog";
-import Button from "../common/Button";
-import underline from '../AnimatedUnderline/index.module.css';
+import Button from "../../components/common/Button";
+import underline from '../../components/AnimatedUnderline/index.module.css';
 
 const posts = getTopKPosts(postsData, 5);
 
