@@ -63,8 +63,7 @@ const Projects = () => {
       </div>
 
       <div className="relative">
-        <motion.div
-          layout
+        <div
           className="flex flex-col md:grid md:grid-cols-3 gap-4"
         >
           {projectData.map((project, index) => (
@@ -82,7 +81,7 @@ const Projects = () => {
               />
             </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </div>
   );

@@ -13,7 +13,7 @@ const Blog = () => {
       <header
         className="flex items-center justify-between"
       >
-        <h2 className="text-xl font-bold">
+        <h2 className="text-xl font-medium">
           Blogs
         </h2>
 
@@ -21,7 +21,7 @@ const Blog = () => {
           <Button text="More" className="ml-auto text-sm opacity-50" />
         </a>
       </header>
-      <ul className="flex flex-col justify-between flex-1">
+      <ul className="flex flex-col justify-between flex-1 border p-4 rounded-lg">
         {posts.map((post) => (
           <div
             key={post.slug}
