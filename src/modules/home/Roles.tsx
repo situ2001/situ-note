@@ -6,20 +6,19 @@ const roles = config.roles ?? [];
 
 function RoleCard({ role }: { role: Role }) {
   return (
-    <div className="rounded-lg border border-gray-200 p-4 hover:shadow-lg transition-shadow">
+    <div className="rounded-lg border border-gray-200 dark:border-gray-700 p-4 hover:shadow-lg transition-shadow">
       <div className="flex flex-col gap-3">
         <div className="flex items-center gap-3">
-          <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-gray-100 rounded-lg">
-            <span className="text-gray-600 text-xl font-medium">
+          <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-gray-100 dark:bg-gray-700 rounded-lg">
+            <span className="text-gray-600 dark:text-gray-400 text-xl font-medium">
               {role.title[0]}
             </span>
           </div>
           <h3 className="font-semibold">
             {role.title}
-            {role.at && <span className="text-gray-500"> @ {role.at}</span>}
+            {role.at && <span className="text-gray-500 dark:text-gray-400"> @ {role.at}</span>}
           </h3>
         </div>
-
       </div>
     </div>
   )

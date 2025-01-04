@@ -21,7 +21,7 @@ const Blog = () => {
           <Button text="More" className="ml-auto text-sm opacity-50" />
         </a>
       </header>
-      <ul className="flex flex-col justify-between flex-1 border p-4 rounded-lg">
+      <ul className="flex flex-col justify-between flex-1 border p-4 rounded-lg dark:border-gray-700">
         {posts.map((post) => (
           <div
             key={post.slug}

@@ -1,6 +1,7 @@
 import type { BlogConfig } from './types';
 
-import { FaGithub, FaXTwitter, FaInstagram, FaTelegram } from "react-icons/fa6";
+import { FaGithub, FaXTwitter, FaInstagram, FaTelegram, FaNoteSticky } from "react-icons/fa6";
+import { FiBook } from 'react-icons/fi';
 
 const config: BlogConfig = {
   title: "Situ Note",
@@ -33,7 +34,16 @@ const config: BlogConfig = {
     { title: "Writer" }
   ],
 
-  projects: [],
+  projects: [
+    {
+      title: "Situ Note",
+      description: "My personal website. This is what you are looking at right now.",
+      link: "https://situ2001.com",
+      tags: ["Astro", "React", "Tailwind CSS"],
+      icon: FiBook,
+      featured: true
+    }
+  ],
 
   friends: [
     { name: "Airing", link: "https://ursb.me" },
