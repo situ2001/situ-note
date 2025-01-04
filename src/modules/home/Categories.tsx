@@ -20,7 +20,7 @@ const Category = () => {
         </a>
       </header>
 
-      <div className="p-4 border rounded-lg h-full dark:border-gray-700">
+      <div className="p-4 border rounded-lg h-full dark:border-zinc-700">
         <div className="my-1 flex flex-row flex-wrap gap-x-4 gap-y-1">
           {Object.keys(posts).map((category) => {
             return (

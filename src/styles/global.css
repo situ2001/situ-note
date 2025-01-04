@@ -50,19 +50,19 @@ html.dark img {
 }
 
 html.dark :not(pre) > code {
-  @apply bg-gray-600;
+  @apply bg-zinc-600;
 }
 
 code:not(pre code) {
-  @apply rounded px-1 bg-gray-100 !important;
+  @apply rounded px-1 bg-zinc-100 !important;
 }
 
 html.dark code:not(pre code) {
-  @apply bg-gray-600 !important;
+  @apply bg-zinc-600 !important;
 }
 
 pre {
-  @apply rounded p-4 bg-gray-100 !important;
+  @apply rounded p-4 bg-zinc-100 !important;
 }
 
 /* Shiki code block highlight */

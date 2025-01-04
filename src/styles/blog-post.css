@@ -36,19 +36,19 @@ article table {
 }
 
 article table thead {
-  @apply bg-gray-100;
+  @apply bg-zinc-100;
 }
 
 .dark article table thead {
-  @apply bg-gray-700;
+  @apply bg-zinc-700;
 }
 
 article table th {
-  @apply px-2 py-2 border border-gray-200;
+  @apply px-2 py-2 border border-zinc-200;
 }
 
 article table td {
-  @apply px-2 py-2 border border-gray-200;
+  @apply px-2 py-2 border border-zinc-200;
 }
 
 article a {
@@ -70,7 +70,7 @@ article a::after {
 }
 
 .dark article a::after {
-  @apply bg-gray-300;
+  @apply bg-zinc-300;
 }
 
 article blockquote {
@@ -80,7 +80,7 @@ article blockquote {
 }
 
 .dark article blockquote {
-  @apply border-l-gray-700;
+  @apply border-l-zinc-700;
 }
 
 article img {

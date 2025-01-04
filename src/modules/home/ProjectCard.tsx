@@ -19,18 +19,18 @@ const Card = ({ title, description, link, icon = FiBox, tags, featured = false }
       rel="noopener noreferrer"
       className="block h-full"
     >
-      <div className="h-full rounded-lg border border-gray-200 dark:border-gray-700 p-4 overflow-hidden hover:shadow-lg transition-shadow relative">
+      <div className="h-full rounded-lg border border-zinc-200 dark:border-zinc-700 p-4 overflow-hidden hover:shadow-md dark:shadow-zinc-600 transition-shadow relative">
         {link && (
-          <div className="absolute top-4 right-4 text-gray-400">
+          <div className="absolute top-4 right-4 text-zinc-400">
             <FiExternalLink size={14} />
           </div>
         )}
         
         <div className="flex flex-col gap-3 h-full">
           <div className="flex items-center gap-3">
-            <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-gray-100 dark:bg-gray-700 rounded-lg overflow-hidden">
+            <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-zinc-100 dark:bg-zinc-700 rounded-lg overflow-hidden">
               {IconComponent ? (
-                <IconComponent size={20} className="text-gray-600 dark:text-gray-400" />
+                <IconComponent size={20} className="text-zinc-600 dark:text-zinc-400" />
               ) : (
                 <img 
                   src={icon as string} 
@@ -42,14 +42,14 @@ const Card = ({ title, description, link, icon = FiBox, tags, featured = false }
             <h3 className="font-semibold">{title}</h3>
           </div>
 
-          <p className="text-gray-600 dark:text-gray-400 text-sm">{description}</p>
+          <p className="text-zinc-600 dark:text-zinc-400 text-sm">{description}</p>
 
           {tags && tags.length > 0 && (
             <div className="flex flex-wrap gap-2 mt-auto">
               {tags.map((tag, index) => (
                 <span
                   key={index}
-                  className="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-800 dark:border dark:border-gray-700 rounded-full text-gray-600 dark:text-gray-400"
+                  className="text-xs px-2 py-1 bg-zinc-100 dark:bg-zinc-800 dark:border dark:border-zinc-700 rounded-full text-zinc-600 dark:text-zinc-400"
                 >
                   {tag}
                 </span>

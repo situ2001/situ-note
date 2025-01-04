@@ -19,14 +19,14 @@ const year = new Date().getFullYear();
   <head>
     <BaseHtmlHead title={title} description={description} />
   </head>
-  <body class="dark:bg-gray-800 dark:text-gray-300 h-full">
+  <body class="bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 h-full">
     <TopNavigation client:load />
     <main class="p-4 mx-auto max-w-screen-lg">
       <slot />
     </main>
   </body>
   <footer class="p-4 mx-auto max-w-screen-lg text-center">
-    <p class="text-sm text-gray-500">
+    <p class="text-sm text-zinc-400">
       © {year} {author}. All rights reserved.
     </p>
   </footer>

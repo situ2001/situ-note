@@ -43,8 +43,8 @@ const NavigationBar = (
       className={clsx(
         'p-4 lg:mt-4 lg:mb-4 top-0 sticky transition-colors duration-300 z-10',
         isIntersecting
-          ? ['bg-slate-100', 'dark:bg-slate-700']
-          : ['bg-white', 'dark:bg-slate-800']
+          ? ['bg-zinc-100', 'dark:bg-zinc-800']
+          : ['dark:bg-zinc-900']
       )}
     >
       <nav className="text-xl mx-auto max-w-screen-lg">
