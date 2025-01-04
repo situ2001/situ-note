@@ -7,7 +7,7 @@ import { useMemo } from "react";
 import useEnvInfo from "../../lib/useEnvInfo";
 
 import config from "config";
-const { contacts: links } = config.hero;
+const { contacts: links, description } = config.hero;
 
 export default function AboutMe() {
   const $heroSectionHint = useStore(globalState.heroSectionHint.state);
@@ -46,7 +46,15 @@ export default function AboutMe() {
 
 
       <div>
-        <p>A software developer.</p>
+        {
+          Array.isArray(description)
+            ?
+            description.map((desc, index) => (
+              <p key={index}>{desc}</p>
+            ))
+            :
+            <p>{description}</p>
+        }
       </div>
 
       <div className="mb-1"></div>
