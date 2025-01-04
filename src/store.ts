@@ -1,8 +1,10 @@
 import { atom } from 'nanostores';
 
-const INITIAL_HERO_SECTION_HINT = "I am situ2001.";
-const heroSectionHint = atom(INITIAL_HERO_SECTION_HINT);
-const resetHeroSectionHint = () => heroSectionHint.set(INITIAL_HERO_SECTION_HINT);
+import config from 'config';
+const greeting = config.hero.greeting;
+
+const heroSectionHint = atom(greeting);
+const resetHeroSectionHint = () => heroSectionHint.set(greeting);
 
 export default {
   /**

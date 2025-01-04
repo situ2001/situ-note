@@ -4,7 +4,7 @@ import { isTwoElementsIntersecting } from "../utils/intersection";
 import SiteLogo from "../components/SiteLogo";
 import clsx from 'clsx';
 import "../styles/header.css";
-import globalState from '../config/global-state';
+import globalState from '../store';
 import useEnvInfo from '../lib/useEnvInfo';
 
 type TopRightMenu = {

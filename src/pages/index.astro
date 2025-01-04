@@ -9,7 +9,9 @@ import {
   Categories,
 } from "../modules/home";
 
-import { BLOG_TITLE, BLOG_DESCRIPTION } from "../config";
+import config from "config";
+const BLOG_TITLE = config.title;
+const BLOG_DESCRIPTION = config.description;
 ---
 
 <BaseLayout title={BLOG_TITLE} description={BLOG_DESCRIPTION}>

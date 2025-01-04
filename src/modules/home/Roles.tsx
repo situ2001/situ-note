@@ -1,7 +1,8 @@
 import Button from "../../components/common/Button";
 
-import type { Role } from "../../config/roles";
-import roles from "../../config/roles";
+import config from "config";
+import type { Role } from "types";
+const roles = config.roles ?? [];
 
 function RoleCard({ role }: { role: Role }) {
   return (
@@ -15,7 +16,7 @@ function RoleCard({ role }: { role: Role }) {
           </div>
           <h3 className="font-semibold">
             {role.title}
-            {role.place && <span className="text-gray-500"> @ {role.place}</span>}
+            {role.at && <span className="text-gray-500"> @ {role.at}</span>}
           </h3>
         </div>
 

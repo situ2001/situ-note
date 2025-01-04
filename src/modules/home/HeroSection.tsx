@@ -1,11 +1,13 @@
 import { motion, AnimatePresence } from "framer-motion";
-import links from "../../config/links";
 import LinkButton from "../../components/IconLink";
 
 import { useStore } from '@nanostores/react';
-import globalState from "../../config/global-state";
+import globalState from "../../store";
 import { useMemo } from "react";
 import useEnvInfo from "../../lib/useEnvInfo";
+
+import config from "config";
+const { contacts: links } = config.hero;
 
 export default function AboutMe() {
   const $heroSectionHint = useStore(globalState.heroSectionHint.state);

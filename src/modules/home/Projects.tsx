@@ -1,8 +1,9 @@
 import Card from './ProjectCard';
 import Button from "../../components/common/Button";
 
-import type { Project } from '../../config/projects';
-import projects from '../../config/projects';
+import config from 'config';
+import type { Project } from 'types';
+const projects = config.projects ?? [];
 
 const Projects = (
   { projects }: { projects: Project[] }
