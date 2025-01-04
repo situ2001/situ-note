@@ -27,7 +27,7 @@ export default function AboutMe() {
   return (
     <section className="flex flex-col h-full gap-2">
       <div>
-        <h1 className="text-3xl font-bold mb-2">Hi,</h1>
+        <h1 className="text-3xl font-bold mb-2">Hi.</h1>
         <motion.div
           className="text-2xl font-bold mb-2 h-8" // added fixed height
         >
