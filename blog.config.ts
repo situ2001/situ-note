@@ -1,7 +1,7 @@
 import type { BlogConfig } from './types';
 
-import { FaGithub, FaXTwitter, FaInstagram, FaTelegram, FaNoteSticky } from "react-icons/fa6";
-import { FiBook } from 'react-icons/fi';
+import { FaGithub, FaXTwitter, FaInstagram, FaTelegram, FaNoteSticky, FaLaptop } from "react-icons/fa6";
+import { FiBook, FiPenTool } from 'react-icons/fi';
 
 const config: BlogConfig = {
   title: "Situ Note",
@@ -29,9 +29,8 @@ const config: BlogConfig = {
   },
 
   roles: [
-    { title: "Web Dev", at: "TME" },
-    { title: "Open Source Contributor" },
-    { title: "Writer" }
+    { title: "Web Dev", at: "TME", icon: FaLaptop },
+    { title: "Writer", icon: FiPenTool }
   ],
 
   projects: [
@@ -40,7 +39,7 @@ const config: BlogConfig = {
       description: "My personal website. This is what you are looking at right now.",
       link: "https://situ2001.com",
       tags: ["Astro", "React", "Tailwind CSS"],
-      icon: FiBook,
+      // icon: FiBook,
       featured: true
     }
   ],

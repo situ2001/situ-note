@@ -9,7 +9,7 @@ interface CardProps {
   featured?: boolean;
 }
 
-const Card = ({ title, description, link, icon = FiBox, tags, featured = false }: CardProps) => {
+const Card = ({ title, description, link, icon, tags, featured = false }: CardProps) => {
   const IconComponent = typeof icon === 'function' ? icon : undefined;
   
   return (
@@ -31,12 +31,16 @@ const Card = ({ title, description, link, icon = FiBox, tags, featured = false }
             <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-zinc-100 dark:bg-zinc-700 rounded-lg overflow-hidden">
               {IconComponent ? (
                 <IconComponent size={20} className="text-zinc-600 dark:text-zinc-400" />
-              ) : (
+              ) : typeof icon === 'string' ? (
                 <img 
                   src={icon as string} 
                   alt=""
                   className="w-6 h-6 object-contain"
                 />
+              ) : (
+                <span className="text-zinc-600 dark:text-zinc-400 text-xl font-medium">
+                  {title[0]}
+                </span>
               )}
             </div>
             <h3 className="font-semibold">{title}</h3>

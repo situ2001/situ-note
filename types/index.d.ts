@@ -56,13 +56,15 @@ export interface Friend {
 export interface Role {
   title: string;
   at?: string;
+  icon?: React.ElementType | string;
 }
 
 export interface Project {
   title: string;
   description: string;
   link: string;
-  icon: string | React.ElementType;
+  icon?: string | React.ElementType;
   tags: string[];
   featured?: boolean;
+
 }
