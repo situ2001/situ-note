@@ -1,12 +1,9 @@
-import { useEffect, useState } from 'react';
 import styles from './style.module.css';
 import clsx from 'clsx';
 import useScrollIdle from '../../lib/useScrollIdle';
 
 // TODO Pick a better font
 export default function BrandIcon() {
-  const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('up');
-
   const isScrollIdle = useScrollIdle(1000);
 
   const clsxParamBasedOnScrollDirection = {

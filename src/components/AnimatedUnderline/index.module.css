@@ -24,7 +24,7 @@
   :local .slide-in::after,
   :local .scale-from-center::after, 
   :local .fade-in::after {
-    @apply bg-gray-300;
+    @apply bg-zinc-300;
   }
 }
 

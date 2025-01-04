@@ -1,6 +1,9 @@
 ---
 import BaseHtmlHead from "./BaseHtmlHead.astro";
-import TopNavigation from "./NavigationBar.astro";
+import TopNavigation from "./NavigationBar";
+
+import config from "config";
+const { author } = config;
 
 interface Props {
   title: string;
@@ -16,15 +19,15 @@ const year = new Date().getFullYear();
   <head>
     <BaseHtmlHead title={title} description={description} />
   </head>
-  <body class="dark:bg-gray-800 dark:text-gray-300 h-full">
-    <TopNavigation />
+  <body class="bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 h-full">
+    <TopNavigation client:load />
     <main class="p-4 mx-auto max-w-screen-lg">
       <slot />
     </main>
   </body>
   <footer class="p-4 mx-auto max-w-screen-lg text-center">
-    <p class="text-sm text-gray-500">
-        © {year} situ2001. All rights reserved.
+    <p class="text-sm text-zinc-400">
+      © {year} {author}. All rights reserved.
     </p>
   </footer>
 </html>

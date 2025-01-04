@@ -4,11 +4,17 @@ import type { IconType } from 'react-icons/lib';
 import type { ImageMetadata } from 'astro';
 
 import underline from '../AnimatedUnderline/index.module.css';
+import { useMemo } from 'react';
+import useEnvInfo from '../../lib/useEnvInfo';
+
+type IconSize = 'sm' | 'md' | 'lg';
 
 export interface IconLinkProps {
   link: string;
   icon: ImageMetadata | IconType;
   name: string;
+  hideText?: boolean;
+  size?: IconSize;
 }
 
 /**
@@ -17,25 +23,50 @@ export interface IconLinkProps {
 export default function IconLink(
   props: IconLinkProps
 ) {
-  const { link, icon, name } = props;
+  const { link, icon, name, hideText = false, size = 'md' } = props;
 
   const Icon = icon as IconType;
 
+  const sizeClasses = {
+    sm: 'h-3 w-3',
+    md: 'h-4 w-4',
+    lg: 'h-5 w-5',
+  };
+
+  const textSizeClasses = {
+    sm: 'text-sm',
+    md: 'text-base',
+    lg: 'text-lg',
+  };
+
+  const { isMobile, isTouch } = useEnvInfo();
+
+  const motionPropsForHeroSectionHint = useMemo(() => {
+    return isMobile || isTouch
+      ? {}
+      : {
+        whileHover: { scale: 1.25, rotate: 5 },
+        whileTap: { scale: 0.9 }
+      }
+  }, [isMobile]);
+
   return (
     <motion.a
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.9 }}
-      className={clsx("flex max-w-fit items-center gap-1", underline['slide-in'])}
+      {...motionPropsForHeroSectionHint}
+      className={clsx(
+        "flex max-w-fit items-center gap-1",
+        !hideText && underline['slide-in']
+      )}
       title={name}
       href={link}
       target="_blank"
     >
       {
         (icon as ImageMetadata).src
-          ? (<img className="h-4 w-4" src={(icon as ImageMetadata).src} alt={name}></img>)
-          : <Icon className='h-4 w-4' />
+          ? (<img className={sizeClasses[size]} src={(icon as ImageMetadata).src} alt={name}></img>)
+          : <Icon className={sizeClasses[size]} />
       }
-      <p>{name}</p>
+      {!hideText && <p className={textSizeClasses[size]}>{name}</p>}
     </motion.a>
   );
 }
