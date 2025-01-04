@@ -25,9 +25,13 @@ const BLOG_DESCRIPTION = config.description;
       </div>
     </section>
 
-    <section>
-      <Projects client:load />
-    </section>
+    {
+      config.projects && config.projects.length > 0 && (
+        <section>
+          <Projects client:load />
+        </section>
+      )
+    }
 
     <section>
       <section class="flex flex-col md:flex-row gap-4">
