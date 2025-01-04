@@ -8,6 +8,8 @@ const projects = config.projects ?? [];
 const Projects = (
   { projects }: { projects: Project[] }
 ) => {
+  if (projects.length === 0) return null;
+
   return (
     <div className="w-full">
       <div className="flex items-center justify-between mb-2">

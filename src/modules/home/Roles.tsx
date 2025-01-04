@@ -30,6 +30,8 @@ function Roles({
 }: {
   roles: Role[]
 }) {
+  if (roles.length === 0) return null;
+
   return (
     <div>
       <div className="flex items-center justify-between mb-2">

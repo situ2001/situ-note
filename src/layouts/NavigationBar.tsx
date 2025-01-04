@@ -7,22 +7,13 @@ import "../styles/header.css";
 import globalState from '../store';
 import useEnvInfo from '../lib/useEnvInfo';
 
-type TopRightMenu = {
-  name: string;
-  url: string;
-  /**
-   * Optional hint for the menu item.
-   */
-  hint?: string;
-};
+import type { NavigationItem } from 'types';
+import config from 'config';
+const menuItem = config.nav.items;
 
-const topRightMenu: TopRightMenu[] = [
-  { name: "Blog", url: "/blog", hint: "Check my thoughts and ideas." },
-  { name: "Friends", url: "/friends", hint: "You can visit my friends." },
-  { name: "RSS", url: "/rss.xml", hint: "Why not subscribe to my RSS feed?" },
-];
-
-const NavigationBar = () => {
+const NavigationBar = (
+  { items }: { items: NavigationItem[] }
+) => {
   const [isIntersecting, setIsIntersecting] = useState(false);
   const headerRef = useRef<HTMLHeadElement>(null);
 
@@ -64,19 +55,19 @@ const NavigationBar = () => {
         </h2>
 
         <div className="right flex items-center gap-4">
-          {topRightMenu.map((menu, index) => (
+          {items.map((menu, index) => (
             <h2
               key={index}
               onPointerEnter={
-                () => menu.hint
+                () => menu.greeting
                   && !(isMobile || isTouch)
-                  && globalState.heroSectionHint.state.set(menu.hint)
+                  && globalState.heroSectionHint.state.set(menu.greeting)
               }
               onPointerLeave={
                 () => globalState.heroSectionHint.action.resetHint()
               }
             >
-              <a href={menu.url} title={menu.name}>{menu.name}</a>
+              <a href={menu.link} title={menu.name}>{menu.name}</a>
             </h2>
           ))}
         </div>
@@ -85,4 +76,5 @@ const NavigationBar = () => {
   );
 };
 
-export default NavigationBar;
+const NavigationBarWithProps = () => <NavigationBar items={menuItem} />;
+export default NavigationBarWithProps;

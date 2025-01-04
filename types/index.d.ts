@@ -6,11 +6,21 @@ export interface BlogConfig {
   description: string;
   email: string;
 
+  /**
+   * Hero section. (首页的主体部分)
+   */
   hero: {
     greeting: string;
     description: string | string[];
     contacts: Contact[];
   },
+
+  /**
+   * Navigation. (顶部导航栏)
+   */
+  nav: {
+    items: NavigationItem[];
+  }
 
   /**
    * Friends. (友链)
@@ -20,6 +30,16 @@ export interface BlogConfig {
   roles?: Role[],
 
   projects?: Project[],
+}
+
+export interface NavigationItem {
+  name: string;
+  link: string;
+
+  /**
+   * Used for replacing greeting in the hero section.
+   */
+  greeting?: string;
 }
 
 export interface Contact {
