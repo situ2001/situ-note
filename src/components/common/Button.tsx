@@ -11,8 +11,9 @@ const Button = ({ text, onClick, className }: ButtonProps) => {
     <button
       onClick={onClick}
       className={clsx(
-        "px-4 py-2 bg-zinc-200 dark:bg-zinc-700 dark:text-zinc-200 rounded-md",
-        "hover:shadow-md hover:bg-zinc-300 dark:hover:bg-zinc-600 transition-all duration-200",
+        "px-2 py-1 rounded-md",
+        "text-zinc-600 dark:text-zinc-400",
+        "hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all duration-200",
         className
       )}
     >

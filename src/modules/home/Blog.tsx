@@ -8,7 +8,7 @@ const posts = getTopKPosts(postsData, 5);
 const Blog = () => {
   return (
     <section className={clsx(
-      "h-full flex flex-col gap-2",
+      "h-full flex flex-col gap-4",
     )}>
       <header
         className="flex items-center justify-between"

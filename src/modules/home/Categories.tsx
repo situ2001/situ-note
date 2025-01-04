@@ -12,7 +12,7 @@ const posts = getPostsGroupByCategory(getPostSortedByDate(postsData));
 
 const Category = () => {
   return (
-    <section className="h-full flex flex-col gap-2">
+    <section className="h-full flex flex-col gap-4">
       <header className="flex items-center justify-between">
         <h2 className="text-xl font-medium">Categories</h2>
         <a href="/blog/category">

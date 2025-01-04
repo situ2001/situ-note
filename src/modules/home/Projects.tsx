@@ -12,7 +12,7 @@ const Projects = (
 
   return (
     <div className="w-full">
-      <div className="flex items-center justify-between mb-2">
+      <div className="flex items-center justify-between mb-4">
         <h2 className="text-xl font-medium">Projects</h2>
         <a href="/projects">
           <Button text="More" className="text-sm opacity-50" />

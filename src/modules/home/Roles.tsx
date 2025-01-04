@@ -45,7 +45,7 @@ function Roles({
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-2">
+      <div className="flex items-center justify-between mb-4">
         {/* TODO pick one of theme */}
         <h2 className="text-xl font-medium">Roles</h2>
         {/* <h2 className="text-zinc-500 text-sm font-medium mb-2">Roles</h2> */}
