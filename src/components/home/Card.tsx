@@ -21,7 +21,7 @@ const Card = ({ title, description, link, icon = FiBox, tags, featured = false }
     >
       <div className="h-full rounded-lg border border-gray-200 p-4 overflow-hidden hover:shadow-lg transition-shadow relative">
         {link && (
-          <div className="absolute top-2 right-2 text-gray-400">
+          <div className="absolute top-4 right-4 text-gray-400">
             <FiExternalLink size={14} />
           </div>
         )}
