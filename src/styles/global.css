@@ -38,6 +38,10 @@ body {
   font-family: var(--font-serif), var(--font-cjk-serif), serif !important;
 }
 
+.font-mono {
+  font-family: var(--font-mono), monospace !important;
+}
+
 /* Mono font */
 pre,
 code {
