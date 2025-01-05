@@ -11,7 +11,7 @@ const config: BlogConfig = {
 
   hero: {
     greeting: "I am situ2001.",
-    description: "A software developer.",
+    description: "I am software developer in Shenzhen, China. In my spare time, I'm passionate about building tools and apps for both personal enjoyment and community benefit, sharing insights online, and diving into the realms of psychology and education alongside technology, driven by what truly captivates me.",
     contacts: [
       { name: "GitHub", link: "https://github.com/situ2001", icon: FaGithub, },
       { name: "Twitter", link: "https://twitter.com/situ200l", icon: FaXTwitter, },
