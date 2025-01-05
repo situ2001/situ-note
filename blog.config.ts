@@ -55,7 +55,8 @@ const config: BlogConfig = {
     { name: "Talaxy", link: "https://www.talaxy.site/" },
     { name: "Lakphy", link: "https://lakphy.me/" },
     { name: 'cos', link: 'https://ysx.cosine.ren/' },
-    { name: 'Corey Chiu', link: 'https://coreychiu.com' }
+    { name: 'Corey Chiu', link: 'https://coreychiu.com' },
+    { name: 'HuanXin', link: 'https://huanxin-chen.github.io/' }
   ]
 }
 
