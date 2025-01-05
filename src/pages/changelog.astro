@@ -1,0 +1,20 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+import config from "config";
+const BLOG_TITLE = config.title;
+const BLOG_DESCRIPTION = config.description;
+
+import { Content } from "@/components/changelog.mdx";
+
+// TODO tmp reused
+import "../styles/blog-post.css";
+// KaTeX CSS
+import 'katex/dist/katex.min.css';
+---
+
+<BaseLayout title={BLOG_TITLE} description={BLOG_DESCRIPTION}>
+  <article>
+    <Content />
+  </article>
+</BaseLayout>
