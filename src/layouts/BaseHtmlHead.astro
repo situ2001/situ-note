@@ -1,8 +1,6 @@
 ---
 import "../styles/global.css";
 
-import { ClientRouter } from "astro:transitions";
-
 interface Props {
   title: string;
   description: string;
@@ -95,15 +93,3 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     }
   });
 </script>
-
-<!-- ViewTransition BEGIN -->
-<ClientRouter />
-<script is:inline>
-// add class to html element once we swap pages
-document.addEventListener('astro:after-swap', () => {
-  const mode = localStorage.getItem("theme");
-  document.documentElement.classList.toggle("dark", mode === "dark");
-})
-</script>
-<!-- ViewTransition END -->
- 
