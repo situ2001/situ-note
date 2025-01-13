@@ -1,12 +1,14 @@
 import clsx from "clsx";
-import { getTopKPosts, posts as postsData } from "../../api/blog";
+import type { Post } from "../../api/blog";
 import Button from "../../components/common/Button";
 import underline from '../../components/AnimatedUnderline/index.module.css';
 import Card from "../../components/common/Card";
 
-const posts = getTopKPosts(postsData, 5);
-
-const Blog = () => {
+const Blog = ({
+  posts
+}: {
+  posts: Post[]
+}) => {
   return (
     <section className={clsx(
       "h-full flex flex-col gap-4",

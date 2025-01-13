@@ -41,7 +41,7 @@ export const groupPostsByYear = (posts: Post[]) => {
 
 /// -------------- api functions --------------
 
-export const getTopKPosts = (posts: Post[], k: number) => {
+export const getRecentKPosts = (posts: Post[], k: number) => {
   return getPostSortedByDate(posts).slice(0, k);
 };
 
