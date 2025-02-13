@@ -5,6 +5,7 @@ import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
+import pagefind from "astro-pagefind";
 
 /**
  * https://astro.build/config
@@ -13,7 +14,7 @@ import rehypeKatex from "rehype-katex";
  */
 export default defineConfig({
   site: "https://situ2001.com",
-  integrations: [mdx(), sitemap(), tailwind(), react()],
+  integrations: [mdx(), sitemap(), tailwind(), react(), pagefind()],
   prefetch: true,
   image: {
     service: {
@@ -25,7 +26,7 @@ export default defineConfig({
     shikiConfig: {
       // Choose from Shiki's built-in themes (or add your own)
       // https://github.com/shikijs/shiki/blob/main/docs/themes.md
-      themes:  {
+      themes: {
         light: "github-light",
         dark: "github-dark",
       },

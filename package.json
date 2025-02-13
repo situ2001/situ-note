@@ -32,6 +32,7 @@
     "@fontsource/fira-code": "^5.1.1",
     "@nanostores/react": "^0.8.4",
     "astro": "^5.1.6",
+    "astro-pagefind": "^1.8.0",
     "clsx": "^2.1.1",
     "es-toolkit": "^1.31.0",
     "framer-motion": "^11.18.0",
