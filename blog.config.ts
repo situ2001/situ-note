@@ -4,7 +4,7 @@ import { FaGithub, FaXTwitter, FaInstagram, FaTelegram, FaNoteSticky, FaLaptop }
 import { FiBook, FiPenTool } from 'react-icons/fi';
 
 const config: BlogConfig = {
-  title: "Situ Note",
+  title: "situ2001",
   description: "Personal website of situ2001",
   author: "situ2001",
   email: "dogecong@gmail.com",
