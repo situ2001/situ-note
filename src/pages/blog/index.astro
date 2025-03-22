@@ -1,10 +1,7 @@
 ---
 import FormattedDate from "../../components/FormattedDate.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import {
-  getPostSortedByDate,
-  posts as postsData,
-} from "../../api/blog";
+import { getPostSortedByDate, posts as postsData } from "../../api/blog";
 
 const posts = getPostSortedByDate(postsData);
 ---
@@ -14,24 +11,22 @@ const posts = getPostSortedByDate(postsData);
     {
       posts.map((post) => {
         return (
-          <li class="my-2 flex flex-col">
-            <a
-              href={`/blog/${post.slug}`}
-              title={post.data.title}
-              class="flex w-full flex-col md:flex-row justify-between
+          <a
+            href={`/blog/${post.slug}`}
+            title={post.data.title}
+            class="flex w-full flex-col md:flex-row justify-between
                rounded-lg py-2.5 md:px-2
                transition-all active:scale-[0.995]
               md:hover:bg-zinc-100 md:hover:dark:bg-zinc-700"
-            >
-              <div class="flex-1">
-                <span>{post.data.title}</span>
-              </div>
+          >
+            <div class="flex-1">
+              <span>{post.data.title}</span>
+            </div>
 
-              <span class="text-sm text-zinc-500">
-                <FormattedDate date={post.data.date} />
-              </span>
-            </a>
-          </li>
+            <span class="text-sm text-zinc-500">
+              <FormattedDate date={post.data.date} />
+            </span>
+          </a>
         );
       })
     }
