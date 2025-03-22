@@ -17,6 +17,7 @@ const posts = getPostSortedByDate(postsData);
           <li class="my-2 flex flex-col">
             <a
               href={`/blog/${post.slug}`}
+              title={post.data.title}
               class="flex w-full flex-col md:flex-row justify-between
                rounded-lg py-2.5 md:px-2
                transition-all active:scale-[0.995]
