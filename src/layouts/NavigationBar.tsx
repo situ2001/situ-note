@@ -3,7 +3,6 @@ import { throttle } from "es-toolkit";
 import { isTwoElementsIntersecting } from "../utils/intersection";
 import SiteLogo from "../components/SiteLogo";
 import clsx from 'clsx';
-import "../styles/header.css";
 import globalState from '../store';
 import useEnvInfo from '../lib/useEnvInfo';
 
@@ -47,7 +46,7 @@ const NavigationBar = (
           : ['dark:bg-zinc-900']
       )}
     >
-      <nav className="text-xl mx-auto max-w-screen-lg">
+      <nav className="flex justify-between text-xl mx-auto max-w-screen-lg">
         <h2 className="left">
           <a href="/" className="font-serif">
             <SiteLogo />
