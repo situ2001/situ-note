@@ -30,7 +30,7 @@ const config: BlogConfig = {
 
   roles: [
     { title: "Web Dev", at: "TME", icon: FaLaptop },
-    { title: "Blogger", icon: FiPenTool },
+    // { title: "Blogger", icon: FiPenTool },
   ],
 
   projects: [

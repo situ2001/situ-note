@@ -10,7 +10,8 @@ import {
 } from "../../../api/blog";
 
 import BaseLayout from "../../../layouts/BaseLayout.astro";
-import FormattedDate from "../../../components/FormattedDate.astro";
+import FormattedDate from "../../../components/FormattedDate";
+import { BlogListItem } from "@/components/BlogListItem";
 
 export const getStaticPaths = getCategoryStaticPaths(
   getPostsGroupByCategory(getPostSortedByDate(postsData))
@@ -35,22 +36,7 @@ const { posts, category } = Astro.props;
     <h1 class="text-xl">Category: {category}</h1>
     <hr class="my-1" />
     <ul>
-      {
-        posts.map((post) => (
-          <li class="my-2 flex flex-row">
-            <div class="flex-1">
-              <a rel="prefetch" href={`/blog/${post.slug}`}>
-                <div class="underline underline-offset-4">
-                  {post.data.title}
-                </div>
-              </a>
-            </div>
-            <p class="ml-auto md:ml-0">
-              <FormattedDate date={post.data.date} />
-            </p>
-          </li>
-        ))
-      }
+      {posts.map((post) => <BlogListItem post={post} />)}
     </ul>
   </section>
 </BaseLayout>

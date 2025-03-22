@@ -25,17 +25,20 @@ const postsGroupByCategory = getPostsGroupByCategory(
 ---
 
 <BaseLayout title={BLOG_TITLE} description={BLOG_DESCRIPTION}>
-  <div class="flex flex-col gap-4 md:gap-12">
+  <div class="flex flex-col gap-4 md:gap-8">
     <section
       class="flex gap-4 md:gap-8 flex-col md:flex-row justify-between mt-4"
     >
-      <div>
-        <HeroSection client:load />
-      </div>
-      <div class="pt-4 md:pt-0 md:w-1/3 md:min-w-96">
-        <Roles client:load />
-      </div>
+      <HeroSection client:load />
     </section>
+
+    {
+      config.roles && config.roles.length > 0 && (
+        <section>
+          <Roles client:load />
+        </section>
+      )
+    }
 
     {
       config.projects && config.projects.length > 0 && (
@@ -46,14 +49,7 @@ const postsGroupByCategory = getPostsGroupByCategory(
     }
 
     <section>
-      <section class="flex flex-col md:flex-row gap-4">
-        <div class="w-full md:w-1/2">
-          <Blog posts={recentPosts} />
-        </div>
-        <div class="w-full md:w-1/2">
-          <Categories groupedPosts={postsGroupByCategory} />
-        </div>
-      </section>
+      <Blog posts={recentPosts} />
     </section>
   </div>
 </BaseLayout>
