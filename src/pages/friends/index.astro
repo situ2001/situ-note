@@ -7,7 +7,7 @@ import config from "config";
 const friends = config.friends ?? [];
 ---
 
-<BaseLayout title="Friends" description="My friends" fullWidth>
+<BaseLayout title="Friends" description="My friends">
   <div class="flex flex-col md:grid md:grid-cols-2 md:gap-4">
     {friends.map(({ name, link }) => <FriendCard name={name} link={link} />)}
   </div>
