@@ -1,11 +1,12 @@
 import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
-import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import pagefind from "astro-pagefind";
+
+import tailwindcss from "@tailwindcss/vite";
 
 /**
  * https://astro.build/config
@@ -14,13 +15,19 @@ import pagefind from "astro-pagefind";
  */
 export default defineConfig({
   site: "https://situ2001.com",
-  integrations: [mdx(), sitemap(), tailwind(), react(), pagefind()],
+  integrations: [mdx(),sitemap(),react(),pagefind()],
   prefetch: true,
+
+  vite: {
+    plugins: [tailwindcss()],
+  },
+
   image: {
     service: {
       entrypoint: "src/api/image.ts",
     },
   },
+
   markdown: {
     // TODO just copy from official doc, using blog-post.css now
     shikiConfig: {
@@ -46,9 +53,11 @@ export default defineConfig({
     remarkPlugins: [remarkMath],
     rehypePlugins: [rehypeKatex],
   },
+
   server: {
     host: true,
     port: 4321,
   },
+
   outDir: process.env['OUT_DIR'] || "./dist",
 });

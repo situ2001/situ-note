@@ -29,7 +29,7 @@ const ProjectCard = ({ title, description, link, icon, tags, featured = false }:
 
         <div className="flex flex-col gap-3 h-full">
           <div className="flex items-center gap-3">
-            <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-zinc-100 dark:bg-zinc-700 rounded-lg overflow-hidden">
+            <div className="shrink-0 w-10 h-10 flex items-center justify-center bg-zinc-100 dark:bg-zinc-700 rounded-lg overflow-hidden">
               {IconComponent ? (
                 <IconComponent size={20} className="text-zinc-600 dark:text-zinc-400" />
               ) : typeof icon === 'string' ? (

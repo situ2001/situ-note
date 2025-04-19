@@ -10,8 +10,8 @@ const Card = ({ children, className }: CardProps) => {
     <div className={clsx(
       "border p-4 rounded-lg",
       "border-zinc-200 dark:border-zinc-600",
-      "shadow-zinc-300 dark:shadow-zinc-600",
-      "transition-shadow hover:shadow-md",
+      "shadow-sm-zinc-300 dark:shadow-sm-zinc-600",
+      "transition-shadow-sm hover:shadow-sm-md",
       className
     )}>
       {children}

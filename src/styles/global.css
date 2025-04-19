@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 @import '@fontsource-variable/noto-sans';
 @import '@fontsource-variable/noto-serif';
 @import '@fontsource-variable/noto-sans-sc';
@@ -29,6 +31,17 @@ body {
   /* @apply transition-colors duration-200; */
 }
 
+/* https://tailwindcss.com/docs/upgrade-guide#default-border-color */
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
 /* class for controlling font-family */
 .font-sans {
   font-family: var(--font-sans), var(--font-cjk-sans), sans-serif !important;
@@ -58,15 +71,15 @@ html.dark :not(pre) > code {
 }
 
 code:not(pre code) {
-  @apply rounded px-1 bg-zinc-100 !important;
+  @apply rounded! px-1! bg-zinc-100!;
 }
 
 html.dark code:not(pre code) {
-  @apply bg-zinc-600 !important;
+  @apply bg-zinc-600!;
 }
 
 pre {
-  @apply rounded p-4 bg-zinc-100 !important;
+  @apply rounded! p-4! bg-zinc-100!;
 }
 
 /* Shiki code block highlight */

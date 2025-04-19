@@ -17,7 +17,7 @@ export const TableOfContent = ({
         return (
           <div
             style={{ "paddingLeft": `${heading.depth}rem` }}
-            className={`overflow-hidden overflow-ellipsis whitespace-nowrap underline-offset-4 underline`}
+            className={`overflow-hidden text-ellipsis whitespace-nowrap underline-offset-4 underline`}
           >
             <a href={`#${heading.slug}`}>{heading.text}</a>
           </div>
