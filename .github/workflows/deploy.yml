@@ -1,0 +1,38 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build site
+        run: pnpm run build
+
+      - name: Deploy to production repo
+        run: |
+          git clone https://github.com/situ2001/site-static-dist.git deploy_repo
+          rm -rf deploy_repo/situ-note || true
+          mkdir -p deploy_repo/situ-note
+          cp -r dist/* deploy_repo/situ-note/
+
+          cd deploy_repo
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add .
+          git commit -m "Deploy: ${GITHUB_SHA}"
+          git push "https://${GITHUB_TOKEN}@github.com/situ2001/site-static-dist.git" main:dist
