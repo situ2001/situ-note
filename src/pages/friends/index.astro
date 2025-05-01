@@ -11,4 +11,13 @@ const friends = config.friends ?? [];
   <div class="flex flex-col md:grid md:grid-cols-2 md:gap-4">
     {friends.map(({ name, link }) => <FriendCard name={name} link={link} />)}
   </div>
+
+  <div class="mt-4 text-sm text-zinc-500">
+    <p>
+      If your information is stale, please contact me <a
+        href=`mailto:${config.email}`
+        class="underline">through email</a
+      >
+    </p>
+  </div>
 </BaseLayout>

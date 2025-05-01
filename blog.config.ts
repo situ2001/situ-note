@@ -1,6 +1,6 @@
 import type { BlogConfig } from './types';
 
-import { FaGithub, FaXTwitter, FaInstagram, FaTelegram, FaNoteSticky, FaLaptop } from "react-icons/fa6";
+import { FaGithub, FaXTwitter, FaInstagram, FaTelegram, FaLaptop, FaEnvelope } from "react-icons/fa6";
 import { FiBook, FiPenTool } from 'react-icons/fi';
 
 const config: BlogConfig = {
@@ -16,7 +16,8 @@ const config: BlogConfig = {
       { name: "GitHub", link: "https://github.com/situ2001", icon: FaGithub, },
       { name: "Twitter", link: "https://twitter.com/situ200l", icon: FaXTwitter, },
       { name: "Telegram", link: "https://t.me/situ2001_channel", icon: FaTelegram, },
-      { name: "Instagram", link: "https://instagram.com/situ2oo1", icon: FaInstagram, }
+      { name: "Instagram", link: "https://instagram.com/situ2oo1", icon: FaInstagram, },
+      { name: "Email", link: "mailto:dogecong@gmail.com", icon: FaEnvelope, },
     ]
   },
 
