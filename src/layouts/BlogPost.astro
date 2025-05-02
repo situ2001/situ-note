@@ -7,9 +7,10 @@ import FormattedDate from "../components/FormattedDate";
 
 import BaseLayout from "./BaseLayout.astro";
 
-import "../styles/blog-post.css";
 // KaTeX CSS
-import 'katex/dist/katex.min.css';
+import "katex/dist/katex.min.css";
+// CSS for the blog post
+import "../styles/blog-post.css";
 
 import { convertStringCategoriesToArray } from "../api/blog";
 import { interleave } from "../utils";
@@ -18,6 +19,11 @@ import type { MarkdownHeading } from "astro";
 type Props = CollectionEntry<"blog">["data"] & { headings: MarkdownHeading[] };
 const { title, description, date, categories, headings } = Astro.props;
 ---
+
+<script>
+  import mediumZoom from "medium-zoom";
+  mediumZoom("article img");
+</script>
 
 <BaseLayout title={title} description={description}>
   <div class="max-w-screen-md mx-auto">
