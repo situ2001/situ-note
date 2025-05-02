@@ -3,6 +3,8 @@ import FriendCard from "../../components/Card/FriendCard/index.astro";
 
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
+import Info from "./info.mdx";
+
 import config from "config";
 const friends = config.friends ?? [];
 ---
@@ -10,6 +12,10 @@ const friends = config.friends ?? [];
 <BaseLayout title="Friends" description="My friends">
   <div class="flex flex-col md:grid md:grid-cols-2 md:gap-4">
     {friends.map(({ name, link }) => <FriendCard name={name} link={link} />)}
+  </div>
+
+  <div class="mt-4">
+    <Info />
   </div>
 
   <div class="mt-4 text-sm text-zinc-500">
