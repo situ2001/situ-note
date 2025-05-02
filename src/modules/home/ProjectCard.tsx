@@ -1,4 +1,4 @@
-import { FiExternalLink, FiBox } from 'react-icons/fi';
+import { FiExternalLink } from 'react-icons/fi';
 import Card from "../../components/common/Card";
 
 interface CardProps {

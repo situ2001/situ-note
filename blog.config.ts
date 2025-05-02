@@ -1,7 +1,6 @@
 import type { BlogConfig } from './types';
 
 import { FaGithub, FaXTwitter, FaInstagram, FaTelegram, FaLaptop, FaEnvelope } from "react-icons/fa6";
-import { FiBook, FiPenTool } from 'react-icons/fi';
 
 const config: BlogConfig = {
   title: "situ2001",
@@ -31,7 +30,6 @@ const config: BlogConfig = {
 
   roles: [
     { title: "Web Dev", at: "TME", icon: FaLaptop },
-    // { title: "Blogger", icon: FiPenTool },
   ],
 
   projects: [
