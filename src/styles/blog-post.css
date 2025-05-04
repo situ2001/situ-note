@@ -89,6 +89,10 @@ article img {
   @apply rounded-xl;
 }
 
+.medium-zoom-overlay {
+  @apply dark:bg-zinc-900!;
+}
+
 .medium-zoom-overlay,
 .medium-zoom-image--opened {
   z-index: 999;
