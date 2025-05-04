@@ -1,6 +1,6 @@
 import type { BlogConfig } from './types';
 
-import { FaGithub, FaXTwitter, FaInstagram, FaTelegram, FaLaptop, FaEnvelope } from "react-icons/fa6";
+import { BsGithub, BsTwitterX, BsInstagram, BsEnvelopeAt, BsTelegram, BsCode } from 'react-icons/bs';
 
 const config: BlogConfig = {
   title: "situ2001",
@@ -12,11 +12,11 @@ const config: BlogConfig = {
     greeting: "I am situ2001.",
     description: "I am a software developer. In my spare time, I enjoy tinkering with various projects, creating tools and apps for both personal enjoyment and the benefit of the community. I love sharing my insights online and diving deep into anything that truly fascinates me, not just technology.",
     contacts: [
-      { name: "GitHub", link: "https://github.com/situ2001", icon: FaGithub, },
-      { name: "Twitter/X", link: "https://twitter.com/situ200l", icon: FaXTwitter, },
-      { name: "Telegram", link: "https://t.me/situ2001_channel", icon: FaTelegram, },
-      { name: "Instagram", link: "https://instagram.com/situ2oo1", icon: FaInstagram, },
-      { name: "Email", link: "mailto:dogecong@gmail.com", icon: FaEnvelope, },
+      { name: "GitHub", link: "https://github.com/situ2001", icon: BsGithub },
+      { name: "Twitter/X", link: "https://twitter.com/situ200l", icon: BsTwitterX },
+      { name: "Telegram", link: "https://t.me/situ2001_channel", icon: BsTelegram },
+      { name: "Instagram", link: "https://instagram.com/situ2oo1", icon: BsInstagram },
+      { name: "Email", link: "mailto:dogecong@gmail.com", icon: BsEnvelopeAt },
     ]
   },
 
@@ -29,7 +29,7 @@ const config: BlogConfig = {
   },
 
   roles: [
-    { title: "Web Dev", at: "TME", icon: FaLaptop },
+    { title: "Web Dev", at: "TME", icon: BsCode },
   ],
 
   projects: [
