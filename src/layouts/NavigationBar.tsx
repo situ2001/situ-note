@@ -15,9 +15,8 @@ const NavigationBar = (
   { items }: { items: NavigationItem[] }
 ) => {
   const [isIntersecting, setIsIntersecting] = useState(false);
-  const headerRef = useRef<HTMLHeadElement>(null);
-
   const { isMobile, isTouch } = useEnvInfo();
+  const headerRef = useRef<HTMLHeadElement>(null);
 
   useEffect(() => {
     const onScroll = () => {
@@ -54,12 +53,10 @@ const NavigationBar = (
           </a>
         </h2>
 
-        <div className="right flex items-center gap-2.5">
+        <div className="right flex items-center gap-3">
           {items.map((menu, index) => {
             const forceMinimal = menu.forceMinimal;
             const autoMinimal = menu.autoMinimal;
-
-            const Icon = menu.icon;
 
             const classNameForText = (() => {
               if (forceMinimal) return clsx('hidden');
@@ -83,9 +80,11 @@ const NavigationBar = (
 
             const onPointerLeave = () => globalState.heroSectionHint.action.resetHint();
 
+            const Icon = menu.icon;
+
             return <React.Fragment key={index}>
               <h2
-                className={`${classNameForText}`}
+                className={classNameForText}
                 key={index}
                 onPointerEnter={onPointerEnter}
                 onPointerLeave={onPointerLeave}
@@ -95,7 +94,7 @@ const NavigationBar = (
               {
                 Icon &&
                 <a
-                  className={`${classNameForIcon}`}
+                  className={classNameForIcon}
                   href={menu.link}
                   title={menu.name}
                   key={index}
