@@ -85,7 +85,6 @@ const NavigationBar = (
             return <React.Fragment key={index}>
               <h2
                 className={classNameForText}
-                key={index}
                 onPointerEnter={onPointerEnter}
                 onPointerLeave={onPointerLeave}
               >
@@ -97,7 +96,6 @@ const NavigationBar = (
                   className={classNameForIcon}
                   href={menu.link}
                   title={menu.name}
-                  key={index}
                   onPointerEnter={onPointerEnter}
                   onPointerLeave={onPointerLeave}
                 >
