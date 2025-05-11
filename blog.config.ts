@@ -2,7 +2,7 @@ import type { BlogConfig } from './types';
 
 import { BsGithub, BsTwitterX, BsInstagram, BsEnvelopeAt, BsTelegram, BsLinkedin } from 'react-icons/bs';
 import { BsRss } from "react-icons/bs";
-import { Keyboard, GroupObjects, Migrate, Query, CharacterFraction } from '@carbon/icons-react';
+import { Friendship, Keyboard, GroupObjects, Migrate, Query, CharacterFraction } from '@carbon/icons-react';
 import Mcp from './src/assets/mcp.svg';
 
 const config: BlogConfig = {
@@ -27,7 +27,8 @@ const config: BlogConfig = {
   nav: {
     items: [
       { name: "Blog", link: "/blog", greeting: "Check my thoughts and ideas." },
-      { name: "Friends", link: "/friends", greeting: "You can visit my friends." },
+      { name: "Projects", link: "/projects", greeting: "Check my projects." },
+      { name: "Friends", link: "/friends", greeting: "You can visit my friends.", icon: Friendship, autoMinimal: true },
       { name: "RSS", link: "/rss.xml", greeting: "Why not subscribe to my RSS feed?", icon: BsRss, forceMinimal: true },
     ]
   },
