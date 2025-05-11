@@ -1,6 +1,6 @@
 import type { BlogConfig } from './types';
 
-import { BsGithub, BsTwitterX, BsInstagram, BsEnvelopeAt, BsTelegram, BsCode } from 'react-icons/bs';
+import { BsGithub, BsTwitterX, BsInstagram, BsEnvelopeAt, BsTelegram, BsCode, BsLinkedin } from 'react-icons/bs';
 
 const config: BlogConfig = {
   title: "situ2001",
@@ -17,6 +17,7 @@ const config: BlogConfig = {
       { name: "Telegram", link: "https://t.me/situ2001_channel", icon: BsTelegram },
       { name: "Instagram", link: "https://instagram.com/situ2oo1", icon: BsInstagram },
       { name: "Email", link: "mailto:dogecong@gmail.com", icon: BsEnvelopeAt },
+      { name: "LinkedIn", link: "https://www.linkedin.com/in/situ2001/", icon: BsLinkedin },
     ]
   },
 
@@ -28,9 +29,7 @@ const config: BlogConfig = {
     ]
   },
 
-  roles: [
-    { title: "Web Dev", at: "TME", icon: BsCode },
-  ],
+  roles: [],
 
   projects: [
     // {
