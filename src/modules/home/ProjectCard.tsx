@@ -1,5 +1,7 @@
-import { isPlainObject } from "es-toolkit";
+import React from "react";
+import * as ReactIs from "react-is";
 import Card from "../../components/common/Card";
+
 
 interface CardProps {
   title: string;
@@ -17,23 +19,22 @@ const ProjectCard = ({ title, description, link, icon }: CardProps) => {
     if (typeof icon === 'string') {
       return <img
         src={icon as string}
-        alt=""
-        className="w-6 h-6 object-contain"
+        alt={title}
+        className="w-12 h-12 p-3 object-contain"
       />;
     }
 
-    if (typeof icon === 'function') {
-      const IconComponent = icon as any;
+    if (typeof icon === 'function' && (icon as any).src !== undefined) {
+      return <img
+        src={(icon as any).src}
+        alt={title}
+        className="w-12 h-12 p-3 object-contain"
+      />;
+    }
 
-      if (IconComponent.src !== undefined) {
-        return <img
-          src={IconComponent.src}
-          alt={IconComponent.alt}
-          className="w-6 h-6 object-contain"
-        />;
-      }
-
-      return <IconComponent size={20} className="text-zinc-600 dark:text-zinc-400" />
+    if (ReactIs.isValidElementType(icon)) {
+      const IconComponent = icon as React.ElementType;
+      return <IconComponent alt={title} size={20} className="w-12 h-12 p-3 text-zinc-600 dark:text-zinc-400" />
     }
 
     return <span className="text-zinc-600 dark:text-zinc-400 text-xl font-medium">
@@ -48,17 +49,16 @@ const ProjectCard = ({ title, description, link, icon }: CardProps) => {
       rel="noopener noreferrer"
       className="block h-full"
     >
-      <Card className="h-full relative group">
-        <div className="flex flex-col gap-3 h-full">
-          <div className="flex items-center gap-3">
-            <div className="shrink-0 w-10 h-10 flex items-center justify-center bg-zinc-200 dark:bg-zinc-700 rounded-lg overflow-hidden">
-              {iconComp}
-            </div>
+      <Card className="h-full group flex flex-row gap-4">
+        <div className="shrink-0 my-auto flex items-center justify-center overflow-hidden">
+          {iconComp}
+        </div>
 
-            <h3 className="">{title}</h3>
-          </div>
-
-          <p className="text-zinc-600 dark:text-zinc-400 text-sm transition ease-in-out duration-200 opacity-50 group-hover:opacity-75">{description}</p>
+        <div className="flex flex-col h-full">
+          <h3>{title}</h3>
+          <p className="text-zinc-600 dark:text-zinc-400 text-sm transition ease-in-out duration-200 opacity-50 group-hover:opacity-75">
+            {description}
+          </p>
         </div>
       </Card>
     </a>

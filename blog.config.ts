@@ -6,6 +6,7 @@ import { FaRegObjectGroup, FaSearchLocation } from "react-icons/fa";
 import { FaKeyboard } from "react-icons/fa6";
 import { GoNumber } from "react-icons/go";
 import { BsRss } from "react-icons/bs";
+import { Keyboard, GroupObjects, Migrate, Query, CharacterFraction } from '@carbon/icons-react';
 
 import Mcp from './src/assets/mcp.svg';
 
@@ -44,7 +45,7 @@ const config: BlogConfig = {
       title: "KeyPhantom",
       description: "Send keyboard events silently to background macOS applications.",
       link: "https://github.com/situ2001/KeyPhantom",
-      icon: FaKeyboard
+      icon: Keyboard
     },
     {
       title: "Unplugin MCP",
@@ -56,26 +57,26 @@ const config: BlogConfig = {
       title: "Obsidian Tab Group Arrangement",
       description: "Arrange your tabs in Obsidian like vscode.",
       link: "https://github.com/situ2001/obsidian-tab-group-arrangement",
-      icon: FaRegObjectGroup
+      icon: GroupObjects
     },
     {
       title: "gitea-bulk-migration",
       description: "CLI for bulk migration of repositories to Gitea.",
       link: "https://github.com/situ2001/gitea-bulk-migration",
-      icon: TbPackageExport
+      icon: Migrate
     },
 
     {
       title: "which-npm",
       description: "CLI for locating the npm package of a given filename or path.",
       link: "https://github.com/situ2001/which-npm",
-      icon: FaSearchLocation
+      icon: Query
     },
     {
       title: "oh-pluralize",
       description: "Pluralize library for OpenHarmony.",
       link: "https://github.com/situ2001/oh-pluralize",
-      icon: GoNumber
+      icon: CharacterFraction
     },
   ],
 

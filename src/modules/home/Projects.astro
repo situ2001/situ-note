@@ -1,5 +1,4 @@
 ---
-// filepath: /Users/situ/Codes/situ-note/src/modules/home/Projects.astro
 import ProjectCard from "./ProjectCard";
 
 import config from "config";
@@ -11,14 +10,12 @@ const projects = config.projects ?? [];
     <div class="relative">
       <div class="flex flex-col md:grid md:grid-cols-2 gap-4">
         {projects.map((project, index) => (
-          <div class="h-full">
-            <ProjectCard
-              title={project.title}
-              description={project.description}
-              link={project.link}
-              icon={project.icon}
-            />
-          </div>
+          <ProjectCard
+            title={project.title}
+            description={project.description}
+            link={project.link}
+            icon={project.icon}
+          />
         ))}
       </div>
     </div>
