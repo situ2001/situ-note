@@ -3,19 +3,16 @@ import { throttle } from "es-toolkit";
 import { isTwoElementsIntersecting } from "../utils/intersection";
 import SiteLogo from "../components/SiteLogo";
 import clsx from 'clsx';
-import globalState from '../store';
-import useEnvInfo from '../lib/useEnvInfo';
-
 import type { NavigationItem } from 'types';
 import config from 'config';
 import React from 'react';
+
 const menuItem = config.nav.items;
 
 const NavigationBar = (
   { items }: { items: NavigationItem[] }
 ) => {
   const [isIntersecting, setIsIntersecting] = useState(false);
-  const { isMobile, isTouch } = useEnvInfo();
   const headerRef = useRef<HTMLHeadElement>(null);
 
   useEffect(() => {
@@ -72,21 +69,11 @@ const NavigationBar = (
               return clsx('hidden');
             })();
 
-            const onPointerEnter = () => {
-              return menu.greeting
-                && !(isMobile || isTouch)
-                && globalState.heroSectionHint.state.set(menu.greeting)
-            };
-
-            const onPointerLeave = () => globalState.heroSectionHint.action.resetHint();
-
             const Icon = menu.icon;
 
             return <React.Fragment key={index}>
               <h2
                 className={classNameForText}
-                onPointerEnter={onPointerEnter}
-                onPointerLeave={onPointerLeave}
               >
                 <a href={menu.link} title={menu.name}>{menu.name}</a>
               </h2>
@@ -96,8 +83,6 @@ const NavigationBar = (
                   className={classNameForIcon}
                   href={menu.link}
                   title={menu.name}
-                  onPointerEnter={onPointerEnter}
-                  onPointerLeave={onPointerLeave}
                 >
                   <Icon size={16} />
                 </a>

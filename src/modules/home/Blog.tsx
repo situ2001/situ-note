@@ -1,8 +1,4 @@
-import clsx from "clsx";
 import type { Post } from "../../api/blog";
-import Button from "../../components/common/Button";
-import underline from '../../components/AnimatedUnderline/index.module.css';
-import Card from "../../components/common/Card";
 import { BlogListItem } from "@/components/BlogListItem";
 import More from "@/components/common/More";
 
@@ -14,7 +10,7 @@ const Blog = ({
   return (
     <section>
       <header
-        className="flex items-center justify-between mb-4"
+        className="flex items-center justify-between mb-2"
       >
         <h2 className="text-xl font-medium">
           Blogs
