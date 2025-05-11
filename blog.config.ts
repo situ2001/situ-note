@@ -1,6 +1,13 @@
 import type { BlogConfig } from './types';
 
-import { BsGithub, BsTwitterX, BsInstagram, BsEnvelopeAt, BsTelegram, BsCode, BsLinkedin } from 'react-icons/bs';
+import { BsGithub, BsTwitterX, BsInstagram, BsEnvelopeAt, BsTelegram, BsCode, BsLinkedin, BsPen, BsKeyboard, BsWindow, BsBuilding } from 'react-icons/bs';
+import { TbPackageExport } from "react-icons/tb";
+import { FaRegObjectGroup, FaSearchLocation } from "react-icons/fa";
+import { FaKeyboard } from "react-icons/fa6";
+import { GoNumber } from "react-icons/go";
+
+import Mcp from './src/assets/mcp.svg';
+
 
 const config: BlogConfig = {
   title: "situ2001",
@@ -32,14 +39,43 @@ const config: BlogConfig = {
   roles: [],
 
   projects: [
-    // {
-    //   title: "Situ Note",
-    //   description: "My personal website. This is what you are looking at right now.",
-    //   link: "https://situ2001.com",
-    //   tags: ["Astro", "React", "Tailwind CSS"],
-    //   // icon: FiBook,
-    //   featured: true
-    // }
+    {
+      title: "KeyPhantom",
+      description: "Send keyboard events silently to background macOS applications.",
+      link: "https://github.com/situ2001/KeyPhantom",
+      icon: FaKeyboard
+    },
+    {
+      title: "Unplugin MCP",
+      description: "Let AI know more about your code and build process from JS bundlers.",
+      link: "https://github.com/situ2001/unplugin-mcp",
+      icon: Mcp
+    },
+    {
+      title: "Obsidian Tab Group Arrangement",
+      description: "Arrange your tabs in Obsidian like vscode.",
+      link: "https://github.com/situ2001/obsidian-tab-group-arrangement",
+      icon: FaRegObjectGroup
+    },
+    {
+      title: "gitea-bulk-migration",
+      description: "CLI for bulk migration of repositories to Gitea.",
+      link: "https://github.com/situ2001/gitea-bulk-migration",
+      icon: TbPackageExport
+    },
+
+    {
+      title: "which-npm",
+      description: "A CLI tool to locate the npm package of a given filename or path.",
+      link: "https://github.com/situ2001/which-npm",
+      icon: FaSearchLocation
+    },
+    {
+      title: "oh-pluralize",
+      description: "Pluralize library for OpenHarmony.",
+      link: "https://github.com/situ2001/oh-pluralize",
+      icon: GoNumber
+    },
   ],
 
   friends: [

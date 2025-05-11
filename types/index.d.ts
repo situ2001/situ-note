@@ -64,7 +64,5 @@ export interface Project {
   description: string;
   link: string;
   icon?: string | React.ElementType;
-  tags: string[];
   featured?: boolean;
-
 }
