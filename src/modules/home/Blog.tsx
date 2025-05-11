@@ -12,11 +12,9 @@ const Blog = ({
   posts: Post[]
 }) => {
   return (
-    <section className={clsx(
-      "h-full flex flex-col gap-4",
-    )}>
+    <section>
       <header
-        className="flex items-center justify-between"
+        className="flex items-center justify-between mb-4"
       >
         <h2 className="text-xl font-medium">
           Blogs
