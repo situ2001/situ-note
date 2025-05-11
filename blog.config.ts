@@ -66,7 +66,7 @@ const config: BlogConfig = {
 
     {
       title: "which-npm",
-      description: "A CLI tool to locate the npm package of a given filename or path.",
+      description: "CLI for locating the npm package of a given filename or path.",
       link: "https://github.com/situ2001/which-npm",
       icon: FaSearchLocation
     },
