@@ -1,15 +1,9 @@
 import type { BlogConfig } from './types';
 
 import { BsGithub, BsTwitterX, BsInstagram, BsEnvelopeAt, BsTelegram, BsLinkedin } from 'react-icons/bs';
-import { TbPackageExport } from "react-icons/tb";
-import { FaRegObjectGroup, FaSearchLocation } from "react-icons/fa";
-import { FaKeyboard } from "react-icons/fa6";
-import { GoNumber } from "react-icons/go";
 import { BsRss } from "react-icons/bs";
 import { Keyboard, GroupObjects, Migrate, Query, CharacterFraction } from '@carbon/icons-react';
-
 import Mcp from './src/assets/mcp.svg';
-
 
 const config: BlogConfig = {
   title: "situ2001",
