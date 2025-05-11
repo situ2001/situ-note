@@ -32,28 +32,13 @@ importers:
       '@fontsource-variable/noto-sans':
         specifier: ^5.2.7
         version: 5.2.7
-      '@fontsource-variable/noto-sans-jp':
-        specifier: ^5.2.5
-        version: 5.2.5
-      '@fontsource-variable/noto-sans-mono':
-        specifier: ^5.2.7
-        version: 5.2.7
       '@fontsource-variable/noto-sans-sc':
-        specifier: ^5.2.5
-        version: 5.2.5
-      '@fontsource-variable/noto-sans-tc':
         specifier: ^5.2.5
         version: 5.2.5
       '@fontsource-variable/noto-serif':
         specifier: ^5.2.7
         version: 5.2.7
-      '@fontsource-variable/noto-serif-jp':
-        specifier: ^5.2.5
-        version: 5.2.5
       '@fontsource-variable/noto-serif-sc':
-        specifier: ^5.2.5
-        version: 5.2.5
-      '@fontsource-variable/noto-serif-tc':
         specifier: ^5.2.5
         version: 5.2.5
       '@fontsource/fira-code':
@@ -526,29 +511,14 @@ packages:
   '@fontsource-variable/inconsolata@5.2.5':
     resolution: {integrity: sha512-CqYyjFNuArFv+cLRQodR+A9jJm2UMnBoP29yjYqjkd7Cgwz3pnMs3p68kmUb6VD/UqpDQR3deYTwa7RWFPOFew==}
 
-  '@fontsource-variable/noto-sans-jp@5.2.5':
-    resolution: {integrity: sha512-+ieDlugS+FCva2eLahVgybiaPMs1xLcBYByflzw1WghvFPFNJzsQHw85N+dadXzaqccVTiVDGYW4E0bMv4CHAQ==}
-
-  '@fontsource-variable/noto-sans-mono@5.2.7':
-    resolution: {integrity: sha512-qUqv/hB0linfL0IyDrqmkco3TcTunpdGgjvzuSfLPOYqcLxbc2zsMUhpyRPpUxjZbv6zvBGpoVcdh1Od5JxLrQ==}
-
   '@fontsource-variable/noto-sans-sc@5.2.5':
     resolution: {integrity: sha512-TRxlLdbTMNq7XbTQN6XYsx8fdlg9MGZE5tVGzqCRi3audF4yugjino1NuwaKd5La+063qTSFXoRJf+sBv1ATXg==}
-
-  '@fontsource-variable/noto-sans-tc@5.2.5':
-    resolution: {integrity: sha512-oaAn5hkLxraNBOWuiqyJ6+t1SmQ9Sszmcs+wJpmAmUO/1dsaHjDU5HXEjutvPpucqVeqdvVNr/kHRx+ghdiPeA==}
 
   '@fontsource-variable/noto-sans@5.2.7':
     resolution: {integrity: sha512-VaA+clV7xTOx+pSOdyjr9nR7khjrJGr7ZHs2KXlx+AqLyG/SUVBadNwauCH0rvF/eZkZr67neNxdKMOLtVxweg==}
 
-  '@fontsource-variable/noto-serif-jp@5.2.5':
-    resolution: {integrity: sha512-PdngRvPWgJbTG1TZPif07iadzffw3XHCBX+x5iKrtkwL7oHUGsMJYzAJtrd9m4LHcSxGnRvLJDjL7cmCckYNdw==}
-
   '@fontsource-variable/noto-serif-sc@5.2.5':
     resolution: {integrity: sha512-ivh4bYPNJD14jbODrpKHXiqACYpO+j+/dfgxjiJit0wVfNkPGrABmGqeOLFEPO+qzeX0X1odu18/ddCcdd3BSw==}
-
-  '@fontsource-variable/noto-serif-tc@5.2.5':
-    resolution: {integrity: sha512-RrPBzh4iZvlYZ+sbTje8tv3Wu3EKW4WeLlV2qiI22RFreYT+coOBUoeuj6zduqd7oRoChrzbhc9Prlop1zLYnA==}
 
   '@fontsource-variable/noto-serif@5.2.7':
     resolution: {integrity: sha512-Ef6CdY0N/qoAdaLObLjF/U4kPT9k6L7P+TWEnjJoP153JwOEVL9W7Tew0cOXxjXoCbh5TAE7k29i4bPoVuKKcA==}
@@ -4133,21 +4103,11 @@ snapshots:
 
   '@fontsource-variable/inconsolata@5.2.5': {}
 
-  '@fontsource-variable/noto-sans-jp@5.2.5': {}
-
-  '@fontsource-variable/noto-sans-mono@5.2.7': {}
-
   '@fontsource-variable/noto-sans-sc@5.2.5': {}
-
-  '@fontsource-variable/noto-sans-tc@5.2.5': {}
 
   '@fontsource-variable/noto-sans@5.2.7': {}
 
-  '@fontsource-variable/noto-serif-jp@5.2.5': {}
-
   '@fontsource-variable/noto-serif-sc@5.2.5': {}
-
-  '@fontsource-variable/noto-serif-tc@5.2.5': {}
 
   '@fontsource-variable/noto-serif@5.2.7': {}
 
