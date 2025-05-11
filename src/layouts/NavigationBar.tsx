@@ -8,6 +8,7 @@ import useEnvInfo from '../lib/useEnvInfo';
 
 import type { NavigationItem } from 'types';
 import config from 'config';
+import React from 'react';
 const menuItem = config.nav.items;
 
 const NavigationBar = (
@@ -40,22 +41,39 @@ const NavigationBar = (
     <header
       ref={headerRef}
       className={clsx(
-        'p-2 lg:mt-4 lg:mb-4 top-0 sticky transition-colors duration-300 z-10',
+        'p-2.5 lg:mt-4 lg:mb-4 top-0 sticky transition-colors duration-300 z-10',
         isIntersecting
           ? ['bg-zinc-100', 'dark:bg-zinc-800']
           : ['dark:bg-zinc-900']
       )}
     >
-      <nav className="flex justify-between text-xl mx-auto max-w-screen-lg">
+      <nav className="flex justify-between mx-auto max-w-screen-lg">
         <h2 className="left">
           <a href="/" className="font-serif">
             <SiteLogo />
           </a>
         </h2>
 
-        <div className="right flex items-center gap-4">
+        <div className="right flex items-center gap-2.5">
           {items.map((menu, index) => {
-            const shouldMinimal = menu.forceMinimal || (menu.autoMinimal && isMobile);
+            const forceMinimal = menu.forceMinimal;
+            const autoMinimal = menu.autoMinimal;
+
+            const Icon = menu.icon;
+
+            const classNameForText = (() => {
+              if (forceMinimal) return clsx('hidden');
+              if (autoMinimal) return clsx('hidden md:block');
+
+              return clsx('block');
+            })();
+
+            const classNameForIcon = (() => {
+              if (forceMinimal) return clsx('block');
+              if (autoMinimal) return clsx('block md:hidden');
+
+              return clsx('hidden');
+            })();
 
             const onPointerEnter = () => {
               return menu.greeting
@@ -65,26 +83,29 @@ const NavigationBar = (
 
             const onPointerLeave = () => globalState.heroSectionHint.action.resetHint();
 
-            if (menu.icon && shouldMinimal) {
-              const Icon = menu.icon;
-              return <a
-                href={menu.link}
-                title={menu.name}
+            return <React.Fragment key={index}>
+              <h2
+                className={`${classNameForText}`}
                 key={index}
                 onPointerEnter={onPointerEnter}
                 onPointerLeave={onPointerLeave}
               >
-                <Icon />
-              </a>
-            }
-
-            return <h2
-              key={index}
-              onPointerEnter={onPointerEnter}
-              onPointerLeave={onPointerLeave}
-            >
-              <a href={menu.link} title={menu.name}>{menu.name}</a>
-            </h2>
+                <a href={menu.link} title={menu.name}>{menu.name}</a>
+              </h2>
+              {
+                Icon &&
+                <a
+                  className={`${classNameForIcon}`}
+                  href={menu.link}
+                  title={menu.name}
+                  key={index}
+                  onPointerEnter={onPointerEnter}
+                  onPointerLeave={onPointerLeave}
+                >
+                  <Icon size={16} />
+                </a>
+              }
+            </React.Fragment>
           })}
         </div>
       </nav>

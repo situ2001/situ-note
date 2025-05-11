@@ -1,3 +1,4 @@
+import type { CarbonIconType } from "@carbon/icons-react";
 import type { IconType } from "react-icons/lib";
 
 export interface BlogConfig {
@@ -38,7 +39,7 @@ export interface NavigationItem {
 
   forceMinimal?: boolean;
   autoMinimal?: boolean;
-  icon?: IconType;
+  icon?: IconType | CarbonIconType;
 
   /**
    * Used for replacing greeting in the hero section.

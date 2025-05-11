@@ -15,7 +15,7 @@
   max-width: fit-content;
   overflow: hidden;
 
-  --centered-val: 1.25rem;
+  --centered-val: 1rem;
   font-family: 'Inconsolata Variable', sans-serif;
   font-size: var(--centered-val);
   line-height: var(--centered-val);
