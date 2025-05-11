@@ -50,7 +50,7 @@ const NavigationBar = (
           </a>
         </h2>
 
-        <div className="right flex items-center gap-3">
+        <div className="right flex items-center gap-4">
           {items.map((menu, index) => {
             const forceMinimal = menu.forceMinimal;
             const autoMinimal = menu.autoMinimal;
