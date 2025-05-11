@@ -4,6 +4,7 @@ import Button from "../../components/common/Button";
 import underline from '../../components/AnimatedUnderline/index.module.css';
 import Card from "../../components/common/Card";
 import { BlogListItem } from "@/components/BlogListItem";
+import More from "@/components/common/More";
 
 const Blog = ({
   posts
@@ -21,9 +22,7 @@ const Blog = ({
           Blogs
         </h2>
 
-        <a href="/blog">
-          <Button text="More" className="ml-auto text-sm opacity-50" />
-        </a>
+        <More href="/blog" />
       </header>
       <ul>
         {posts.map((post) => <BlogListItem post={post} key={post.slug} />)}

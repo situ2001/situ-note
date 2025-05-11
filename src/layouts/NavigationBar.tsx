@@ -54,21 +54,38 @@ const NavigationBar = (
         </h2>
 
         <div className="right flex items-center gap-4">
-          {items.map((menu, index) => (
-            <h2
+          {items.map((menu, index) => {
+            const shouldMinimal = menu.forceMinimal || (menu.autoMinimal && isMobile);
+
+            const onPointerEnter = () => {
+              return menu.greeting
+                && !(isMobile || isTouch)
+                && globalState.heroSectionHint.state.set(menu.greeting)
+            };
+
+            const onPointerLeave = () => globalState.heroSectionHint.action.resetHint();
+
+            if (menu.icon && shouldMinimal) {
+              const Icon = menu.icon;
+              return <a
+                href={menu.link}
+                title={menu.name}
+                key={index}
+                onPointerEnter={onPointerEnter}
+                onPointerLeave={onPointerLeave}
+              >
+                <Icon />
+              </a>
+            }
+
+            return <h2
               key={index}
-              onPointerEnter={
-                () => menu.greeting
-                  && !(isMobile || isTouch)
-                  && globalState.heroSectionHint.state.set(menu.greeting)
-              }
-              onPointerLeave={
-                () => globalState.heroSectionHint.action.resetHint()
-              }
+              onPointerEnter={onPointerEnter}
+              onPointerLeave={onPointerLeave}
             >
               <a href={menu.link} title={menu.name}>{menu.name}</a>
             </h2>
-          ))}
+          })}
         </div>
       </nav>
     </header>

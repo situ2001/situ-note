@@ -1,13 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import config from "config";
-import {
-  HeroSection,
-  Roles,
-  Projects,
-  Blog,
-  Categories,
-} from "../modules/home";
+
+import More from "@/components/common/More";
+import { HeroSection, Roles, Projects, Blog } from "@/modules/home";
 import {
   getRecentKPosts,
   getPostSortedByDate,
@@ -43,7 +39,11 @@ const postsGroupByCategory = getPostsGroupByCategory(
     {
       config.projects && config.projects.length > 0 && (
         <section>
-          <Projects client:load />
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-xl font-medium">Projects</h2>
+            <More href="/projects" />
+          </div>
+          <Projects />
         </section>
       )
     }

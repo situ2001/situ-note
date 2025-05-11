@@ -5,6 +5,7 @@ import { TbPackageExport } from "react-icons/tb";
 import { FaRegObjectGroup, FaSearchLocation } from "react-icons/fa";
 import { FaKeyboard } from "react-icons/fa6";
 import { GoNumber } from "react-icons/go";
+import { BsRss } from "react-icons/bs";
 
 import Mcp from './src/assets/mcp.svg';
 
@@ -32,7 +33,7 @@ const config: BlogConfig = {
     items: [
       { name: "Blog", link: "/blog", greeting: "Check my thoughts and ideas." },
       { name: "Friends", link: "/friends", greeting: "You can visit my friends." },
-      { name: "RSS", link: "/rss.xml", greeting: "Why not subscribe to my RSS feed?" },
+      { name: "RSS", link: "/rss.xml", greeting: "Why not subscribe to my RSS feed?", icon: BsRss, forceMinimal: true },
     ]
   },
 

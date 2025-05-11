@@ -36,6 +36,10 @@ export interface NavigationItem {
   name: string;
   link: string;
 
+  forceMinimal?: boolean;
+  autoMinimal?: boolean;
+  icon?: IconType;
+
   /**
    * Used for replacing greeting in the hero section.
    */
