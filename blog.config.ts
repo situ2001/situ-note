@@ -1,6 +1,6 @@
 import type { BlogConfig } from './types';
 
-import { BsGithub, BsTwitterX, BsInstagram, BsEnvelopeAt, BsTelegram, BsCode, BsLinkedin, BsPen, BsKeyboard, BsWindow, BsBuilding } from 'react-icons/bs';
+import { BsGithub, BsTwitterX, BsInstagram, BsEnvelopeAt, BsTelegram, BsLinkedin } from 'react-icons/bs';
 import { TbPackageExport } from "react-icons/tb";
 import { FaRegObjectGroup, FaSearchLocation } from "react-icons/fa";
 import { FaKeyboard } from "react-icons/fa6";
