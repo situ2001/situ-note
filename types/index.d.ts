@@ -28,8 +28,6 @@ export interface BlogConfig {
    */
   friends?: Friend[];
 
-  roles?: Role[],
-
   projects?: Project[],
 }
 

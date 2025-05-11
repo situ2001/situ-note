@@ -3,22 +3,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import config from "config";
 
 import More from "@/components/common/More";
-import { HeroSection, Roles, Blog } from "@/modules/home";
+import { HeroSection, Blog } from "@/modules/home";
 import Projects from "@/modules/home/Projects.astro";
-import {
-  getRecentKPosts,
-  getPostSortedByDate,
-  getPostsGroupByCategory,
-  posts as postsData,
-} from "@/api/blog";
+import { getRecentKPosts, posts as postsData } from "@/api/blog";
 
 const BLOG_TITLE = config.title;
 const BLOG_DESCRIPTION = config.description;
 
 const recentPosts = getRecentKPosts(postsData, 5);
-const postsGroupByCategory = getPostsGroupByCategory(
-  getPostSortedByDate(postsData)
-);
 ---
 
 <BaseLayout title={BLOG_TITLE} description={BLOG_DESCRIPTION}>
@@ -28,14 +20,6 @@ const postsGroupByCategory = getPostsGroupByCategory(
     >
       <HeroSection client:load />
     </section>
-
-    {
-      config.roles && config.roles.length > 0 && (
-        <section>
-          <Roles client:load />
-        </section>
-      )
-    }
 
     {
       config.projects && config.projects.length > 0 && (

@@ -33,8 +33,6 @@ const config: BlogConfig = {
     ]
   },
 
-  roles: [],
-
   projects: [
     {
       title: "KeyPhantom",
