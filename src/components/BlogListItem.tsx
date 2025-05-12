@@ -15,7 +15,7 @@ export function BlogListItem({
       className={
         clsx(
           "flex w-full flex-col md:flex-row justify-between",
-          "rounded-lg my-2.5 md:px-2",
+          "rounded-lg py-2.5 md:px-2",
           "transition-all active:scale-[0.995]",
           "md:hover:bg-zinc-100 md:hover:dark:bg-zinc-700",
         )
