@@ -5,14 +5,15 @@
 @import '@fontsource-variable/noto-sans-sc';
 @import '@fontsource-variable/noto-serif-sc';
 
-@import "@fontsource/fira-code";
+/* @import "@fontsource/fira-code"; */
+@import "@fontsource/maple-mono";
 
 :root {
   --font-sans: "Noto Sans Variable", "Segoe UI", "Droid Sans", "Helvetica Neue";
   --font-cjk-sans: 'Noto Sans SC Variable', "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei";
   --font-serif: "Noto Serif Variable", "Georgia", "Times New Roman";
   --font-cjk-serif: 'Noto Serif SC Variable', "Songti SC", "STSong", "Microsoft YaHei";
-  --font-mono: "Fira Code", monospace;
+  --font-mono: "Maple Mono","Fira Code", "monospace";
 }
 
 body {

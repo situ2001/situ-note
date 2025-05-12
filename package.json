@@ -25,6 +25,7 @@
     "@fontsource-variable/noto-serif": "^5.2.7",
     "@fontsource-variable/noto-serif-sc": "^5.2.5",
     "@fontsource/fira-code": "^5.2.6",
+    "@fontsource/maple-mono": "^5.2.5",
     "@nanostores/react": "^1.0.0",
     "@tailwindcss/vite": "^4.1.6",
     "astro": "^5.7.12",

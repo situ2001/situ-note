@@ -44,6 +44,9 @@ importers:
       '@fontsource/fira-code':
         specifier: ^5.2.6
         version: 5.2.6
+      '@fontsource/maple-mono':
+        specifier: ^5.2.5
+        version: 5.2.5
       '@nanostores/react':
         specifier: ^1.0.0
         version: 1.0.0(nanostores@1.0.1)(react@19.1.0)
@@ -525,6 +528,9 @@ packages:
 
   '@fontsource/fira-code@5.2.6':
     resolution: {integrity: sha512-wCkIpPm0BqlkCPLYeY4Vui96ODmVUV0/GpEe3OfJ4v8EJn/BF2SlyxvarFsTs1CKiGjrO2cXlIZbBrKi9F+hUQ==}
+
+  '@fontsource/maple-mono@5.2.5':
+    resolution: {integrity: sha512-iJR/yQj+7DatkzxJNMu3+1gvq1YOHhCjlS6MBOys/Fw/BEDnhC65mp3RZoBXDbk+00flvRO9b9G/IvxBk82Ekw==}
 
   '@ibm/telemetry-js@1.9.1':
     resolution: {integrity: sha512-qq8RPafUJHUQieXVCte1kbJEx6JctWzbA/YkXzopbfzIDRT2+hbR9QmgH+KH7bDDNRcDbdHWvHfwJKzThlMtPg==}
@@ -4112,6 +4118,8 @@ snapshots:
   '@fontsource-variable/noto-serif@5.2.7': {}
 
   '@fontsource/fira-code@5.2.6': {}
+
+  '@fontsource/maple-mono@5.2.5': {}
 
   '@ibm/telemetry-js@1.9.1': {}
 
