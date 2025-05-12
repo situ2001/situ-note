@@ -2,8 +2,7 @@ import type { BlogConfig } from './types';
 
 import { BsGithub, BsTwitterX, BsInstagram, BsEnvelopeAt, BsTelegram, BsLinkedin } from 'react-icons/bs';
 import { BsRss } from "react-icons/bs";
-import { Friendship, Keyboard, GroupObjects, Migrate, Query, CharacterFraction } from '@carbon/icons-react';
-import Mcp from './src/assets/mcp.svg';
+import { Friendship, Keyboard, GroupObjects, Migrate, Query, CharacterFraction, PromptTemplate } from '@carbon/icons-react';
 
 const config: BlogConfig = {
   title: "situ2001",
@@ -44,7 +43,7 @@ const config: BlogConfig = {
       title: "Unplugin MCP",
       description: "Let AI know more about your code and build process from JS bundlers.",
       link: "https://github.com/situ2001/unplugin-mcp",
-      icon: Mcp
+      icon: PromptTemplate,
     },
     {
       title: "Obsidian Tab Group Arrangement",
