@@ -15,17 +15,14 @@ import "../styles/blog-post.css";
 import { convertStringCategoriesToArray } from "../api/blog";
 import { interleave } from "../utils";
 import type { MarkdownHeading } from "astro";
+import MediumZoom from "@/components/MediumZoom";
 
 type Props = CollectionEntry<"blog">["data"] & { headings: MarkdownHeading[] };
 const { title, description, date, categories, headings } = Astro.props;
 ---
 
-<script>
-  import mediumZoom from "medium-zoom";
-  mediumZoom("article img");
-</script>
-
 <BaseLayout title={title} description={description}>
+  <MediumZoom selectors={["article img"]} client:only />
   <div class="max-w-screen-md mx-auto">
     <div class="font-serif mb-4">
       <h1 class="text-3xl mb-1">{title}</h1>
