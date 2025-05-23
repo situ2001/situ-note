@@ -85,7 +85,8 @@ const config: BlogConfig = {
     { name: 'cos', link: 'https://ysx.cosine.ren/' },
     { name: 'Corey Chiu', link: 'https://coreychiu.com' },
     { name: 'HuanXin', link: 'https://huanxin-chen.github.io/' },
-    { name: 'lz233', link: 'https://with.fish/' }
+    { name: 'lz233', link: 'https://with.fish/' },
+    { name: "liruifengv", link: "https://liruifengv.com" }
   ]
 }
 
