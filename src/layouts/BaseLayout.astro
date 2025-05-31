@@ -22,7 +22,9 @@ const year = new Date().getFullYear();
   <body
     class="bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-300 h-full"
   >
-    <TopNavigation client:load />
+    <header class="top-0 sticky">
+      <TopNavigation client:load />
+    </header>
     <main class="p-6 mx-auto max-w-screen-md">
       <slot />
     </main>

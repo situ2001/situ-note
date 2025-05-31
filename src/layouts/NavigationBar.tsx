@@ -34,16 +34,16 @@ const NavigationBar = (
   }, []);
 
   return (
-    <header
+    <nav
       ref={headerRef}
       className={clsx(
-        'p-2.5 lg:mt-4 lg:mb-4 top-0 sticky transition-colors duration-300 z-10',
+        'p-2.5 lg:mt-4 lg:mb-4 transition-colors duration-300 z-10',
         isIntersecting
           ? ['bg-zinc-100', 'dark:bg-zinc-800']
           : ['dark:bg-zinc-900']
       )}
     >
-      <nav className="flex justify-between mx-auto max-w-screen-lg">
+      <div className="flex justify-between mx-auto max-w-screen-lg">
         <h2 className="left">
           <a href="/" className="font-serif">
             <SiteLogo />
@@ -90,8 +90,8 @@ const NavigationBar = (
             </React.Fragment>
           })}
         </div>
-      </nav>
-    </header>
+      </div>
+    </nav>
   );
 };
 
