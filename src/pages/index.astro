@@ -22,9 +22,9 @@ const recentPosts = getRecentKPosts(postsData, 5);
   {
     config.projects && config.projects.length > 0 && (
       <section class="my-5">
-        <div class="flex items-center justify-between mb-4">
-          <h2 class="text-xl font-medium">Projects</h2>
-        </div>
+        <p class="flex items-center justify-between mb-4 text-xl font-medium">
+          Projects
+        </p>
         <Projects />
         <div class="my-4">
           <ViewMoreTips text="View all projects" href="/projects" />
@@ -34,14 +34,12 @@ const recentPosts = getRecentKPosts(postsData, 5);
   }
 
   <section class="mt-5">
-    <section>
-      <header class="flex items-center justify-between mb-2">
-        <h2 class="text-xl font-medium">Blogs</h2>
-      </header>
-      <ul>
-        {recentPosts.map((post) => <BlogListItem post={post} />)}
-      </ul>
-    </section>
+    <p class="flex items-center justify-between mb-2 text-xl font-medium">
+      Blogs
+    </p>
+    <ul>
+      {recentPosts.map((post) => <BlogListItem post={post} />)}
+    </ul>
     <div class="my-2">
       <ViewMoreTips text="View all posts" href="/blog" />
     </div>
