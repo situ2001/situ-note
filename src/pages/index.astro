@@ -2,10 +2,11 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import config from "config";
 
-import More from "@/components/common/More";
-import { HeroSection, Blog } from "@/modules/home";
+import { HeroSection } from "@/modules/home";
 import Projects from "@/modules/home/Projects.astro";
-import { getRecentKPosts, posts as postsData } from "@/api/blog";
+import { getRecentKPosts, posts, posts as postsData } from "@/api/blog";
+import ViewMoreTips from "@/components/ViewMoreTips.astro";
+import { BlogListItem } from "@/components/BlogListItem";
 
 const BLOG_TITLE = config.title;
 const BLOG_DESCRIPTION = config.description;
@@ -14,23 +15,35 @@ const recentPosts = getRecentKPosts(postsData, 5);
 ---
 
 <BaseLayout title={BLOG_TITLE} description={BLOG_DESCRIPTION}>
-  <section class="my-5">
+  <section class="mt-5 mb-7.5">
     <HeroSection />
   </section>
 
   {
     config.projects && config.projects.length > 0 && (
       <section class="my-5">
-        <div class="flex items-center justify-between mb-2">
+        <div class="flex items-center justify-between mb-4">
           <h2 class="text-xl font-medium">Projects</h2>
-          <More href="/projects" />
         </div>
         <Projects />
+        <div class="my-4">
+          <ViewMoreTips text="View all projects" href="/projects" />
+        </div>
       </section>
     )
   }
 
-  <section class="my-5">
-    <Blog posts={recentPosts} />
+  <section class="mt-5">
+    <section>
+      <header class="flex items-center justify-between mb-2">
+        <h2 class="text-xl font-medium">Blogs</h2>
+      </header>
+      <ul>
+        {recentPosts.map((post) => <BlogListItem post={post} />)}
+      </ul>
+    </section>
+    <div class="my-2">
+      <ViewMoreTips text="View all posts" href="/blog" />
+    </div>
   </section>
 </BaseLayout>

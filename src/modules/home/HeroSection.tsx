@@ -1,14 +1,11 @@
 import LinkButton from "../../components/IconLink";
-import useEnvInfo from "../../lib/useEnvInfo";
 import config from "config";
 
 const { contacts: links, description } = config.hero;
 
 export default function AboutMe() {
-  const { isMobile, isTouch } = useEnvInfo();
-
   return (
-    <>
+    <div className="">
       <div className="my-5">
         <h1 className="text-3xl font-bold">situ2001</h1>
       </div>
@@ -28,7 +25,7 @@ export default function AboutMe() {
       <div className="my-5">
         <Contact />
       </div>
-    </>
+    </div>
   );
 }
 

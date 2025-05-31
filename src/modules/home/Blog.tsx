@@ -1,6 +1,5 @@
 import type { Post } from "../../api/blog";
 import { BlogListItem } from "@/components/BlogListItem";
-import More from "@/components/common/More";
 
 const Blog = ({
   posts
@@ -15,8 +14,6 @@ const Blog = ({
         <h2 className="text-xl font-medium">
           Blogs
         </h2>
-
-        <More href="/blog" />
       </header>
       <ul>
         {posts.map((post) => <BlogListItem post={post} key={post.slug} />)}

@@ -1,0 +1,25 @@
+---
+import clsx from "clsx";
+
+interface Props {
+  text: string;
+  href: string;
+}
+
+const { text, href } = Astro.props;
+---
+
+<div class="text-center">
+  <a
+    href={href}
+    class={clsx(
+      "block px-4 py-2.5 rounded-md",
+      "hover:bg-zinc-100 hover:dark:bg-zinc-800 transition-colors",
+      "text-sm font-medium text-zinc-600 dark:text-zinc-400",
+      "transition-all active:scale-[0.98]",
+      "opacity-50"
+    )}
+  >
+    {text}
+  </a>
+</div>

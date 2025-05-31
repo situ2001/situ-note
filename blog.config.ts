@@ -37,25 +37,29 @@ const config: BlogConfig = {
       title: "KeyPhantom",
       description: "Send keyboard events silently to background macOS applications.",
       link: "https://github.com/situ2001/KeyPhantom",
-      icon: Keyboard
+      icon: Keyboard,
+      featured: true
     },
     {
       title: "Unplugin MCP",
       description: "Let AI know more about your code and build process from JS bundlers.",
       link: "https://github.com/situ2001/unplugin-mcp",
       icon: PromptTemplate,
+      featured: true
     },
     {
       title: "Obsidian Tab Group Arrangement",
       description: "Arrange your tabs in Obsidian like vscode.",
       link: "https://github.com/situ2001/obsidian-tab-group-arrangement",
-      icon: GroupObjects
+      icon: GroupObjects,
+      featured: true
     },
     {
       title: "gitea-bulk-migration",
       description: "CLI for bulk migration of repositories to Gitea.",
       link: "https://github.com/situ2001/gitea-bulk-migration",
-      icon: Migrate
+      icon: Migrate,
+      featured: true
     },
 
     {
