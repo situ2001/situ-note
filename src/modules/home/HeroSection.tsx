@@ -5,12 +5,9 @@ const { contacts: links, description } = config.hero;
 
 export default function AboutMe() {
   return (
-    <div className="">
-      <div className="my-5">
-        <h1 className="text-3xl font-bold">situ2001</h1>
-      </div>
-
-      <div className="my-5">
+    <div className="flex flex-col gap-5">
+      <h1 className="text-3xl font-bold">situ2001</h1>
+      <div>
         {
           Array.isArray(description)
             ?
@@ -21,25 +18,18 @@ export default function AboutMe() {
             <p>{description}</p>
         }
       </div>
-
-      <div className="my-5">
+      <div>
         <Contact />
       </div>
     </div>
   );
 }
 
-function Contact(props: {
-  onHoverChange?: (name: string) => void;
-}) {
+function Contact() {
   return (
     <div className="flex gap-4 flex-row">
       {links.map((link) => (
-        <div
-          key={link.name}
-          onPointerEnter={() => props.onHoverChange?.(link.name)}
-          onPointerLeave={() => props.onHoverChange?.("")}
-        >
+        <div key={link.name}>
           <LinkButton
             icon={link.icon}
             link={link.link}
