@@ -2,3 +2,5 @@ onlyBuiltDependencies:
   - '@carbon/icon-helpers'
   - '@carbon/icons-react'
   - '@tailwindcss/oxide'
+  - esbuild
+  - sharp
