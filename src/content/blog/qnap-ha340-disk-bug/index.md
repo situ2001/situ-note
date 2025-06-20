@@ -132,9 +132,7 @@ Advanced power management level: unknown setting (0x0000)
 
 这说明硬盘的 APM（Advanced Power Management）值为 `0x00`！这个值实际上是无法被 `hdparm -B` 直接设置的，参考 `hdparm -B` 的说明，这个命令不支持将 APM 的值设置为 `0x00`。
 
-```
-Set the Advanced Power Management feature. Possible values are between 1 and 255, low values mean more aggressive power management and higher values mean better performance. Values from 1 to 127 permit spin-down, whereas values from 128 to 254 do not. A value of 255 completely disables the feature.
-```
+> Set the Advanced Power Management feature. Possible values are between 1 and 255, *low values mean more aggressive power management and higher values mean better performance*. Values from 1 to 127 permit spin-down, whereas values from 128 to 254 do not. A value of 255 completely disables the feature.
 
 但是重读上述的话，似乎是这个 APM 值越小，硬盘的停转越频繁，会不会是这个值导致了硬盘的频繁启停？于是我尝试将 APM 值设置为 `254`，即不允许硬盘停转
 
