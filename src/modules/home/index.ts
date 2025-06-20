@@ -3,4 +3,3 @@ export { default as HeroSection } from './HeroSection';
 
 // Blog-related components
 export { default as Blog } from './Blog';
-export { default as Categories } from './Categories';
