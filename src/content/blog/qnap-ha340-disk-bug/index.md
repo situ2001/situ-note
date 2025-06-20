@@ -1,5 +1,5 @@
 ---
-title: QNAP NAS 西数 HA340 硬盘频繁启停问题排查与 hdparm 解决方法
+title: 西数 HA340 硬盘在 QNAP NAS 上频繁启停的问题排查与解决方法
 comments: true
 date: 2025-06-20 21:10:00
 categories: 技术
@@ -146,7 +146,7 @@ sudo hdparm -B 254 /dev/sdb
 Advanced power management level: unknown setting (0x00fe)
 ```
 
-此后，直到我写这篇文章时，启停次数也没有再异常增加
+此后，直到我写这篇文章时，启停次数也没有再异常增加。但要注意，在 NAS 重启后，这个设置会失效，即 APM 值的再次变回 `0x00`，需要每次重启后都重新执行一次 `hdparm -B 254 /dev/sdb` 命令来设置 APM 值
 
 真的是太玄学了，虽然我不知道这个问题的根源是什么，但至少目前这个问题是解决了
 
