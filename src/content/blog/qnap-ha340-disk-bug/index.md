@@ -2,7 +2,7 @@
 title: 西数 HA340 硬盘在 QNAP NAS 上频繁启停的问题排查与解决方法
 comments: true
 date: 2025-06-20 21:10:00
-categories: 技术
+categories: 技术, QNAP, 威联通, NAS
 description: 西数 HA340 硬盘在 QNAP NAS 上频繁启停的问题，经过排查发现是硬盘的 APM 值变为 0 导致的，可以通过 hdparm 命令进行设置这个值以进行规避
 ---
 
