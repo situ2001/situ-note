@@ -2,25 +2,17 @@
 import LinkButton from "../../components/IconLink";
 import config from "config";
 
-import { Picture } from 'astro:assets';
-import Avatar from "../../../public/avatar.png";
-
 const { contacts: links, description } = config.hero;
 ---
 
 <div class="flex flex-col gap-5 my-5">
   <div class="flex flex-col-reverse gap-5 md:flex-row justify-between md:mb-2.5">
     <h1 class="text-3xl font-bold mt-auto">situ2001</h1>
-    <Picture
-      src={Avatar}
-      formats={["avif", "webp"]}
-      alt="Avatar"
-      class="rounded-full w-24 h-24"
-      decoding="async"
-      loading="lazy"
-      width={300}
-      height={300}
-    />
+    <picture>
+      <source srcset="/avatar.avif" type="image/avif" />
+      <source srcset="/avatar.webp" type="image/webp" />
+      <img src="/avatar.png" alt="Avatar" class="w-24 h-24 rounded-full aspect-square" />
+    </picture>
   </div>
   <div>
     {
