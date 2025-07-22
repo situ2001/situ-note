@@ -1,6 +1,6 @@
 ---
 import BaseHtmlHead from "./BaseHtmlHead.astro";
-import TopNavigation from "./NavigationBar";
+import NavigationBar from "./NavigationBar";
 
 import config from "config";
 const { author } = config;
@@ -23,7 +23,7 @@ const year = new Date().getFullYear();
     class="bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-300 h-full"
   >
     <header class="top-0 sticky z-50">
-      <TopNavigation client:load />
+      <NavigationBar client:load />
     </header>
     <main class="p-6 mx-auto max-w-screen-md">
       <slot />

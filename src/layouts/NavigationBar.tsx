@@ -37,7 +37,7 @@ const NavigationBar = (
     <nav
       ref={headerRef}
       className={clsx(
-        'px-4 py-2.5 lg:mt-4 lg:mb-4 transition-colors duration-300',
+        'px-4 py-2.5 md:mt-4 md:mb-4 transition-colors duration-300',
         isIntersecting
           ? ['bg-zinc-100', 'dark:bg-zinc-800']
           : ['dark:bg-zinc-900']

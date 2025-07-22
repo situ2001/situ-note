@@ -12,7 +12,12 @@ const config: BlogConfig = {
 
   hero: {
     greeting: "I am situ2001.",
-    description: "I am a software developer. In my spare time, I enjoy tinkering with various projects, creating tools and apps for both personal enjoyment and the benefit of the community. I love sharing my insights online and diving deep into anything that truly fascinates me, not just technology.",
+    description: [
+      // TODO refactor to mdx
+      "I am a software developer.",
+      "In my spare time, I enjoy tinkering with various projects, creating tools and apps for both personal enjoyment and the benefit of the community.",
+      "I love sharing my insights online and diving deep into anything that truly fascinates me, not just technology."
+    ],
     contacts: [
       { name: "GitHub", link: "https://github.com/situ2001", icon: BsGithub },
       { name: "Twitter/X", link: "https://twitter.com/situ200l", icon: BsTwitterX },

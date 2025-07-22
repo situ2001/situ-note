@@ -2,7 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import config from "config";
 
-import { HeroSection } from "@/modules/home";
+import HeroSection from "@/modules/home/HeroSection.astro";
 import Projects from "@/modules/home/Projects.astro";
 import { getRecentKPosts, posts, posts as postsData } from "@/api/blog";
 import ViewMoreTips from "@/components/ViewMoreTips.astro";
@@ -17,27 +17,5 @@ const recentPosts = getRecentKPosts(postsData, 5);
 <BaseLayout title={BLOG_TITLE} description={BLOG_DESCRIPTION}>
   <section class="mt-5 mb-7.5">
     <HeroSection />
-  </section>
-
-  {
-    config.projects && config.projects.length > 0 && (
-      <section class="my-5">
-        <p class="mb-4 text-xl font-medium">Projects</p>
-        <Projects />
-        <div class="my-4">
-          <ViewMoreTips text="View all projects" href="/projects" />
-        </div>
-      </section>
-    )
-  }
-
-  <section class="mt-5">
-    <p class="mb-2 text-xl font-medium">Blog</p>
-    <ul>
-      {recentPosts.map((post) => <BlogListItem post={post} />)}
-    </ul>
-    <div class="my-2">
-      <ViewMoreTips text="View all posts" href="/blog" />
-    </div>
   </section>
 </BaseLayout>
