@@ -10,7 +10,7 @@ const friends = config.friends ?? [];
 ---
 
 <BaseLayout title="Friends" description="My friends">
-  <h1 class="text-2xl font-medium mb-4">Friends</h1>
+  <h1 class="text-3xl font-medium mb-8">Friends</h1>
 
   <div class="flex flex-col md:grid md:grid-cols-2 md:gap-4">
     {friends.map(({ name, link }) => <FriendCard name={name} link={link} />)}
