@@ -59,6 +59,7 @@
     "@types/react-dom": "^19.1.6",
     "@types/react-is": "^19.0.0",
     "@types/sanitize-html": "^2.16.0",
+    "babel-plugin-react-compiler": "19.1.0-rc.2",
     "typescript": "^5.8.3",
     "vitest": "^3.2.4",
     "zx": "^8.5.5"

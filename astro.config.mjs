@@ -15,7 +15,16 @@ import tailwindcss from "@tailwindcss/vite";
  */
 export default defineConfig({
   site: "https://situ2001.com",
-  integrations: [mdx(),sitemap(),react(),pagefind()],
+  integrations: [
+    mdx(),
+    sitemap(),
+    react({
+      babel: {
+        plugins: ['babel-plugin-react-compiler'],
+      }
+    }),
+    pagefind()
+  ],
   prefetch: true,
 
   vite: {
