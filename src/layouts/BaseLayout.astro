@@ -29,14 +29,14 @@ const year = new Date().getFullYear();
       <slot />
     </main>
   </body><footer
-    class="p-4 mx-auto max-w-screen-md text-center text-sm text-zinc-400"
+    class="p-6 mx-auto max-w-screen-md text-center text-sm text-zinc-400 flex flex-col-reverse gap-2 md:gap-0 md:flex-row justify-between"
   >
-    <p>
-      <a href="/changelog" class="underline">Changelog</a>
-    </p>
     <p>
       © {year}
       {author}. All rights reserved.
+    </p>
+    <p>
+      <a href="/changelog" class="underline">Changelog</a>
     </p>
   </footer>
 </html>
