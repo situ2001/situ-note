@@ -11,7 +11,6 @@ const config: BlogConfig = {
   email: "dogecong@gmail.com",
 
   hero: {
-    greeting: "I am situ2001.",
     description: [
       // TODO refactor to mdx
       "I am a software developer.",
@@ -30,10 +29,10 @@ const config: BlogConfig = {
 
   nav: {
     items: [
-      { name: "Blog", link: "/blog", greeting: "Check my thoughts and ideas." },
-      { name: "Projects", link: "/projects", greeting: "Check my projects." },
-      { name: "Friends", link: "/friends", greeting: "You can visit my friends.", icon: Friendship, autoMinimal: true },
-      { name: "RSS", link: "/rss.xml", greeting: "Why not subscribe to my RSS feed?", icon: BsRss, forceMinimal: true },
+      { name: "Blog", link: "/blog", },
+      { name: "Projects", link: "/projects"},
+      { name: "Friends", link: "/friends", icon: Friendship, autoMinimal: true },
+      { name: "RSS", link: "/rss.xml", icon: BsRss, forceMinimal: true },
     ]
   },
 

@@ -11,7 +11,6 @@ export interface BlogConfig {
    * Hero section. (首页的主体部分)
    */
   hero: {
-    greeting: string;
     description: string | string[];
     contacts: Contact[];
   },
@@ -38,11 +37,6 @@ export interface NavigationItem {
   forceMinimal?: boolean;
   autoMinimal?: boolean;
   icon?: IconType | CarbonIconType;
-
-  /**
-   * Used for replacing greeting in the hero section.
-   */
-  greeting?: string;
 }
 
 export interface Contact {
