@@ -2,7 +2,7 @@ import type { BlogConfig } from './types';
 
 import { BsGithub, BsTwitterX, BsInstagram, BsEnvelopeAt, BsTelegram, BsLinkedin } from 'react-icons/bs';
 import { BsRss } from "react-icons/bs";
-import { Friendship, Keyboard, GroupObjects, Migrate, Query, CharacterFraction, PromptTemplate } from '@carbon/icons-react';
+import { Friendship, Keyboard, GroupObjects, Migrate, Query, CharacterFraction, PromptTemplate, Automatic } from '@carbon/icons-react';
 
 const config: BlogConfig = {
   title: "situ2001",
@@ -30,7 +30,7 @@ const config: BlogConfig = {
   nav: {
     items: [
       { name: "Blog", link: "/blog", },
-      { name: "Projects", link: "/projects"},
+      { name: "Projects", link: "/projects" },
       { name: "Friends", link: "/friends", icon: Friendship, autoMinimal: true },
       { name: "RSS", link: "/rss.xml", icon: BsRss, forceMinimal: true },
     ]
@@ -78,6 +78,12 @@ const config: BlogConfig = {
       link: "https://github.com/situ2001/oh-pluralize",
       icon: CharacterFraction
     },
+    {
+      title: "auto-adb",
+      description: "Automatically execute commands when Android device is adb-connected.",
+      link: "https://github.com/situ2001/auto-adb",
+      icon: Automatic
+    }
   ],
 
   friends: [
