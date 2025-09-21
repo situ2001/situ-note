@@ -6,16 +6,13 @@ import { Friendship, Keyboard, GroupObjects, Migrate, Query, CharacterFraction, 
 
 const config: BlogConfig = {
   title: "situ2001",
-  description: "Personal website of situ2001",
+  description: "With curiosity, I explore tech; with empathy, I build value.",
   author: "situ2001",
   email: "dogecong@gmail.com",
 
   hero: {
     description: [
-      // TODO refactor to mdx
-      "I am a software developer.",
-      "In my spare time, I enjoy tinkering with various projects, creating tools and apps for both personal enjoyment and the benefit of the community.",
-      "I love sharing my insights online and diving deep into anything that truly fascinates me, not just technology."
+      "I enjoy creating and solving problems, and I am passionate about how technology can improve user experience. I am keen to explore the essence of things and pursue solutions that are simple yet thoughtfully designed. This curiosity and empathy drive me to undertake broad technical practice and to give back to the community by sharing insights through open-source contributions and writing."
     ],
     contacts: [
       { name: "GitHub", link: "https://github.com/situ2001", icon: BsGithub },
