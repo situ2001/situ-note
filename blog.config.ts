@@ -16,7 +16,7 @@ const config: BlogConfig = {
     ],
     contacts: [
       { name: "GitHub", link: "https://github.com/situ2001", icon: BsGithub },
-      { name: "Twitter/X", link: "https://twitter.com/situ200l", icon: BsTwitterX },
+      { name: "Twitter/X", link: "https://twitter.com/situ2oo1", icon: BsTwitterX },
       { name: "Telegram", link: "https://t.me/situ2001", icon: BsTelegram },
       { name: "Instagram", link: "https://instagram.com/situ2oo1", icon: BsInstagram },
       { name: "Email", link: "mailto:dogecong@gmail.com", icon: BsEnvelopeAt },
