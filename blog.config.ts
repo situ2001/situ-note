@@ -2,7 +2,7 @@ import type { BlogConfig } from './types';
 
 import { BsGithub, BsTwitterX, BsInstagram, BsEnvelopeAt, BsTelegram, BsLinkedin } from 'react-icons/bs';
 import { BsRss } from "react-icons/bs";
-import { Friendship, Keyboard, GroupObjects, Migrate, Query, CharacterFraction, PromptTemplate, Automatic } from '@carbon/icons-react';
+import { Friendship, Keyboard, GroupObjects, Migrate, Query, CharacterFraction, PromptTemplate, Automatic, DirectionBearRight_02 } from '@carbon/icons-react';
 
 const config: BlogConfig = {
   title: "situ2001",
@@ -80,6 +80,12 @@ const config: BlogConfig = {
       description: "Automatically execute commands when Android device is adb-connected.",
       link: "https://github.com/situ2001/auto-adb",
       icon: Automatic
+    },
+    {
+      title: "scoped-rem",
+      description: "Webpack loader that transforms rem units to be relative to a custom root font size.",
+      link: "https://github.com/situ2001/scoped-rem",
+      icon: DirectionBearRight_02
     }
   ],
 
