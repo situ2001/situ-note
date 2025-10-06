@@ -27,6 +27,7 @@ const config: BlogConfig = {
   nav: {
     items: [
       { name: "Blog", link: "/blog", },
+      { name: "Insights", link: "/insight", },
       { name: "Projects", link: "/projects" },
       { name: "Friends", link: "/friends", icon: Friendship, autoMinimal: true },
       { name: "RSS", link: "/rss.xml", icon: BsRss, forceMinimal: true },

@@ -1,0 +1,27 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import { Construction } from "@carbon/icons-react";
+
+const insights = await getCollection("insight");
+---
+
+<BaseLayout title="Insights" description="Insights" fullWidth>
+  <div class="flex flex-col items-center justify-center py-20">
+    <Construction size={48} />
+    <h1 class="text-3xl font-medium m-4">Insight (司见)</h1>
+    <p class="text-gray-600">This section is under construction.</p>
+    <p class="text-gray-600">Stay tuned for updates!</p>
+  </div>
+
+  <!-- <h1 class="text-3xl font-medium mb-8">Insights</h1>
+  <ul>
+    {insights.map((post) => (
+      <li class="mb-4">
+        <a href={`/insight/${post.slug}`} class="text-xl text-blue-600 hover:underline">
+          No.{post.data.no} {post.data.title}
+        </a>
+      </li>
+    ))}
+  </ul> -->
+</BaseLayout>

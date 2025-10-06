@@ -1,0 +1,23 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+
+// TODO insight layout
+import BlogPost from "../../layouts/BlogPost.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { insights, type Insight } from "../../api/insight";
+
+export const getStaticPaths = () => {
+  return insights.map((post) => ({
+    params: { slug: post.slug },
+    props: { ...post },
+  }));
+};
+type Props = CollectionEntry<"insight">;
+
+const post = Astro.props;
+const { Content, headings } = await post.render();
+---
+
+<BaseLayout title={post.data.title} description={""}>
+  <Content />
+</BaseLayout>
