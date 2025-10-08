@@ -5,16 +5,8 @@ import config from "config";
 const { contacts: links, description } = config.hero;
 ---
 
-<div class="flex flex-col gap-5 my-5">
-  <div
-    class="flex flex-col-reverse gap-5 md:flex-row justify-between md:mb-2.5"
-  >
-    <div class="mt-auto">
-      <h1 class="text-3xl font-bold">{config.title}</h1>
-      <p class="text-sm text-zinc-400 mt-1">
-        {config.description}
-      </p>
-    </div>
+<div class="flex flex-col gap-7.5 my-5">
+  <div class="flex flex-col gap-2.5 justify-between">
     <picture>
       <source srcset="/avatar.avif" type="image/avif" />
       <source srcset="/avatar.webp" type="image/webp" />
@@ -24,18 +16,24 @@ const { contacts: links, description } = config.hero;
         class="w-24 h-24 rounded-full aspect-square"
       />
     </picture>
+    <div class="mt-auto">
+      <h1 class="text-3xl font-bold">{config.title}</h1>
+      <p class="text-sm text-zinc-400 mt-1">
+        {config.description}
+      </p>
+    </div>
   </div>
   <div>
     {
       Array.isArray(description) ? (
-        description.map((desc) => <p class="my-2.5">{desc}</p>)
+        description.map((desc) => <p>{desc}</p>)
       ) : (
-        <p class="my-2.5">{description}</p>
+        <p>{description}</p>
       )
     }
   </div>
   <div>
-    <div class="flex gap-4 flex-row">
+    <div class="flex gap-4 flex-row py-1">
       {
         links.map((link) => (
           <div>
