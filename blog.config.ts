@@ -6,7 +6,7 @@ import { Friendship, Keyboard, GroupObjects, Migrate, Query, CharacterFraction, 
 
 const config: BlogConfig = {
   title: "situ2001",
-  description: "With curiosity, I explore tech; with empathy, I build value.",
+  description: "With curiosity, I explore; with empathy, I build.",
   author: "situ2001",
   email: "dogecong@gmail.com",
 

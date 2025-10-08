@@ -3,22 +3,6 @@ import LinkButton from "../../components/IconLink";
 import config from "config";
 
 const { contacts: links, description } = config.hero;
-const DESCRIPTIONS = [
-  "With curiosity, I explore tech;",
-  "with empathy, I build value.",
-];
-
-if (process.env.NODE_ENV === "development") {
-  const assert = (condition: boolean, message: string) => {
-    if (!condition) {
-      throw new Error(message);
-    }
-  };
-  assert(
-    config.description === DESCRIPTIONS.join(" "),
-    "Description mismatch with config one",
-  );
-}
 ---
 
 <div class="flex flex-col gap-5 my-5">
@@ -28,14 +12,7 @@ if (process.env.NODE_ENV === "development") {
     <div class="mt-auto">
       <h1 class="text-3xl font-bold">{config.title}</h1>
       <p class="text-sm text-zinc-400 mt-1">
-        {
-          DESCRIPTIONS.map((desc, index) => (
-            <>
-              <span>{desc.charAt(0).toUpperCase() + desc.slice(1)}</span>
-              {index === 0 ? <br /> : null}
-            </>
-          ))
-        }
+        {config.description}
       </p>
     </div>
     <picture>
