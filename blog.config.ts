@@ -2,7 +2,7 @@ import type { BlogConfig } from './types';
 
 import { BsGithub, BsTwitterX, BsInstagram, BsEnvelopeAt, BsTelegram, BsLinkedin } from 'react-icons/bs';
 import { BsRss } from "react-icons/bs";
-import { Friendship, Keyboard, GroupObjects, Migrate, Query, CharacterFraction, PromptTemplate, Automatic, DirectionBearRight_02 } from '@carbon/icons-react';
+import { Friendship, Keyboard, GroupObjects, Migrate, Query, CharacterFraction, PromptTemplate, Automatic, DirectionBearRight_02, Calendar, Stamp } from '@carbon/icons-react';
 
 const config: BlogConfig = {
   title: "situ2001",
@@ -87,6 +87,18 @@ const config: BlogConfig = {
       description: "Webpack loader that transforms rem units to be relative to a custom root font size.",
       link: "https://github.com/situ2001/scoped-rem",
       icon: DirectionBearRight_02
+    },
+    {
+      title: "nth-week",
+      description: "Quickly query what the week is now.",
+      link: "https://github.com/situ2001/nth-week",
+      icon: Calendar,
+    },
+    {
+      title: "picmark",
+      description: "Add watermarks to your images in just a few lines of command or code.",
+      link: "https://github.com/situ2001/picmark",
+      icon: Stamp,
     }
   ],
 
