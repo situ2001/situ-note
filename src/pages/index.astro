@@ -7,6 +7,7 @@ import Projects from "@/modules/home/Projects.astro";
 import { getRecentKPosts, posts, posts as postsData } from "@/api/blog";
 import ViewMoreTips from "@/components/ViewMoreTips.astro";
 import { BlogListItem } from "@/components/BlogListItem";
+import BlogSection from "@/modules/home/BlogSection.astro";
 
 const BLOG_TITLE = config.title;
 const BLOG_DESCRIPTION = config.description;
@@ -17,5 +18,8 @@ const recentPosts = getRecentKPosts(postsData, 5);
 <BaseLayout title={BLOG_TITLE} description={BLOG_DESCRIPTION}>
   <section class="mt-5 mb-7.5">
     <HeroSection />
+  </section>
+  <section class="mt-5 mb-7.5">
+    <BlogSection />
   </section>
 </BaseLayout>

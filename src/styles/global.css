@@ -87,3 +87,18 @@ html.dark .astro-code span {
   font-weight: var(--shiki-dark-font-weight) !important;
   text-decoration: var(--shiki-dark-text-decoration) !important;
 }
+
+@layer components {
+  .heading-with-underline {
+    @apply font-sans text-xl font-semibold relative w-fit;
+    transform-style: preserve-3d;
+  }
+
+  .heading-with-underline::after {
+    content: "";
+    @apply print:hidden;
+    @apply absolute left-0 bottom-0 max-w-12 min-w-3/5 h-2.5 bg-pink-300 opacity-50 overflow-visible;
+    transform: translateZ(-1px);
+  }
+}
+

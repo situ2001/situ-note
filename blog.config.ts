@@ -12,7 +12,9 @@ const config: BlogConfig = {
 
   hero: {
     description: [
-      "I enjoy creating and solving problems, and I am passionate about how technology can improve user experience. I am keen to explore the essence of things and pursue solutions that are simple yet thoughtfully designed. This curiosity and empathy drive me to undertake broad technical practice and to give back to the community by sharing insights through open-source contributions and writing."
+      // "💻 Developer | 🏗️ Builder | Work at Tencent Music",
+      // "📸 Photo | 💡 Psychology | 🔧 Tech | 🚆 Transit",
+      // "I enjoy creating and solving problems, and I am passionate about how technology can improve user experience. I am keen to explore the essence of things and pursue solutions that are simple yet thoughtfully designed. This curiosity and empathy drive me to undertake broad technical practice and to give back to the community by sharing insights through open-source contributions and writing."
     ],
     contacts: [
       { name: "GitHub", link: "https://github.com/situ2001", icon: BsGithub },
@@ -27,7 +29,7 @@ const config: BlogConfig = {
   nav: {
     items: [
       { name: "Blog", link: "/blog", },
-      { name: "Insights", link: "/insight", },
+      // { name: "Insights", link: "/insight", },
       { name: "Projects", link: "/projects" },
       { name: "Friends", link: "/friends", icon: Friendship, autoMinimal: true },
       { name: "RSS", link: "/rss.xml", icon: BsRss, forceMinimal: true },

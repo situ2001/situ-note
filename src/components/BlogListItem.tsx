@@ -4,9 +4,9 @@ import FormattedDate from "./FormattedDate";
 import clsx from "clsx";
 
 export function BlogListItem({
-  post
+  post,
 }: {
-  post: Post
+  post: Post,
 }) {
   return (
     <a
@@ -15,14 +15,17 @@ export function BlogListItem({
       className={
         clsx(
           "flex w-full flex-col md:flex-row justify-between",
-          "rounded-lg py-2.5 md:px-2",
+          "rounded-lg py-2.5",
           "transition-all active:scale-[0.995]",
-          "md:hover:bg-zinc-100 md:hover:dark:bg-zinc-700",
+          "group",
         )
       }
     >
       <div className="flex-1">
-        <span>{post.data.title}</span>
+        <span className="relative inline-block">
+          {post.data.title}
+          <span className="absolute bottom-0 left-0 w-0 h-px bg-current transition-all duration-300 ease-in-out group-hover:w-full" />
+        </span>
       </div>
 
       <span className="text-sm text-zinc-500">

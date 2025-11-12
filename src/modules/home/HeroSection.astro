@@ -18,35 +18,35 @@ const { contacts: links, description } = config.hero;
     </picture>
     <div class="mt-auto">
       <h1 class="text-3xl font-bold">{config.title}</h1>
-      <p class="text-sm text-zinc-400 mt-1">
+      <p class="text-sm text-zinc-500 mt-1">
         {config.description}
       </p>
     </div>
   </div>
-  <div>
+  {
+    Array.isArray(description) && description.length > 0 ? (
+      <div>
+        {description.map((desc) => (
+          <p>{desc}</p>
+        ))}
+      </div>
+    ) : null
+  }
+</div>
+<div>
+  <div class="flex gap-4 flex-row py-1.5">
     {
-      Array.isArray(description) ? (
-        description.map((desc) => <p>{desc}</p>)
-      ) : (
-        <p>{description}</p>
-      )
+      links.map((link) => (
+        <div>
+          <LinkButton
+            icon={link.icon}
+            link={link.link}
+            name={link.name}
+            hideText={true}
+            size="lg"
+          />
+        </div>
+      ))
     }
-  </div>
-  <div>
-    <div class="flex gap-4 flex-row py-1.5">
-      {
-        links.map((link) => (
-          <div>
-            <LinkButton
-              icon={link.icon}
-              link={link.link}
-              name={link.name}
-              hideText={true}
-              size="lg"
-            />
-          </div>
-        ))
-      }
-    </div>
   </div>
 </div>

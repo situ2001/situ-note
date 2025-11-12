@@ -75,9 +75,15 @@ article a::after {
 }
 
 article blockquote {
-  border-left: 0.25rem solid #ddd;
-  padding: 0 1rem;
-  margin: 0;
+  @apply text-zinc-600 border-l-4 border-zinc-300 px-4 py-2 my-6 bg-zinc-50;
+}
+
+article blockquote > *:first-child {
+  margin-top: 0;
+}
+
+article blockquote > *:last-child {
+  margin-bottom: 0;
 }
 
 .dark article blockquote {
