@@ -13,9 +13,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@antv/g2": "^5.4.2",
-    "@astrojs/mdx": "^4.3.9",
-    "@astrojs/react": "^4.4.1",
+    "@antv/g2": "^5.4.4",
+    "@astrojs/mdx": "^4.3.10",
+    "@astrojs/react": "^4.4.2",
     "@astrojs/rss": "^4.0.13",
     "@astrojs/sitemap": "^3.6.0",
     "@carbon/icons-react": "^11.70.0",
@@ -27,8 +27,8 @@
     "@fontsource/fira-code": "^5.2.7",
     "@fontsource/maple-mono": "^5.2.6",
     "@nanostores/react": "^1.0.0",
-    "@tailwindcss/vite": "^4.1.16",
-    "astro": "^5.15.3",
+    "@tailwindcss/vite": "^4.1.17",
+    "astro": "^5.15.5",
     "astro-pagefind": "^1.8.5",
     "clsx": "^2.1.1",
     "es-toolkit": "^1.41.0",
@@ -48,15 +48,15 @@
     "rehype-katex": "^7.0.1",
     "remark-math": "^6.0.0",
     "sanitize-html": "^2.17.0",
-    "sharp": "^0.34.4",
-    "tailwindcss": "^4.1.16"
+    "sharp": "^0.34.5",
+    "tailwindcss": "^4.1.17"
   },
   "devDependencies": {
     "@types/indefinite": "^2.3.4",
     "@types/markdown-it": "^14.1.2",
     "@types/pluralize": "^0.0.33",
-    "@types/react": "^19.2.2",
-    "@types/react-dom": "^19.2.2",
+    "@types/react": "^19.2.4",
+    "@types/react-dom": "^19.2.3",
     "@types/react-is": "^19.2.0",
     "@types/sanitize-html": "^2.16.0",
     "babel-plugin-react-compiler": "19.1.0-rc.3",
