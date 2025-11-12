@@ -88,6 +88,8 @@ article blockquote > *:last-child {
 
 .dark article blockquote {
   @apply border-l-zinc-700;
+  @apply bg-zinc-800;
+  @apply text-zinc-300;
 }
 
 article img {
