@@ -1,6 +1,6 @@
 import type { BlogConfig } from './types';
 
-import { BsGithub, BsTwitterX, BsInstagram, BsEnvelopeAt, BsTelegram, BsLinkedin } from 'react-icons/bs';
+import { BsGithub, BsTwitterX, BsInstagram, BsEnvelopeAt, BsTelegram, BsLinkedin, BsThreads } from 'react-icons/bs';
 import { BsRss } from "react-icons/bs";
 import { Friendship, Keyboard, GroupObjects, Migrate, Query, CharacterFraction, PromptTemplate, Automatic, DirectionBearRight_02, Calendar, Stamp } from '@carbon/icons-react';
 
@@ -20,8 +20,7 @@ const config: BlogConfig = {
       { name: "GitHub", link: "https://github.com/situ2001", icon: BsGithub },
       { name: "Twitter/X", link: "https://twitter.com/situ2oo1", icon: BsTwitterX },
       { name: "Telegram", link: "https://t.me/situ2001", icon: BsTelegram },
-      { name: "Instagram", link: "https://instagram.com/situ2oo1", icon: BsInstagram },
-      { name: "Email", link: "mailto:dogecong@gmail.com", icon: BsEnvelopeAt },
+      // { name: "Instagram", link: "https://www.threads.com/@situ2oo1", icon: BsThreads },
       { name: "LinkedIn", link: "https://www.linkedin.com/in/situ2001/", icon: BsLinkedin },
     ]
   },
