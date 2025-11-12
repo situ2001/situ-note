@@ -7,7 +7,7 @@ const posts = getPostSortedByDate(postsData);
 ---
 
 <BaseLayout title="Blogs" description="Blog" fullWidth>
-  <h1 class="text-3xl font-medium mb-8">Blog</h1>
+  <h1 class="text-3xl font-medium mb-6">Blog</h1>
   <ul>
     {posts.map((post) => <BlogListItem post={post} />)}
   </ul>
