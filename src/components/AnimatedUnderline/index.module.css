@@ -22,12 +22,10 @@
   transition: opacity 0.3s, transform 0.3s;
 }
 
-:global .dark {
-  :local .slide-in::after,
-  :local .scale-from-center::after, 
-  :local .fade-in::after {
-    @apply bg-zinc-300;
-  }
+:global(.dark) .slide-in::after,
+:global(.dark) .scale-from-center::after,
+:global(.dark) .fade-in::after {
+  @apply bg-zinc-300;
 }
 
 .slide-in::after {

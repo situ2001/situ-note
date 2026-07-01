@@ -1,32 +1,37 @@
 ---
 import ProjectCard from "./ProjectCard";
 import config from "config";
+import type { Project } from "types";
 
 interface Props {
   /**
    * if not, only featured projects will be shown
    */
   showAll?: boolean;
+  section?: Project["section"];
 }
 
 const projects = config.projects ?? [];
 
-const { showAll = false } = Astro.props as Props;
+const { showAll = false, section = "featured" } = Astro.props as Props;
+const visibleProjects = projects.filter((project) => {
+  if (showAll) return true;
+  return project.section === section || (!project.section && project.featured && section === "featured");
+});
 ---
 
 <div class="relative py-2">
   <div class="flex flex-col md:grid md:grid-cols-2 gap-4">
     {
-      projects
-        .filter((p) => showAll || p.featured)
-        .map((project, index) => (
-          <ProjectCard
-            title={project.title}
-            description={project.description}
-            link={project.link}
-            icon={project.icon}
-          />
-        ))
+      visibleProjects.map((project) => (
+        <ProjectCard
+          title={project.title}
+          description={project.description}
+          link={project.link}
+          icon={project.icon}
+          type={project.type}
+        />
+      ))
     }
   </div>
 </div>

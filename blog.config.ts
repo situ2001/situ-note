@@ -1,14 +1,6 @@
 import type { BlogConfig } from "./types";
 
-import {
-  BsGithub,
-  BsTwitterX,
-  BsInstagram,
-  BsEnvelopeAt,
-  BsTelegram,
-  BsLinkedin,
-  BsThreads,
-} from "react-icons/bs";
+import { BsGithub, BsTwitterX, BsTelegram, BsLinkedin } from "react-icons/bs";
 import { BsRss } from "react-icons/bs";
 import {
   Friendship,
@@ -32,9 +24,8 @@ const config: BlogConfig = {
 
   hero: {
     description: [
-      // "💻 Developer | 🏗️ Builder | Work at Tencent Music",
-      // "📸 Photo | 💡 Psychology | 🔧 Tech | 🚆 Transit",
-      // "I enjoy creating and solving problems, and I am passionate about how technology can improve user experience. I am keen to explore the essence of things and pursue solutions that are simple yet thoughtfully designed. This curiosity and empathy drive me to undertake broad technical practice and to give back to the community by sharing insights through open-source contributions and writing."
+      "I explore weird edge cases, build small tools, and turn the useful ones into polished projects.",
+      "Frontend engineer by trade, toolmaker by instinct, writing down the process as I go.",
     ],
     contacts: [
       { name: "GitHub", link: "https://github.com/situ2001", icon: BsGithub },
@@ -76,21 +67,17 @@ const config: BlogConfig = {
       link: "https://github.com/situ2001/KeyPhantom",
       icon: Keyboard,
       featured: true,
-    },
-    {
-      title: "Unplugin MCP",
-      description:
-        "Let AI know more about your code and build process from JS bundlers.",
-      link: "https://github.com/situ2001/unplugin-mcp",
-      icon: PromptTemplate,
-      featured: true,
+      section: "featured",
+      type: "macOS Tool",
     },
     {
       title: "Obsidian Tab Group Arrangement",
-      description: "Arrange your tabs in Obsidian like vscode.",
+      description: "Arrange your tabs in Obsidian like VS Code.",
       link: "https://github.com/situ2001/obsidian-tab-group-arrangement",
       icon: GroupObjects,
       featured: true,
+      section: "featured",
+      type: "Obsidian Plugin",
     },
     {
       title: "gitea-bulk-migration",
@@ -98,34 +85,54 @@ const config: BlogConfig = {
       link: "https://github.com/situ2001/gitea-bulk-migration",
       icon: Migrate,
       featured: true,
+      section: "featured",
+      type: "CLI",
     },
-
+    {
+      title: "auto-adb",
+      description:
+        "Automatically configure proxy and port forwarding when an Android device is connected over ADB.",
+      link: "https://github.com/situ2001/auto-adb",
+      icon: Automatic,
+      featured: true,
+      section: "featured",
+      type: "CLI",
+    },
     {
       title: "which-npm",
       description:
-        "CLI for locating the npm package of a given filename or path.",
+        "Locate the npm package that owns the current file or directory.",
       link: "https://github.com/situ2001/which-npm",
       icon: Query,
+      featured: true,
+      section: "featured",
+      type: "CLI",
     },
+    {
+      title: "scoped-rem",
+      description:
+        "Webpack loader that rewrites rem units relative to a custom root font size.",
+      link: "https://github.com/situ2001/scoped-rem",
+      icon: DirectionBearRight_02,
+      featured: true,
+      section: "featured",
+      type: "Webpack Loader",
+    },
+    {
+      title: "unplugin-mcp",
+      description:
+        "Explore how MCP can expose JS bundler inputs, process, and outputs to AI agents.",
+      link: "https://github.com/situ2001/unplugin-mcp",
+      icon: PromptTemplate,
+      section: "experiment",
+      type: "Bundler / MCP",
+    },
+
     {
       title: "oh-pluralize",
       description: "Pluralize library for OpenHarmony.",
       link: "https://github.com/situ2001/oh-pluralize",
       icon: CharacterFraction,
-    },
-    {
-      title: "auto-adb",
-      description:
-        "Automatically execute commands when Android device is adb-connected.",
-      link: "https://github.com/situ2001/auto-adb",
-      icon: Automatic,
-    },
-    {
-      title: "scoped-rem",
-      description:
-        "Webpack loader that transforms rem units to be relative to a custom root font size.",
-      link: "https://github.com/situ2001/scoped-rem",
-      icon: DirectionBearRight_02,
     },
     {
       title: "nth-week",
@@ -139,6 +146,8 @@ const config: BlogConfig = {
         "Add watermarks to your images in just a few lines of command or code.",
       link: "https://github.com/situ2001/picmark",
       icon: Stamp,
+      section: "experiment",
+      type: "CLI",
     },
   ],
 
