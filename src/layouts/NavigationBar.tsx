@@ -113,7 +113,7 @@ const NavigationBar = ({ items }: { items: NavigationItem[] }) => {
             <button
               onClick={openSearch}
               className={clsx(
-                "p-1 rounded-md",
+                "p-1 rounded-md cursor-pointer",
                 "hover:bg-zinc-200 dark:hover:bg-zinc-700",
                 "transition-colors",
               )}
