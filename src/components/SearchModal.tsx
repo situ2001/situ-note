@@ -2,9 +2,26 @@ import { useEffect, useRef, useState } from "react";
 import { Search, Close, SearchLocate } from "@carbon/icons-react";
 import clsx from "clsx";
 
-// Path to Pagefind ESM module — served by astro-pagefind at /pagefind/pagefind.js
 const PAGEFIND_PATH = "/pagefind/pagefind.js";
 const PAGE_SIZE = 10;
+
+// Module-level cache so Pagefind survives unmount/remount
+let pagefindCache: Pagefind | null = null;
+let pagefindLoading: Promise<Pagefind> | null = null;
+
+function loadPagefind(): Promise<Pagefind> {
+  if (pagefindCache) return Promise.resolve(pagefindCache);
+  if (pagefindLoading) return pagefindLoading;
+
+  // @vite-ignore — served by astro-pagefind at runtime
+  pagefindLoading = import(/* @vite-ignore */ PAGEFIND_PATH).then(
+    (mod: Pagefind) => mod.init().then(() => {
+      pagefindCache = mod;
+      return mod;
+    }),
+  );
+  return pagefindLoading;
+}
 
 interface SearchResult {
   url: string;
@@ -13,66 +30,57 @@ interface SearchResult {
 }
 
 interface SearchModalProps {
-  isOpen: boolean;
   onClose: () => void;
 }
 
-export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
+export default function SearchModal({ onClose }: SearchModalProps) {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<SearchResult[]>([]);
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
-  const [isLoading, setIsLoading] = useState(false);
-  const [pagefind, setPagefind] = useState<Pagefind | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [pagefind, setPagefind] = useState<Pagefind | null>(pagefindCache);
   const [initError, setInitError] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
   const latestQueryRef = useRef("");
 
-  // Initialize pagefind when modal first opens
+  // Initialize pagefind (uses cache if available)
   useEffect(() => {
-    if (isOpen && !pagefind && !initError) {
-      setIsLoading(true);
-      // @vite-ignore — /pagefind/pagefind.js is served by astro-pagefind at runtime
-      import(/* @vite-ignore */ PAGEFIND_PATH)
-        .then((mod: Pagefind) => {
-          mod.init().then(() => {
-            setPagefind(() => mod);
-            setIsLoading(false);
-          });
-        })
-        .catch((err: unknown) => {
-          console.error("Failed to load pagefind:", err);
-          setInitError(true);
-          setIsLoading(false);
-        });
+    if (pagefind) {
+      setIsLoading(false);
+      return;
     }
-  }, [isOpen, pagefind, initError]);
-
-  // Focus input and reset state when modal opens
-  useEffect(() => {
-    if (isOpen) {
-      setQuery("");
-      setResults([]);
-      setVisibleCount(PAGE_SIZE);
-      latestQueryRef.current = "";
-      // Small delay to let the modal render before focusing
-      requestAnimationFrame(() => {
-        inputRef.current?.focus();
+    loadPagefind()
+      .then((pf) => {
+        setPagefind(pf);
+        setIsLoading(false);
+      })
+      .catch((err: unknown) => {
+        console.error("Failed to load pagefind:", err);
+        setInitError(true);
+        setIsLoading(false);
       });
-    }
-  }, [isOpen]);
+  }, [pagefind]);
+
+  // Focus input and lock body scroll on mount
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    requestAnimationFrame(() => {
+      inputRef.current?.focus();
+    });
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, []);
 
   // Close on Escape
   useEffect(() => {
-    if (!isOpen) return;
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        onClose();
-      }
+      if (e.key === "Escape") onClose();
     };
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, onClose]);
+  }, [onClose]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -92,7 +100,6 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
     pagefind
       .debouncedSearch(term, undefined, 300)
       .then(async (search) => {
-        // Ignore stale responses
         if (term !== latestQueryRef.current) return;
 
         const mappedResults = await Promise.all(
@@ -110,7 +117,6 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
         setIsLoading(false);
       })
       .catch((err: unknown) => {
-        // Ignore stale errors too
         if (term !== latestQueryRef.current) return;
         console.error("Search failed:", err);
         setResults([]);
@@ -128,20 +134,6 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
 
   const displayedResults = results.slice(0, visibleCount);
   const hasMore = results.length > visibleCount;
-
-  // Prevent body scroll when modal is open
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isOpen]);
-
-  if (!isOpen) return null;
 
   return (
     <div
@@ -162,9 +154,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
     >
       <div
         className={clsx(
-          // Desktop: centered floating panel
           "w-full sm:w-[32rem] sm:max-h-[70vh] sm:rounded-xl",
-          // Mobile: full screen (overridden by sm: above for desktop)
           "max-sm:h-full max-sm:max-h-full max-sm:rounded-none",
           "bg-white dark:bg-zinc-800",
           "shadow-2xl",
@@ -272,7 +262,6 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                       {result.excerpt && (
                         <span
                           className="text-xs text-zinc-500 dark:text-zinc-400 line-clamp-2"
-                          // Pagefind excerpts are safe HTML (only <mark> tags)
                           dangerouslySetInnerHTML={{ __html: result.excerpt }}
                         />
                       )}
@@ -300,7 +289,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
           )}
         </div>
 
-        {/* Footer with hints */}
+        {/* Footer */}
         <div
           className={clsx(
             "flex items-center justify-between",
