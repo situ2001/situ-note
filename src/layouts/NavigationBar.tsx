@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useCallback, Suspense, lazy } from "react";
+import { useEffect, useRef, useState, Suspense, lazy } from "react";
 import { throttle } from "es-toolkit";
 import { isTwoElementsIntersecting } from "../utils/intersection";
 import SiteLogo from "../components/SiteLogo";
@@ -17,8 +17,8 @@ const NavigationBar = ({ items }: { items: NavigationItem[] }) => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const headerRef = useRef<HTMLHeadElement>(null);
 
-  const openSearch = useCallback(() => setIsSearchOpen(true), []);
-  const closeSearch = useCallback(() => setIsSearchOpen(false), []);
+  const openSearch = () => setIsSearchOpen(true);
+  const closeSearch = () => setIsSearchOpen(false);
 
   // Global keyboard shortcut: Cmd/Ctrl + K to open search
   useEffect(() => {
