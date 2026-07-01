@@ -3,7 +3,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import config from "config";
 
 import HeroSection from "@/modules/home/HeroSection.astro";
-import Projects from "@/modules/home/Projects.astro";
 import BlogSection from "@/modules/home/BlogSection.astro";
 
 const BLOG_TITLE = config.title;
@@ -14,14 +13,7 @@ const BLOG_DESCRIPTION = config.description;
   <section class="mt-5 mb-7.5">
     <HeroSection />
   </section>
-  <section class="mt-10 mb-7.5">
-    <h2 class="heading-with-underline mb-4 mt-4">Featured Projects</h2>
-    <Projects section="featured" />
-  </section>
-  <section class="mt-10 mb-7.5">
-    <h2 class="heading-with-underline mb-4 mt-4">Experiments</h2>
-    <Projects section="experiment" />
-  </section>
+  <!-- TODO: Consider bringing back a curated projects section for the portfolio homepage. -->
   <section class="mt-5 mb-7.5">
     <BlogSection />
   </section>

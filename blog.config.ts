@@ -18,15 +18,12 @@ import {
 
 const config: BlogConfig = {
   title: "situ2001",
-  description: "Explore with curiosity. Build with empathy.",
+  description: "Frontend engineer by day, geek by night.",
   author: "situ2001",
   email: "dogecong@gmail.com",
 
   hero: {
-    description: [
-      "I explore weird edge cases, build small tools, and turn the useful ones into polished projects.",
-      "Frontend engineer by trade, toolmaker by instinct, writing down the process as I go.",
-    ],
+    description: [],
     contacts: [
       { name: "GitHub", link: "https://github.com/situ2001", icon: BsGithub },
       {
@@ -68,7 +65,6 @@ const config: BlogConfig = {
       icon: Keyboard,
       featured: true,
       section: "featured",
-      type: "macOS Tool",
     },
     {
       title: "Obsidian Tab Group Arrangement",
@@ -77,7 +73,6 @@ const config: BlogConfig = {
       icon: GroupObjects,
       featured: true,
       section: "featured",
-      type: "Obsidian Plugin",
     },
     {
       title: "gitea-bulk-migration",
@@ -86,7 +81,6 @@ const config: BlogConfig = {
       icon: Migrate,
       featured: true,
       section: "featured",
-      type: "CLI",
     },
     {
       title: "auto-adb",
@@ -96,7 +90,6 @@ const config: BlogConfig = {
       icon: Automatic,
       featured: true,
       section: "featured",
-      type: "CLI",
     },
     {
       title: "which-npm",
@@ -106,7 +99,6 @@ const config: BlogConfig = {
       icon: Query,
       featured: true,
       section: "featured",
-      type: "CLI",
     },
     {
       title: "scoped-rem",
@@ -116,7 +108,6 @@ const config: BlogConfig = {
       icon: DirectionBearRight_02,
       featured: true,
       section: "featured",
-      type: "Webpack Loader",
     },
     {
       title: "unplugin-mcp",
@@ -125,7 +116,6 @@ const config: BlogConfig = {
       link: "https://github.com/situ2001/unplugin-mcp",
       icon: PromptTemplate,
       section: "experiment",
-      type: "Bundler / MCP",
     },
 
     {
@@ -147,7 +137,6 @@ const config: BlogConfig = {
       link: "https://github.com/situ2001/picmark",
       icon: Stamp,
       section: "experiment",
-      type: "CLI",
     },
   ],
 
