@@ -158,7 +158,7 @@ const config: BlogConfig = {
     { name: "Guoqi Sun", link: "https://blog.guoqi.dev" },
     { name: "Charles", link: "https://www.charles-cheng.com/" },
     { name: "Zhongye", link: "https://zhongye.github.io" },
-    { name: "HoHouman", link: "https://leidun.pp.ua" },
+    { name: "HoHouman", link: "https://blog.houman.top" },
   ],
 };
 
