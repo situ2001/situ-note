@@ -21,7 +21,7 @@ type Props = CollectionEntry<"blog">["data"] & { headings: MarkdownHeading[] };
 const { title, description, date, categories, headings } = Astro.props;
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} searchable>
   <MediumZoom selectors={["article img"]} client:only />
   <div class="max-w-screen-md mx-auto">
     <div class="font-serif mb-4">
@@ -51,7 +51,7 @@ const { title, description, date, categories, headings } = Astro.props;
       </div>
     </div>
     <hr />
-    <article class="min-w-0">
+    <article class="min-w-0" data-pagefind-body>
       <!-- Description -->
       {
         description ? (

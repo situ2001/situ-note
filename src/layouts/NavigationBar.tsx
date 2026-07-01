@@ -1,7 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import { throttle } from "es-toolkit";
 import { isTwoElementsIntersecting } from "../utils/intersection";
 import SiteLogo from "../components/SiteLogo";
+import SearchModal from "../components/SearchModal";
+import { Search } from '@carbon/icons-react';
 import clsx from 'clsx';
 import type { NavigationItem } from 'types';
 import config from 'config';
@@ -13,7 +15,23 @@ const NavigationBar = (
   { items }: { items: NavigationItem[] }
 ) => {
   const [isIntersecting, setIsIntersecting] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const headerRef = useRef<HTMLHeadElement>(null);
+
+  const openSearch = useCallback(() => setIsSearchOpen(true), []);
+  const closeSearch = useCallback(() => setIsSearchOpen(false), []);
+
+  // Global keyboard shortcut: Cmd/Ctrl + K to open search
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        setIsSearchOpen(true);
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   useEffect(() => {
     const onScroll = () => {
@@ -34,6 +52,7 @@ const NavigationBar = (
   }, []);
 
   return (
+    <>
     <nav
       ref={headerRef}
       className={clsx(
@@ -89,9 +108,25 @@ const NavigationBar = (
               }
             </React.Fragment>
           })}
+
+          {/* Search button */}
+          <button
+            onClick={openSearch}
+            className={clsx(
+              'p-1 rounded-md',
+              'hover:bg-zinc-200 dark:hover:bg-zinc-700',
+              'transition-colors',
+            )}
+            aria-label="Search"
+            title="Search (⌘K)"
+          >
+            <Search size={18} />
+          </button>
         </div>
       </div>
     </nav>
+    <SearchModal isOpen={isSearchOpen} onClose={closeSearch} />
+    </>
   );
 };
 

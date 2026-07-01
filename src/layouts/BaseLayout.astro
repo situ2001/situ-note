@@ -9,8 +9,10 @@ interface Props {
   title: string;
   description: string;
   fullWidth?: boolean;
+  /** Pages with searchable=true are indexed by Pagefind. Defaults to false. */
+  searchable?: boolean;
 }
-const { title, description } = Astro.props;
+const { title, description, searchable = false } = Astro.props;
 
 const year = new Date().getFullYear();
 ---
@@ -21,6 +23,7 @@ const year = new Date().getFullYear();
   </head>
   <body
     class="bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-300 h-full"
+    {...(!searchable ? { 'data-pagefind-ignore': '' } : {})}
   >
     <header class="top-0 sticky z-50">
       <NavigationBar client:load />

@@ -18,6 +18,8 @@ const post = Astro.props;
 const { Content, headings } = await post.render();
 ---
 
-<BaseLayout title={post.data.title} description={""}>
-  <Content />
+<BaseLayout title={post.data.title} description={""} searchable>
+  <div data-pagefind-body>
+    <Content />
+  </div>
 </BaseLayout>
