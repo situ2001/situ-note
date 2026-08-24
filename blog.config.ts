@@ -33,11 +33,11 @@ const config: BlogConfig = {
       },
       { name: "Telegram", link: "https://t.me/situ2001", icon: BsTelegram },
       // { name: "Instagram", link: "https://www.threads.com/@situ2oo1", icon: BsThreads },
-      {
-        name: "LinkedIn",
-        link: "https://www.linkedin.com/in/situ2001/",
-        icon: BsLinkedin,
-      },
+      // {
+      //   name: "LinkedIn",
+      //   link: "https://www.linkedin.com/in/situ2001/",
+      //   icon: BsLinkedin,
+      // },
     ],
   },
 
