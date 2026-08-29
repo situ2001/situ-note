@@ -147,7 +147,6 @@ html.dark .astro-code span {
   body.paper header nav {
     background-color: var(--color-paper-scrim);
     backdrop-filter: blur(var(--blur-paper));
-    -webkit-backdrop-filter: blur(var(--blur-paper));
   }
 }
 
@@ -166,4 +165,3 @@ html.dark .astro-code span {
 ::selection {
   background-color: var(--color-selection);
 }
-
