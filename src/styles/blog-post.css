@@ -103,7 +103,7 @@ article img {
 
 @media (prefers-color-scheme: light) {
   body.paper .medium-zoom-overlay {
-    background-color: #faf9f6 !important;
+    background-color: var(--color-paper) !important;
   }
 }
 
@@ -114,16 +114,17 @@ article img {
 
 /* ------------------------------------------------------------------ */
 /* Paper mode prose: print-like serif typography for <article>.        */
-/* The paper & ink colors and the warm nav scrim live in global.css    */
-/* (body.paper). Serif only applies to article content; UI stays sans. */
+/* Values come from the design tokens in global.css (@theme).          */
+/* The measure (line length) is owned by the layout container          */
+/* (max-w-measure); paper & ink colors and the nav scrim live there    */
+/* too. Serif only applies to article content; UI stays sans.          */
 /* ------------------------------------------------------------------ */
 
 body.paper article {
   font-family: var(--font-serif), var(--font-cjk-serif), serif;
-  font-size: 1.0625rem;
-  line-height: 1.9;
-  letter-spacing: 0.015em;
-  max-width: 38em;
+  font-size: var(--text-prose);
+  line-height: var(--text-prose--line-height);
+  letter-spacing: var(--tracking-prose);
   text-align: justify;
   line-break: strict;
   /* CJK micro-typography: auto spacing between CJK & Latin, punctuation trimming.
@@ -140,7 +141,7 @@ body.paper article p {
 body.paper article h1,
 body.paper article h2,
 body.paper article h3 {
-  letter-spacing: 0.02em;
+  letter-spacing: var(--tracking-prose-heading);
 }
 
 body.paper article a {

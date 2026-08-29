@@ -23,7 +23,7 @@ const { title, description, date, categories, headings } = Astro.props;
 
 <BaseLayout title={title} description={description} searchable paper>
   <MediumZoom selectors={["article img"]} client:only />
-  <div class="max-w-[648px] mx-auto">
+  <div class="max-w-measure mx-auto">
     <div class="font-serif mb-4">
       <h1 class="text-3xl mb-1">{title}</h1>
       <FormattedDate date={date} />

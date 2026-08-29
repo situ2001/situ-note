@@ -8,6 +8,31 @@
 /* @import "@fontsource/fira-code"; */
 @import "@fontsource/maple-mono";
 
+/* ------------------------------------------------------------------ */
+/* Design tokens — paper mode.                                         */
+/* Consumed as CSS vars in component styles, and as utilities          */
+/* (max-w-measure, text-prose, tracking-prose, bg-paper, text-ink...)  */
+/* ------------------------------------------------------------------ */
+@theme {
+  /* primitives: warm paper & soft ink */
+  --color-paper: #faf9f6;
+  --color-ink: #2f2d2a;
+  /* sticky nav scrim over paper: paper at 86% opacity */
+  --color-paper-scrim: color-mix(in srgb, var(--color-paper) 86%, transparent);
+
+  /* prose type scale: 17px book text with generous print leading */
+  --text-prose: 1.0625rem;
+  --text-prose--line-height: 1.9;
+  --tracking-prose: 0.015em;
+  --tracking-prose-heading: 0.02em;
+
+  /* measure: 38 CJK characters per line at prose size */
+  --container-measure: calc(var(--text-prose) * 38);
+
+  /* frosted nav blur */
+  --blur-paper: 5px;
+}
+
 :root {
   --font-sans: "Noto Sans Variable", "Segoe UI", "Droid Sans", "Helvetica Neue";
   --font-cjk-sans: 'Noto Sans SC Variable', "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei";
@@ -111,16 +136,16 @@ html.dark .astro-code span {
 
 @media (prefers-color-scheme: light) {
   body.paper {
-    background-color: #faf9f6;
-    color: #2f2d2a;
+    background-color: var(--color-paper);
+    color: var(--color-ink);
   }
 
   /* the sticky nav turns bg-zinc-100 (cool) once content scrolls under it;
      replace it with a warm frosted scrim so it blends with the paper */
   body.paper header nav {
-    background-color: rgba(250, 249, 246, 0.86);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+    background-color: var(--color-paper-scrim);
+    backdrop-filter: blur(var(--blur-paper));
+    -webkit-backdrop-filter: blur(var(--blur-paper));
   }
 }
 
