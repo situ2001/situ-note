@@ -101,7 +101,49 @@ article img {
   @apply dark:bg-zinc-900!;
 }
 
+@media (prefers-color-scheme: light) {
+  body.paper .medium-zoom-overlay {
+    background-color: #faf9f6 !important;
+  }
+}
+
 .medium-zoom-overlay,
 .medium-zoom-image--opened {
   z-index: 999;
+}
+
+/* ------------------------------------------------------------------ */
+/* Paper mode prose: print-like serif typography for <article>.        */
+/* The paper & ink colors and the warm nav scrim live in global.css    */
+/* (body.paper). Serif only applies to article content; UI stays sans. */
+/* ------------------------------------------------------------------ */
+
+body.paper article {
+  font-family: var(--font-serif), var(--font-cjk-serif), serif;
+  font-size: 1.0625rem;
+  line-height: 1.9;
+  letter-spacing: 0.015em;
+  max-width: 38em;
+  text-align: justify;
+  line-break: strict;
+  /* CJK micro-typography: auto spacing between CJK & Latin, punctuation trimming.
+     Progressive enhancement — ignored where unsupported. */
+  text-autospace: normal;
+  text-spacing-trim: normal;
+  hanging-punctuation: first allow-end;
+}
+
+body.paper article p {
+  line-height: inherit;
+}
+
+body.paper article h1,
+body.paper article h2,
+body.paper article h3 {
+  letter-spacing: 0.02em;
+}
+
+body.paper article a {
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
 }

@@ -11,8 +11,10 @@ interface Props {
   fullWidth?: boolean;
   /** Pages with searchable=true are indexed by Pagefind. Defaults to false. */
   searchable?: boolean;
+  /** Pages with paper=true get the print-like paper treatment (see global.css). Defaults to true. */
+  paper?: boolean;
 }
-const { title, description, searchable = false } = Astro.props;
+const { title, description, searchable = false, paper = true } = Astro.props;
 
 const year = new Date().getFullYear();
 ---
@@ -22,7 +24,10 @@ const year = new Date().getFullYear();
     <BaseHtmlHead title={title} description={description} />
   </head>
   <body
-    class="bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-300 h-full"
+    class:list={[
+      "bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-300 h-full",
+      { paper },
+    ]}
     {...(!searchable ? { 'data-pagefind-ignore': '' } : {})}
   >
     <header class="top-0 sticky z-50">
