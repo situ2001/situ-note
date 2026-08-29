@@ -116,16 +116,25 @@ html.dark .astro-code span {
 }
 
 @layer components {
+  /* The highlight bar is painted as the element's own background, not an
+     absolutely-positioned ::after behind the text (translateZ(-1px) +
+     preserve-3d). WebKit's view-transition snapshots flatten 3D contexts and
+     negative z-index, which flipped the bar ON TOP of the text during
+     ClientRouter switches. An element's own background always paints beneath
+     its own text — nothing for a snapshot to reorder.
+     Geometry matches the old ::after: left-bottom, min(3rem, 60%) x 0.625rem. */
   .heading-with-underline {
-    @apply font-sans text-xl font-semibold relative w-fit;
-    transform-style: preserve-3d;
+    @apply font-sans text-xl font-semibold w-fit;
+    background-image: linear-gradient(var(--color-highlight), var(--color-highlight));
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    background-size: min(3rem, 60%) 0.625rem;
   }
 
-  .heading-with-underline::after {
-    content: "";
-    @apply print:hidden;
-    @apply absolute left-0 bottom-0 max-w-12 min-w-3/5 h-2.5 bg-highlight overflow-visible;
-    transform: translateZ(-1px);
+  @media print {
+    .heading-with-underline {
+      background-image: none;
+    }
   }
 }
 

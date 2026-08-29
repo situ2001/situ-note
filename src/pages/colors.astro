@@ -165,11 +165,10 @@ const CURRENT = {
 
     <div class="group relative rounded-lg border border-zinc-200 dark:border-zinc-700 p-4 transition-colors hover:bg-surface cursor-default">
       卡片 hover 也会浮起天蓝；标题带荧光笔扫过：
-      <span class="relative isolate w-fit min-w-0 leading-snug">
+      <span
+        class="bg-no-repeat transition-[background-size] duration-300 ease-out [background-image:linear-gradient(var(--color-highlight),var(--color-highlight))] [background-position:left_bottom] [background-size:0%_0.5rem] group-hover:[background-size:100%_0.5rem]"
+      >
         纸上雾蓝
-        <span
-          class="pointer-events-none absolute -z-10 bottom-0 left-0 h-2 w-full origin-left scale-x-0 bg-highlight transition-transform duration-300 ease-out group-hover:scale-x-100"
-        />
       </span>
     </div>
 
@@ -177,9 +176,10 @@ const CURRENT = {
       粉色高亮常见形态：标题底部的
       <span class="heading-with-underline">静态色块标记</span>
       ，以及行内的
-      <span class="relative isolate w-fit">
+      <span
+        class="bg-no-repeat [background-image:linear-gradient(var(--color-highlight),var(--color-highlight))] [background-position:left_bottom] [background-size:100%_0.5rem]"
+      >
         荧光笔划线
-        <span class="pointer-events-none absolute -z-10 bottom-0 left-0 h-2 w-full bg-highlight" />
       </span>
       。
     </p>
