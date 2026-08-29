@@ -35,7 +35,8 @@ export const convertStringCategoriesToArray = (categoryString: string) => {
 };
 
 export const groupPostsByYear = (posts: Post[]) => {
-  const postsByYear = groupBy(posts, (post) => post.data.date.getFullYear());
+  // Group by UTC year so that it always matches FormattedDate, which renders in UTC
+  const postsByYear = groupBy(posts, (post) => post.data.date.getUTCFullYear());
   return postsByYear;
 };
 
