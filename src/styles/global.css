@@ -146,8 +146,12 @@ html.dark .astro-code span {
      replace it with a warm frosted scrim so it blends with the paper */
   body.paper header nav {
     background-color: var(--color-paper-scrim);
+    /*https://github.com/parcel-bundler/lightningcss/issues/695*/
+    /*https://github.com/tailwindlabs/tailwindcss/discussions/16443*/
+    -webkit-backdrop-filter: blur(var(--blur-paper));
     backdrop-filter: blur(var(--blur-paper));
   }
+
 }
 
 /* dark mode surface values: a hint of sky over the zinc surfaces, keeping the
