@@ -1,0 +1,230 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+/**
+ * 试色页（临时工具页）：天蓝 / 粉色候选色 swatches。
+ * 点击任一方块会把该值临时写入 :root 的对应 token（surface 会连带推导
+ * surface-strong），下方「上下文预览」与整站用到这些 token 的元素会即时
+ * 换色，方便对比。「重置」恢复当前 token。
+ */
+const skyCandidates: { name: string; label: string; value: string }[] = [
+  {
+    name: "雾蓝纸 · sky 8% 混纸",
+    label: "color-mix 8%",
+    value: "color-mix(in srgb, oklch(0.828 0.111 230.318) 8%, #faf9f6)",
+  },
+  { name: "纯天蓝", label: "#e9f3fe", value: "#e9f3fe" },
+  { name: "sky-50", label: "#f0f9ff", value: "#f0f9ff" },
+  { name: "sky-50 ⊕ 25% sky-100", label: "#ecf7ff", value: "#ecf7ff" },
+  { name: "sky-50 ⊕ 50% sky-100", label: "#e8f6ff", value: "#e8f6ff" },
+  { name: "sky-50 ⊕ 75% sky-100", label: "#e4f4fe", value: "#e4f4fe" },
+  { name: "sky-100", label: "#e0f2fe", value: "#e0f2fe" },
+  { name: "blue-50 · 偏靛", label: "#eff6ff", value: "#eff6ff" },
+  { name: "blue-100 · 过深参考", label: "#dbeafe", value: "#dbeafe" },
+  { name: "aliceblue", label: "#f0f8ff", value: "#f0f8ff" },
+  { name: "同明度 · 偏青 hue200", label: "#e9f7fe", value: "#e9f7fe" },
+  { name: "同明度 · 偏紫 hue220", label: "#e9f0fe", value: "#e9f0fe" },
+  { name: "掺纸 40% · 更灰", label: "#f0f5fb", value: "#f0f5fb" },
+];
+
+const pinkCandidates: { name: string; label: string; value: string }[] = [
+  {
+    name: "当前 · pink-300 半透",
+    label: "82.3% 0.12 346° / 50%",
+    value: "oklch(82.3% 0.12 346.018 / 0.5)",
+  },
+  {
+    name: "pink-300 ⊕ 65%",
+    label: "82.3% 0.12 346° / 65%",
+    value: "oklch(82.3% 0.12 346.018 / 0.65)",
+  },
+  {
+    name: "pink-300 ⊕ 35%",
+    label: "82.3% 0.12 346° / 35%",
+    value: "oklch(82.3% 0.12 346.018 / 0.35)",
+  },
+  {
+    name: "pink-200 · 更浅更柔",
+    label: "89.9% 0.061 343° / 60%",
+    value: "oklch(89.9% 0.061 343.231 / 0.6)",
+  },
+  {
+    name: "pink-400 · 更饱和",
+    label: "71.8% 0.202 350° / 45%",
+    value: "oklch(71.8% 0.202 349.761 / 0.45)",
+  },
+  {
+    name: "pink-500 · 浓一笔",
+    label: "65.6% 0.241 354° / 30%",
+    value: "oklch(65.6% 0.241 354.308 / 0.3)",
+  },
+  {
+    name: "rose-300 · 偏红",
+    label: "81% 0.117 12° / 50%",
+    value: "oklch(81% 0.117 11.638 / 0.5)",
+  },
+  {
+    name: "fuchsia-300 · 偏紫",
+    label: "83.3% 0.137 328° / 50%",
+    value: "oklch(83.3% 0.137 328.366 / 0.5)",
+  },
+  {
+    name: "pink-300 · 不透明参考",
+    label: "82.3% 0.12 346° / 100%",
+    value: "oklch(82.3% 0.12 346.018)",
+  },
+  {
+    name: "雾粉纸 · pink 40% 混纸",
+    label: "color-mix 40%",
+    value: "color-mix(in srgb, oklch(82.3% 0.12 346.018) 40%, #faf9f6)",
+  },
+];
+
+const CURRENT = {
+  surface: "color-mix(in srgb, oklch(0.828 0.111 230.318) 8%, #faf9f6)",
+  highlight: "color-mix(in srgb, oklch(82.3% 0.12 346.018) 40%, #faf9f6)",
+};
+---
+
+<BaseLayout title="Colors · 试色" description="Color candidates">
+  <h1 class="heading-with-underline text-3xl font-medium mb-2">试色</h1>
+  <p class="text-sm text-zinc-500 mb-4">
+    点击色块 → 整页对应 token 即时换色（选中项有粉描边）；「重置」恢复当前
+    token。天蓝会连带推导一档 surface-strong。
+  </p>
+  <div class="mb-10">
+    <button
+      type="button"
+      data-reset
+      class="cursor-pointer rounded-md border border-zinc-300 dark:border-zinc-600 px-3 py-1.5 text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800"
+    >
+      重置为当前 token
+    </button>
+  </div>
+
+  <h2 class="heading-with-underline text-xl font-semibold mb-6">
+    天蓝 · surface
+  </h2>
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-4 gap-y-8">
+    {
+      skyCandidates.map((c) => (
+        <figure>
+          <button
+            type="button"
+            data-token="--color-surface"
+            data-value={c.value}
+            data-active={c.value === CURRENT.surface ? "true" : "false"}
+            class="block aspect-square w-full cursor-pointer rounded-lg border border-zinc-300/60 dark:border-zinc-600 transition-shadow hover:shadow-md"
+            style={`background: ${c.value};`}
+            aria-label={`应用 ${c.name}`}
+          />
+          <figcaption class="mt-2">
+            <div class="text-sm">{c.name}</div>
+            <div class="font-mono text-xs text-zinc-400">{c.label}</div>
+          </figcaption>
+        </figure>
+      ))
+    }
+  </div>
+
+  <h2 class="heading-with-underline text-xl font-semibold mt-12 mb-6">
+    粉色 · highlight
+  </h2>
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-4 gap-y-8">
+    {
+      pinkCandidates.map((c) => (
+        <figure>
+          <button
+            type="button"
+            data-token="--color-highlight"
+            data-value={c.value}
+            data-active={c.value === CURRENT.highlight ? "true" : "false"}
+            class="block aspect-square w-full cursor-pointer rounded-lg border border-zinc-300/60 dark:border-zinc-600 transition-shadow hover:shadow-md"
+            style={`background: ${c.value};`}
+            aria-label={`应用 ${c.name}`}
+          />
+          <figcaption class="mt-2">
+            <div class="text-sm">{c.name}</div>
+            <div class="font-mono text-xs text-zinc-400">{c.label}</div>
+          </figcaption>
+        </figure>
+      ))
+    }
+  </div>
+
+  <h2 class="heading-with-underline text-xl font-semibold mt-12 mb-6">
+    上下文预览
+  </h2>
+  <div class="space-y-6">
+    <pre><code>const surface = "mist blue";  // 点击上方色块试试</code></pre>
+
+    <blockquote class="bg-surface border-l-4 border-zinc-300 dark:border-zinc-700 px-4 py-2 rounded-r">
+      引用块吃 <code>--color-surface</code>，里面的行内 chip 吃更深一档的
+      <code>--color-surface-strong</code>。
+    </blockquote>
+
+    <div class="group relative rounded-lg border border-zinc-200 dark:border-zinc-700 p-4 transition-colors hover:bg-surface cursor-default">
+      卡片 hover 也会浮起天蓝；标题带荧光笔扫过：
+      <span class="relative isolate w-fit min-w-0 leading-snug">
+        纸上雾蓝
+        <span
+          class="pointer-events-none absolute -z-10 bottom-0 left-0 h-2 w-full origin-left scale-x-0 bg-highlight transition-transform duration-300 ease-out group-hover:scale-x-100"
+        />
+      </span>
+    </div>
+
+    <p class="text-sm">
+      粉色高亮常见形态：标题底部的
+      <span class="heading-with-underline">静态色块标记</span>
+      ，以及行内的
+      <span class="relative isolate w-fit">
+        荧光笔划线
+        <span class="pointer-events-none absolute -z-10 bottom-0 left-0 h-2 w-full bg-highlight" />
+      </span>
+      。
+    </p>
+  </div>
+</BaseLayout>
+
+<script>
+  const swatches = document.querySelectorAll<HTMLElement>("[data-token]");
+  const reset = document.querySelector<HTMLButtonElement>("[data-reset]");
+
+  function setActive(value: string | null) {
+    swatches.forEach((el) => {
+      el.dataset.active =
+        value !== null && el.dataset.value === value ? "true" : "false";
+    });
+  }
+
+  swatches.forEach((el) => {
+    el.addEventListener("click", () => {
+      const token = el.dataset.token;
+      const value = el.dataset.value;
+      if (!token || !value) return;
+      const root = document.documentElement;
+      root.style.setProperty(token, value);
+      if (token === "--color-surface") {
+        root.style.setProperty(
+          "--color-surface-strong",
+          `color-mix(in srgb, ${value} 62%, #bae6fd)`,
+        );
+      }
+      setActive(value);
+    });
+  });
+
+  reset?.addEventListener("click", () => {
+    ["--color-surface", "--color-surface-strong", "--color-highlight"].forEach(
+      (token) => document.documentElement.style.removeProperty(token),
+    );
+    setActive(null);
+  });
+</script>
+
+<style>
+  [data-active="true"] {
+    outline: 2px solid var(--color-highlight);
+    outline-offset: 3px;
+  }
+</style>

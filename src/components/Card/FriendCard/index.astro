@@ -11,8 +11,8 @@ const cardStyles = {
   base: "flex w-full flex-row justify-between rounded-lg py-4 px-4 transition-all active:scale-[0.995]",
   borders:
     "border border-zinc-200 dark:border-zinc-700 md:hover:border-zinc-300 dark:md:hover:border-zinc-600",
-  background: "bg-white dark:bg-zinc-900",
-  animation: "md:hover:scale-105 md:hover:shadow-xs group",
+  background: "bg-white dark:bg-zinc-900 md:hover:bg-surface",
+  animation: "group",
   spacing: "mb-3",
 };
 
@@ -36,7 +36,9 @@ const iconStyles = {
     )}
   >
     <div class="flex-1 font-medium">
-      <span>{name}</span>
+      <span
+        class="relative isolate w-fit after:pointer-events-none after:absolute after:-z-10 after:bottom-0 after:left-0 after:h-2 after:w-full after:origin-left after:scale-x-0 after:bg-highlight after:transition-transform after:duration-300 after:ease-out md:group-hover:after:scale-x-100"
+      >{name}</span>
     </div>
 
     <span class={clsx(iconStyles.base, iconStyles.colors)}>

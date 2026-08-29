@@ -38,11 +38,7 @@ article table {
 }
 
 article table thead {
-  @apply bg-zinc-100;
-}
-
-.dark article table thead {
-  @apply bg-zinc-700;
+  @apply bg-surface;
 }
 
 article table th {
@@ -75,7 +71,7 @@ article a::after {
 }
 
 article blockquote {
-  @apply text-zinc-600 border-l-4 border-zinc-300 px-4 py-2 my-6 bg-zinc-50;
+  @apply text-zinc-600 border-l-4 border-zinc-300 px-4 py-2 my-6 bg-surface;
 }
 
 article blockquote > *:first-child {
@@ -88,7 +84,6 @@ article blockquote > *:last-child {
 
 .dark article blockquote {
   @apply border-l-zinc-700;
-  @apply bg-zinc-800;
   @apply text-zinc-300;
 }
 

@@ -19,6 +19,16 @@
   --color-ink: #2f2d2a;
   /* sticky nav scrim over paper: paper at 86% opacity */
   --color-paper-scrim: color-mix(in srgb, var(--color-paper) 86%, transparent);
+  /* the site accent: 雾粉纸 — pink-300 misted into the paper (40%), mirroring
+     the mist-blue surface recipe. (半透 pink-300 alternative: oklch(82.3% 0.12 346.018 / 0.5)) */
+  --color-highlight: color-mix(in srgb, oklch(82.3% 0.12 346.018) 40%, var(--color-paper));
+  /* secondary surfaces: 雾蓝纸 — sky-400 misted into the paper (8%), keeping
+     the cool tint inside the paper's soft family. Code blocks, quotes, table
+     heads, card hovers. (纯天蓝 alternative: #e9f3fe) */
+  --color-surface: color-mix(in srgb, oklch(0.828 0.111 230.318) 8%, var(--color-paper));
+  --color-surface-strong: color-mix(in srgb, oklch(0.828 0.111 230.318) 16%, var(--color-paper) /* same ramp, one step deeper */);
+  /* text selection: sky wash, pairs with the pink highlighter */
+  --color-selection: oklch(0.828 0.111 230.318 / 0.45);
 
   /* prose type scale: 17px book text with generous print leading */
   --text-prose: 1.0625rem;
@@ -86,20 +96,12 @@ html.dark img {
   @apply brightness-75;
 }
 
-html.dark :not(pre) > code {
-  @apply bg-zinc-600;
-}
-
 code:not(pre code) {
-  @apply rounded! px-1! bg-zinc-100!;
-}
-
-html.dark code:not(pre code) {
-  @apply bg-zinc-600!;
+  @apply rounded! px-1! bg-surface-strong!;
 }
 
 pre {
-  @apply rounded! p-4! bg-zinc-100!;
+  @apply rounded! p-4! bg-surface!;
 }
 
 /* Shiki code block highlight */
@@ -122,7 +124,7 @@ html.dark .astro-code span {
   .heading-with-underline::after {
     content: "";
     @apply print:hidden;
-    @apply absolute left-0 bottom-0 max-w-12 min-w-3/5 h-2.5 bg-pink-300 opacity-50 overflow-visible;
+    @apply absolute left-0 bottom-0 max-w-12 min-w-3/5 h-2.5 bg-highlight overflow-visible;
     transform: translateZ(-1px);
   }
 }
@@ -147,5 +149,21 @@ html.dark .astro-code span {
     backdrop-filter: blur(var(--blur-paper));
     -webkit-backdrop-filter: blur(var(--blur-paper));
   }
+}
+
+/* dark mode surface values: a hint of sky over the zinc surfaces, keeping the
+   blue family consistent without fighting the Shiki dark code background.
+   highlight falls back to the translucent pink wash: the opaque mist pink is
+   mixed from the paper and would glare against dark zinc behind light text. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-surface: color-mix(in srgb, oklch(0.828 0.111 230.318) 5%, oklch(0.274 0.006 286.033 /* zinc-800 */));
+    --color-surface-strong: color-mix(in srgb, oklch(0.828 0.111 230.318) 8%, oklch(0.442 0.017 285.786 /* zinc-600 */));
+    --color-highlight: oklch(82.3% 0.12 346.018 / 0.5);
+  }
+}
+
+::selection {
+  background-color: var(--color-selection);
 }
 
