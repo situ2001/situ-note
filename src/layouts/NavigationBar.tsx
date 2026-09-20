@@ -6,7 +6,6 @@ import { Search } from "@carbon/icons-react";
 import clsx from "clsx";
 import type { NavigationItem } from "types";
 import config from "config";
-import React from "react";
 
 const SearchModal = lazy(() => import("../components/SearchModal"));
 
@@ -63,49 +62,31 @@ const NavigationBar = ({ items }: { items: NavigationItem[] }) => {
       >
         <div className="flex justify-between mx-auto max-w-screen-lg">
           <h2 className="left">
-            <a href="/" className="font-serif">
+            <a href="/" className="font-serif min-w-11 min-h-11 flex items-center">
               <SiteLogo />
             </a>
           </h2>
 
-          <div className="right flex items-center gap-4">
-            {items.map((menu, index) => {
-              const forceMinimal = menu.forceMinimal;
-              const autoMinimal = menu.autoMinimal;
-
-              const classNameForText = (() => {
-                if (forceMinimal) return clsx("hidden");
-                if (autoMinimal) return clsx("hidden md:block");
-
-                return clsx("block");
-              })();
-
-              const classNameForIcon = (() => {
-                if (forceMinimal) return clsx("block");
-                if (autoMinimal) return clsx("block md:hidden");
-
-                return clsx("hidden");
-              })();
-
+          <div className="right flex items-center gap-0 sm:gap-2 md:gap-4 text-sm sm:text-base">
+            {items.map((menu) => {
               const Icon = menu.icon;
-
               return (
-                <React.Fragment key={index}>
-                  <h2 className={classNameForText}>
-                    <a href={menu.link} title={menu.name}>
-                      {menu.name}
-                    </a>
-                  </h2>
+                <a
+                  key={menu.link}
+                  href={menu.link}
+                  title={menu.name}
+                  aria-label={menu.name}
+                  className="min-w-11 min-h-11 px-1 flex items-center justify-center shrink-0 rounded-md"
+                >
+                  <span className={clsx(menu.forceMinimal && Icon ? "hidden" : menu.autoMinimal && Icon ? "hidden md:block" : "block")}>
+                    {menu.name}
+                  </span>
                   {Icon && (
-                    <a
-                      className={classNameForIcon}
-                      href={menu.link}
-                      title={menu.name}
-                    >
+                    <span className={clsx(menu.forceMinimal ? "block" : menu.autoMinimal ? "block md:hidden" : "hidden")}>
                       <Icon size={16} />
-                    </a>
+                    </span>
                   )}
-                </React.Fragment>
+                </a>
               );
             })}
 
@@ -113,7 +94,7 @@ const NavigationBar = ({ items }: { items: NavigationItem[] }) => {
             <button
               onClick={openSearch}
               className={clsx(
-                "p-1 rounded-md cursor-pointer",
+                "min-w-11 min-h-11 flex items-center justify-center shrink-0 rounded-md cursor-pointer",
                 "hover:bg-zinc-200 dark:hover:bg-zinc-700",
                 "transition-colors",
               )}

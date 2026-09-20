@@ -3,6 +3,7 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import react from "@astrojs/react";
 import remarkMath from "remark-math";
+import externalLinks from "./src/plugins/rehype-external-links.mjs";
 import rehypeKatex from "rehype-katex";
 import pagefind from "astro-pagefind";
 
@@ -60,7 +61,7 @@ export default defineConfig({
       wrap: false,
     },
     remarkPlugins: [remarkMath],
-    rehypePlugins: [rehypeKatex],
+    rehypePlugins: [rehypeKatex, [externalLinks, { site: "https://situ2001.com" }]],
   },
 
   server: {

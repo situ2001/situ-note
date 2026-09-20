@@ -1,8 +1,9 @@
 @reference "./global.css";
 
 .katex-display {
-  overflow-x: scroll !important;
+  overflow-x: auto !important;
   overflow-y: hidden !important;
+  padding-block: 0.375em;
 }
 
 article p {
@@ -34,7 +35,8 @@ article ul {
 
 article table {
   display: block;
-  overflow: scroll;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 article table thead {
@@ -42,19 +44,20 @@ article table thead {
 }
 
 article table th {
-  @apply px-2 py-2 border border-zinc-200;
+  @apply px-2 py-2 border border-prose-rule;
 }
 
 article table td {
-  @apply px-2 py-2 border border-zinc-200;
+  @apply px-2 py-2 border border-prose-rule;
 }
 
 article a {
-  /* TODO make a small arrow to indicate jumping */
-  @apply break-all underline underline-offset-2 my-4;
+  @apply underline underline-offset-2;
+  word-break: normal;
+  overflow-wrap: anywhere;
 }
 
-article a::after {
+article a[data-external-link]::after {
   width: 0.75em;
   height: 0.75em;
   display: inline-block;
@@ -63,12 +66,9 @@ article a::after {
   mask-size: cover;
   padding-left: 2px;
   vertical-align: text-top;
-  background-color: black;
+  background-color: currentColor;
 }
 
-.dark article a::after {
-  @apply bg-zinc-300;
-}
 
 article blockquote {
   @apply text-zinc-600 border-l-4 border-zinc-300 px-4 py-2 my-6 bg-surface;
@@ -142,4 +142,53 @@ body.paper article h3 {
 body.paper article a {
   text-underline-offset: 0.2em;
   text-decoration-thickness: 1px;
+}
+
+/* Shared offsets leave room for the sticky navigation and breathing space. */
+article :is(h1, h2, h3, h4, h5, h6, [id^="user-content-fn"]) {
+  scroll-margin-top: 6rem;
+}
+
+article :is(h4, h5, h6) {
+  margin-block: 1.5em 0.5em;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: start;
+}
+article h4 { font-size: 1.0625rem; }
+article h5 { font-size: 1rem; }
+article h6 { font-size: 0.9375rem; }
+
+article pre {
+  margin-block: 1.5rem;
+  max-width: 100%;
+  overflow-x: auto;
+  text-align: start;
+}
+article :is(ul, ol) :is(ul, ol) { margin-block: 0.375em; }
+article li + li { margin-top: 0.25em; }
+article li > p { margin-block: 0.5em; }
+article .task-list-item { list-style: none; }
+article .task-list-item > input[type="checkbox"] {
+  margin-inline: -1.1em 0.35em;
+  accent-color: currentColor;
+}
+article [data-footnotes] {
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-prose-rule);
+  font-size: 0.9375rem;
+  text-align: start;
+}
+article [data-footnotes] h2 { font-size: 1.125rem; }
+article a:focus-visible,
+header nav :is(a, button):focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+article img { height: auto; max-width: 100%; }
+
+@media (max-width: 399px) {
+  body.paper article { text-align: start; }
 }

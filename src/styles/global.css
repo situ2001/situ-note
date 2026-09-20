@@ -17,6 +17,7 @@
   /* primitives: warm paper & soft ink */
   --color-paper: #faf9f6;
   --color-ink: #2f2d2a;
+  --color-prose-rule: #d6d3d1;
   /* sticky nav scrim over paper: paper at 86% opacity */
   --color-paper-scrim: color-mix(in srgb, var(--color-paper) 86%, transparent);
   /* the site accent: 雾粉纸 — pink-300 misted into the paper (40%), mirroring
@@ -92,8 +93,9 @@ code {
   @apply text-sm;
 }
 
-html.dark img {
-  @apply brightness-75;
+/* Only explicitly opted-in images are dimmed; zoom always shows original colors. */
+html.dark img[data-dim-in-dark]:not(.medium-zoom-image--opened) {
+  filter: brightness(0.85);
 }
 
 code:not(pre code) {
@@ -169,6 +171,7 @@ html.dark .astro-code span {
    mixed from the paper and would glare against dark zinc behind light text. */
 @media (prefers-color-scheme: dark) {
   :root {
+    --color-prose-rule: #52525b;
     --color-surface: color-mix(in srgb, oklch(0.828 0.111 230.318) 5%, oklch(0.274 0.006 286.033 /* zinc-800 */));
     --color-surface-strong: color-mix(in srgb, oklch(0.828 0.111 230.318) 8%, oklch(0.442 0.017 285.786 /* zinc-600 */));
     --color-highlight: oklch(82.3% 0.12 346.018 / 0.5);
