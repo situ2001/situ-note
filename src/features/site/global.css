@@ -20,16 +20,13 @@
   --color-prose-rule: #d6d3d1;
   /* sticky nav scrim over paper: paper at 86% opacity */
   --color-paper-scrim: color-mix(in srgb, var(--color-paper) 86%, transparent);
-  /* the site accent: 雾粉纸 — pink-300 misted into the paper (40%), mirroring
-     the mist-blue surface recipe. (半透 pink-300 alternative: oklch(82.3% 0.12 346.018 / 0.5)) */
+  /* the site accent: 雾粉纸 — pink-300 misted into the paper (40%). */
   --color-highlight: color-mix(in srgb, oklch(82.3% 0.12 346.018) 40%, var(--color-paper));
-  /* secondary surfaces: 雾蓝纸 — sky-400 misted into the paper (8%), keeping
-     the cool tint inside the paper's soft family. Code blocks, quotes, table
-     heads, card hovers. (纯天蓝 alternative: #e9f3fe) */
-  --color-surface: color-mix(in srgb, oklch(0.828 0.111 230.318) 8%, var(--color-paper));
-  --color-surface-strong: color-mix(in srgb, oklch(0.828 0.111 230.318) 16%, var(--color-paper) /* same ramp, one step deeper */);
-  /* text selection: sky wash, pairs with the pink highlighter */
-  --color-selection: oklch(0.828 0.111 230.318 / 0.45);
+  /* warm secondary surfaces for code, quotes, table heads, and card hovers */
+  --color-surface: #f6f3ee;
+  --color-surface-strong: #eee9e3;
+  --color-quote-rule: color-mix(in srgb, var(--color-highlight) 90%, var(--color-ink));
+  --color-selection: #e7c7d4;
 
   /* prose type scale: 17px book text with generous print leading */
   --text-prose: 1.0625rem;
@@ -165,16 +162,15 @@ html.dark .astro-code span {
 
 }
 
-/* dark mode surface values: a hint of sky over the zinc surfaces, keeping the
-   blue family consistent without fighting the Shiki dark code background.
-   highlight falls back to the translucent pink wash: the opaque mist pink is
-   mixed from the paper and would glare against dark zinc behind light text. */
+/* Dark mode keeps its zinc and Shiki surfaces. The paper-based highlight
+   falls back to a translucent pink wash behind light text. */
 @media (prefers-color-scheme: dark) {
   :root {
     --color-prose-rule: #52525b;
     --color-surface: color-mix(in srgb, oklch(0.828 0.111 230.318) 5%, oklch(0.274 0.006 286.033 /* zinc-800 */));
     --color-surface-strong: color-mix(in srgb, oklch(0.828 0.111 230.318) 8%, oklch(0.442 0.017 285.786 /* zinc-600 */));
     --color-highlight: oklch(82.3% 0.12 346.018 / 0.5);
+    --color-selection: oklch(0.828 0.111 230.318 / 0.45);
   }
 }
 

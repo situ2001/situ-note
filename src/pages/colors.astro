@@ -2,14 +2,15 @@
 import BaseLayout from "@/features/site/BaseLayout.astro";
 
 /**
- * 试色页（临时工具页）：天蓝 / 粉色候选色 swatches。
+ * 试色页（临时工具页）：背景 / 粉色候选色 swatches。
  * 点击任一方块会把该值临时写入 :root 的对应 token（surface 会连带推导
  * surface-strong），下方「上下文预览」与整站用到这些 token 的元素会即时
  * 换色，方便对比。「重置」恢复当前 token。
  */
-const skyCandidates: { name: string; label: string; value: string }[] = [
+const surfaceCandidates: { name: string; label: string; value: string }[] = [
+  { name: "当前 · 暖纸", label: "#f6f3ee", value: "#f6f3ee" },
   {
-    name: "雾蓝纸 · sky 8% 混纸",
+    name: "旧版 · 雾蓝纸",
     label: "color-mix 8%",
     value: "color-mix(in srgb, oklch(0.828 0.111 230.318) 8%, #faf9f6)",
   },
@@ -81,7 +82,7 @@ const pinkCandidates: { name: string; label: string; value: string }[] = [
 ];
 
 const CURRENT = {
-  surface: "color-mix(in srgb, oklch(0.828 0.111 230.318) 8%, #faf9f6)",
+  surface: "#f6f3ee",
   highlight: "color-mix(in srgb, oklch(82.3% 0.12 346.018) 40%, #faf9f6)",
 };
 ---
@@ -90,7 +91,7 @@ const CURRENT = {
   <h1 class="heading-with-underline text-3xl font-medium mb-2">试色</h1>
   <p class="text-sm text-zinc-500 mb-4">
     点击色块 → 整页对应 token 即时换色（选中项有粉描边）；「重置」恢复当前
-    token。天蓝会连带推导一档 surface-strong。
+    token。背景色会连带推导一档 surface-strong。
   </p>
   <div class="mb-10">
     <button
@@ -103,11 +104,11 @@ const CURRENT = {
   </div>
 
   <h2 class="heading-with-underline text-xl font-semibold mb-6">
-    天蓝 · surface
+    背景 · surface
   </h2>
   <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-4 gap-y-8">
     {
-      skyCandidates.map((c) => (
+      surfaceCandidates.map((c) => (
         <figure>
           <button
             type="button"
@@ -156,19 +157,19 @@ const CURRENT = {
     上下文预览
   </h2>
   <div class="space-y-6">
-    <pre><code>const surface = "mist blue";  // 点击上方色块试试</code></pre>
+    <pre><code>const surface = "warm paper";  // 点击上方色块试试</code></pre>
 
-    <blockquote class="bg-surface border-l-4 border-zinc-300 dark:border-zinc-700 px-4 py-2 rounded-r">
+    <blockquote class="bg-surface border-l-4 border-quote-rule dark:border-zinc-700 px-4 py-2 rounded-r">
       引用块吃 <code>--color-surface</code>，里面的行内 chip 吃更深一档的
       <code>--color-surface-strong</code>。
     </blockquote>
 
     <div class="group relative rounded-lg border border-zinc-200 dark:border-zinc-700 p-4 transition-colors hover:bg-surface cursor-default">
-      卡片 hover 也会浮起天蓝；标题带荧光笔扫过：
+      卡片 hover 也会浮起背景色；标题带荧光笔扫过：
       <span
         class="bg-no-repeat transition-[background-size] duration-300 ease-out [background-image:linear-gradient(var(--color-highlight),var(--color-highlight))] [background-position:left_bottom] [background-size:0%_0.5rem] group-hover:[background-size:100%_0.5rem]"
       >
-        纸上雾蓝
+        纸上暖色
       </span>
     </div>
 
@@ -207,7 +208,9 @@ const CURRENT = {
       if (token === "--color-surface") {
         root.style.setProperty(
           "--color-surface-strong",
-          `color-mix(in srgb, ${value} 62%, #bae6fd)`,
+          value === "#f6f3ee"
+            ? "#eee9e3"
+            : `color-mix(in srgb, ${value} 62%, #bae6fd)`,
         );
       }
       setActive(value);

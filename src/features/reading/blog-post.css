@@ -71,7 +71,7 @@ article.reading a[data-external-link]::after {
 
 
 article.reading blockquote {
-  @apply text-zinc-600 border-l-4 border-zinc-300 px-4 py-2 my-6 bg-surface;
+  @apply text-zinc-600 border-l-4 border-quote-rule px-4 py-2 my-6 bg-surface;
 }
 
 article.reading blockquote > *:first-child {
@@ -164,6 +164,12 @@ article.reading pre {
   max-width: 100%;
   overflow-x: auto;
   text-align: start;
+}
+
+@media (prefers-color-scheme: light) {
+  body.paper article.reading pre {
+    border: 1px solid #e5ded6;
+  }
 }
 article.reading :is(ul, ol) :is(ul, ol) { margin-block: 0.375em; }
 article.reading li + li { margin-top: 0.25em; }
