@@ -1,23 +1,16 @@
 ---
-import { BlogListItem } from "@/components/BlogListItem";
-import {
-  getPostSortedByDate,
-  getPostsGroupByCategory,
-  posts as postsData,
-} from "../../../api/blog";
+import { blog } from "@/features/blog/blog";
 
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 
-const postsGrouppedByCategory = getPostsGroupByCategory(
-  getPostSortedByDate(postsData)
-);
+const categories = blog.categoryNames();
 ---
 
 <BaseLayout title="Category" description="The category page">
   <div>
     <ul>
       {
-        Object.keys(postsGrouppedByCategory).map((category) => {
+        categories.map((category) => {
           return (
             <span class="mr-4 inline-block">
               <a

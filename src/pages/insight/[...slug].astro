@@ -1,10 +1,7 @@
 ---
-import { getCollection, type CollectionEntry } from "astro:content";
-
-// TODO insight layout
-import BlogPost from "../../layouts/BlogPost.astro";
+import type { CollectionEntry } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { insights, type Insight } from "../../api/insight";
+import { insights } from "../../api/insight";
 
 export const getStaticPaths = () => {
   return insights.map((post) => ({
@@ -15,7 +12,7 @@ export const getStaticPaths = () => {
 type Props = CollectionEntry<"insight">;
 
 const post = Astro.props;
-const { Content, headings } = await post.render();
+const { Content } = await post.render();
 ---
 
 <BaseLayout title={post.data.title} description={""} searchable>

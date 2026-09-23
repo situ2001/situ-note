@@ -1,4 +1,4 @@
-@reference "./global.css";
+@reference "../../styles/global.css";
 
 .katex-display {
   overflow-x: auto !important;
@@ -6,58 +6,58 @@
   padding-block: 0.375em;
 }
 
-article p {
+article.reading p {
   @apply my-4;
   @apply leading-relaxed;
 
   word-break: break-word;
 }
 
-article h1 {
+article.reading h1 {
   @apply text-3xl mb-6 mt-8 font-bold;
 }
 
-article h2 {
+article.reading h2 {
   @apply text-2xl mb-6 mt-8 font-bold;
 }
 
-article h3 {
+article.reading h3 {
   @apply text-xl mb-3 mt-5 font-semibold;
 }
 
-article ol {
+article.reading ol {
   @apply list-decimal list-outside my-4 pl-4;
 }
 
-article ul {
+article.reading ul {
   @apply list-disc list-outside my-4 pl-4;
 }
 
-article table {
+article.reading table {
   display: block;
   overflow-x: auto;
   overflow-y: hidden;
 }
 
-article table thead {
+article.reading table thead {
   @apply bg-surface;
 }
 
-article table th {
+article.reading table th {
   @apply px-2 py-2 border border-prose-rule;
 }
 
-article table td {
+article.reading table td {
   @apply px-2 py-2 border border-prose-rule;
 }
 
-article a {
+article.reading a {
   @apply underline underline-offset-2;
   word-break: normal;
   overflow-wrap: anywhere;
 }
 
-article a[data-external-link]::after {
+article.reading a[data-external-link]::after {
   width: 0.75em;
   height: 0.75em;
   display: inline-block;
@@ -70,24 +70,24 @@ article a[data-external-link]::after {
 }
 
 
-article blockquote {
+article.reading blockquote {
   @apply text-zinc-600 border-l-4 border-zinc-300 px-4 py-2 my-6 bg-surface;
 }
 
-article blockquote > *:first-child {
+article.reading blockquote > *:first-child {
   margin-top: 0;
 }
 
-article blockquote > *:last-child {
+article.reading blockquote > *:last-child {
   margin-bottom: 0;
 }
 
-.dark article blockquote {
+.dark article.reading blockquote {
   @apply border-l-zinc-700;
   @apply text-zinc-300;
 }
 
-article img {
+article.reading img {
   margin: 0 auto;
   @apply rounded-xl;
 }
@@ -115,7 +115,7 @@ article img {
 /* too. Serif only applies to article content; UI stays sans.          */
 /* ------------------------------------------------------------------ */
 
-body.paper article {
+body.paper article.reading {
   font-family: var(--font-serif), var(--font-cjk-serif), serif;
   font-size: var(--text-prose);
   line-height: var(--text-prose--line-height);
@@ -129,66 +129,66 @@ body.paper article {
   hanging-punctuation: first allow-end;
 }
 
-body.paper article p {
+body.paper article.reading p {
   line-height: inherit;
 }
 
-body.paper article h1,
-body.paper article h2,
-body.paper article h3 {
+body.paper article.reading h1,
+body.paper article.reading h2,
+body.paper article.reading h3 {
   letter-spacing: var(--tracking-prose-heading);
 }
 
-body.paper article a {
+body.paper article.reading a {
   text-underline-offset: 0.2em;
   text-decoration-thickness: 1px;
 }
 
 /* Shared offsets leave room for the sticky navigation and breathing space. */
-article :is(h1, h2, h3, h4, h5, h6, [id^="user-content-fn"]) {
+article.reading :is(h1, h2, h3, h4, h5, h6, [id^="user-content-fn"]) {
   scroll-margin-top: 6rem;
 }
 
-article :is(h4, h5, h6) {
+article.reading :is(h4, h5, h6) {
   margin-block: 1.5em 0.5em;
   font-weight: 600;
   line-height: 1.5;
   text-align: start;
 }
-article h4 { font-size: 1.0625rem; }
-article h5 { font-size: 1rem; }
-article h6 { font-size: 0.9375rem; }
+article.reading h4 { font-size: 1.0625rem; }
+article.reading h5 { font-size: 1rem; }
+article.reading h6 { font-size: 0.9375rem; }
 
-article pre {
+article.reading pre {
   margin-block: 1.5rem;
   max-width: 100%;
   overflow-x: auto;
   text-align: start;
 }
-article :is(ul, ol) :is(ul, ol) { margin-block: 0.375em; }
-article li + li { margin-top: 0.25em; }
-article li > p { margin-block: 0.5em; }
-article .task-list-item { list-style: none; }
-article .task-list-item > input[type="checkbox"] {
+article.reading :is(ul, ol) :is(ul, ol) { margin-block: 0.375em; }
+article.reading li + li { margin-top: 0.25em; }
+article.reading li > p { margin-block: 0.5em; }
+article.reading .task-list-item { list-style: none; }
+article.reading .task-list-item > input[type="checkbox"] {
   margin-inline: -1.1em 0.35em;
   accent-color: currentColor;
 }
-article [data-footnotes] {
+article.reading [data-footnotes] {
   margin-top: 2.5rem;
   padding-top: 1rem;
   border-top: 1px solid var(--color-prose-rule);
   font-size: 0.9375rem;
   text-align: start;
 }
-article [data-footnotes] h2 { font-size: 1.125rem; }
-article a:focus-visible,
+article.reading [data-footnotes] h2 { font-size: 1.125rem; }
+article.reading a:focus-visible,
 header nav :is(a, button):focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 4px;
   border-radius: 2px;
 }
-article img { height: auto; max-width: 100%; }
+article.reading img { height: auto; max-width: 100%; }
 
 @media (max-width: 399px) {
-  body.paper article { text-align: start; }
+  body.paper article.reading { text-align: start; }
 }

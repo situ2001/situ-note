@@ -1,139 +1,43 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { Search, Close, SearchLocate } from "@carbon/icons-react";
 import clsx from "clsx";
-
-const PAGEFIND_PATH = "/pagefind/pagefind.js";
-const PAGE_SIZE = 10;
-
-// Module-level cache so Pagefind survives unmount/remount
-let pagefindCache: Pagefind | null = null;
-let pagefindLoading: Promise<Pagefind> | null = null;
-
-function loadPagefind(): Promise<Pagefind> {
-  if (pagefindCache) return Promise.resolve(pagefindCache);
-  if (pagefindLoading) return pagefindLoading;
-
-  // @vite-ignore — served by astro-pagefind at runtime
-  pagefindLoading = import(/* @vite-ignore */ PAGEFIND_PATH).then(
-    (mod: Pagefind) => mod.init().then(() => {
-      pagefindCache = mod;
-      return mod;
-    }),
-  );
-  return pagefindLoading;
-}
-
-interface SearchResult {
-  url: string;
-  title: string;
-  excerpt: string;
-}
+import { loadPagefind, SearchSession } from "./searchSession";
 
 interface SearchModalProps {
   onClose: () => void;
 }
 
 export default function SearchModal({ onClose }: SearchModalProps) {
-  const [query, setQuery] = useState("");
-  const [results, setResults] = useState<SearchResult[]>([]);
-  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
-  const [isLoading, setIsLoading] = useState(true);
-  const [pagefind, setPagefind] = useState<Pagefind | null>(pagefindCache);
-  const [initError, setInitError] = useState(false);
+  const [session] = useState(() => new SearchSession(loadPagefind));
+  const { query, results, visibleCount, isLoading } = useSyncExternalStore(
+    session.subscribe,
+    session.getSnapshot,
+  );
   const inputRef = useRef<HTMLInputElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
-  const latestQueryRef = useRef("");
 
-  // Initialize pagefind (uses cache if available)
   useEffect(() => {
-    if (pagefind) {
-      setIsLoading(false);
-      return;
-    }
-    loadPagefind()
-      .then((pf) => {
-        setPagefind(pf);
-        setIsLoading(false);
-      })
-      .catch((err: unknown) => {
-        console.error("Failed to load pagefind:", err);
-        setInitError(true);
-        setIsLoading(false);
-      });
-  }, [pagefind]);
+    void session.initialize();
+    return () => session.dispose();
+  }, [session]);
 
-  // Focus input and lock body scroll on mount
   useEffect(() => {
     document.body.style.overflow = "hidden";
-    requestAnimationFrame(() => {
-      inputRef.current?.focus();
-    });
-    return () => {
-      document.body.style.overflow = "";
-    };
+    requestAnimationFrame(() => inputRef.current?.focus());
+    return () => { document.body.style.overflow = ""; };
   }, []);
 
-  // Close on Escape
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
     };
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [onClose]);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setQuery(value);
-
-    if (!pagefind) return;
-    if (value.trim().length === 0) {
-      setResults([]);
-      setVisibleCount(PAGE_SIZE);
-      setIsLoading(false);
-      return;
-    }
-
-    const term = value.trim();
-    latestQueryRef.current = term;
-    setIsLoading(true);
-    pagefind
-      .debouncedSearch(term, undefined, 300)
-      .then(async (search) => {
-        if (term !== latestQueryRef.current) return;
-
-        const mappedResults = await Promise.all(
-          search.results.map(async (result) => {
-            const data = await result.data();
-            return {
-              url: data.url,
-              title: data.meta?.title || "",
-              excerpt: data.excerpt,
-            };
-          }),
-        );
-        setResults(mappedResults);
-        setVisibleCount(PAGE_SIZE);
-        setIsLoading(false);
-      })
-      .catch((err: unknown) => {
-        if (term !== latestQueryRef.current) return;
-        console.error("Search failed:", err);
-        setResults([]);
-        setIsLoading(false);
-      });
-  };
-
-  const handleResultClick = () => {
-    onClose();
-  };
-
-  const handleLoadMore = () => {
-    setVisibleCount((prev) => prev + PAGE_SIZE);
-  };
-
   const displayedResults = results.slice(0, visibleCount);
   const hasMore = results.length > visibleCount;
+  const handleResultClick = () => onClose();
 
   return (
     <div
@@ -174,7 +78,7 @@ export default function SearchModal({ onClose }: SearchModalProps) {
             ref={inputRef}
             type="text"
             value={query}
-            onChange={handleInputChange}
+            onChange={(event) => session.setQuery(event.target.value)}
             placeholder="Search articles..."
             className={clsx(
               "flex-1 bg-transparent outline-none",
@@ -272,7 +176,7 @@ export default function SearchModal({ onClose }: SearchModalProps) {
               {hasMore && (
                 <div className="flex justify-center py-3">
                   <button
-                    onClick={handleLoadMore}
+                    onClick={() => session.loadMore()}
                     className={clsx(
                       "px-4 py-1.5 rounded-md text-sm",
                       "bg-zinc-100 dark:bg-zinc-700",

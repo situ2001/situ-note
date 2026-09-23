@@ -1,5 +1,5 @@
-import type { Post } from "../../api/blog";
-import { BlogListItem } from "@/components/BlogListItem";
+import type { Post } from "@/features/blog/blog";
+import { BlogListItem } from "@/features/blog/BlogListItem";
 
 const Blog = ({
   posts

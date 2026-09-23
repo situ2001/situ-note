@@ -1,6 +1,6 @@
-import type { Post } from "@/api/blog";
+import type { Post } from "@/features/blog/blog";
 import React from "react";
-import FormattedDate from "./FormattedDate";
+import FormattedDate from "@/features/blog/FormattedDate";
 import clsx from "clsx";
 
 export function BlogListItem({

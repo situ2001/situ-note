@@ -4,14 +4,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { Content } from "@/modules/changelog.mdx";
 
 // TODO tmp reused
-import "../styles/blog-post.css";
+import "@/features/reading/blog-post.css";
 // KaTeX CSS
 import "katex/dist/katex.min.css";
 ---
 
 <BaseLayout title="Changelog" description="Changelog for the blog">
   <div class="max-w-measure mx-auto">
-    <article>
+    <article class="reading">
       <Content />
     </article>
   </div>

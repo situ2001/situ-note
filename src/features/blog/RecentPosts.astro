@@ -1,9 +1,8 @@
 ---
-import { getPostSortedByDate, posts as postsData } from "../../api/blog";
-import { BlogListItem } from "@/components/BlogListItem";
+import { blog } from "./blog";
+import { BlogListItem } from "@/features/blog/BlogListItem";
 
-const posts = getPostSortedByDate(postsData);
-const recentFivePosts = posts.slice(0, 5);
+const recentFivePosts = blog.recent(5);
 
 // TODO: Turn this section into "Selected Writing" for the portfolio homepage.
 // Keep /blog as the chronological archive, and curate representative posts here.

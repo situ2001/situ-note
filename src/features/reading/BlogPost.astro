@@ -1,28 +1,27 @@
 ---
-import pluralize from "../utils/pluralize";
+import pluralize from "pluralize";
 
 import type { CollectionEntry } from "astro:content";
 
-import FormattedDate from "../components/FormattedDate";
+import FormattedDate from "@/features/blog/FormattedDate";
 
-import BaseLayout from "./BaseLayout.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 
 // KaTeX CSS
 import "katex/dist/katex.min.css";
 // CSS for the blog post
-import "../styles/blog-post.css";
+import "@/features/reading/blog-post.css";
 
-import { convertStringCategoriesToArray } from "../api/blog";
-import { interleave } from "../utils";
+import { blog } from "@/features/blog/blog";
 import type { MarkdownHeading } from "astro";
-import MediumZoom from "@/components/MediumZoom";
+import MediumZoom from "@/features/reading/MediumZoom";
 
 type Props = CollectionEntry<"blog">["data"] & { headings: MarkdownHeading[] };
 const { title, description, date, categories, headings } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description} searchable paper>
-  <MediumZoom selectors={["article img:not(a img)"]} client:only />
+  <MediumZoom selectors={["article.reading img:not(a img)"]} client:only />
   <div class="max-w-measure mx-auto">
     <div class="font-serif mb-4">
       <h1 class="text-3xl mb-1">{title}</h1>
@@ -31,27 +30,27 @@ const { title, description, date, categories, headings } = Astro.props;
         {
           pluralize(
             "Category",
-            convertStringCategoriesToArray(categories).length,
+            blog.categoriesFor(categories).length,
             false,
           )
         }
         {": "}
         {
-          interleave(
-            convertStringCategoriesToArray(categories).map((category) => (
+          blog.categoriesFor(categories).map((category, index) => (
+            <>
+              {index > 0 && "/"}
               <a href={`/blog/category/${category}`}>
                 <span class="hover:underline underline-offset-4">
                   {category}
                 </span>
               </a>
-            )),
-            "/",
-          )
+            </>
+          ))
         }
       </div>
     </div>
     <hr />
-    <article class="min-w-0" data-pagefind-body>
+    <article class="reading min-w-0" data-pagefind-body>
       <!-- Description -->
       {
         description ? (
