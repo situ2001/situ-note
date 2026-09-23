@@ -27,7 +27,7 @@ const { posts, category } = Astro.props;
     <h1 class="text-xl">Category: {category}</h1>
     <hr class="my-1" />
     <ul>
-      {posts.map((post) => <BlogListItem post={post} />)}
+      {posts.map((post) => <BlogListItem id={post.id} title={post.data.title} date={post.data.date.toISOString()} client:load />)}
     </ul>
   </section>
 </BaseLayout>

@@ -7,16 +7,6 @@ export function createBlogCatalog(posts: Post[]) {
   const sortedPosts = () =>
     posts.slice().sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
-  // Preserve the published date conversion used by post routes, category routes,
-  // and the feed. Archive and recent lists continue to use collection dates.
-  const publishedPost = (post: Post): Post => ({
-    ...post,
-    data: {
-      ...post.data,
-      date: new Date(post.data.date.getTime() - 480 * 60000),
-    },
-  });
-
   const categoriesFor = (categories: string) =>
     categories.split(",").map((category) => category.trim());
 
@@ -53,7 +43,7 @@ export function createBlogCatalog(posts: Post[]) {
     postPaths() {
       return posts.map((post) => ({
         params: { slug: post.id },
-        props: publishedPost(post),
+        props: post,
       }));
     },
 
@@ -61,12 +51,12 @@ export function createBlogCatalog(posts: Post[]) {
       const categories = groupedCategories();
       return Object.keys(categories).map((category) => ({
         params: { category },
-        props: { posts: categories[category].map(publishedPost), category },
+        props: { posts: categories[category], category },
       }));
     },
 
     feedPosts(): Post[] {
-      return sortedPosts().map(publishedPost);
+      return sortedPosts();
     },
   };
 }

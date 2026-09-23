@@ -18,7 +18,7 @@ test("blog views keep ordering, categories, routes, and publication dates aligne
   expect(blog.categoryPaths().map(({ params }) => params.category)).toEqual(["a", "b"]);
   expect(blog.categoryPaths()[0].props.posts.map((post) => post.id)).toEqual(["new", "old"]);
   expect(blog.postPaths().map(({ params }) => params.slug)).toEqual(["new", "old"]);
-  expect(blog.postPaths()[0].props.data.date.toISOString()).toBe("2024-12-31T17:00:00.000Z");
+  expect(blog.postPaths()[0].props.data.date.toISOString()).toBe("2025-01-01T01:00:00.000Z");
   expect(blog.feedPosts().map((post) => post.id)).toEqual(["new", "old"]);
   expect(blog.feedPosts()[0].data.date.toISOString()).toBe(
     blog.postPaths()[0].props.data.date.toISOString(),
