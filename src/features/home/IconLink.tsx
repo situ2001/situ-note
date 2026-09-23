@@ -3,9 +3,9 @@ import clsx from "clsx";
 import type { IconType } from 'react-icons/lib';
 import type { ImageMetadata } from 'astro';
 
-import underline from '../AnimatedUnderline/index.module.css';
+import underline from './AnimatedUnderline.module.css';
 import { useMemo } from 'react';
-import useEnvInfo from '../../lib/useEnvInfo';
+import useEnvInfo from './useEnvInfo';
 
 type IconSize = 'sm' | 'md' | 'lg';
 

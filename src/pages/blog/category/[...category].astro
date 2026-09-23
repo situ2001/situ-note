@@ -3,7 +3,7 @@ import { type CollectionEntry } from "astro:content";
 
 import { blog } from "@/features/blog/blog";
 
-import BaseLayout from "../../../layouts/BaseLayout.astro";
+import BaseLayout from "@/features/site/BaseLayout.astro";
 import { BlogListItem } from "@/features/blog/BlogListItem";
 
 export const getStaticPaths = blog.categoryPaths;

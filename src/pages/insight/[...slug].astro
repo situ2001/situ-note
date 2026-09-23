@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import BaseLayout from "@/layouts/BaseLayout.astro";
-import { insights } from "../../api/insight";
+import BaseLayout from "@/features/site/BaseLayout.astro";
+import { insights } from "@/features/insight/insight";
 
 export const getStaticPaths = () => {
   return insights.map((post) => ({

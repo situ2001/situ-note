@@ -1,4 +1,4 @@
-@reference "../../styles/global.css";
+@reference "../site/global.css";
 
 .katex-display {
   overflow-x: auto !important;

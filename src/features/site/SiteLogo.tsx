@@ -1,6 +1,6 @@
-import styles from './style.module.css';
+import styles from './SiteLogo.module.css';
 import clsx from 'clsx';
-import useScrollIdle from '../../lib/useScrollIdle';
+import useScrollIdle from './useScrollIdle';
 
 // TODO Pick a better font
 export default function BrandIcon() {

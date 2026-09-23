@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { throttle } from "es-toolkit";
-import { isTwoElementsIntersecting } from "../utils/intersection";
-import SiteLogo from "../components/SiteLogo";
+import { isTwoElementsIntersecting } from "./intersection";
+import SiteLogo from "./SiteLogo";
 import SearchEntry from "@/features/search/SearchEntry";
 import clsx from "clsx";
 import type { NavigationItem } from "types";
