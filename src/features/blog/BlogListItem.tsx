@@ -10,7 +10,7 @@ export function BlogListItem({
 }) {
   return (
     <a
-      href={`/blog/${post.slug}`}
+      href={`/blog/${post.id}`}
       title={post.data.title}
       className={
         clsx(

@@ -18,7 +18,7 @@ const insights = await getCollection("insight");
   <ul>
     {insights.map((post) => (
       <li class="mb-4">
-        <a href={`/insight/${post.slug}`} class="text-xl text-blue-600 hover:underline">
+        <a href={`/insight/${post.id}`} class="text-xl text-blue-600 hover:underline">
           No.{post.data.no} {post.data.title}
         </a>
       </li>

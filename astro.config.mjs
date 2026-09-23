@@ -2,6 +2,8 @@ import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import react from "@astrojs/react";
+import babel from "@rolldown/plugin-babel";
+import { unified } from "@astrojs/markdown-remark";
 import remarkMath from "remark-math";
 import externalLinks from "./src/features/reading/rehype-external-links.mjs";
 import rehypeKatex from "rehype-katex";
@@ -19,17 +21,14 @@ export default defineConfig({
   integrations: [
     mdx(),
     sitemap(),
-    react({
-      babel: {
-        plugins: ['babel-plugin-react-compiler'],
-      }
-    }),
+    react(),
     pagefind()
   ],
   prefetch: true,
+  compressHTML: true,
 
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [tailwindcss(), babel({ plugins: ['babel-plugin-react-compiler'] })],
   },
 
   image: {
@@ -39,6 +38,10 @@ export default defineConfig({
   },
 
   markdown: {
+    processor: unified({
+      remarkPlugins: [remarkMath],
+      rehypePlugins: [rehypeKatex, [externalLinks, { site: "https://situ2001.com" }]],
+    }),
     // TODO just copy from official doc, using blog-post.css now
     shikiConfig: {
       // Choose from Shiki's built-in themes (or add your own)
@@ -60,8 +63,6 @@ export default defineConfig({
       // Enable word wrap to prevent horizontal scrolling
       wrap: false,
     },
-    remarkPlugins: [remarkMath],
-    rehypePlugins: [rehypeKatex, [externalLinks, { site: "https://situ2001.com" }]],
   },
 
   server: {

@@ -1,4 +1,4 @@
-import type { LocalImageService, AstroConfig, ImageTransform } from "astro";
+import type { LocalImageService } from "astro";
 import { baseService } from "astro/assets";
 import sharpService from "astro/assets/services/sharp";
 
@@ -6,8 +6,8 @@ const service: LocalImageService = {
   ...baseService,
   ...sharpService,
 
-  getHTMLAttributes(options, imageConfig) {
-    const ret = baseService.getHTMLAttributes?.(options, imageConfig);
+  getHTMLAttributes(options, imageConfig, logger) {
+    const ret = baseService.getHTMLAttributes?.(options, imageConfig, logger);
 
     // hook, add inline style
     const inlineStyle = ``; // tmp remove
