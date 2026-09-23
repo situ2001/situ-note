@@ -52,7 +52,7 @@ export function createBlogCatalog(posts: Post[]) {
 
     postPaths() {
       return posts.map((post) => ({
-        params: { slug: post.slug },
+        params: { slug: post.id },
         props: publishedPost(post),
       }));
     },

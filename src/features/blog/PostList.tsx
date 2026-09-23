@@ -16,7 +16,7 @@ const Blog = ({
         </h2>
       </header>
       <ul>
-        {posts.map((post) => <BlogListItem post={post} key={post.slug} />)}
+        {posts.map((post) => <BlogListItem post={post} key={post.id} />)}
       </ul>
     </section>
   );

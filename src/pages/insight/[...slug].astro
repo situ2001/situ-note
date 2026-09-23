@@ -1,18 +1,18 @@
 ---
-import type { CollectionEntry } from "astro:content";
+import { render, type CollectionEntry } from "astro:content";
 import BaseLayout from "@/features/site/BaseLayout.astro";
 import { insights } from "@/features/insight/insight";
 
 export const getStaticPaths = () => {
   return insights.map((post) => ({
-    params: { slug: post.slug },
+    params: { slug: post.id },
     props: { ...post },
   }));
 };
 type Props = CollectionEntry<"insight">;
 
 const post = Astro.props;
-const { Content } = await post.render();
+const { Content } = await render(post);
 ---
 
 <BaseLayout title={post.data.title} description={""} searchable>
