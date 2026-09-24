@@ -29,9 +29,6 @@ importers:
       '@carbon/icons-react':
         specifier: ^11.76.0
         version: 11.76.0(react@19.2.4)
-      '@fontsource-variable/inconsolata':
-        specifier: ^5.2.8
-        version: 5.2.8
       '@fontsource-variable/noto-sans':
         specifier: ^5.2.10
         version: 5.2.10
@@ -796,9 +793,6 @@ packages:
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
-
-  '@fontsource-variable/inconsolata@5.2.8':
-    resolution: {integrity: sha512-IXXYUznF45QyPG05Q7NgsVFa4i1HnVyqbfEGLlHidZRElO0T3PCq6y+Vlz9nT4rnqsLqAkdi4wjhsoJey6pYTg==}
 
   '@fontsource-variable/noto-sans-sc@5.2.10':
     resolution: {integrity: sha512-zdk10i5HrDQTXI7ldD61zToX1fsgig8vDTsu7zB48SXOitWfuX0e5viZAwnkHuhwh096PU6X6i1AyAsbBCISpA==}
@@ -4192,8 +4186,6 @@ snapshots:
 
   '@esbuild/win32-x64@0.28.2':
     optional: true
-
-  '@fontsource-variable/inconsolata@5.2.8': {}
 
   '@fontsource-variable/noto-sans-sc@5.2.10': {}
 

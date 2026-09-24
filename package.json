@@ -20,7 +20,6 @@
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.4",
     "@carbon/icons-react": "^11.76.0",
-    "@fontsource-variable/inconsolata": "^5.2.8",
     "@fontsource-variable/noto-sans": "^5.2.10",
     "@fontsource-variable/noto-sans-sc": "^5.2.10",
     "@fontsource-variable/noto-serif": "^5.2.9",
