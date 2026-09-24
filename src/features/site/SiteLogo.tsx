@@ -1,8 +1,16 @@
 import styles from './SiteLogo.module.css';
 import clsx from 'clsx';
 import useScrollIdle from './useScrollIdle';
+import { logoGlyphPaths } from './logo-glyphs';
 
-// TODO Pick a better font
+function Glyph({ char }: { char: keyof typeof logoGlyphPaths }) {
+  return (
+    <svg className={styles.glyph} viewBox="0 0 16 16" aria-hidden="true">
+      <path d={logoGlyphPaths[char]} />
+    </svg>
+  );
+}
+
 export default function BrandIcon() {
   const isScrollIdle = useScrollIdle(1000);
 
@@ -13,25 +21,25 @@ export default function BrandIcon() {
 
   return <div className={
     clsx('relative', styles.container)
-  }>
+  } aria-hidden="true">
     <div className={clsx(styles['container-year'])}>
       <span className={clsx(styles['year-20'], clsxParamBasedOnScrollDirection)}>
-        <span className={clsx(styles.centered)}>2</span>
-        <span className={clsx(styles.centered)}>0</span>
+        <Glyph char="2" />
+        <Glyph char="0" />
       </span>
       <span className={clsx(styles['year-01'], clsxParamBasedOnScrollDirection)}>
-        <span className={clsx(styles.centered)}>0</span>
-        <span className={clsx(styles.centered)}>1</span>
+        <Glyph char="0" />
+        <Glyph char="1" />
       </span>
     </div>
     <div>
       <span className={clsx(styles.si, clsxParamBasedOnScrollDirection)}>
-        <span className={clsx(styles.centered)}>S</span>
-        <span className={clsx(styles.centered)}>I</span>
+        <Glyph char="S" />
+        <Glyph char="I" />
       </span>
       <span className={clsx(styles.tu, clsxParamBasedOnScrollDirection)}>
-        <span className={clsx(styles.centered)}>T</span>
-        <span className={clsx(styles.centered)}>U</span>
+        <Glyph char="T" />
+        <Glyph char="U" />
       </span>
     </div>
   </div>
