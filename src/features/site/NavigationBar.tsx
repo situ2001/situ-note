@@ -44,7 +44,7 @@ const NavigationBar = ({ items }: { items: NavigationItem[] }) => {
       >
         <div className="flex justify-between mx-auto max-w-screen-lg">
           <h2 className="left">
-            <a href="/" className="font-serif min-w-11 min-h-11 flex items-center">
+            <a href="/" aria-label="Home" className="min-w-11 min-h-11 flex items-center">
               <SiteLogo />
             </a>
           </h2>
