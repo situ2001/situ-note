@@ -8,7 +8,8 @@ const blog = defineCollection({
   // Type-check frontmatter using a schema
   schema: z.object({
     title: z.string(),
-    date: z.union([z.string(), z.date()]).transform(parsePublicationDate),
+    // Quoted ISO timestamps retain their written timezone through YAML parsing.
+    date: z.string().transform(parsePublicationDate),
     description: z.string(),
     categories: z.string(),
     // optional

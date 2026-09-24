@@ -1,7 +1,7 @@
 ---
 title: npm link 的用途
 comments: true
-date: 2022-10-02 19:49:00
+date: "2022-10-02T19:49:00+08:00"
 categories: 教程
 description: 如何在自己的项目里调试本地 node module
 ---

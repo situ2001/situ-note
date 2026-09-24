@@ -1,7 +1,7 @@
 ---
 title: 我是如何进行知识管理的
 comments: true
-date: 2021-03-29 10:00:00
+date: "2021-03-29T10:00:00+08:00"
 categories: 分享
 description: 信息爆炸，如何管理自己的知识?
 ---

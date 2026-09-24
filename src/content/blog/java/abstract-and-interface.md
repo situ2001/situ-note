@@ -1,6 +1,6 @@
 ---
 title: 初识抽象与接口
-date: 2020-10-22 16:24:00
+date: "2020-10-22T16:24:00+08:00"
 categories: Java
 description: 初识抽象与接口
 ---

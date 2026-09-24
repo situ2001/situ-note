@@ -1,7 +1,7 @@
 ---
 title: 模拟实现 Function.prototype
 comments: true
-date: 2021-05-31 17:15:00
+date: "2021-05-31T17:15:00+08:00"
 description: 模拟实现 Function 的原型对象
 categories: JavaScript
 ---

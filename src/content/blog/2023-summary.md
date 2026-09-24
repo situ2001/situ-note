@@ -1,7 +1,7 @@
 ---
 title: 2023 年终总结
 comments: true
-date: 2024-01-01 12:00:00
+date: "2024-01-01T12:00:00+08:00"
 categories: 年终总结
 description: 我的 2023 年终总结
 ---

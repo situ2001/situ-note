@@ -1,7 +1,7 @@
 ---
 title: 毕业
 comments: true
-date: 2024-09-13 08:30:00
+date: "2024-09-13T08:30:00+08:00"
 categories: 随笔
 description: 致我的大学时光
 ---

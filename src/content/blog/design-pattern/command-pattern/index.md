@@ -1,7 +1,7 @@
 ---
 title: Command设计模式
 comments: true
-date: 2021-08-05 08:54:19
+date: "2021-08-05T08:54:19+08:00"
 description: 通过一个简单的文本编辑器来认识该Command设计模式
 categories: 设计模式
 ---

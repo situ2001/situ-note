@@ -1,7 +1,7 @@
 ---
 title: 让 Obsidian 成为博客文章编辑器
 comments: true
-date: 2023-11-09 23:50:00
+date: "2023-11-09T23:50:00+08:00"
 categories: 分享
 description: 给博客写作配一个顺手的编辑器
 ---

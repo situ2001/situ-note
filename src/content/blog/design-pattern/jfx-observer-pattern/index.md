@@ -1,7 +1,7 @@
 ---
 title: JavaFX与观察者模式
 comments: true
-date: 2021-01-14 05:14:19
+date: "2021-01-14T05:14:19+08:00"
 categories: 设计模式
 description: JavaFX与观察者模式
 ---

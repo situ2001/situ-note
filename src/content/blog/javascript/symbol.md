@@ -1,7 +1,7 @@
 ---
 title: JavaScript之symbol
 comments: true
-date: 2021-06-16 19:10:00
+date: "2021-06-16T19:10:00+08:00"
 categories: JavaScript
 description: JavaScript之symbol
 ---

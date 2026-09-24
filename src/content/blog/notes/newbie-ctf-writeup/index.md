@@ -1,6 +1,6 @@
 ---
 title: 记一次CTF新生赛
-date: 2020-11-08 14:02:20
+date: "2020-11-08T14:02:20+08:00"
 categories: 随笔
 description: 记一次CTF新生赛
 ---

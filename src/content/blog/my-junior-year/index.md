@@ -1,7 +1,7 @@
 ---
 title: 大三这一年
 comments: true
-date: 2023-10-27 20:30:00
+date: "2023-10-27T20:30:00+08:00"
 categories: 随笔
 description: 时间飞逝，一晃就一年。
 ---

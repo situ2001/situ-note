@@ -1,7 +1,7 @@
 ---
 title: 将无用的大文件从git仓库中删除
 comments: true
-date: 2022-04-04 13:45:00
+date: "2022-04-04T13:45:00+08:00"
 categories: git
 description: commit一时爽，事后火葬场
 ---

@@ -1,7 +1,7 @@
 ---
 title: C语言之数组与指针
 comments: true
-date: 2020-12-05 15:44:12
+date: "2020-12-05T15:44:12+08:00"
 categories: 笔记
 description: C语言之数组与指针
 ---

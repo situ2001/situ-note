@@ -1,7 +1,7 @@
 ---
 title: Writeup for BombLab
 comments: true
-date: 2021-10-23 16:10:00
+date: "2021-10-23T16:10:00+08:00"
 description: CS:APP实验之拆汇编炸弹
 categories: Lab
 ---
