@@ -1,0 +1,48 @@
+{
+  "name": "@situ2001/astro-obsidian-content-provider",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Astro content loader for selected notes in an Obsidian vault",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/situ2001/situ-note.git",
+    "directory": "packages/astro-obsidian-content-provider"
+  },
+  "engines": { "node": ">=22.12.0" },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": ["dist", "README.md", "LICENSE"],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "dev": "tsc -w -p tsconfig.build.json",
+    "test": "pnpm build && vitest run",
+    "prepack": "pnpm build"
+  },
+  "peerDependencies": {
+    "astro": "^7.3.4"
+  },
+  "dependencies": {
+    "remark-gfm": "^4.0.1",
+    "remark-math": "^6.0.0",
+    "remark-parse": "^11.0.0",
+    "remark-stringify": "^11.0.0",
+    "unified": "^11.0.5",
+    "unist-util-visit": "^5.1.0",
+    "yaml": "^2.7.1"
+  },
+  "devDependencies": {
+    "@types/mdast": "^4.0.4",
+    "@types/node": "^24.12.0",
+    "mdast-util-from-markdown": "^2.0.3",
+    "micromark-util-types": "^2.0.2",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
+  }
+}

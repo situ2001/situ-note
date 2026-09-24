@@ -26,6 +26,12 @@ test("blog views keep ordering, categories, routes, and publication dates aligne
   expect(posts[0].data.date.toISOString()).toBe("2025-01-01T01:00:00.000Z");
 });
 
+test("duplicate post slugs fail before routes are built", () => {
+  expect(() => createBlogCatalog([posts[0], { ...posts[1], id: "new" }])).toThrow(
+    "Duplicate blog URL: new",
+  );
+});
+
 test("archive groups a UTC December 31 publication under January 1 in UTC+8", () => {
   const previousTimezone = process.env.TZ;
   try {

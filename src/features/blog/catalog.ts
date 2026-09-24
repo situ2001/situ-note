@@ -2,9 +2,15 @@ import type { CollectionEntry } from "astro:content";
 import { groupBy } from "es-toolkit";
 import { publicationYear } from "./publicationDate";
 
-export type Post = CollectionEntry<"blog">;
+export type Post = CollectionEntry<"blog"> | CollectionEntry<"vault">;
 
 export function createBlogCatalog(posts: Post[]) {
+  const slugs = new Set<string>();
+  for (const post of posts) {
+    if (slugs.has(post.id)) throw new Error(`Duplicate blog URL: ${post.id}`);
+    slugs.add(post.id);
+  }
+
   const sortedPosts = () =>
     posts.slice().sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 

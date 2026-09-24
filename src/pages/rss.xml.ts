@@ -24,7 +24,7 @@ export async function GET(context: any) {
         parser.render(
           "> 该内容使用MarkdownIt渲染，如需查看图片及获取更好的排版，请阅读原文\n" +
           "> This content is rendered using MarkdownIt, for better layout and images, please read the original post\n\n" +
-          post.body
+          (post.body ?? "")
         )
       ),
     })),
