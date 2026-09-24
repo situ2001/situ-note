@@ -94,7 +94,7 @@ html.dark img[data-dim-in-dark]:not(.medium-zoom-image--opened) {
 }
 
 code:not(pre code) {
-  @apply rounded! px-1! bg-surface-strong!;
+  @apply rounded! px-1! bg-surface!;
 }
 
 pre {
@@ -110,6 +110,11 @@ html.dark .astro-code span {
   font-style: var(--shiki-dark-font-style) !important;
   font-weight: var(--shiki-dark-font-weight) !important;
   text-decoration: var(--shiki-dark-text-decoration) !important;
+}
+
+/* Match the github-dark Shiki background used by .astro-code. */
+html.dark code:not(pre code) {
+  background-color: #24292e !important;
 }
 
 @layer components {
