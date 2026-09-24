@@ -1,5 +1,6 @@
 import type { CollectionEntry } from "astro:content";
 import { groupBy } from "es-toolkit";
+import { publicationYear } from "./publicationDate";
 
 export type Post = CollectionEntry<"blog">;
 
@@ -29,7 +30,7 @@ export function createBlogCatalog(posts: Post[]) {
     },
 
     archiveByYear(): { year: number; posts: Post[] }[] {
-      const years = groupBy(sortedPosts(), (post) => post.data.date.getUTCFullYear());
+      const years = groupBy(sortedPosts(), (post) => publicationYear(post.data.date));
       return Object.keys(years)
         .map(Number)
         .sort((a, b) => b - a)

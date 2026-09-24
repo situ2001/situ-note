@@ -3,7 +3,7 @@ import BaseLayout from "@/features/site/BaseLayout.astro";
 import { blog } from "@/features/blog/blog";
 import BlogArchive from "@/features/blog/BlogArchive";
 
-const initialYears = blog.archiveByYear().map(({ year, posts }) => ({
+const years = blog.archiveByYear().map(({ year, posts }) => ({
   year,
   posts: posts.map((post) => ({
     id: post.id,
@@ -15,5 +15,5 @@ const initialYears = blog.archiveByYear().map(({ year, posts }) => ({
 
 <BaseLayout title="Blogs" description="Blog" fullWidth>
   <h1 class="heading-with-underline text-3xl font-medium mb-6">Blog</h1>
-  <BlogArchive initialYears={initialYears} client:load />
+  <BlogArchive years={years} />
 </BaseLayout>

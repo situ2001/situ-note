@@ -25,7 +25,7 @@ const { title, description, date, categories, headings } = Astro.props;
   <div class="max-w-measure mx-auto">
     <div class="font-serif mb-4">
       <h1 class="text-3xl mb-1">{title}</h1>
-      <FormattedDate date={date.toISOString()} client:load />
+      <FormattedDate date={date.toISOString()} />
       <div>
         {
           pluralize(

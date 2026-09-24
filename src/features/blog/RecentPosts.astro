@@ -12,7 +12,7 @@ const recentFivePosts = blog.recent(5);
 <ul>
   {
     recentFivePosts.map((post) => {
-      return <BlogListItem id={post.id} title={post.data.title} date={post.data.date.toISOString()} client:load />;
+      return <BlogListItem id={post.id} title={post.data.title} date={post.data.date.toISOString()} />;
     })
   }
 </ul>
