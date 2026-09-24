@@ -31,7 +31,7 @@ const year = new Date().getFullYear();
     {...(!searchable ? { 'data-pagefind-ignore': '' } : {})}
   >
     <header class="top-0 sticky z-50">
-      <NavigationBar client:load />
+      <NavigationBar items={config.nav.items} client:load />
     </header>
     <main class="px-4 min-[400px]:px-6 py-6 mx-auto max-w-screen-md">
       <slot />

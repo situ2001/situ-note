@@ -1,40 +1,27 @@
-import { useState, useEffect, useRef } from 'react';
+import { createSignal, onCleanup, onMount } from "solid-js";
 
-const useScrollIdle = (idleDelay = 200, scrollThreshold = 100) => {
-  const [isIdle, setIsIdle] = useState(true);
-  let idleTimeout: NodeJS.Timeout;
-  let lastScrollY = useRef(0);
+export default function useScrollIdle(idleDelay = 200, scrollThreshold = 100) {
+  const [isIdle, setIsIdle] = createSignal(true);
+  let idleTimeout: ReturnType<typeof setTimeout> | undefined;
+  let lastScrollY = 0;
 
-  const handleScroll = () => {
-    const scrollY = window.scrollY;
-    const scrollDistance = Math.abs(scrollY - lastScrollY.current);
+  onMount(() => {
+    lastScrollY = window.scrollY;
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      if (Math.abs(scrollY - lastScrollY) <= scrollThreshold) return;
 
-    if (scrollDistance > scrollThreshold) {
       setIsIdle(false);
-      lastScrollY.current = scrollY; // Update lastScrollY to current position
-
-      if (idleTimeout) {
-        clearTimeout(idleTimeout);
-      }
-
-      idleTimeout = setTimeout(() => {
-        setIsIdle(true);
-      }, idleDelay);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      if (idleTimeout) {
-        clearTimeout(idleTimeout);
-      }
+      lastScrollY = scrollY;
+      clearTimeout(idleTimeout);
+      idleTimeout = setTimeout(() => setIsIdle(true), idleDelay);
     };
-  }, []); // Dependency array is empty to run only on mount/unmount
+    window.addEventListener("scroll", handleScroll);
+    onCleanup(() => {
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(idleTimeout);
+    });
+  });
 
   return isIdle;
-};
-
-export default useScrollIdle;
+}

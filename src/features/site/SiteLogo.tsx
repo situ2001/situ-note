@@ -6,32 +6,32 @@ import useScrollIdle from './useScrollIdle';
 export default function BrandIcon() {
   const isScrollIdle = useScrollIdle(1000);
 
-  const clsxParamBasedOnScrollDirection = {
-    [styles['transform-year-to-name']]: isScrollIdle,
-    [styles['transform-name-to-year']]: !isScrollIdle
-  }
+  const clsxParamBasedOnScrollDirection = () => ({
+    [styles['transform-year-to-name']]: isScrollIdle(),
+    [styles['transform-name-to-year']]: !isScrollIdle()
+  });
 
-  return <div className={
+  return <div class={
     clsx('relative', styles.container)
   }>
-    <div className={clsx(styles['container-year'])}>
-      <span className={clsx(styles['year-20'], clsxParamBasedOnScrollDirection)}>
-        <span className={clsx(styles.centered)}>2</span>
-        <span className={clsx(styles.centered)}>0</span>
+    <div class={clsx(styles['container-year'])}>
+      <span class={clsx(styles['year-20'], clsxParamBasedOnScrollDirection())}>
+        <span class={clsx(styles.centered)}>2</span>
+        <span class={clsx(styles.centered)}>0</span>
       </span>
-      <span className={clsx(styles['year-01'], clsxParamBasedOnScrollDirection)}>
-        <span className={clsx(styles.centered)}>0</span>
-        <span className={clsx(styles.centered)}>1</span>
+      <span class={clsx(styles['year-01'], clsxParamBasedOnScrollDirection())}>
+        <span class={clsx(styles.centered)}>0</span>
+        <span class={clsx(styles.centered)}>1</span>
       </span>
     </div>
     <div>
-      <span className={clsx(styles.si, clsxParamBasedOnScrollDirection)}>
-        <span className={clsx(styles.centered)}>S</span>
-        <span className={clsx(styles.centered)}>I</span>
+      <span class={clsx(styles.si, clsxParamBasedOnScrollDirection())}>
+        <span class={clsx(styles.centered)}>S</span>
+        <span class={clsx(styles.centered)}>I</span>
       </span>
-      <span className={clsx(styles.tu, clsxParamBasedOnScrollDirection)}>
-        <span className={clsx(styles.centered)}>T</span>
-        <span className={clsx(styles.centered)}>U</span>
+      <span class={clsx(styles.tu, clsxParamBasedOnScrollDirection())}>
+        <span class={clsx(styles.centered)}>T</span>
+        <span class={clsx(styles.centered)}>U</span>
       </span>
     </div>
   </div>

@@ -1,72 +1,39 @@
-import { motion } from 'framer-motion';
 import clsx from "clsx";
-import type { IconType } from 'react-icons/lib';
-import type { ImageMetadata } from 'astro';
+import type { ImageMetadata } from "astro";
+import SvgIcon from "@/features/site/SvgIcon";
+import underline from "./AnimatedUnderline.module.css";
 
-import underline from './AnimatedUnderline.module.css';
-import { useMemo } from 'react';
-import useEnvInfo from './useEnvInfo';
-
-type IconSize = 'sm' | 'md' | 'lg';
+type IconSize = "sm" | "md" | "lg";
 
 export interface IconLinkProps {
   link: string;
-  icon: ImageMetadata | IconType;
+  icon: ImageMetadata | string;
   name: string;
   hideText?: boolean;
   size?: IconSize;
 }
 
-/**
- * A link with an icon and a name.
- */
-export default function IconLink(
-  props: IconLinkProps
-) {
-  const { link, icon, name, hideText = false, size = 'md' } = props;
-
-  const Icon = icon as IconType;
-
-  const sizeClasses = {
-    sm: 'h-3 w-3',
-    md: 'h-4 w-4',
-    lg: 'h-5 w-5',
-  };
-
-  const textSizeClasses = {
-    sm: 'text-sm',
-    md: 'text-base',
-    lg: 'text-lg',
-  };
-
-  const { isMobile, isTouch } = useEnvInfo();
-
-  const motionPropsForHeroSectionHint = useMemo(() => {
-    return isMobile || isTouch
-      ? {}
-      : {
-        whileHover: { scale: 1.25, rotate: 5 },
-        whileTap: { scale: 0.9 }
-      }
-  }, [isMobile]);
+export default function IconLink(props: IconLinkProps) {
+  const size = props.size ?? "md";
+  const sizeClasses = { sm: "size-3", md: "size-4", lg: "size-5" };
+  const textSizeClasses = { sm: "text-sm", md: "text-base", lg: "text-lg" };
 
   return (
-    <motion.a
-      {...motionPropsForHeroSectionHint}
-      className={clsx(
-        "flex max-w-fit items-center gap-1",
-        !hideText && underline['slide-in']
+    <a
+      class={clsx(
+        "flex max-w-fit items-center gap-1 transition-transform",
+        "motion-safe:hover:scale-125 motion-safe:hover:rotate-[5deg] active:scale-90",
+        !props.hideText && underline["slide-in"],
       )}
-      title={name}
-      href={link}
+      title={props.name}
+      href={props.link}
       target="_blank"
+      rel="noopener noreferrer"
     >
-      {
-        (icon as ImageMetadata).src
-          ? (<img className={sizeClasses[size]} src={(icon as ImageMetadata).src} alt={name}></img>)
-          : <Icon className={sizeClasses[size]} />
-      }
-      {!hideText && <p className={textSizeClasses[size]}>{name}</p>}
-    </motion.a>
+      {typeof props.icon === "string"
+        ? <SvgIcon markup={props.icon} class={sizeClasses[size]} />
+        : <img class={sizeClasses[size]} src={props.icon.src} alt={props.name} />}
+      {!props.hideText && <p class={textSizeClasses[size]}>{props.name}</p>}
+    </a>
   );
 }

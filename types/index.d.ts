@@ -1,5 +1,4 @@
-import type { CarbonIconType } from "@carbon/icons-react";
-import type { IconType } from "react-icons/lib";
+import type { ImageMetadata } from "astro";
 
 export interface BlogConfig {
   title: string;
@@ -36,13 +35,13 @@ export interface NavigationItem {
 
   forceMinimal?: boolean;
   autoMinimal?: boolean;
-  icon?: IconType | CarbonIconType;
+  icon?: string;
 }
 
 export interface Contact {
   name: string;
   link: string;
-  icon: ImageMetadata | IconType;
+  icon: ImageMetadata | string;
 }
 
 export interface Friend {
@@ -53,14 +52,14 @@ export interface Friend {
 export interface Role {
   title: string;
   at?: string;
-  icon?: React.ElementType | string;
+  icon?: string;
 }
 
 export interface Project {
   title: string;
   description: string;
   link: string;
-  icon?: string | React.ElementType;
+  icon?: string;
   featured?: boolean;
   section?: "featured" | "experiment";
 }

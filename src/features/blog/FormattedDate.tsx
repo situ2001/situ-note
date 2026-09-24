@@ -1,4 +1,3 @@
-import React from "react";
 import { formatPublicationDate } from "./publicationDate";
 
 interface Props {

@@ -1,20 +1,20 @@
 import type { BlogConfig } from "./types";
 
-import { BsGithub, BsTwitterX, BsTelegram, BsLinkedin } from "react-icons/bs";
-import { BsRss } from "react-icons/bs";
-import {
-  Friendship,
-  Keyboard,
-  GroupObjects,
-  Migrate,
-  Query,
-  CharacterFraction,
-  PromptTemplate,
-  Automatic,
-  DirectionBearRight_02,
-  Calendar,
-  Stamp,
-} from "@carbon/icons-react";
+import BsGithub from "./src/assets/icons/github.svg?raw";
+import BsTwitterX from "./src/assets/icons/twitter-x.svg?raw";
+import BsTelegram from "./src/assets/icons/telegram.svg?raw";
+import BsRss from "./src/assets/icons/rss.svg?raw";
+import Friendship from "@carbon/icons/svg/32/friendship.svg?raw";
+import Keyboard from "@carbon/icons/svg/32/keyboard.svg?raw";
+import GroupObjects from "@carbon/icons/svg/32/group-objects.svg?raw";
+import Migrate from "@carbon/icons/svg/32/migrate.svg?raw";
+import Query from "@carbon/icons/svg/32/query.svg?raw";
+import CharacterFraction from "@carbon/icons/svg/32/character--fraction.svg?raw";
+import PromptTemplate from "@carbon/icons/svg/32/prompt-template.svg?raw";
+import Automatic from "@carbon/icons/svg/32/automatic.svg?raw";
+import DirectionBearRight_02 from "@carbon/icons/svg/32/direction--bear-right--02.svg?raw";
+import Calendar from "@carbon/icons/svg/32/calendar.svg?raw";
+import Stamp from "@carbon/icons/svg/32/stamp.svg?raw";
 
 const config: BlogConfig = {
   title: "situ2001",

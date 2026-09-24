@@ -1,4 +1,3 @@
-import React from "react";
 import FormattedDate from "@/features/blog/FormattedDate";
 import clsx from "clsx";
 
@@ -17,7 +16,7 @@ export function BlogListItem({
     <a
       href={`/blog/${id}`}
       title={title}
-      className={
+      class={
         clsx(
           "flex w-full flex-col md:flex-row justify-between",
           "rounded-lg py-2.5",
@@ -26,14 +25,14 @@ export function BlogListItem({
         )
       }
     >
-      <div className="flex-1">
-        <span className="relative inline-block">
+      <div class="flex-1">
+        <span class="relative inline-block">
           {title}
-          <span className="absolute bottom-0 left-0 w-0 h-px bg-current transition-all duration-300 ease-in-out group-hover:w-full" />
+          <span class="absolute bottom-0 left-0 w-0 h-px bg-current transition-all duration-300 ease-in-out group-hover:w-full" />
         </span>
       </div>
 
-      <span className="text-sm text-zinc-500">
+      <span class="text-sm text-zinc-500">
         <FormattedDate date={date} />
       </span>
     </a>

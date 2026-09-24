@@ -1,8 +1,7 @@
 import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
-import react from "@astrojs/react";
-import babel from "@rolldown/plugin-babel";
+import solid from "@astrojs/solid-js";
 import { unified } from "@astrojs/markdown-remark";
 import remarkMath from "remark-math";
 import externalLinks from "./src/features/reading/rehype-external-links.mjs";
@@ -21,14 +20,14 @@ export default defineConfig({
   integrations: [
     mdx(),
     sitemap(),
-    react(),
+    solid(),
     pagefind()
   ],
   prefetch: true,
   compressHTML: true,
 
   vite: {
-    plugins: [tailwindcss(), babel({ plugins: ['babel-plugin-react-compiler'] })],
+    plugins: [tailwindcss()],
   },
 
   image: {

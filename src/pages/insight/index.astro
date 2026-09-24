@@ -1,14 +1,14 @@
 ---
 import BaseLayout from "@/features/site/BaseLayout.astro";
 import { getCollection } from "astro:content";
-import { Construction } from "@carbon/icons-react";
+import construction from "@carbon/icons/svg/32/construction.svg?raw";
 
 const insights = await getCollection("insight");
 ---
 
 <BaseLayout title="Insights" description="Insights" fullWidth>
   <div class="flex flex-col items-center justify-center py-20">
-    <Construction size={48} />
+    <span class="inline-flex size-12 [&>svg]:size-full" set:html={construction} />
     <h1 class="text-3xl font-medium m-4">Insight (司见)</h1>
     <p class="text-gray-600">This section is under construction.</p>
     <p class="text-gray-600">Stay tuned for updates!</p>

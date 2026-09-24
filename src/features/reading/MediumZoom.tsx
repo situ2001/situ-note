@@ -1,22 +1,13 @@
-import { useEffect, useRef } from "react"
-import { type Zoom } from "medium-zoom";
-import mediumZoom from 'medium-zoom/dist/pure'
-import 'medium-zoom/dist/style.css'
+import { onCleanup, onMount } from "solid-js";
+import mediumZoom from "medium-zoom/dist/pure";
+import "medium-zoom/dist/style.css";
 
-const MediumZoom = ({ selectors }: { selectors: string[] }) => {
-  const zoom = useRef<Zoom>(mediumZoom());
-
-  useEffect(() => {
-    zoom.current.attach(...selectors);
-    console.log("mediumZoom attached");
-
-    return () => {
-      zoom.current.detach();
-      console.log("mediumZoom detached");
-    };
-  }, [selectors]);
+export default function MediumZoom(props: { selectors: string[] }) {
+  onMount(() => {
+    const zoom = mediumZoom();
+    zoom.attach(...props.selectors);
+    onCleanup(() => zoom.detach());
+  });
 
   return null;
 }
-
-export default MediumZoom;
