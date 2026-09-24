@@ -1,7 +1,7 @@
 ---
 title: CJS和ESM
 comments: true
-date: 2022-03-31 10:15:00
+date: "2022-03-31T10:15:00+08:00"
 categories: JavaScript
 description: CommonJS 和 ESM 的一些区别
 ---

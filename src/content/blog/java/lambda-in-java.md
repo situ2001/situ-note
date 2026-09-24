@@ -1,7 +1,7 @@
 ---
 title: λ在Java
 comments: true
-date: 2021-02-22 13:14:15
+date: "2021-02-22T13:14:15+08:00"
 categories: Java
 description: Lambda在Java
 ---

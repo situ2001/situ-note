@@ -1,7 +1,7 @@
 ---
 title: 为广州大学宿舍校园网配置 IPv6
 comments: true
-date: 2023-12-13 16:30:00
+date: "2023-12-13T16:30:00+08:00"
 categories: 教程, 网络
 description: 解决路由器环境下设备无法访问IPv6的问题
 ---

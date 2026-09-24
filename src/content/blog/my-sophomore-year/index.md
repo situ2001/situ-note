@@ -1,7 +1,7 @@
 ---
 title: 大二总结
 comments: true
-date: 2022-09-04 15:30:00
+date: "2022-09-04T15:30:00+08:00"
 categories: 随笔
 description: 致我迷茫但有所进步的大二全年
 ---

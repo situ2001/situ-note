@@ -1,7 +1,7 @@
 ---
 title: 常见的排序算法
 comments: true
-date: 2021-05-12 15:30:00
+date: "2021-05-12T15:30:00+08:00"
 categories: 算法
 description: 常见的排序算法
 ---

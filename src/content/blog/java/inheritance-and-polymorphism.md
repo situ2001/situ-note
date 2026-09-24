@@ -1,6 +1,6 @@
 ---
 title: 初识继承与多态
-date: 2020-10-14 19:00:00
+date: "2020-10-14T19:00:00+08:00"
 categories: Java
 description: 初识继承与多态
 ---

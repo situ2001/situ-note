@@ -1,7 +1,7 @@
 ---
 title: macOS 使用指纹允许 sudo
 comments: true
-date: 2022-09-17 17:30:00
+date: "2022-09-17T17:30:00+08:00"
 categories: 教程
 description: 指尖一放，轻松验证。可谓是懒人最爱的操作
 ---

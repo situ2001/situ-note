@@ -1,7 +1,7 @@
 ---
 title: 年轻人的第一次实习
 comments: true
-date: 2023-05-14 15:30:00
+date: "2023-05-14T15:30:00+08:00"
 categories: 随笔
 description: 年轻人的第一次进京实习
 ---

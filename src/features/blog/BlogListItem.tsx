@@ -1,17 +1,22 @@
-import type { Post } from "@/features/blog/blog";
 import React from "react";
 import FormattedDate from "@/features/blog/FormattedDate";
 import clsx from "clsx";
 
+export interface BlogListItemProps {
+  id: string;
+  title: string;
+  date: string;
+}
+
 export function BlogListItem({
-  post,
-}: {
-  post: Post,
-}) {
+  id,
+  title,
+  date,
+}: BlogListItemProps) {
   return (
     <a
-      href={`/blog/${post.id}`}
-      title={post.data.title}
+      href={`/blog/${id}`}
+      title={title}
       className={
         clsx(
           "flex w-full flex-col md:flex-row justify-between",
@@ -23,13 +28,13 @@ export function BlogListItem({
     >
       <div className="flex-1">
         <span className="relative inline-block">
-          {post.data.title}
+          {title}
           <span className="absolute bottom-0 left-0 w-0 h-px bg-current transition-all duration-300 ease-in-out group-hover:w-full" />
         </span>
       </div>
 
       <span className="text-sm text-zinc-500">
-        <FormattedDate date={post.data.date} />
+        <FormattedDate date={date} />
       </span>
     </a>
   )

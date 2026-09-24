@@ -1,7 +1,7 @@
 ---
 title: 在威联通 NAS 配置自启动脚本的方法
 comments: true
-date: 2025-06-29 16:30:00
+date: "2025-06-29T16:30:00+08:00"
 categories: 技术, QNAP, 威联通, NAS
 description: 在威联通 NAS 上配置自启动脚本的方法
 ---

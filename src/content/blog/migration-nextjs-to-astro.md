@@ -1,7 +1,7 @@
 ---
 title: 迁移博客到 Astro
 comments: true
-date: 2023-11-13 14:51:40
+date: "2023-11-13T14:51:40+08:00"
 categories: 分享
 description: 博客框架更换为 Astro
 ---

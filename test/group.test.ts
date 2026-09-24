@@ -18,10 +18,25 @@ test("blog views keep ordering, categories, routes, and publication dates aligne
   expect(blog.categoryPaths().map(({ params }) => params.category)).toEqual(["a", "b"]);
   expect(blog.categoryPaths()[0].props.posts.map((post) => post.id)).toEqual(["new", "old"]);
   expect(blog.postPaths().map(({ params }) => params.slug)).toEqual(["new", "old"]);
-  expect(blog.postPaths()[0].props.data.date.toISOString()).toBe("2024-12-31T17:00:00.000Z");
+  expect(blog.postPaths()[0].props.data.date.toISOString()).toBe("2025-01-01T01:00:00.000Z");
   expect(blog.feedPosts().map((post) => post.id)).toEqual(["new", "old"]);
   expect(blog.feedPosts()[0].data.date.toISOString()).toBe(
     blog.postPaths()[0].props.data.date.toISOString(),
   );
   expect(posts[0].data.date.toISOString()).toBe("2025-01-01T01:00:00.000Z");
+});
+
+test("archive groups a UTC December 31 publication under January 1 in UTC+8", () => {
+  const previousTimezone = process.env.TZ;
+  try {
+    process.env.TZ = "America/New_York";
+    const blog = createBlogCatalog([
+      { id: "new-year", data: { date: new Date("2024-12-31T17:00:00Z"), categories: "a" } },
+    ] as Post[]);
+
+    expect(blog.archiveByYear().map(({ year }) => year)).toEqual([2025]);
+  } finally {
+    if (previousTimezone === undefined) delete process.env.TZ;
+    else process.env.TZ = previousTimezone;
+  }
 });

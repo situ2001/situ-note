@@ -1,7 +1,7 @@
 ---
 title: 年轻人的第一台4K显示器
 comments: true
-date: 2023-11-26 18:30:00
+date: "2023-11-26T18:30:00+08:00"
 categories: 评测
 description: 一款规格小众的显示器
 ---

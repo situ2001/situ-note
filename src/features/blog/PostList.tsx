@@ -16,7 +16,7 @@ const Blog = ({
         </h2>
       </header>
       <ul>
-        {posts.map((post) => <BlogListItem post={post} key={post.id} />)}
+        {posts.map((post) => <BlogListItem id={post.id} title={post.data.title} date={post.data.date.toISOString()} key={post.id} />)}
       </ul>
     </section>
   );

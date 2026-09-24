@@ -1,16 +1,10 @@
+import React from "react";
+import { formatPublicationDate } from "./publicationDate";
+
 interface Props {
-  date: Date;
+  date: string;
 }
 
 export default function FormattedDate({ date }: Props) {
-  return (
-    <time dateTime={date.toISOString()}>
-      {date.toLocaleDateString("en-us", {
-        year: "numeric",
-        month: "short",
-        day: "numeric",
-        timeZone: "UTC",
-      })}
-    </time>
-  );
+  return <time dateTime={date}>{formatPublicationDate(new Date(date))}</time>;
 }

@@ -1,6 +1,6 @@
 ---
 title: Hello World
-date: 2020-09-12 16:45:32
+date: "2020-09-12T16:45:32+08:00"
 comments: true
 categories: "随笔"
 description: "给博客换了一个静态页面生成器"

@@ -1,7 +1,7 @@
 ---
 title: 使用Deferred Pattern控制异步
 comments: true
-date: 2022-09-08 17:00:00
+date: "2022-09-08T17:00:00+08:00"
 categories: JavaScript
 description: 如何控制异步回调函数之间的同步呢
 ---
