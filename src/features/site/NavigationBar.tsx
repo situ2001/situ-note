@@ -43,11 +43,9 @@ const NavigationBar = ({ items }: { items: NavigationItem[] }) => {
         )}
       >
         <div className="flex justify-between mx-auto max-w-screen-lg">
-          <h2 className="left">
-            <a href="/" aria-label="Home" className="min-w-11 min-h-11 flex items-center">
-              <SiteLogo />
-            </a>
-          </h2>
+          <a href="/" aria-label="Home" className="min-w-11 min-h-11 flex items-center">
+            <SiteLogo />
+          </a>
 
           <div className="right flex items-center gap-0 sm:gap-2 md:gap-4 text-sm sm:text-base">
             {items.map((menu) => {
