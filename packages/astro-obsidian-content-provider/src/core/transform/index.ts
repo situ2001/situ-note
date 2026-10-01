@@ -6,6 +6,7 @@ import { cleanHtml, escapeHtml } from './html.js';
 import { renderBlocks } from './render-blocks.js';
 import { hideComments } from './comments.js';
 import { indexSections, addAnchors } from './sections.js';
+import { isInternalUrl, decodeMarkdownUrl, parseVaultLink } from '../links.js';
 import type { Root, FootnoteDefinition, Nodes } from 'mdast';
 import type { LoaderContext } from 'astro/loaders';
 import type { SourceNote } from '../vault.js';
@@ -16,7 +17,6 @@ const imageExtensions = new Set(['.png', '.jpg', '.jpeg', '.gif', '.webp', '.avi
 const audioExtensions = new Set(['.mp3', '.wav', '.m4a', '.3gp', '.flac', '.ogg', '.oga', '.opus']);
 const videoExtensions = new Set(['.mp4', '.webm', '.ogv', '.mov', '.mkv']);
 const attachment = (file: string) => imageExtensions.has(path.extname(file).toLowerCase()) || audioExtensions.has(path.extname(file).toLowerCase()) || videoExtensions.has(path.extname(file).toLowerCase()) || path.extname(file).toLowerCase() === '.pdf';
-const internal = (url: string) => url.startsWith('./') || url.startsWith('../') || !url.includes(':');
 function displayText(node: Nodes): string {
   if ('children' in node) return node.children.map(displayText).join('');
   if ('alt' in node) return node.alt ?? '';
@@ -27,10 +27,6 @@ function imageLabel(alt: string, fallback: string) {
   const label = escapeHtml(size ? alt.slice(0, size.index) || fallback : alt);
   const dimensions = size ? ` width="${size[1]}"${size[2] ? ` height="${size[2]}" style="aspect-ratio: ${size[1]} / ${size[2]}"` : ''}` : '';
   return { label, dimensions };
-}
-function markdownUrl(url: string): string {
-  // Obsidian leaves malformed URI escapes unchanged at this external text boundary.
-  try { return decodeURI(url); } catch { return url; }
 }
 
 interface TransformContext {
@@ -62,12 +58,12 @@ export function createTransformer({ published, resolve, assets, url: noteUrl, re
   async function clean(html: string, source: string, scope = '', footnotesOnly = false) {
     return cleanHtml(html, async (url, image) => {
       const [base] = url.split('#');
-      if (url.startsWith('#') || !internal(url) || publicUrls.has(base) || assets.has(base)) return url;
-      const target = resolve(markdownUrl(base), source);
+      if (url.startsWith('#') || !isInternalUrl(url) || publicUrls.has(base) || assets.has(base)) return url;
+      const target = resolve(decodeMarkdownUrl(base), source);
       if (!target) return undefined;
       const destination = published.get(target);
       if (destination && !image) {
-        const section = url.includes('#') ? documents.get(target)!.sections.resolve(markdownUrl(url.slice(url.indexOf('#') + 1))) : undefined;
+        const section = url.includes('#') ? documents.get(target)!.sections.resolve(decodeMarkdownUrl(url.slice(url.indexOf('#') + 1))) : undefined;
         return noteUrl(destination.id) + (section ? `#${section.anchor}` : '');
       }
       if (attachment(target)) return await assets.publish(target) + (url.includes('#') ? url.slice(url.indexOf('#')) : '');
@@ -103,27 +99,27 @@ export function createTransformer({ published, resolve, assets, url: noteUrl, re
     let embedSequence = 0;
     visit(tree, (node, index, parent) => {
       if ((node.type !== 'link' && node.type !== 'image') || !parent || index === undefined) return;
-      if (!node.data?.obsidianWiki && !internal(node.url)) {
+      const link = parseVaultLink(node.url, !!node.data?.obsidianWiki);
+      if (!link) {
         if (node.type === 'image') {
           const { label, dimensions } = imageLabel(node.alt ?? '', node.alt ?? '');
           parent.children[index] = { type: 'html', value: `<img src="${escapeHtml(node.url)}" alt="${label}"${dimensions}${node.title ? ` title="${escapeHtml(node.title)}"` : ''}>` };
         }
         return;
       }
-      if (!node.data?.obsidianWiki) node.url = markdownUrl(node.url);
+      node.url = link.url;
       if (node.url.startsWith('#') && node.type === 'link' && !node.data?.obsidianWiki) {
         const section = documents.get(note.path)!.sections.resolve(node.url.slice(1));
         if (section) node.url = `#${section.anchor}`;
         return;
       }
-      const target = resolve(node.url.split('#')[0], note.path);
+      const target = resolve(link.path, note.path);
       const destination = target && published.get(target);
       if (node.type === 'link' && destination) {
-        const subpath = node.url.slice(node.url.indexOf('#') + 1);
-        const section = node.url.includes('#') ? documents.get(target!)!.sections.resolve(subpath) : undefined;
+        const section = link.subpath !== undefined ? documents.get(target!)!.sections.resolve(link.subpath) : undefined;
         node.url = noteUrl(destination.id) + (section ? `#${section.anchor}` : '');
       } else if (node.type === 'image' && destination) {
-        const subpath = node.url.includes('#') ? node.url.slice(node.url.indexOf('#') + 1) : '';
+        const subpath = link.subpath;
         const document = documents.get(target!)!;
         const section = subpath ? document.sections.resolve(subpath) : undefined;
         if ((subpath && !section) || ancestry.includes(target!)) {
@@ -141,7 +137,7 @@ export function createTransformer({ published, resolve, assets, url: noteUrl, re
         tasks.push((async () => {
           const assetUrl = await assets.publish(target);
           const extension = path.extname(target).toLowerCase();
-          const fragment = node.url.includes('#') ? node.url.slice(node.url.indexOf('#')) : '';
+          const fragment = link.subpath !== undefined ? `#${link.subpath}` : '';
           const url = assetUrl + fragment;
           if (node.type === 'link') { node.url = url; return; }
           const { label, dimensions } = imageLabel(node.alt ?? '', target);

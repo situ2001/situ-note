@@ -1,6 +1,7 @@
 import { visit } from 'unist-util-visit';
 import { processor } from './transform/parser.js';
 import { hideComments } from './transform/comments.js';
+import { parseVaultLink } from './links.js';
 import type { SourceNote } from './vault.js';
 import type { createResolver } from './resolve.js';
 import type { NoteGraph, VaultNote } from '../types.js';
@@ -17,15 +18,12 @@ export function createNoteGraph(notes: SourceNote[], resolve: ReturnType<typeof 
     });
     const targets = new Set<string>();
     visit(tree, node => {
-      let url = node.type === 'link' || node.type === 'image' ? node.url
+      const url = node.type === 'link' || node.type === 'image' ? node.url
         : node.type === 'linkReference' || node.type === 'imageReference' ? definitions.get(node.identifier) : undefined;
       if (url === undefined) return;
-      if (!node.data?.obsidianWiki) {
-        if (!url.startsWith('./') && !url.startsWith('../') && url.includes(':')) return;
-        // Match the transformer's handling of malformed escapes in external Markdown.
-        try { url = decodeURI(url); } catch { /* Keep the original target. */ }
-      }
-      const target = resolve(url.split('#')[0], note.path);
+      const link = parseVaultLink(url, !!node.data?.obsidianWiki);
+      if (!link) return;
+      const target = resolve(link.path, note.path);
       if (target && paths.has(target)) targets.add(target);
     });
     outgoing.set(note.path, targets);

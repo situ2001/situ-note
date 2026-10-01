@@ -8,6 +8,9 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import type { LoaderContext } from 'astro/loaders';
 import { obsidianLoader, type VaultNote } from '@situ2001/astro-obsidian-content-provider';
+import { readVault } from '../src/core/vault';
+import { createResolver } from '../src/core/resolve';
+import { createNoteGraph } from '../src/core/graph';
 
 const roots: string[] = [];
 afterEach(async () => { await Promise.all(roots.splice(0).map(root => rm(root, { recursive: true, force: true }))); });
@@ -57,6 +60,28 @@ test('WikiLinks normalize whitespace and Unicode but keep literal percent escape
   expect(html('Source')).toContain('href="/notes/obsidian/A%23B/">reserved</a>');
   expect(html('Source')).toContain('href="ftp://example.com/a"');
   expect(html('Source')).toContain('href="obsidian://open?vault=test"');
+});
+
+test('graph edges and rendered links agree on literal wiki targets, Markdown escapes, fragments and protocols', async () => {
+  const { root, html } = await load({
+    'Source.md': publicNote('[[%41|literal]] [decoded](%41.md#Heading) [malformed](Bad%ZZ.md) [reserved](A%23B.md) [relative](./With:Colon.md#Heading) [external](ftp://example.com/A.md)'),
+    '%41.md': publicNote('literal'),
+    'A.md': publicNote('# Heading'),
+    'Bad%ZZ.md': publicNote('malformed'),
+    'A%23B.md': publicNote('reserved'),
+    'With:Colon.md': publicNote('# Heading'),
+  });
+  const { files, notes } = await readVault(join(root, 'vault'));
+  const graph = createNoteGraph(notes, createResolver(files));
+  const source = notes.filter(note => note.path === 'Source.md');
+  expect(graph.outgoing(source).map(note => note.path)).toEqual(['%41.md', 'A%23B.md', 'A.md', 'Bad%ZZ.md', 'With:Colon.md']);
+  const output = html('Source');
+  expect(output).toContain('href="/notes/obsidian/%41/">literal</a>');
+  expect(output).toContain('href="/notes/obsidian/A/#obsidian-heading-0">decoded</a>');
+  expect(output).toContain('href="/notes/obsidian/Bad%ZZ/">malformed</a>');
+  expect(output).toContain('href="/notes/obsidian/A%23B/">reserved</a>');
+  expect(output).toContain('href="/notes/obsidian/With:Colon/#obsidian-heading-0">relative</a>');
+  expect(output).toContain('href="ftp://example.com/A.md">external</a>');
 });
 
 test('frontmatter preserves YAML types and only string tag values without spaces participate in selection', async () => {
