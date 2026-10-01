@@ -1,12 +1,6 @@
+import { processor } from './parser.js';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
-import { unified } from 'unified';
-import remarkParse from 'remark-parse';
-import remarkObsidianLinks from './remark-obsidian-links.js';
-import remarkObsidianMark from './remark-obsidian-mark.js';
-import remarkGfm from 'remark-gfm';
-import remarkMath from 'remark-math';
-import remarkStringify from 'remark-stringify';
 import { visit } from 'unist-util-visit';
 import { cleanHtml, escapeHtml } from './html.js';
 import { renderBlocks } from './render-blocks.js';
@@ -18,13 +12,6 @@ import type { SourceNote } from '../vault.js';
 import type { createAssets } from '../assets.js';
 import type { createResolver } from '../resolve.js';
 
-const processor = unified().use(remarkParse).use(remarkGfm).use(remarkMath).use(remarkObsidianLinks).use(remarkObsidianMark).use(remarkStringify, {
-  handlers: { strong(node, _parent, state, info) {
-    const open = node.data?.obsidianMark ? '<mark>' : '**';
-    const close = node.data?.obsidianMark ? '</mark>' : '**';
-    return open + state.containerPhrasing(node, { ...info, before: open, after: close }) + close;
-  } },
-});
 const imageExtensions = new Set(['.png', '.jpg', '.jpeg', '.gif', '.webp', '.avif', '.bmp', '.svg']);
 const audioExtensions = new Set(['.mp3', '.wav', '.m4a', '.3gp', '.flac', '.ogg', '.oga', '.opus']);
 const videoExtensions = new Set(['.mp4', '.webm', '.ogv', '.mov', '.mkv']);

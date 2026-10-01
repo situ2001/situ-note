@@ -3,6 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { Loader } from 'astro/loaders';
 import type { ObsidianLoaderOptions } from '../types.js';
+import { createNoteGraph } from '../core/graph.js';
 import { readVault } from '../core/vault.js';
 import { createResolver } from '../core/resolve.js';
 import { createAssets } from '../core/assets.js';
@@ -20,10 +21,20 @@ export function obsidianLoader(options: ObsidianLoaderOptions): Loader {
 
       const vault = path.resolve(options.vault);
       const { files, notes } = await readVault(vault);
-      const published = new Map(notes.filter(options.filter).map(note => [note.path, note]));
+      const resolve = createResolver(files);
+      const selected = options.select
+        ? await options.select({ notes, graph: createNoteGraph(notes, resolve) })
+        : notes.filter(options.filter);
+      const byPath = new Map(notes.map(note => [note.path, note]));
+      const published = new Map<string, (typeof notes)[number]>();
+      for (const selectedNote of selected) {
+        const note = byPath.get(selectedNote.path);
+        if (!note) throw new Error(`Selected note is not in the vault: ${selectedNote.path}`);
+        published.set(note.path, note);
+      }
       const assets = createAssets(vault, config.base);
       const transform = createTransformer({
-        published, assets, resolve: createResolver(files), url: options.url, renderMarkdown,
+        published, assets, resolve, url: options.url, renderMarkdown,
       });
       for (const note of published.values()) {
         const data = await parseData({ id: note.id, data: options.mapProperties(note) });

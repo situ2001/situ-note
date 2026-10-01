@@ -83,3 +83,38 @@ test('wiki syntax takes precedence over same-name references and respects escape
     { type: 'text', value: ' [[Target]]' },
   ] });
 });
+
+test('select publishes explicit roots and graph neighbors without publishing code or comment references', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'obsidian-select-'));
+  const vault = join(root, 'vault');
+  await mkdir(vault);
+  const entries = new Map<string, any>();
+  const context = {
+    store: { clear: () => entries.clear(), set: (entry: any) => entries.set(entry.id, entry) },
+    parseData: async ({ data }: any) => data,
+    renderMarkdown: async (body: string) => ({ html: body }),
+    config: { base: '/', publicDir: pathToFileURL(join(root, 'public') + '/') },
+    logger: { info() {} },
+  } as unknown as LoaderContext;
+  try {
+    await writeFile(join(vault, 'A.md'), '---\nshared: true\n---\n[[B#Heading|alias]] ![[B]] [C](C.md) [again][ref]\n\n[ref]: C.md\n\n`[[Secret]]`\n\n%% [[Secret]] %%\n\n```md\n[[Secret]]\n```');
+    await writeFile(join(vault, 'B.md'), '# Heading\n[[A]]');
+    await writeFile(join(vault, 'C.md'), '[[Secret]]');
+    await writeFile(join(vault, 'Secret.md'), 'PRIVATE');
+    const loader = obsidianLoader({
+      vault,
+      select: async ({ notes, graph }) => {
+        const roots = notes.filter(note => note.properties.shared === true);
+        expect(graph.outgoing(roots).map(note => note.path)).toEqual(['B.md', 'C.md']);
+        expect(graph.incoming(roots).map(note => note.path)).toEqual(['B.md']);
+        return [...roots, ...graph.outgoing(roots), ...roots];
+      },
+      mapProperties: note => ({ title: note.path }),
+      url: id => `/blog/${id}/`,
+    });
+    await loader.load(context);
+    expect([...entries.keys()]).toEqual(['obsidian/A', 'obsidian/B', 'obsidian/C']);
+    expect(entries.get('obsidian/A').body).toContain('/blog/obsidian/B/');
+    expect(entries.get('obsidian/C').body).not.toContain('/blog/obsidian/Secret/');
+  } finally { await rm(root, { recursive: true, force: true }); }
+});

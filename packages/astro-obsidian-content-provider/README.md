@@ -70,10 +70,31 @@ Set `OBSIDIAN_VAULT` to your vault directory. With this example, a note containi
 | --- | --- |
 | `vault` | Vault directory. Omitting it produces an empty collection. |
 | `filter(note)` | Selects notes for publication. Receives the vault-relative `path`, YAML `properties`, and normalized `tags`. |
+| `select({ notes, graph })` | Alternative to `filter`. Returns an iterable of notes to publish, synchronously or asynchronously. |
 | `mapProperties(note)` | Returns data validated by your collection schema. YAML dates remain strings; convert them in your schema as needed. |
 | `url(id)` | Returns the article URL used by links and RSS. It must match your site's routes. IDs are `obsidian/` followed by the vault-relative path without `.md`. |
 
 Links and embeds only expose selected notes. Resolution searches the complete vault before applying the publication rule; a private target does not redirect to a different public note with the same name. Missing or unselected targets become display text.
+
+## Selecting related notes
+
+Provide exactly one of `filter` or `select`. Use `select` when publication depends on relationships between notes:
+
+```ts
+select: ({ notes, graph }) => {
+  const roots = notes.filter(note => note.properties.shared === true);
+  const related = graph.outgoing(roots).filter(
+    note => note.properties.visibility === 'public',
+  );
+  return [...roots, ...related];
+},
+```
+
+`notes` contains the whole vault's Markdown notes with `path`, `properties`, and `tags`. `graph.outgoing(notes)` returns direct targets; `graph.incoming(notes)` returns notes referencing the supplied notes. Both return unique notes in vault-path order. Queries include selected and unselected notes, so the callback controls which related notes become public.
+
+The graph resolves WikiLinks, note embeds, Markdown links and reference links using the same parser and vault resolver as rendering. Heading and block references resolve to their containing note. Comments, code, external URLs, attachments and unresolved links do not add edges. Raw HTML links are not included in graph queries.
+
+Return notes from this context; selection is matched by vault-relative path and deduplicated. The loader renders only the returned set, without recursively publishing further neighbors. Returning an empty iterable withdraws every note. Graph queries support selection; they do not add a backlinks widget to pages.
 
 ## Rendering and styles
 
