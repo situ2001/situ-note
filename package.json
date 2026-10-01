@@ -3,15 +3,16 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "pnpm run type-check && astro build",
+    "dev": "pnpm --filter @situ2001/astro-obsidian-content-provider build && astro dev",
+    "start": "pnpm run dev",
+    "build": "pnpm --filter @situ2001/astro-obsidian-content-provider build && astro sync && pnpm run type-check && astro build",
     "logo:generate": "node --experimental-strip-types scripts/generate-logo-glyphs.ts",
     "publish": "node ./scripts/publish.mjs",
     "preview": "astro preview",
-    "test": "vitest",
-    "type-check": "tsc --noEmit",
-    "astro": "astro"
+    "test": "pnpm --filter @situ2001/astro-obsidian-content-provider build && vitest",
+    "type-check": "pnpm --filter @situ2001/astro-obsidian-content-provider build && tsc --noEmit",
+    "astro": "pnpm --filter @situ2001/astro-obsidian-content-provider build && astro",
+    "verify:obsidian": "pnpm --filter @situ2001/astro-obsidian-content-provider build && node scripts/verify-obsidian.mjs"
   },
   "dependencies": {
     "@antv/g2": "^5.4.8",
@@ -26,6 +27,7 @@
     "@fontsource/fira-code": "^5.2.7",
     "@fontsource/maple-mono": "^5.2.6",
     "@nanostores/react": "^1.1.0",
+    "@situ2001/astro-obsidian-content-provider": "workspace:*",
     "@tailwindcss/vite": "^4.2.2",
     "astro": "^7.3.4",
     "astro-pagefind": "^1.8.5",

@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry } from "astro:content";
+import type { Post } from "@/features/blog/blog";
 
 import { blog } from "@/features/blog/blog";
 
@@ -9,7 +9,7 @@ import { BlogListItem } from "@/features/blog/BlogListItem";
 export const getStaticPaths = blog.categoryPaths;
 
 type Props = {
-  posts: CollectionEntry<"blog">[];
+  posts: Post[];
   category: string;
 };
 

@@ -1,12 +1,13 @@
 ---
-import { render, type CollectionEntry } from "astro:content";
+import type { Post } from "@/features/blog/blog";
+import { render } from "astro:content";
 
 import BlogPost from "@/features/reading/BlogPost.astro";
 import { blog } from "@/features/blog/blog";
 
 export const getStaticPaths = blog.postPaths;
 
-type Props = CollectionEntry<"blog">;
+type Props = Post;
 
 const post = Astro.props;
 const { Content, headings } = await render(post);

@@ -3,4 +3,7 @@ import { createBlogCatalog } from "./catalog";
 
 export type { Post } from "./catalog";
 
-export const blog = createBlogCatalog(await getCollection("blog"));
+export const blog = createBlogCatalog([
+  ...(await getCollection("blog")),
+  ...(await getCollection("vault")),
+]);

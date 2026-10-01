@@ -3,6 +3,7 @@ import sanitizeHtml from "sanitize-html";
 import MarkdownIt from "markdown-it";
 import { blog } from "@/features/blog/blog";
 import config from "../../blog.config";
+import { obsidian } from "../../obsidian.config";
 
 const parser = new MarkdownIt();
 
@@ -20,11 +21,11 @@ export async function GET(context: any) {
       pubDate: post.data.date,
       link: `/blog/${post.id}/`,
       categories: blog.categoriesFor(post.data.categories),
-      content: sanitizeHtml(
+      content: post.collection === "vault" ? obsidian.rssContent(post, { site: context.site }) : sanitizeHtml(
         parser.render(
           "> 该内容使用MarkdownIt渲染，如需查看图片及获取更好的排版，请阅读原文\n" +
           "> This content is rendered using MarkdownIt, for better layout and images, please read the original post\n\n" +
-          post.body
+          (post.body ?? "")
         )
       ),
     })),

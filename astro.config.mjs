@@ -10,6 +10,7 @@ import rehypeKatex from "rehype-katex";
 import pagefind from "astro-pagefind";
 
 import tailwindcss from "@tailwindcss/vite";
+import { obsidian } from "./obsidian.config.ts";
 
 /**
  * https://astro.build/config
@@ -22,7 +23,8 @@ export default defineConfig({
     mdx(),
     sitemap(),
     react(),
-    pagefind()
+    pagefind(),
+    obsidian.integration()
   ],
   prefetch: true,
   compressHTML: true,
