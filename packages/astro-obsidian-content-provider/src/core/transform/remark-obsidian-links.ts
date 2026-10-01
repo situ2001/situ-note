@@ -2,6 +2,8 @@ import type { Extension, Tokenizer } from 'micromark-util-types';
 import type { Extension as MdastExtension } from 'mdast-util-from-markdown';
 import type { Processor } from 'unified';
 
+declare module 'mdast' { interface Data { obsidianWiki?: boolean } }
+
 declare module 'micromark-util-types' {
   interface TokenTypeMap { obsidianWiki: 'obsidianWiki' }
 }
@@ -57,11 +59,11 @@ export default function remarkObsidianLinks(this: Processor) {
         const image = raw.startsWith('!');
         const content = raw.slice(image ? 3 : 2, -2).replace(/\\\|/g, '|');
         const separator = content.indexOf('|');
-        const url = separator < 0 ? content : content.slice(0, separator);
-        const label = separator < 0 ? content : content.slice(separator + 1);
+        const url = (separator < 0 ? content : content.slice(0, separator)).replace(/\u00a0/g, ' ').trim().normalize('NFC');
+        const label = (separator < 0 ? content.split('#').filter(Boolean).join(' > ') : content.slice(separator + 1)).trim();
         this.enter(image
-          ? { type: 'image', url, alt: label }
-          : { type: 'link', url, children: [{ type: 'text', value: label }] }, token);
+          ? { type: 'image', url, alt: label, data: { obsidianWiki: true } }
+          : { type: 'link', url, data: { obsidianWiki: true }, children: [{ type: 'text', value: label }] }, token);
       },
     },
     exit: { obsidianWiki(token) { this.exit(token); } },

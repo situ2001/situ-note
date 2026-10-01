@@ -17,7 +17,7 @@ test('selection, private links, attachments, code and revocation', async () => {
     store: { clear: () => entries.clear(), set: (entry: any) => entries.set(entry.id, entry) },
     parseData: async ({ data }: any) => data,
     renderMarkdown: async (body: string) => ({ html: body }),
-    config: { publicDir: pathToFileURL(join(root, 'public') + '/') },
+    config: { base: '/', publicDir: pathToFileURL(join(root, 'public') + '/') },
     logger: { info() {} },
   } as unknown as LoaderContext;
   const loader = obsidianLoader({
@@ -46,16 +46,19 @@ test('selection, private links, attachments, code and revocation', async () => {
     await loader.load(context);
     expect([...entries.keys()]).toEqual(['obsidian/Publish/B']);
     await expect(readdir(join(root, 'public/_obsidian'))).rejects.toThrow();
-    // Full-vault index must see the private duplicate, rather than choose public B.
+    // Full-vault resolution follows Obsidian candidate order even with duplicates.
     await mkdir(join(vault, 'Other'));
     await writeFile(join(vault, 'Other/B.md'), 'Private duplicate');
     await mkdir(join(vault, 'Publish/Nested'));
     await writeFile(join(vault, 'Publish/Nested/C.md'), '---\nshared: true\ntags: [web]\n---\n[[B]]');
-    await expect(loader.load(context)).rejects.toThrow('Ambiguous vault link');
+    await loader.load(context);
+    expect(entries.get('obsidian/Publish/Nested/C').body).not.toContain('/blog/obsidian/Publish/B/');
     await writeFile(join(vault, 'Publish/Nested/C.md'), '---\nshared: true\ntags: [web]\n---\n<div>HTML probe</div>');
-    await expect(loader.load(context)).rejects.toThrow('Raw HTML is not supported');
+    await loader.load(context);
+    expect(entries.get('obsidian/Publish/Nested/C').rendered.html).toContain('<div>HTML probe</div>');
     await writeFile(join(vault, 'Publish/Nested/C.md'), '---\nshared: true\ntags: [web]\n---\n[[Publish/B#Heading]]');
-    await expect(loader.load(context)).rejects.toThrow('Cross-note heading/block links');
+    await loader.load(context);
+    expect(entries.get('obsidian/Publish/Nested/C').body).toContain('/blog/obsidian/Publish/B/');
 
   } finally {
     await rm(root, { recursive: true, force: true });
@@ -64,7 +67,7 @@ test('selection, private links, attachments, code and revocation', async () => {
 
 import { unified } from 'unified';
 import remarkParse from 'remark-parse';
-import remarkObsidianLinks from '../src/remark-obsidian-links';
+import remarkObsidianLinks from '../src/core/transform/remark-obsidian-links';
 
 test('wiki syntax takes precedence over same-name references and respects escapes/code', () => {
   const parser = unified().use(remarkParse).use(remarkObsidianLinks);

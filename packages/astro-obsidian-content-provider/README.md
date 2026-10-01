@@ -1,45 +1,146 @@
 # Astro Obsidian content provider
 
-An Astro content loader for selected Markdown notes in an external Obsidian vault. The package handles vault scanning, frontmatter parsing, WikiLinks, publication-safe links, and referenced images. The consuming site decides which notes to publish, how to map their properties, and where their article routes live.
+Publish selected notes from an external Obsidian vault through Astro's Content Layer. Configure publication rules once, then connect the content loader, browser runtime, and RSS helper to your site.
+
+Your site supplies the collection schema, article routes, layouts, styles, and feed metadata. This version supports one vault and one collection.
 
 ## Install
 
-This repository uses a pnpm workspace:
+Requires Node 22.12+ and Astro `^7.3.4`. The package is distributed locally as a tarball and has not been published to npm.
+
+From this package directory:
 
 ```sh
-pnpm install --frozen-lockfile
-pnpm --filter @situ2001/astro-obsidian-content-provider build
+pnpm install
+pnpm pack --pack-destination /path/to/artifacts
 ```
 
-The package declares Astro 7 as a peer dependency. It is packaged as compiled ESM and TypeScript declarations; it has not been published to npm.
+Packing builds the JavaScript and TypeScript declarations. In the consuming Astro project:
 
-When editing package source during site development, run `pnpm --filter @situ2001/astro-obsidian-content-provider dev` in another terminal to rebuild its output on changes.
+```sh
+pnpm add /path/to/artifacts/situ2001-astro-obsidian-content-provider-0.1.0.tgz
+```
 
-## Configure an Astro collection
+## Configure once
+
+Create a shared configuration module at the project root. Keep its imports usable from both Astro configuration and content configuration; `astro:content` belongs in the collection or page modules.
+
+```ts
+// obsidian.config.ts
+import { createObsidian } from '@situ2001/astro-obsidian-content-provider';
+
+export const obsidian = createObsidian({
+  vault: process.env.OBSIDIAN_VAULT,
+  filter: ({ properties }) => properties.shared === true,
+  mapProperties: ({ path, properties }) => ({
+    ...properties,
+    title: properties.title ?? path.split('/').pop()!.replace(/\.md$/, ''),
+  }),
+  url: id => `/notes/${id.split('/').map(encodeURIComponent).join('/')}/`,
+});
+```
+
+Register the integration and collection:
+
+```ts
+// astro.config.ts
+import { defineConfig } from 'astro/config';
+import { obsidian } from './obsidian.config';
+
+export default defineConfig({ integrations: [obsidian.integration()] });
+```
 
 ```ts
 // src/content.config.ts
 import { defineCollection } from 'astro:content';
 import { z } from 'astro/zod';
-import { obsidianLoader } from '@situ2001/astro-obsidian-content-provider';
+import { obsidian } from '../obsidian.config';
 
-const notes = defineCollection({
-  loader: obsidianLoader({
-    vault: process.env.OBSIDIAN_VAULT,
-    filter: ({ path, properties, tags }) =>
-      properties.shared === true && path.startsWith('Publish/') && tags.includes('web'),
-    mapProperties: ({ path, properties }) => ({
-      ...properties,
-      title: properties.title ?? path.split('/').pop()!.replace(/\.md$/, ''),
-    }),
-    url: (id) => `/notes/${id.split('/').map(encodeURIComponent).join('/')}/`,
+export const collections = {
+  notes: defineCollection({
+    loader: obsidian.loader(),
+    schema: z.object({ title: z.string() }),
   }),
-  schema: z.object({ title: z.string(), date: z.string() }),
-});
-
-export const collections = { notes };
+};
 ```
 
-The loader assigns IDs beginning with `obsidian/` and passes mapped properties through Astro's collection schema. The consuming site owns its date schema; this blog requires quoted ISO timestamps with explicit timezones and converts them to `Date` values in `src/content.config.ts`. The `url(id)` callback must match the consuming site's article route so public WikiLinks resolve correctly. Only notes selected by `filter` are emitted. Links to unselected or missing notes become plain text.
+Set `OBSIDIAN_VAULT` to your vault directory. With this example, a note containing `shared: true` in its frontmatter becomes a collection entry. Render entries in your article routes using Astro's `getCollection` / `getEntry` and `render` APIs.
 
-The loader clears and rebuilds the collection and its `public/_obsidian/` attachment directory on each sync. It does not watch the external vault. One loader instance owns that directory; concurrent instances or builds sharing it are unsupported. Raw HTML and cross-note heading or block links currently fail. The repository's `docs/obsidian-provider.md` records the blog integration, supported syntax, and verification.
+| Option | Contract |
+| --- | --- |
+| `vault` | Vault directory. Omitting it produces an empty collection. |
+| `filter(note)` | Selects notes for publication. Receives the vault-relative `path`, YAML `properties`, and normalized `tags`. |
+| `mapProperties(note)` | Returns data validated by your collection schema. YAML dates remain strings; convert them in your schema as needed. |
+| `url(id)` | Returns the article URL used by links and RSS. It must match your site's routes. IDs are `obsidian/` followed by the vault-relative path without `.md`. |
+
+Links and embeds only expose selected notes. Resolution searches the complete vault before applying the publication rule; a private target does not redirect to a different public note with the same name. Missing or unselected targets become display text.
+
+## Rendering and styles
+
+Supported content includes WikiLinks, heading and block references, selected-note embeds, comments, highlights, callouts, task states, image dimensions, native PDF/audio/video attachments, and sanitized HTML. Rendering uses your Astro Markdown processor, including configured math and highlighting plugins.
+
+The integration installs a small browser entry on every page. Pages containing Mermaid blocks load the bundled renderer on demand, including after ClientRouter navigation. Mermaid runs in strict security mode; builds require no Chromium or Playwright. Without JavaScript, diagrams remain readable as source code. Diagram syntax errors are reported in the browser.
+
+Style the generated elements in your theme:
+
+- `.callout[data-callout]`, `.callout-title`, and `.callout-content`
+- `.obsidian-embed` and `.obsidian-pdf`
+- `pre[data-obsidian-mermaid]`
+
+The package ships no default CSS. It preserves explicit image dimensions, and Mermaid supplies its SVG presentation.
+
+For manual client installation, use `obsidianLoader(options)` for the collection and import the client from a processed Astro script:
+
+```astro
+<script>
+  import '@situ2001/astro-obsidian-content-provider/client';
+</script>
+```
+
+## RSS content
+
+In your feed route, use the shared configuration to convert a loaded entry into RSS HTML:
+
+```ts
+const content = obsidian.rssContent(entry, { site: context.site });
+```
+
+Pass the returned string as an RSS item's `content`, for example with `@astrojs/rss`. The helper requires `entry.rendered.html`. It sanitizes the HTML, resolves links and images against the configured article URL, and preserves working footnote references. Mermaid remains source code; audio, video, and PDF embeds retain their resource links.
+
+Your feed route selects and orders entries, maps title/date/category fields, and supplies feed metadata. Set Astro's `site` URL when using `context.site`.
+
+## Content lifecycle
+
+Each loader sync rebuilds the collection and its owned `_obsidian/` directory beneath Astro's `publicDir`. Attachment URLs respect Astro's `base`. Only referenced attachments are copied; withdrawing a note removes its unused attachments on the next sync.
+
+Restart Astro or rebuild after changing vault content: external-vault watching is not implemented. Use one loader instance and avoid concurrent builds that share the attachment directory.
+
+## Development
+
+From this package directory:
+
+```sh
+pnpm build
+pnpm type-check
+pnpm test
+```
+
+`pnpm dev` rebuilds TypeScript on changes. Production builds clean the output directory and emit ESM and declarations.
+
+Loader tests use temporary vaults and a real Markdown renderer. The integration test installs the packed tarball into a separate Astro project and checks a different schema, subpath deployment, client injection, and RSS output. It requires npm and pnpm and may access the package registry.
+
+```text
+src/
+  config.ts          Shared configuration and public methods
+  rss.ts             Feed HTML conversion
+  types.ts           Public note and loader options
+  core/
+    vault.ts         Vault reading and frontmatter
+    resolve.ts       Obsidian path resolution
+    assets.ts        Attachment publication
+    transform/       Obsidian document semantics
+  astro/
+    loader.ts        Content Store and rendering lifecycle
+    integration.ts   Browser entry and server dependency configuration
+  client/index.ts    Lazy Mermaid rendering and page navigation
+```

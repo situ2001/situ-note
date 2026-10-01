@@ -1,7 +1,7 @@
 import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
-import { obsidianLoader } from "@situ2001/astro-obsidian-content-provider";
+import { obsidian } from "../obsidian.config";
 import { parsePublicationDate } from "./features/blog/publicationDate";
 
 const blogSchema = z.object({
@@ -21,17 +21,7 @@ const blog = defineCollection({
 });
 
 const vault = defineCollection({
-  loader: obsidianLoader({
-    vault: process.env.OBSIDIAN_VAULT,
-    filter: ({ properties }) => properties.shared === true,
-    mapProperties: ({ path, properties, tags }) => ({
-      ...properties,
-      title: properties.title ?? path.split('/').pop()!.replace(/\.md$/, ''),
-      description: properties.description ?? '',
-      categories: properties.categories ?? (tags.join(',') || 'Notes'),
-    }),
-    url: id => `/blog/${id.split('/').map(encodeURIComponent).join('/')}/`,
-  }),
+  loader: obsidian.loader(),
   schema: blogSchema,
 });
 

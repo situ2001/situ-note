@@ -2,47 +2,71 @@
   "name": "@situ2001/astro-obsidian-content-provider",
   "version": "0.1.0",
   "type": "module",
-  "description": "Astro content loader for selected notes in an Obsidian vault",
+  "description": "Astro integration and content loader for selected notes in an Obsidian vault",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/situ2001/situ-note.git",
     "directory": "packages/astro-obsidian-content-provider"
   },
-  "engines": { "node": ">=22.12.0" },
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
+    },
+    "./client": {
+      "types": "./dist/client/index.d.ts",
+      "import": "./dist/client/index.js"
     }
   },
-  "files": ["dist", "README.md", "LICENSE"],
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
-    "build": "tsc -p tsconfig.build.json",
+    "build": "node scripts/build.mjs",
     "dev": "tsc -w -p tsconfig.build.json",
     "test": "pnpm build && vitest run",
-    "prepack": "pnpm build"
+    "prepack": "pnpm build",
+    "type-check": "tsc --noEmit -p tsconfig.build.json"
   },
   "peerDependencies": {
     "astro": "^7.3.4"
   },
   "dependencies": {
+    "dompurify": "^3.4.16",
+    "jsdom": "^26.1.0",
+    "mermaid": "^11.17.2",
     "remark-gfm": "^4.0.1",
     "remark-math": "^6.0.0",
     "remark-parse": "^11.0.0",
     "remark-stringify": "^11.0.0",
     "unified": "^11.0.5",
     "unist-util-visit": "^5.1.0",
-    "yaml": "^2.7.1"
+    "yaml": "^2.7.1",
+    "sanitize-html": "^2.17.2"
   },
   "devDependencies": {
+    "@astrojs/markdown-remark": "^7.3.1",
+    "@types/jsdom": "^30.0.0",
     "@types/mdast": "^4.0.4",
     "@types/node": "^24.12.0",
     "mdast-util-from-markdown": "^2.0.3",
     "micromark-util-types": "^2.0.2",
+    "rehype-katex": "^7.0.1",
     "typescript": "^5.9.3",
-    "vitest": "^3.2.4"
+    "vitest": "^3.2.4",
+    "@types/sanitize-html": "^2.16.1",
+    "astro": "^7.3.4",
+    "@astrojs/rss": "^4.0.19"
+  },
+  "astro": {
+    "external": true
   }
 }

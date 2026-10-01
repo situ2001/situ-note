@@ -198,3 +198,30 @@ article.reading img { height: auto; max-width: 100%; }
 @media (max-width: 399px) {
   body.paper article.reading { text-align: start; }
 }
+
+article.reading .callout[data-callout] {
+  margin-block: 1.5rem;
+  padding: 1rem;
+  border-inline-start: 4px solid var(--color-quote-rule);
+  background: var(--color-surface);
+  border-radius: 0.375rem;
+  text-align: start;
+}
+article.reading .callout[data-callout] > .callout-title { font-weight: 600; }
+article.reading .callout[data-callout] > summary.callout-title { cursor: pointer; }
+article.reading .callout[data-callout] > .callout-content > :last-child { margin-bottom: 0; }
+article.reading .obsidian-embed {
+  padding-inline-start: 1rem;
+  border-inline-start: 2px solid var(--color-prose-rule);
+}
+article.reading :is(video, audio, .obsidian-pdf) { max-width: 100%; }
+article.reading pre[data-obsidian-mermaid][data-processed] {
+  background: transparent;
+  padding: 0;
+  white-space: normal;
+}
+article.reading pre[data-obsidian-mermaid] svg {
+  display: block;
+  margin-inline: auto;
+  max-width: 100%;
+}
