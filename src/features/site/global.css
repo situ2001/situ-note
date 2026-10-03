@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @import '@fontsource-variable/noto-sans';
 @import '@fontsource-variable/noto-serif';
 
@@ -7,7 +9,7 @@
 @import "@fontsource/maple-mono";
 
 /* ------------------------------------------------------------------ */
-/* Design tokens — paper mode.                                         */
+/* Design tokens — shared identity.                                   */
 /* Consumed as CSS vars in component styles, and as utilities          */
 /* (max-w-measure, text-prose, tracking-prose, bg-paper, text-ink...)  */
 /* ------------------------------------------------------------------ */
@@ -25,6 +27,22 @@
   --color-surface-strong: #eee9e3;
   --color-quote-rule: color-mix(in srgb, var(--color-highlight) 90%, var(--color-ink));
   --color-selection: #e7c7d4;
+
+  /* Shared UI roles; identity colors above stay available for experiments. */
+  --color-page: var(--color-paper);
+  --color-content: var(--color-ink);
+  --color-secondary: #57534e;
+  --color-muted: #78716c;
+  --color-decoration: #d6d3d1;
+  --color-border: var(--color-prose-rule);
+  --color-border-strong: #a8a29e;
+  --color-panel: var(--color-paper);
+  --color-backdrop: rgb(47 45 42 / 50%);
+  --color-focus: var(--color-content);
+  --color-code-border: #e5ded6;
+  --color-inline-code: var(--color-surface);
+  --duration-feedback: 200ms;
+  --duration-emphasis: 300ms;
 
   /* prose type scale: 17px book text with generous print leading */
   --text-prose: 1.0625rem;
@@ -51,6 +69,8 @@ body {
   @apply text-base;
   font-family: var(--font-sans), var(--font-cjk-sans), sans-serif;
   font-weight: 400;
+  position: relative;
+  color-scheme: light;
 
   /* color transition for text */
   /* FIXME: Has performance issues on Safari */
@@ -64,7 +84,7 @@ body {
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
+    border-color: var(--color-border);
   }
 }
 
@@ -94,7 +114,7 @@ html.dark img[data-dim-in-dark]:not(.medium-zoom-image--opened) {
 }
 
 code:not(pre code) {
-  @apply rounded! px-1! bg-surface!;
+  @apply rounded! px-1! bg-inline-code!;
 }
 
 pre {
@@ -114,7 +134,7 @@ html.dark .astro-code span {
 
 /* Match the github-dark Shiki background used by .astro-code. */
 html.dark code:not(pre code) {
-  background-color: #24292e !important;
+  background-color: var(--color-inline-code) !important;
 }
 
 @layer components {
@@ -143,37 +163,56 @@ html.dark code:not(pre code) {
 /* ------------------------------------------------------------------ */
 /* Paper mode: warm paper & soft ink instead of pure white/black.      */
 /* Enabled via <BaseLayout paper> (defaults to true). Light mode only; */
-/* dark mode keeps the zinc palette. Serif prose typography for        */
+/* Dark mode keeps the zinc palette. Serif prose typography for        */
 /* <article> content lives in blog-post.css.                          */
 /* ------------------------------------------------------------------ */
 
-@media (prefers-color-scheme: light) {
-  body.paper {
-    background-color: var(--color-paper);
-    color: var(--color-ink);
-  }
-
-  /* the sticky nav turns bg-zinc-100 (cool) once content scrolls under it;
-     replace it with a warm frosted scrim so it blends with the paper */
-  body.paper header nav {
-    background-color: var(--color-paper-scrim);
-    /*https://github.com/parcel-bundler/lightningcss/issues/695*/
-    /*https://github.com/tailwindlabs/tailwindcss/discussions/16443*/
-    -webkit-backdrop-filter: blur(var(--blur-paper));
-    backdrop-filter: blur(var(--blur-paper));
-  }
-
+body.paper {
+  background-color: var(--color-page);
+  color: var(--color-content);
 }
 
-/* Dark mode keeps its zinc and Shiki surfaces. The paper-based highlight
-   falls back to a translucent pink wash behind light text. */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-prose-rule: #52525b;
-    --color-surface: color-mix(in srgb, oklch(0.828 0.111 230.318) 5%, oklch(0.274 0.006 286.033 /* zinc-800 */));
-    --color-surface-strong: color-mix(in srgb, oklch(0.828 0.111 230.318) 8%, oklch(0.442 0.017 285.786 /* zinc-600 */));
-    --color-highlight: oklch(82.3% 0.12 346.018 / 0.5);
-    --color-selection: oklch(0.828 0.111 230.318 / 0.45);
+body.paper header nav {
+  background-color: var(--color-paper-scrim);
+  -webkit-backdrop-filter: blur(var(--blur-paper));
+  backdrop-filter: blur(var(--blur-paper));
+}
+
+/* The .dark class follows system preference and owns every theme role. */
+:root.dark {
+  --color-page: #18181b;
+  --color-content: #d4d4d8;
+  --color-secondary: #d4d4d8;
+  --color-muted: #a1a1aa;
+  --color-decoration: #52525b;
+  --color-border-strong: #71717a;
+  --color-panel: #27272a;
+  --color-backdrop: rgb(0 0 0 / 60%);
+  --color-paper-scrim: color-mix(in srgb, var(--color-page) 86%, transparent);
+  --color-prose-rule: #52525b;
+  --color-surface: color-mix(in srgb, oklch(0.828 0.111 230.318) 5%, oklch(0.274 0.006 286.033));
+  --color-surface-strong: color-mix(in srgb, oklch(0.828 0.111 230.318) 8%, oklch(0.442 0.017 285.786));
+  --color-quote-rule: #3f3f46;
+  --color-highlight: oklch(82.3% 0.12 346.018 / 0.5);
+  --color-selection: oklch(0.828 0.111 230.318 / 0.45);
+  --color-code-border: transparent;
+  --color-inline-code: #24292e;
+}
+
+.dark body { color-scheme: dark; }
+
+/* Keep page stacking separate from portaled dialogs. */
+.site-root { isolation: isolate; }
+
+:where(a, button, input):focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
   }
 }
 

@@ -71,7 +71,7 @@ article.reading a[data-external-link]::after {
 
 
 article.reading blockquote {
-  @apply text-zinc-600 border-l-4 border-quote-rule px-4 py-2 my-6 bg-surface;
+  @apply text-secondary border-l-4 border-quote-rule px-4 py-2 my-6 bg-surface;
 }
 
 article.reading blockquote > *:first-child {
@@ -82,24 +82,13 @@ article.reading blockquote > *:last-child {
   margin-bottom: 0;
 }
 
-.dark article.reading blockquote {
-  @apply border-l-zinc-700;
-  @apply text-zinc-300;
-}
-
 article.reading img {
   margin: 0 auto;
   @apply rounded-xl;
 }
 
 .medium-zoom-overlay {
-  @apply dark:bg-zinc-900!;
-}
-
-@media (prefers-color-scheme: light) {
-  body.paper .medium-zoom-overlay {
-    background-color: var(--color-paper) !important;
-  }
+  background-color: var(--color-page) !important;
 }
 
 .medium-zoom-overlay,
@@ -166,10 +155,8 @@ article.reading pre {
   text-align: start;
 }
 
-@media (prefers-color-scheme: light) {
-  body.paper article.reading pre {
-    border: 1px solid #e5ded6;
-  }
+body.paper article.reading pre {
+  border: 1px solid var(--color-code-border);
 }
 article.reading :is(ul, ol) :is(ul, ol) { margin-block: 0.375em; }
 article.reading li + li { margin-top: 0.25em; }
@@ -187,12 +174,6 @@ article.reading [data-footnotes] {
   text-align: start;
 }
 article.reading [data-footnotes] h2 { font-size: 1.125rem; }
-article.reading a:focus-visible,
-header nav :is(a, button):focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 4px;
-  border-radius: 2px;
-}
 article.reading img { height: auto; max-width: 100%; }
 
 @media (max-width: 399px) {
