@@ -20,6 +20,7 @@
     "@astrojs/react": "^7.0.0",
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.4",
+    "@base-ui/react": "^1.8.0",
     "@carbon/icons-react": "^11.76.0",
     "@fontsource-variable/noto-sans": "^5.2.10",
     "@fontsource-variable/noto-serif": "^5.2.9",
