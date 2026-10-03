@@ -57,6 +57,14 @@
   --blur-paper: 5px;
 }
 
+@utility duration-feedback {
+  transition-duration: var(--duration-feedback);
+}
+
+@utility duration-emphasis {
+  transition-duration: var(--duration-emphasis);
+}
+
 :root {
   --font-sans: "Noto Sans Variable", "Segoe UI", "Droid Sans", "Helvetica Neue";
   --font-cjk-sans: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei";

@@ -4,7 +4,7 @@ The site’s identity is warm paper, soft ink, misty pink marker accents, and ge
 
 ## Tokens
 
-`src/features/site/global.css` owns browser tokens. Use their Tailwind utilities or CSS variables; component-local palettes should not redefine a shared role.
+`src/features/site/global.css` owns browser tokens and Tailwind configuration. Use their Tailwind utilities or CSS variables; component-local palettes should not redefine a shared role.
 
 | Role | Token / utility | Use |
 | --- | --- | --- |
@@ -17,7 +17,7 @@ The site’s identity is warm paper, soft ink, misty pink marker accents, and ge
 | Rules | `border`, `border-strong`, `quote-rule` | Dividers, emphasized control borders, quotation accents |
 | Emphasis | `highlight` | Marker backgrounds; not a primary text color |
 | Keyboard focus | `focus` | Shared visible outline |
-| Motion | `duration-feedback`, `duration-emphasis` | 200ms feedback, 300ms marker/logo motion |
+| Motion | `duration-feedback`, `duration-emphasis` | 200ms feedback, 300ms marker/logo motion; explicit `@utility` mappings |
 
 `paper` and `ink` retain the original light identity colors. Theme-aware roles map to them in light mode and to zinc/blue-washed surfaces in dark mode. `.dark` on the document is the effective theme selector for both tokens and Tailwind variants. It follows system preference on initial load, OS changes, and Astro route swaps. There is no stored manual override.
 
@@ -25,8 +25,8 @@ Reading uses `text-prose`, its 1.9 line height, `tracking-prose`, and `max-w-mea
 
 ## Patterns
 
-- **Reading:** serif prose, narrow measure, underlined links, warm code/table/quote surfaces; start alignment on narrow screens.
-- **Metadata:** use `text-muted` consistently across archive rows, introductions, and footer.
+- **Reading:** blog posts, Insights articles, and changelog share serif prose, narrow measure, underlined links, warm code/table/quote surfaces; start alignment on narrow screens.
+- **Metadata:** use `text-muted` consistently across archive rows, article dates/categories, introductions, placeholders, and footer.
 - **Markers:** section headings, project titles, and friend titles share the highlight color while retaining their own marker geometry.
 - **Cards:** friends have resting borders; projects reveal borders on hover. Both share page/surface and border roles.
 - **Search:** Base UI Dialog owns modal focus, dismissal, and scroll locking. SearchSession retains Pagefind queries/results and pagination. The panel uses shared tokens, fills the mobile viewport, and scrolls its result region. Index initialization failures have an explicit message.
