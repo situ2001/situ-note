@@ -2,50 +2,113 @@
 import { ClientRouter } from "astro:transitions";
 import "./global.css";
 import config from "config";
+import type { CoverImage } from "@/features/blog/coverImage";
 
-interface Props {
+export interface Props {
   title: string;
   description: string;
+  image?: CoverImage;
+  oembed?: string;
+  article?: {
+    publishedTime: Date;
+    modifiedTime?: Date;
+    tags: string[];
+  };
 }
 
-let { title, description } = Astro.props;
-
-(function editTitle() {
-  if (title !== config.title) {
-    title = `${title} - ${config.title}`;
-  }
-})()
+const { title, description, image, article, oembed } = Astro.props;
+const pageTitle = title === config.title ? title : `${title} - ${config.title}`;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const imageURL = image ? new URL(image.src, Astro.site) : undefined;
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": article ? "Article" : "WebPage",
+  "@id": canonicalURL.href,
+  url: canonicalURL.href,
+  name: title,
+  headline: article ? title : undefined,
+  description,
+  inLanguage: "zh",
+  image: imageURL?.href,
+  ...(article && {
+    mainEntityOfPage: canonicalURL.href,
+    author: { "@type": "Person", name: config.author, url: Astro.site!.href },
+    creator: config.author,
+    datePublished: article.publishedTime.toISOString(),
+    dateModified: article.modifiedTime?.toISOString(),
+    articleSection: article.tags[0],
+    keywords: article.tags,
+  }),
+};
+// JSON-LD is raw script content: escape '<' so article text cannot close it.
+const structuredJSON = JSON.stringify(structuredData).replace(/</g, "\\u003c");
 ---
 
 <!-- Global -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/favicon.png" />
 <meta name="generator" content={Astro.generator} />
 
 <!-- Canonical URL -->
-<link rel="canonical" href={canonicalURL} />
+<link rel="canonical" itemprop="url" href={canonicalURL} />
 
-<title>{title}</title>
-<meta name="title" content={title} />
+<title>{pageTitle}</title>
+<meta name="title" content={pageTitle} />
 <meta name="description" content={description} />
+<meta itemprop={article ? "name headline" : "name"} content={title} />
+<meta itemprop="description" content={description} />
+{image && <meta itemprop="image" content={imageURL} />}
+<script is:inline type="application/ld+json" set:html={structuredJSON} />
+{oembed && <link rel="alternate" type="application/json+oembed" href={oembed} title={title} />}
 
 <!-- Sitemap -->
 <link rel="sitemap" href="/sitemap-index.xml" />
 
 <!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content={Astro.url} />
+<meta property="og:type" content={article ? "article" : "website"} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:site_name" content={config.title} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
+{image && (
+  <>
+    <meta property="og:image" content={imageURL} />
+    {imageURL?.protocol === "https:" && <meta property="og:image:secure_url" content={imageURL} />}
+    <meta property="og:image:alt" content={image.alt || title} />
+    {image.width && <meta property="og:image:width" content={image.width} />}
+    {image.height && <meta property="og:image:height" content={image.height} />}
+    {image.type && <meta property="og:image:type" content={image.type} />}
+  </>
+)}
+{article && (
+  <>
+    <meta name="author" content={config.author} />
+    <meta property="article:author" content={Astro.site} />
+    <meta property="article:section" content={article.tags[0]} />
+    <meta itemprop="datePublished" content={article.publishedTime.toISOString()} />
+    {article.modifiedTime && <meta itemprop="dateModified" content={article.modifiedTime.toISOString()} />}
+    <meta property="article:published_time" content={article.publishedTime.toISOString()} />
+    {article.modifiedTime && <meta property="article:modified_time" content={article.modifiedTime.toISOString()} />}
+    {article.tags.map((tag) => <meta property="article:tag" content={tag} />)}
+  </>
+)}
 
 <!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={Astro.url} />
-<meta property="twitter:title" content={title} />
-<meta property="twitter:description" content={description} />
+<meta name="twitter:card" content={image ? "summary_large_image" : "summary"} />
+<meta name="twitter:url" content={canonicalURL} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+{config.twitter && <meta name="twitter:site" content={config.twitter} />}
+{article && config.twitter && <meta name="twitter:creator" content={config.twitter} />}
+{image && (
+  <>
+    <meta name="twitter:image" content={imageURL} />
+    <meta name="twitter:image:alt" content={image.alt || title} />
+  </>
+)}
 
 <!-- Google Search Console -->
 <meta

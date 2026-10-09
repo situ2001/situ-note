@@ -92,6 +92,16 @@ article.reading img {
   @apply rounded-xl;
 }
 
+article.reading figure {
+  @apply my-4;
+}
+
+article.reading figcaption {
+  @apply mt-2 text-sm text-center text-zinc-600 dark:text-zinc-400;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
 .medium-zoom-overlay {
   @apply dark:bg-zinc-900!;
 }

@@ -6,6 +6,7 @@ import babel from "@rolldown/plugin-babel";
 import { unified } from "@astrojs/markdown-remark";
 import remarkMath from "remark-math";
 import externalLinks from "./src/features/reading/rehype-external-links.mjs";
+import imageCaptions from "./src/features/reading/rehype-image-captions.mjs";
 import rehypeKatex from "rehype-katex";
 import pagefind from "astro-pagefind";
 
@@ -40,7 +41,7 @@ export default defineConfig({
   markdown: {
     processor: unified({
       remarkPlugins: [remarkMath],
-      rehypePlugins: [rehypeKatex, [externalLinks, { site: "https://situ2001.com" }]],
+      rehypePlugins: [rehypeKatex, [externalLinks, { site: "https://situ2001.com" }], imageCaptions],
     }),
     // TODO just copy from official doc, using blog-post.css now
     shikiConfig: {
