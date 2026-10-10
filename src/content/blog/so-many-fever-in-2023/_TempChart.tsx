@@ -1,6 +1,3 @@
-// TODO why not work?
-// import { Chart } from "@antv/g2";
-
 import { useEffect, useRef } from "react";
 
 type Data = {
@@ -14,7 +11,7 @@ export const TempChart = ({ data }: { data: Data[] }) => {
   useEffect(() => {
     if (!container.current) return;
 
-    import("@antv/g2").then(({ Chart }) => {
+    import("./_chart").then(({ Chart }) => {
       const chart = new Chart({
         container: container.current!,
         autoFit: true,
