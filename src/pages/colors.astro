@@ -89,7 +89,7 @@ const CURRENT = {
 
 <BaseLayout title="Colors · 试色" description="Color candidates">
   <h1 class="heading-with-underline text-3xl font-medium mb-2">试色</h1>
-  <p class="text-sm text-zinc-500 mb-4">
+  <p class="text-sm text-muted mb-4">
     点击色块 → 整页对应 token 即时换色（选中项有粉描边）；「重置」恢复当前
     token。背景色会连带推导一档 surface-strong。
   </p>
@@ -97,7 +97,7 @@ const CURRENT = {
     <button
       type="button"
       data-reset
-      class="cursor-pointer rounded-md border border-zinc-300 dark:border-zinc-600 px-3 py-1.5 text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800"
+      class="cursor-pointer rounded-md border border-border-strong px-3 py-1.5 text-sm hover:bg-surface"
     >
       重置为当前 token
     </button>
@@ -115,13 +115,13 @@ const CURRENT = {
             data-token="--color-surface"
             data-value={c.value}
             data-active={c.value === CURRENT.surface ? "true" : "false"}
-            class="block aspect-square w-full cursor-pointer rounded-lg border border-zinc-300/60 dark:border-zinc-600 transition-shadow hover:shadow-md"
+            class="block aspect-square w-full cursor-pointer rounded-lg border border-border-strong/60 transition-shadow hover:shadow-md"
             style={`background: ${c.value};`}
             aria-label={`应用 ${c.name}`}
           />
           <figcaption class="mt-2">
             <div class="text-sm">{c.name}</div>
-            <div class="font-mono text-xs text-zinc-400">{c.label}</div>
+            <div class="font-mono text-xs text-muted">{c.label}</div>
           </figcaption>
         </figure>
       ))
@@ -140,18 +140,31 @@ const CURRENT = {
             data-token="--color-highlight"
             data-value={c.value}
             data-active={c.value === CURRENT.highlight ? "true" : "false"}
-            class="block aspect-square w-full cursor-pointer rounded-lg border border-zinc-300/60 dark:border-zinc-600 transition-shadow hover:shadow-md"
+            class="block aspect-square w-full cursor-pointer rounded-lg border border-border-strong/60 transition-shadow hover:shadow-md"
             style={`background: ${c.value};`}
             aria-label={`应用 ${c.name}`}
           />
           <figcaption class="mt-2">
             <div class="text-sm">{c.name}</div>
-            <div class="font-mono text-xs text-zinc-400">{c.label}</div>
+            <div class="font-mono text-xs text-muted">{c.label}</div>
           </figcaption>
         </figure>
       ))
     }
   </div>
+
+  <section class="mt-12 space-y-4" aria-labelledby="shared-roles">
+    <h2 id="shared-roles" class="heading-with-underline">共享设计角色</h2>
+    <div class="grid gap-3 sm:grid-cols-3">
+      <div class="rounded-lg border border-border bg-panel p-4">
+        <p>纸面与正文</p><p class="mt-2 text-sm text-secondary">次要说明</p>
+        <p class="mt-1 text-sm text-muted">日期与元信息</p>
+      </div>
+      <div class="rounded-lg border border-border bg-surface p-4">引用与轻表面</div>
+      <div class="rounded-lg border border-border bg-surface-strong p-4">控件与键帽</div>
+    </div>
+    <button class="rounded-md border border-border px-3 py-2 hover:bg-surface-strong transition-colors duration-feedback">悬停与键盘焦点</button>
+  </section>
 
   <h2 class="heading-with-underline text-xl font-semibold mt-12 mb-6">
     上下文预览
@@ -159,15 +172,15 @@ const CURRENT = {
   <div class="space-y-6">
     <pre><code>const surface = "warm paper";  // 点击上方色块试试</code></pre>
 
-    <blockquote class="bg-surface border-l-4 border-quote-rule dark:border-zinc-700 px-4 py-2 rounded-r">
-      引用块吃 <code>--color-surface</code>，里面的行内 chip 吃更深一档的
+    <blockquote class="bg-surface border-l-4 border-quote-rule px-4 py-2 rounded-r">
+      引用块吃 <code>--color-surface</code>，里面的行内代码使用相同表面；控件与键帽使用更深一档的
       <code>--color-surface-strong</code>。
     </blockquote>
 
-    <div class="group relative rounded-lg border border-zinc-200 dark:border-zinc-700 p-4 transition-colors hover:bg-surface cursor-default">
+    <div class="group relative rounded-lg border border-border p-4 transition-colors hover:bg-surface cursor-default">
       卡片 hover 也会浮起背景色；标题带荧光笔扫过：
       <span
-        class="bg-no-repeat transition-[background-size] duration-300 ease-out [background-image:linear-gradient(var(--color-highlight),var(--color-highlight))] [background-position:left_bottom] [background-size:0%_0.5rem] group-hover:[background-size:100%_0.5rem]"
+        class="bg-no-repeat transition-[background-size] duration-emphasis ease-out [background-image:linear-gradient(var(--color-highlight),var(--color-highlight))] [background-position:left_bottom] [background-size:0%_0.5rem] group-hover:[background-size:100%_0.5rem]"
       >
         纸上暖色
       </span>

@@ -1,5 +1,7 @@
 ---
 import { render, type CollectionEntry } from "astro:content";
+import "@/features/reading/blog-post.css";
+import "katex/dist/katex.min.css";
 import BaseLayout from "@/features/site/BaseLayout.astro";
 import { insights } from "@/features/insight/insight";
 
@@ -16,7 +18,9 @@ const { Content } = await render(post);
 ---
 
 <BaseLayout title={post.data.title} description={""} searchable>
-  <div data-pagefind-body>
-    <Content />
+  <div class="max-w-measure mx-auto">
+    <article class="reading min-w-0" data-pagefind-body>
+      <Content />
+    </article>
   </div>
 </BaseLayout>

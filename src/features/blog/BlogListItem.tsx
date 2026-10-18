@@ -29,11 +29,11 @@ export function BlogListItem({
       <div className="flex-1">
         <span className="relative inline-block">
           {title}
-          <span className="absolute bottom-0 left-0 w-0 h-px bg-current transition-all duration-300 ease-in-out group-hover:w-full" />
+          <span className="absolute bottom-0 left-0 w-0 h-px bg-current transition-all duration-emphasis ease-in-out group-hover:w-full" />
         </span>
       </div>
 
-      <span className="text-sm text-zinc-500">
+      <span className="text-sm text-muted">
         <FormattedDate date={date} />
       </span>
     </a>
