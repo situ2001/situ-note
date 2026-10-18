@@ -25,26 +25,22 @@ const year = new Date().getFullYear();
   </head>
   <body
     class:list={[
-      "bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-300 h-full",
+      "bg-page text-content h-full",
       { paper },
     ]}
     {...(!searchable ? { 'data-pagefind-ignore': '' } : {})}
   >
-    <header class="top-0 sticky z-50">
-      <NavigationBar client:load />
-    </header>
-    <main class="px-4 min-[400px]:px-6 py-6 mx-auto max-w-screen-md">
-      <slot />
-    </main>
-  </body><footer
-    class="p-6 mx-auto max-w-screen-md text-center text-sm text-zinc-500 flex flex-col-reverse gap-2 md:gap-0 md:flex-row justify-between"
-  >
-    <p>
-      © {year}
-      {author}. All rights reserved.
-    </p>
-    <p>
-      <a href="/changelog" class="underline">Changelog</a>
-    </p>
-  </footer>
+    <div class="site-root">
+      <header class="top-0 sticky z-50">
+        <NavigationBar client:load />
+      </header>
+      <main class="px-4 min-[400px]:px-6 py-6 mx-auto max-w-screen-md">
+        <slot />
+      </main>
+      <footer class="p-6 mx-auto max-w-screen-md text-center text-sm text-muted flex flex-col-reverse gap-2 md:gap-0 md:flex-row justify-between">
+        <p>© {year} {author}. All rights reserved.</p>
+        <p><a href="/changelog" class="underline">Changelog</a></p>
+      </footer>
+    </div>
+  </body>
 </html>

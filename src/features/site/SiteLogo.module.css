@@ -20,7 +20,7 @@
 .year-01 {
   display: block;
   height: var(--centered-val);
-  transition: all 300ms ease;
+  transition: all var(--duration-emphasis) ease;
 }
 
 .tu,

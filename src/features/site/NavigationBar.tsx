@@ -36,10 +36,9 @@ const NavigationBar = ({ items }: { items: NavigationItem[] }) => {
       <nav
         ref={headerRef}
         className={clsx(
-          "px-4 md:px-8 py-2.5 mt-2.5 md:mb-4 transition-colors duration-300",
+          "px-4 md:px-8 py-2.5 mt-2.5 md:mb-4 transition-colors duration-emphasis",
           isIntersecting
-            ? ["bg-zinc-100", "dark:bg-zinc-800"]
-            : ["dark:bg-zinc-900"],
+            ? "bg-surface" : "bg-page",
         )}
       >
         <div className="flex justify-between mx-auto max-w-screen-lg">

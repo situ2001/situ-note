@@ -66,45 +66,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 )}
 
 <script is:inline>
-const applyTheme = () => {
-  // For dark mode
-  const MEDIA_QUERY_STR = "(prefers-color-scheme: dark)";
-  const element = document.documentElement;
-
-  const theme = (() => {
-    // if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
-    //   return localStorage.getItem("theme");
-    // }
-    if (window.matchMedia(MEDIA_QUERY_STR).matches) {
-      return "dark";
-    }
-    return "light";
-  })();
-
-  if (theme === "light") {
-    element.classList.remove("dark");
-  } else {
-    element.classList.add("dark");
-  }
-
-  window.localStorage.setItem("theme", theme);
-
-  // add event listener for prefers-color-scheme
-  window.matchMedia(MEDIA_QUERY_STR).addEventListener("change", (e) => {
-    const isDark = e.matches;
-    const theme = isDark ? "dark" : "light";
-    if (isDark) {
-      element.classList.add("dark");
-      localStorage.setItem("theme", theme);
-    } else {
-      element.classList.remove("dark");
-      localStorage.setItem("theme", theme);
-    }
-  });
-}
-
-document.addEventListener("astro:after-swap", applyTheme);
-applyTheme();
+  document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+</script>
+<script>
+  const preference = window.matchMedia("(prefers-color-scheme: dark)");
+  const applyTheme = () => {
+    document.documentElement.classList.toggle("dark", preference.matches);
+  };
+  preference.addEventListener("change", applyTheme);
+  document.addEventListener("astro:after-swap", applyTheme);
+  applyTheme();
 </script>
 
 <ClientRouter />
