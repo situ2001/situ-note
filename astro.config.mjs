@@ -12,13 +12,18 @@ import pagefind from "astro-pagefind";
 
 import tailwindcss from "@tailwindcss/vite";
 
+const branch = process.env.CF_PAGES_BRANCH;
+const site = branch && branch !== "main"
+  ? `https://${branch.toLowerCase().replace(/[^a-z0-9]/g, "-")}.situ-note.pages.dev`
+  : "https://situ2001.com";
+
 /**
  * https://astro.build/config
  *
  * @type {import('astro/types').AstroConfig}
  */
 export default defineConfig({
-  site: "https://situ2001.com",
+  site,
   integrations: [
     mdx(),
     sitemap(),
