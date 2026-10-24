@@ -6,10 +6,16 @@ import babel from "@rolldown/plugin-babel";
 import { unified } from "@astrojs/markdown-remark";
 import remarkMath from "remark-math";
 import externalLinks from "./src/features/reading/rehype-external-links.mjs";
+import imageCaptions from "./src/features/reading/rehype-image-captions.mjs";
 import rehypeKatex from "rehype-katex";
 import pagefind from "astro-pagefind";
 
 import tailwindcss from "@tailwindcss/vite";
+
+const branch = process.env.CF_PAGES_BRANCH;
+const site = branch && branch !== "main"
+  ? `https://${branch.toLowerCase().replace(/[^a-z0-9]/g, "-")}.situ-note.pages.dev`
+  : "https://situ2001.com";
 
 /**
  * https://astro.build/config
@@ -17,7 +23,7 @@ import tailwindcss from "@tailwindcss/vite";
  * @type {import('astro/types').AstroConfig}
  */
 export default defineConfig({
-  site: "https://situ2001.com",
+  site,
   integrations: [
     mdx(),
     sitemap(),
@@ -40,7 +46,7 @@ export default defineConfig({
   markdown: {
     processor: unified({
       remarkPlugins: [remarkMath],
-      rehypePlugins: [rehypeKatex, [externalLinks, { site: "https://situ2001.com" }]],
+      rehypePlugins: [rehypeKatex, [externalLinks, { site: "https://situ2001.com" }], imageCaptions],
     }),
     // TODO just copy from official doc, using blog-post.css now
     shikiConfig: {

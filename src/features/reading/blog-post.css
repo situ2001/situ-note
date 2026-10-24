@@ -87,6 +87,16 @@ article.reading img {
   @apply rounded-xl;
 }
 
+article.reading figure {
+  @apply my-4;
+}
+
+article.reading figcaption {
+  @apply mt-2 text-sm text-center text-muted;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
 .medium-zoom-overlay {
   background-color: var(--color-page) !important;
 }

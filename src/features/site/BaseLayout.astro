@@ -3,25 +3,29 @@ import BaseHtmlHead from "./BaseHtmlHead.astro";
 import NavigationBar from "./NavigationBar";
 
 import config from "config";
+import type { Props as HeadProps } from "./BaseHtmlHead.astro";
 const { author } = config;
 
 interface Props {
   title: string;
   description: string;
+  image?: HeadProps["image"];
+  article?: HeadProps["article"];
+  oembed?: string;
   fullWidth?: boolean;
   /** Pages with searchable=true are indexed by Pagefind. Defaults to false. */
   searchable?: boolean;
   /** Pages with paper=true get the print-like paper treatment (see global.css). Defaults to true. */
   paper?: boolean;
 }
-const { title, description, searchable = false, paper = true } = Astro.props;
+const { title, description, image, article, oembed, searchable = false, paper = true } = Astro.props;
 
 const year = new Date().getFullYear();
 ---
 
 <html lang="zh">
-  <head>
-    <BaseHtmlHead title={title} description={description} />
+  <head itemscope itemtype={`https://schema.org/${article ? "Article" : "WebPage"}`}>
+    <BaseHtmlHead title={title} description={description} image={image} article={article} oembed={oembed} />
   </head>
   <body
     class:list={[

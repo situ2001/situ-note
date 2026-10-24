@@ -15,16 +15,26 @@ import "@/features/reading/blog-post.css";
 import { blog } from "@/features/blog/blog";
 import type { MarkdownHeading } from "astro";
 import MediumZoom from "@/features/reading/MediumZoom";
+import type { CoverImage } from "@/features/blog/coverImage";
 
-type Props = CollectionEntry<"blog">["data"] & { headings: MarkdownHeading[] };
-const { title, description, date, categories, headings } = Astro.props;
+type Props = CollectionEntry<"blog">["data"] & { headings: MarkdownHeading[]; sharingImage: CoverImage; oembed: string };
+const { title, description, date, updatedDate, categories, headings, heroImage, sharingImage, oembed } = Astro.props;
 ---
 
-<BaseLayout title={title} description={description} searchable paper>
+<BaseLayout
+  title={title}
+  description={description}
+  image={sharingImage}
+  oembed={oembed}
+  article={{ publishedTime: date, modifiedTime: updatedDate, tags: blog.categoriesFor(categories) }}
+  searchable
+  paper
+>
   <MediumZoom selectors={["article.reading img:not(a img)"]} client:only />
   <div class="max-w-measure mx-auto">
     <div class="font-serif mb-4">
       <h1 class="text-3xl mb-1">{title}</h1>
+      {!heroImage && <p class="text-sm text-muted mb-3">{description}</p>}
       <div class="text-sm text-muted">
         <FormattedDate date={date.toISOString()} />
       </div>
@@ -53,13 +63,13 @@ const { title, description, date, categories, headings } = Astro.props;
     </div>
     <hr />
     <article class="reading min-w-0" data-pagefind-body>
-      <!-- Description -->
       {
-        description ? (
-          <p class="text-secondary border-l-4 border-quote-rule px-4 py-2 my-6 bg-surface">
-            {description}
-          </p>
-        ) : null
+        heroImage && (
+          <figure class="article-hero">
+            <img src={sharingImage.src} alt={sharingImage.alt} width={sharingImage.width} height={sharingImage.height} />
+            {description && <figcaption>{description}</figcaption>}
+          </figure>
+        )
       }
       <!-- Main Content -->
       <slot />

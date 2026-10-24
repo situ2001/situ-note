@@ -1,0 +1,24 @@
+# Apply in the Instant View editor for situ2001.com.
+~version: "2.1"
+
+?exists: //meta[@property="og:type" and @content="article"]
+body: //article[has-class("reading")]
+title: //main//h1
+description: //meta[@property="og:description"]/@content
+image_url: //meta[@property="og:image"]/@content
+site_name: //meta[@property="og:site_name"]/@content
+author: //meta[@name="author"]/@content
+author_url: //meta[@property="article:author"]/@content
+@datetime(0): //meta[@property="article:published_time"]/@content
+published_date: $@
+cover: $body/figure[has-class("article-hero")]
+
+# Browser images use WebP; separate full-size assets use IV-compatible formats.
+@set_attr(src, @data-instant-view-src): $body//img[@data-instant-view-src]
+@remove: $body//img/@srcset
+
+# Shiki already puts data-language on pre; preserve its whitespace in IV.
+@pre: $body//pre
+
+# These actual article features need JS/CSS and cannot be faithfully shown in IV.
+@unsupported: $body//*[self::astro-island or self::canvas or has-class("katex")]

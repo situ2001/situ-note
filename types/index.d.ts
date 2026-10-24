@@ -6,6 +6,7 @@ export interface BlogConfig {
   author: string;
   description: string;
   email: string;
+  twitter?: string;
 
   /**
    * Hero section. (首页的主体部分)
