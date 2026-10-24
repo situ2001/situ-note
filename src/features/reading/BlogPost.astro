@@ -15,12 +15,21 @@ import "@/features/reading/blog-post.css";
 import { blog } from "@/features/blog/blog";
 import type { MarkdownHeading } from "astro";
 import MediumZoom from "@/features/reading/MediumZoom";
+import type { CoverImage } from "@/features/blog/coverImage";
 
-type Props = CollectionEntry<"blog">["data"] & { headings: MarkdownHeading[] };
-const { title, description, date, categories, headings } = Astro.props;
+type Props = CollectionEntry<"blog">["data"] & { headings: MarkdownHeading[]; cover?: CoverImage; oembed: string };
+const { title, description, date, updatedDate, categories, headings, cover, oembed } = Astro.props;
 ---
 
-<BaseLayout title={title} description={description} searchable paper>
+<BaseLayout
+  title={title}
+  description={description}
+  image={cover}
+  oembed={oembed}
+  article={{ publishedTime: date, modifiedTime: updatedDate, tags: blog.categoriesFor(categories) }}
+  searchable
+  paper
+>
   <MediumZoom selectors={["article.reading img:not(a img)"]} client:only />
   <div class="max-w-measure mx-auto">
     <div class="font-serif mb-4">
@@ -53,13 +62,13 @@ const { title, description, date, categories, headings } = Astro.props;
     </div>
     <hr />
     <article class="reading min-w-0" data-pagefind-body>
-      <!-- Description -->
       {
-        description ? (
-          <p class="text-secondary border-l-4 border-quote-rule px-4 py-2 my-6 bg-surface">
-            {description}
-          </p>
-        ) : null
+        cover && (
+          <figure class="article-hero">
+            <img src={cover.src} alt={cover.alt} width={cover.width} height={cover.height} />
+            {description && <figcaption>{description}</figcaption>}
+          </figure>
+        )
       }
       <!-- Main Content -->
       <slot />

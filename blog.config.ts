@@ -21,6 +21,7 @@ const config: BlogConfig = {
   description: "Frontend engineer by day, geek by night.",
   author: "situ2001",
   email: "dogecong@gmail.com",
+  twitter: "@situ2oo1",
 
   hero: {
     description: [],
