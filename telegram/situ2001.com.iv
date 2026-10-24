@@ -4,7 +4,6 @@
 ?exists: //meta[@property="og:type" and @content="article"]
 body: //article[has-class("reading")]
 title: //main//h1
-subtitle: //meta[@property="og:description"]/@content
 description: //meta[@property="og:description"]/@content
 image_url: //meta[@property="og:image"]/@content
 site_name: //meta[@property="og:site_name"]/@content
@@ -22,4 +21,4 @@ cover: $body/figure[has-class("article-hero")]
 @pre: $body//pre
 
 # These actual article features need JS/CSS and cannot be faithfully shown in IV.
-@unsupported: $body//astro-island | $body//canvas | $body//*[has-class("katex")]
+@unsupported: $body//*[self::astro-island or self::canvas or has-class("katex")]
