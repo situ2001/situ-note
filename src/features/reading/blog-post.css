@@ -115,7 +115,8 @@ article.reading figcaption {
 /* ------------------------------------------------------------------ */
 
 body.paper article.reading {
-  font-family: var(--font-serif), var(--font-cjk-serif), serif;
+  font-family: var(--font-serif), "Noto Serif SC Variable", var(--font-cjk-serif), serif;
+  font-weight: 450;
   font-size: var(--text-prose);
   line-height: var(--text-prose--line-height);
   letter-spacing: var(--tracking-prose);
@@ -126,6 +127,14 @@ body.paper article.reading {
   text-autospace: normal;
   text-spacing-trim: normal;
   hanging-punctuation: first allow-end;
+}
+
+body.paper article.reading :is(h1, h2, h3, h4, h5, h6, figcaption) {
+  font-family: var(--font-serif), var(--font-cjk-serif), serif;
+}
+
+body.paper article.reading :is(pre, code, figcaption) {
+  font-weight: 400;
 }
 
 body.paper article.reading p {
