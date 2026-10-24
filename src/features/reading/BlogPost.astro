@@ -17,14 +17,14 @@ import type { MarkdownHeading } from "astro";
 import MediumZoom from "@/features/reading/MediumZoom";
 import type { CoverImage } from "@/features/blog/coverImage";
 
-type Props = CollectionEntry<"blog">["data"] & { headings: MarkdownHeading[]; cover?: CoverImage; oembed: string };
-const { title, description, date, updatedDate, categories, headings, cover, oembed } = Astro.props;
+type Props = CollectionEntry<"blog">["data"] & { headings: MarkdownHeading[]; sharingImage: CoverImage; oembed: string };
+const { title, description, date, updatedDate, categories, headings, heroImage, sharingImage, oembed } = Astro.props;
 ---
 
 <BaseLayout
   title={title}
   description={description}
-  image={cover}
+  image={sharingImage}
   oembed={oembed}
   article={{ publishedTime: date, modifiedTime: updatedDate, tags: blog.categoriesFor(categories) }}
   searchable
@@ -34,6 +34,7 @@ const { title, description, date, updatedDate, categories, headings, cover, oemb
   <div class="max-w-measure mx-auto">
     <div class="font-serif mb-4">
       <h1 class="text-3xl mb-1">{title}</h1>
+      {!heroImage && <p class="text-sm text-muted mb-3">{description}</p>}
       <div class="text-sm text-muted">
         <FormattedDate date={date.toISOString()} />
       </div>
@@ -63,9 +64,9 @@ const { title, description, date, updatedDate, categories, headings, cover, oemb
     <hr />
     <article class="reading min-w-0" data-pagefind-body>
       {
-        cover && (
+        heroImage && (
           <figure class="article-hero">
-            <img src={cover.src} alt={cover.alt} width={cover.width} height={cover.height} />
+            <img src={sharingImage.src} alt={sharingImage.alt} width={sharingImage.width} height={sharingImage.height} />
             {description && <figcaption>{description}</figcaption>}
           </figure>
         )

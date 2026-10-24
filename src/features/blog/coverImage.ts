@@ -15,8 +15,14 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
   "/src/content/blog/**/*.{avif,gif,jpeg,jpg,png,webp}",
 );
 
-export async function postCoverImage(post: CollectionEntry<"blog">) {
-  if (!post.data.heroImage) return undefined;
+export async function postSharingImage(post: CollectionEntry<"blog">): Promise<CoverImage> {
+  if (!post.data.heroImage) return {
+    src: `/share/${post.id}.png`,
+    alt: `${post.data.title} — ${post.data.description}`,
+    width: 1200,
+    height: 630,
+    type: "image/png",
+  };
   return coverImage(post.filePath!, { src: post.data.heroImage, alt: post.data.title });
 }
 
