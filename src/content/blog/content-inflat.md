@@ -1,7 +1,7 @@
 ---
 title: 不对等的通货膨胀？两次饭后散步随聊
 comments: true
-date: "2026-10-19T23:30:00+08:00"
+date: "2026-10-24T15:30:00+08:00"
 categories: 随笔
 description: 我们看着离月亮这么近，但又离月亮这么远
 heroImage: ./assets/to_the_moon.jpeg

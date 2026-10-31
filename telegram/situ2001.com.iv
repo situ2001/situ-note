@@ -16,9 +16,23 @@ cover: $body/figure[has-class("article-hero")]
 # Browser images use WebP; separate full-size assets use IV-compatible formats.
 @set_attr(src, @data-instant-view-src): $body//img[@data-instant-view-src]
 @remove: $body//img/@srcset
+@wrap(<figure>): $body//p/img
+@split_parent: $body//p/figure
 
 # Shiki already puts data-language on pre; preserve its whitespace in IV.
 @pre: $body//pre
 
-# These actual article features need JS/CSS and cannot be faithfully shown in IV.
-@unsupported: $body//*[self::astro-island or self::canvas or has-class("katex")]
+# TODO: Preserve rendered math in IV, then remove the LaTeX conversion and notice.
+$math: $body//span[has-class("katex")]
+@if($math) {
+  # TODO: Put this notice in source HTML before requesting Telegram review (Checklist 5).
+  @prepend(<p>): $body
+  @append(<a>, href, "./ancestor::html/head/link[@rel='canonical']/@href"): $@
+  @append("Formulas are shown as LaTeX. Open the original article to view rendered equations."): $@
+}
+@before_el("./ancestor::span[@class='katex']"): $math//*[name()="annotation"]
+<code>: $@
+@remove: $math
+
+# These article features require JavaScript.
+@unsupported: $body//*[self::astro-island or self::canvas]
