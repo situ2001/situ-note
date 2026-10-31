@@ -3,7 +3,7 @@ import { render, type CollectionEntry } from "astro:content";
 
 import BlogPost from "@/features/reading/BlogPost.astro";
 import { blog } from "@/features/blog/blog";
-import { postCoverImage } from "@/features/blog/coverImage";
+import { postSharingImage } from "@/features/blog/coverImage";
 
 export const getStaticPaths = blog.postPaths;
 
@@ -11,10 +11,10 @@ type Props = CollectionEntry<"blog">;
 
 const post = Astro.props;
 const { Content, headings } = await render(post);
-const cover = await postCoverImage(post);
+const sharingImage = await postSharingImage(post);
 const oembed = new URL(`/oembed/${post.id}.json`, Astro.site).href;
 ---
 
-<BlogPost {...post.data} headings={headings} cover={cover} oembed={oembed}>
+<BlogPost {...post.data} headings={headings} sharingImage={sharingImage} oembed={oembed}>
   <Content />
 </BlogPost>

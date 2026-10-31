@@ -1,14 +1,14 @@
 import type { CollectionEntry } from "astro:content";
 import type { GetStaticPaths, APIRoute } from "astro";
 import { blog } from "@/features/blog/blog";
-import { postCoverImage } from "@/features/blog/coverImage";
+import { postSharingImage } from "@/features/blog/coverImage";
 import config from "config";
 
 export const getStaticPaths = blog.postPaths satisfies GetStaticPaths;
 
 export const GET: APIRoute = async ({ props, site }) => {
   const post = props as CollectionEntry<"blog">;
-  const image = await postCoverImage(post);
+  const image = await postSharingImage(post);
   const data = {
     version: "1.0",
     type: "link",
